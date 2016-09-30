@@ -1,0 +1,7 @@
+.git
+.gitignore
+.htaccess
+sftp-config.json
+.DS_Store
+_resources
+.obi
