@@ -49,7 +49,7 @@ class AviaPointer {
             return;
 
         $screen = get_current_screen();
-        $this->screen_id = $screen->id;
+        $this->screen_id = isset($screen->id) ? isset($screen->id) : false;
       
         $this->register_pointers($pntrs);
 

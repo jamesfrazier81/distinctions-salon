@@ -1,5 +1,7 @@
 <?php
-global $avia_config;
+	if ( !defined('ABSPATH') ){ die(); }
+	
+	global $avia_config;
 
 
 	/*

@@ -360,13 +360,15 @@ if ( !class_exists( 'avia_partner_logo' ) )
 
 			//resort slides so the id of each slide matches the post id
 			$new_slides = array();
+			$new_ids = array();
 			foreach($this->slides as $slide)
 			{
 				$new_slides[$slide->ID] = $slide;
+				$new_ids[] = $slide->ID;
 			}
 
 			$this->slides 		= $new_slides;
-			$this->id_array 	= explode(',',$this->config['ids']);
+			$this->id_array 	= $new_ids;
 			$this->slide_count 	= count($this->id_array);
 		}
 

@@ -99,7 +99,7 @@ if ( !class_exists( 'avia_sc_content_slider' ) )
                                 "desc" 	=> __("Enter some content here", 'avia_framework' ) ,
                                 "id" 	=> "content",
                                 "type" 	=> "tiny_mce",
-                                "std" 	=> "Slide Content goes here",
+                                "std" 	=> __("Slide Content goes here", 'avia_framework' ) ,
                             ),
 
                         )

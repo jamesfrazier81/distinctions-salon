@@ -1,9 +1,17 @@
 (function($)
 {	
     "use strict";
-
+	
+	//fix back forward cache issue: http://stackoverflow.com/questions/11979156/mobile-safari-back-button
+    $(window).bind("pageshow", function(event) {
+	    if (event.originalEvent.persisted) {
+	     avia_site_preloader();
+	    }
+	});
+	
     $(document).ready(function()
-    {	
+    {	    
+	    
         var aviabodyclasses = AviaBrowserDetection('html');
 
 		$.avia_utilities = $.avia_utilities || {};
@@ -27,12 +35,15 @@
         avia_sidebar_menu();
         
         //activates the sticky submenu
-		avia_sticky_submenu();
+		avia_sticky_submenu();        
+		
+		//activates the sticky submenu
+		avia_hamburger_menu();
 
         //show scroll top button
         avia_scroll_top_fade();
         
-        //show scroll top button
+        //site preloader script
         avia_site_preloader();
         
         //creates search tooltip
@@ -88,7 +99,7 @@
 
 		//smooth scrooling
 		if($.fn.avia_smoothscroll)
-		$('a[href*=#]', container).avia_smoothscroll(container);
+		$('a[href*="#"]', container).avia_smoothscroll(container);
 
 		avia_small_fixes(container);
 
@@ -136,7 +147,7 @@
 		    
 		   	self.activation_true = false;
 		   	
-		    if(self.$body.find(self.selector + "[href*=#]").length)
+		    if(self.$body.find(self.selector + "[href*='#']").length)
 		    {
 		    	self.$scrollElement = $element.on('scroll.scroll-spy.data-api', process);
 		    	self.$win.on('av-height-change', refresh);
@@ -264,12 +275,24 @@
 	
 	  $.fn.avia_scrollspy.Constructor = AviaScrollSpy
 	
-	  $.fn.avia_scrollspy.defaults = {
-	    offset: (parseInt($('.html_header_sticky #main').data('scroll-offset'), 10)) + ($(".html_header_sticky #header_main_alternate").outerHeight()) + ($(".html_header_sticky.html_header_unstick_top_disabled #header_meta").outerHeight()) + 1 + parseInt($('html').css('margin-top'),10),
+	  $.fn.avia_scrollspy.calc_offset = function()
+	  {
+		  var 	offset_1 = (parseInt($('.html_header_sticky #main').data('scroll-offset'), 10)) || 0,
+		  		offset_2 = ($(".html_header_sticky:not(.html_top_nav_header) #header_main_alternate").outerHeight()) || 0,
+		  		offset_3 = ($(".html_header_sticky.html_header_unstick_top_disabled #header_meta").outerHeight()) || 0,
+		  		offset_4 =  1,
+		  		offset_5 = parseInt($('html').css('margin-top'),10) || 0,
+		  		offset_6 = parseInt($('.av-frame-top ').outerHeight(),10) || 0;
+		  
+		  return offset_1 + offset_2 + offset_3 + offset_4 + offset_5 + offset_6;
+	  }
+	
+	  $.fn.avia_scrollspy.defaults = 
+	  {
+	    offset: $.fn.avia_scrollspy.calc_offset(),
 	    applyClass: 'current-menu-item'
 	  }
-
-
+	  
 
 	function avia_site_preloader()
 	{
@@ -474,7 +497,7 @@
 			}
 			
 			//when clicked on anchor link remove the menu so the body can scroll to the anchor
-			if(current.filter('[href*=#]').length)
+			if(current.filter('[href*="#"]').length)
 			{
 				container.removeClass('show_mobile_menu');
 				container.css({'height':"auto"});
@@ -702,8 +725,9 @@
 				$header = $('#header'),
 				$main 	= $('.html_header_top.html_header_sticky #main').not('.page-template-template-blank-php #main'),
 				$meta 	= $('.html_header_top.html_header_unstick_top_disabled #header_meta'),
-				$alt  	= $('.html_header_top #header_main_alternate'),
+				$alt  	= $('.html_header_top:not(.html_top_nav_header) #header_main_alternate'),
 				shrink	= $('.html_header_top.html_header_shrinking').length,
+				frame	= $('.av-frame-top'),
 				fixedMainPadding = 0,
 				isMobile = $.avia_utilities.isMobile,
 				sticky_sub = $('.sticky_placeholder:first'), 
@@ -730,6 +754,10 @@
 					else
 					{
 						fixedMainPadding = parseInt($('html').css('margin-top'),10);
+					}
+					
+					if(frame.length){
+						fixedMainPadding += frame.height();
 					}
 					
 				};
@@ -890,8 +918,9 @@
 	{
 		$.fn.avia_activate_lightbox = function(variables)
 		{
+			
 			var defaults = {
-				groups			:	['.avia-slideshow', '.avia-gallery', '.isotope', '.post-entry', '.sidebar', '#main', '.main_menu'], 
+				groups			:	['.avia-slideshow', '.avia-gallery', '.av-instagram-pics', '.portfolio-preview-image', '.portfolio-preview-content', '.isotope', '.post-entry', '.sidebar', '#main', '.main_menu'], 
 				autolinkElements:   'a.lightbox, a[rel^="prettyPhoto"], a[rel^="lightbox"], a[href$=jpg], a[href$=png], a[href$=gif], a[href$=jpeg], a[href*=".jpg?"], a[href*=".png?"], a[href*=".gif?"], a[href*=".jpeg?"], a[href$=".mov"] , a[href$=".swf"] , a:regex(href, .vimeo\.com/[0-9]) , a[href*="youtube.com/watch"] , a[href*="screenr.com"], a[href*="iframe=true"]',
 				videoElements	: 	'a[href$=".mov"] , a[href$=".swf"] , a:regex(href, .vimeo\.com/[0-9]) , a[href*="youtube.com/watch"] , a[href*="screenr.com"], a[href*="iframe=true"]',
 				exclude			:	'.noLightbox, .noLightbox a, .fakeLightbox, .lightbox-added, a[href*="dropbox.com"]',
@@ -1001,7 +1030,6 @@
 				var container	= $(this),
 					videos		= $(options.videoElements, this).not(options.exclude).addClass('mfp-iframe'), /*necessary class for the correct lightbox markup*/
 					ajaxed		= !container.is('body') && !container.is('.ajax_slide');
-					
 					
 					for (var i = 0; i < options.groups.length; i++) 
 					{
@@ -1227,7 +1255,7 @@
 
 
 			// bind events for dropdown menu
-			dropdownItems.find('li').andSelf().each(function()
+			dropdownItems.find('li').addBack().each(function()
 			{
 				var currentItem = $(this),
 					sublist = currentItem.find('ul:first'),
@@ -1356,6 +1384,7 @@
 			setWitdth	= $('.html_header_sidebar #main, .boxed #main'),
 			menus		= $('.av-submenu-container'),
 			bordermod	= html.is('.html_minimal_header') ? 0 : 1,
+			fixed_frame	= $('.av-frame-top').height(),
 			calc_margin	= function()
 			{
 				html_margin = parseInt( html.css('margin-top'), 10);
@@ -1377,11 +1406,17 @@
 					top_pos 	= placeholder.offset().top,
 					scrolled	= win.scrollTop(),
 					modifier 	= html_margin, fixed = false;
+										
+					if(header.length) 
+					{
+						modifier += header.outerHeight() + parseInt( header.css('margin-top'), 10);
+					}	
 					
+					if(fixed_frame)
+					{
+						modifier += fixed_frame;
+					}
 					
-					
-					if(header.length) modifier += header.outerHeight() + parseInt( header.css('margin-top'), 10);
-				
 					if(scrolled + modifier > top_pos)
 					{
 						if(!fixed)
@@ -1494,11 +1529,12 @@
         
         var innerSidebar	= $('#header_main'),
        	 	wrap			= $('#wrap_all'),
+       	 	fixed_frame		= $('.av-frame-top').height() * 2,
        	 	subtract 		= parseInt($('html').css('margin-top'), 10),
             calc_values 	= function()
-            {
-            	if(innerSidebar.outerHeight() < win.height()) 
-				{ 
+            {	
+            	if(innerSidebar.outerHeight() + fixed_frame < win.height()) 
+				{ 	
 					sidebar.addClass('av_always_sticky'); 
 				}
 				else
@@ -1659,6 +1695,87 @@
 
    		 win.on( 'scroll',  function(){ window.requestAnimationFrame( set_status )} );
          set_status();
+	}
+	
+	function avia_hamburger_menu()
+	{
+		var menu		= $('#avia-menu'),
+			burger_wrap = $('.av-burger-menu-main a'),
+			burger 		= burger_wrap.find('.av-hamburger'),
+			htmlEL  	= $('.html_burger_menu'),
+			overlay		= $('<div class="av-burger-overlay"></div>'),
+			inner_overlay = $('<div class="av-burger-overlay-inner"></div>').appendTo(overlay),
+			bgColor 	  = $('<div class="av-burger-overlay-bg"></div>').appendTo(overlay),
+			animating 	  = false,
+			first_level	  = {};
+			
+		burger_wrap.click(function(e)
+		{
+			if(animating) return;
+			
+			animating = true;
+			
+			if(!burger.is(".av-inserted-main-menu"))
+			{
+				var new_menu = menu.clone();
+				new_menu.find('.menu-item-avia-special').remove();
+				new_menu.find('ul').attr('style','');
+				new_menu.attr({id:'av-burger-menu-ul', class:''}).appendTo(inner_overlay);
+				
+				new_menu.find('li').hover(function () {
+			        $(this).children("ul.sub-menu").slideDown('fast');
+			    }, function () {
+			        $(this).children("ul.sub-menu").slideUp('fast');
+			    });
+				
+				
+				burger.addClass("av-inserted-main-menu");
+				overlay.appendTo('.avia-menu');
+				
+				if($.fn.avia_smoothscroll)
+				$('a[href*="#"]', overlay).avia_smoothscroll(overlay);
+				$('a[href*="#"]', overlay).click(function(){ burger_wrap.trigger('click'); })
+				
+				first_level = overlay.find('#av-burger-menu-ul > li');
+				console.log(first_level);
+			}
+			
+			if(burger.is(".is-active"))
+			{
+				burger.removeClass("is-active");
+				overlay.avia_animate({opacity:0}, function()
+	    		{
+	    			overlay.css({display:'none'});
+					htmlEL.removeClass("av-burger-overlay-active");
+					animating = false;
+	    		});
+			}
+			else
+			{
+				first_level.removeClass('av-active-burger-items');
+				
+				burger.addClass("is-active");
+				htmlEL.addClass("av-burger-overlay-active");
+				overlay.css({display:'block'}).avia_animate({opacity:1}, function()
+				{ 
+					animating = false; 
+				});
+				
+				first_level.each(function(i)
+				{
+					var _self = $(this);
+					setTimeout(function()
+					{
+						_self.addClass('av-active-burger-items');	
+					}, (i + 1) * 125)
+				});
+				
+				
+				
+			}
+			
+			e.preventDefault();
+		});
 	}
 
 
@@ -1846,7 +1963,7 @@
                 position	= element.data('avia-tooltip-position'),
                 align		= element.data('avia-tooltip-alignment'),
                 force_append= false;
-            
+           
             text = $.trim(text);
             
             if(element.is('.av-perma-tooltip'))
@@ -2039,7 +2156,8 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
  * https://github.com/gabceb
  *
  * Released under the MIT license
- */!function(a,b){"use strict";var c,d;if(a.uaMatch=function(a){a=a.toLowerCase();var b=/(opr)[\/]([\w.]+)/.exec(a)||/(chrome)[ \/]([\w.]+)/.exec(a)||/(version)[ \/]([\w.]+).*(safari)[ \/]([\w.]+)/.exec(a)||/(webkit)[ \/]([\w.]+)/.exec(a)||/(opera)(?:.*version|)[ \/]([\w.]+)/.exec(a)||/(msie) ([\w.]+)/.exec(a)||a.indexOf("trident")>=0&&/(rv)(?::| )([\w.]+)/.exec(a)||a.indexOf("compatible")<0&&/(mozilla)(?:.*? rv:([\w.]+)|)/.exec(a)||[],c=/(ipad)/.exec(a)||/(iphone)/.exec(a)||/(android)/.exec(a)||/(windows phone)/.exec(a)||/(win)/.exec(a)||/(mac)/.exec(a)||/(linux)/.exec(a)||/(cros)/i.exec(a)||[];return{browser:b[3]||b[1]||"",version:b[2]||"0",platform:c[0]||""}},c=a.uaMatch(b.navigator.userAgent),d={},c.browser&&(d[c.browser]=!0,d.version=c.version,d.versionNumber=parseInt(c.version)),c.platform&&(d[c.platform]=!0),(d.android||d.ipad||d.iphone||d["windows phone"])&&(d.mobile=!0),(d.cros||d.mac||d.linux||d.win)&&(d.desktop=!0),(d.chrome||d.opr||d.safari)&&(d.webkit=!0),d.rv){var e="msie";c.browser=e,d[e]=!0}if(d.opr){var f="opera";c.browser=f,d[f]=!0}if(d.safari&&d.android){var g="android";c.browser=g,d[g]=!0}d.name=c.browser,d.platform=c.platform,a.browser=d}(jQuery,window);
+ */
+ !function(a,b){"use strict";var c,d;if(a.uaMatch=function(a){a=a.toLowerCase();var b=/(opr)[\/]([\w.]+)/.exec(a)||/(chrome)[ \/]([\w.]+)/.exec(a)||/(version)[ \/]([\w.]+).*(safari)[ \/]([\w.]+)/.exec(a)||/(webkit)[ \/]([\w.]+)/.exec(a)||/(opera)(?:.*version|)[ \/]([\w.]+)/.exec(a)||/(msie) ([\w.]+)/.exec(a)||a.indexOf("trident")>=0&&/(rv)(?::| )([\w.]+)/.exec(a)||a.indexOf("compatible")<0&&/(mozilla)(?:.*? rv:([\w.]+)|)/.exec(a)||[],c=/(ipad)/.exec(a)||/(iphone)/.exec(a)||/(android)/.exec(a)||/(windows phone)/.exec(a)||/(win)/.exec(a)||/(mac)/.exec(a)||/(linux)/.exec(a)||/(cros)/i.exec(a)||[];return{browser:b[3]||b[1]||"",version:b[2]||"0",platform:c[0]||""}},c=a.uaMatch(b.navigator.userAgent),d={},c.browser&&(d[c.browser]=!0,d.version=c.version,d.versionNumber=parseInt(c.version)),c.platform&&(d[c.platform]=!0),(d.android||d.ipad||d.iphone||d["windows phone"])&&(d.mobile=!0),(d.cros||d.mac||d.linux||d.win)&&(d.desktop=!0),(d.chrome||d.opr||d.safari)&&(d.webkit=!0),d.rv){var e="msie";c.browser=e,d[e]=!0}if(d.opr){var f="opera";c.browser=f,d[f]=!0}if(d.safari&&d.android){var g="android";c.browser=g,d[g]=!0}d.name=c.browser,d.platform=c.platform,a.browser=d}(jQuery,window);
  
 /*Vimeo Frogaloop API for videos*/
 var Froogaloop=function(){function e(a){return new e.fn.init(a)}function g(a,c,b){if(!b.contentWindow.postMessage)return!1;a=JSON.stringify({method:a,value:c});b.contentWindow.postMessage(a,h)}function l(a){var c,b;try{c=JSON.parse(a.data),b=c.event||c.method}catch(e){}"ready"!=b||k||(k=!0);if(!/^https?:\/\/player.vimeo.com/.test(a.origin))return!1;"*"===h&&(h=a.origin);a=c.value;var m=c.data,f=""===f?null:c.player_id;c=f?d[f][b]:d[b];b=[];if(!c)return!1;void 0!==a&&b.push(a);m&&b.push(m);f&&b.push(f);

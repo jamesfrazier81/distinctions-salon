@@ -2,6 +2,8 @@
 	/*
 	Template Name: Blank - No Header, no Footer
 	*/
+	
+	if ( !defined('ABSPATH') ){ die(); }
 
 /*
  * A blank Template that allows you to build landing pages, coming soon pages etc

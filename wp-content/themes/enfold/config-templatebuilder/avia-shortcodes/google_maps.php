@@ -30,24 +30,23 @@ if ( !class_exists( 'avia_sc_gmaps' ) )
 			
 			function extra_assets()
 			{
-				if(is_admin())
+				if(is_admin() && isset($_POST['action']) && $_POST['action'] == "avia_ajax_av_google_map" )
 				{
 					$prefix  = is_ssl() ? "https" : "http";
-            		wp_register_script( 'avia-google-maps-api', $prefix.'://maps.google.com/maps/api/js?sensor=false', array('jquery'), '3', true);
+		            $api_key = avia_get_option('gmap_api');
+		            $api_url = $prefix.'://maps.google.com/maps/api/js?v=3.24';
+		            
+		            if($api_key != ""){
+			           $api_url .= "&key=" .$api_key;
+		            }
+		            
+		            wp_register_script( 'avia-google-maps-api', $api_url, array('jquery'), NULL, true);
 					
 					$load_google_map_api = apply_filters('avf_load_google_map_api', true, 'av_google_map');
 					            
 					if($load_google_map_api) wp_enqueue_script(  'avia-google-maps-api' );
-					
-					$args = array(
-		                'toomanyrequests'	=> __("Too many requests at once, please wait a few seconds before requesting coordinates again",'avia_framework'),
-		                'notfound'			=> __("Address couldn't be found by Google, please add it manually",'avia_framework'),
-		                'insertaddress' 	=> __("Please insert a valid address in the fields above",'avia_framework')
-		            );
-	
-		            if($load_google_map_api) wp_localize_script( 'avia-google-maps-api', 'avia_gmaps_L10n', $args );
-					
 				}
+
 			}
 			
 
@@ -74,7 +73,7 @@ if ( !class_exists( 'avia_sc_gmaps' ) )
 
 									array(
 									"name" 	=> __("Full Adress", 'avia_framework' ),
-									"desc" 	=> "Enter the Address, then hit the 'Fetch Coordinates' Button. If the address was found the coordinates will be displayed",
+									"desc" 	=> __("Enter the Address, then hit the 'Fetch Coordinates' Button. If the address was found the coordinates will be displayed", 'avia_framework' ),
 									"id" 	=> "address",
 									"std" 	=> "",
 									"type" 	=> "gmap_adress"),
@@ -154,6 +153,7 @@ if ( !class_exists( 'avia_sc_gmaps' ) )
 						"std" 	=> "",
 						"subtype" => array(
 						
+							__('Full color fill',  'avia_framework' ) =>'fill',
 							__('Oversaturated',  'avia_framework' ) =>'100',
 							__('Slightly oversaturated',  'avia_framework' ) =>'50',
 							__('Normal Saturation',   'avia_framework' ) =>'',
@@ -277,7 +277,7 @@ if ( !class_exists( 'avia_sc_gmaps' ) )
 
 				
 				//we dont need a closing structure if the element is the first one or if a previous fullwidth element was displayed before
-				if($meta['index'] == 0) $params['close'] = false;
+				if(isset($meta['index']) && $meta['index'] == 0) $params['close'] = false;
 				if(!empty($meta['siblings']['prev']['tag']) && in_array($meta['siblings']['prev']['tag'], AviaBuilder::$full_el_no_section )) $params['close'] = false;
 				
 				

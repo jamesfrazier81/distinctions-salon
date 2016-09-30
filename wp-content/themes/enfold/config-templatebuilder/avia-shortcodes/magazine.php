@@ -339,7 +339,7 @@ if ( !class_exists( 'avia_magazine' ) )
 				}
 
 				$page = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : get_query_var( 'page' );
-				if(!$page || $params['paginate'] == 'no') $page = 1;
+				if(!$page ) $page = 1;
 
 				//if we find no terms for the taxonomy fetch all taxonomy terms
 				if(empty($terms[0]) || is_null($terms[0]) || $terms[0] === "null")
@@ -526,7 +526,7 @@ if ( !class_exists( 'avia_magazine' ) )
 			$image	 		= get_the_post_thumbnail( $entry->ID, $this->atts['image_size'][$style] );
 			$link			= get_permalink($entry->ID);
 			$titleAttr		= "title='".__('Link to:','avia_framework')." ".the_title_attribute(array('echo' => 0, 'post' => $entry->ID))."'";
-			$title	 		= "<a href='{$link}' {$titleAttr}>".get_the_title($entry->ID)."</a>";
+			$title	 		= "<a href='{$link}' {$titleAttr}>". apply_filters( 'avf_magazine_title', get_the_title( $entry->ID ), $entry ) ."</a>";
 			$titleTag		= "h3";
 			$excerpt		= "";
 			$time			= get_the_time(get_option('date_format'), $entry->ID);

@@ -147,7 +147,7 @@ if ( !class_exists( 'avia_sc_upcoming_events' ) )
 					
 		if($image)  $output .= $image;
 					$output .= "<span class='av-upcoming-event-data'>";
-						$output .= "<h4 title='av-upcoming-event-title'>{$title}</h4>";
+						$output .= "<h4 class='av-upcoming-event-title'>{$title}</h4>";
 							$output .= "<span class='av-upcoming-event-meta'>";
 							$output .= "<span class='av-upcoming-event-schedule'>".tribe_events_event_schedule_details($entry)."</span>";
 				if($price)	$output .= "<span class='av-upcoming-event-cost'>{$price}</span>";

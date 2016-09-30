@@ -381,7 +381,8 @@ array(
 						                      __('Repeat','avia_framework' )             =>'repeat',
 						                      __('Tile Horizontally','avia_framework' )  =>'repeat-x',
 						                      __('Tile Vertically','avia_framework' )    =>'repeat-y',
-						                      __('Stretch to fit','avia_framework' )     =>'stretch'
+						                      __('Stretch to fit (stretches image to cover the element)','avia_framework' )     =>'stretch',
+						                      __('Scale to fit (scales image so the whole image is always visible)','avia_framework' )     =>'contain'
 						                      )
 				  ),
 				  
@@ -435,6 +436,34 @@ array(
 							'nodescription' => true
 				),
 				
+				
+				
+				
+				array(
+						"type" 	=> "tab",
+						"name"  => __("Mobile" , 'avia_framework'),
+						'nodescription' => true
+					),
+				
+				
+				array(	
+						"name" 	=> __("Mobile display", 'avia_framework' ),
+						"desc" 	=> __("Display settings for this element when viewed on smaller screens", 'avia_framework' ),
+						"id" 	=> "mobile_display",
+						"type" 	=> "select",
+						"std" 	=> "",
+						"subtype" => array(	
+								__('Always display','avia_framework' ) =>'',
+								//__('Hide on tablet and smaller devices',  'avia_framework' ) =>'av-hide-on-tablet',
+								__('Hide on mobile devices',  'avia_framework' ) =>'av-hide-on-mobile',
+									)
+					),
+				
+				
+				array(
+							"type" 	=> "close_div",
+							'nodescription' => true
+						),
 					
 				array(
 							"type" 	=> "close_div",
@@ -487,7 +516,8 @@ array(
 					'custom_margin'			=> '',
 					'min_height'			=> '',
 					'vertical_alignment'	=> 'av-align-top',
-					'animation'				=> ''
+					'animation'				=> '',
+					'mobile_display'		=> ''
 					
 				
 				), $atts, $this->config['shortcode']);
@@ -506,6 +536,7 @@ array(
 				$output		 = "";
 				$anim_class  = empty($atts['animation']) ? "" : " av-animated-generic ".$atts['animation']." ";
 				$extraClass .= $anim_class;
+				$extraClass .= empty($atts['mobile_display']) ? "" : " ".$atts['mobile_display']." ";
 				
 			
 				if(!empty($atts['attachment']))
@@ -517,6 +548,13 @@ array(
 				if($atts['background_repeat'] == "stretch")
 				{
 					$extraClass .= " avia-full-stretch";
+					$atts['background_repeat'] = "no-repeat";
+				}
+				
+				if($atts['background_repeat'] == "contain")
+				{
+					$extraClass .= " avia-full-contain";
+					$atts['background_repeat'] = "no-repeat";
 				}
 				
 				if( !empty( avia_sc_columns::$first_atts['space'] ) )

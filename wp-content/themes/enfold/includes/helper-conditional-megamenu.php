@@ -14,7 +14,7 @@ if( !class_exists( 'avia_conditional_mega_menu' ) )
     class avia_conditional_mega_menu
     {
         function __construct()
-        {
+        {	
             add_action('admin_enqueue_scripts', array(&$this,'load_script'));
             add_action('init', array(&$this,'add_conditionals_to_config'));
             add_action('avia_mega_menu_option_fields', array(&$this,'output_conditional_menu_options'), 10, 4);

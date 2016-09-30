@@ -88,8 +88,8 @@ if ( !class_exists( 'avia_sc_grid_row' ) )
 
 
 				$output  = "<div class='avia_layout_row avia_layout_section avia_pop_class avia-no-visual-updates ".$name." av_drag' ".$dataString.">";
-				$output .= "    <a class='avia-add-cell avia-add'  href='#add-cell' title='".__('Add Cell','avia_framework' )."'>Add Cell</a>";
-    				$output .= "    <a class='avia-set-cell-size avia-add'  href='#set-size' title='".__('Set Cell Size','avia_framework' )."'>Set Cell Size</a>";
+				$output .= "    <a class='avia-add-cell avia-add'  href='#add-cell' title='".__('Add Cell','avia_framework' )."'>".__('Add Cell','avia_framework' )."</a>";
+    				$output .= "    <a class='avia-set-cell-size avia-add'  href='#set-size' title='".__('Set Cell Size','avia_framework' )."'>".__('Set Cell Size','avia_framework' )."</a>";
 
 				$output .= "    <div class='avia_sorthandle menu-item-handle'>";
 				$output .= "        <span class='avia-element-title'>".$this->config['name']."</span>";
@@ -97,7 +97,7 @@ if ( !class_exists( 'avia_sc_grid_row' ) )
 
 				if(!empty($this->config['popup_editor']))
     			{
-    				$output .= "    <a class='avia-edit-element'  href='#edit-element' title='".__('Edit Row','avia_framework' )."'>edit</a>";
+    				$output .= "    <a class='avia-edit-element'  href='#edit-element' title='".__('Edit Row','avia_framework' )."'>".__('edit','avia_framework' )."</a>";
     			}
 				$output .= "<a class='avia-save-element'  href='#save-element' title='".__('Save Element as Template','avia_framework' )."'>+</a>";
 				$output .= "        <a class='avia-clone'  href='#clone' title='".__('Clone Row','avia_framework' )."' >".__('Clone Row','avia_framework' )."</a></div>";

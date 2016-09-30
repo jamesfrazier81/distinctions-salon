@@ -69,7 +69,7 @@ if( !class_exists( 'avia_meta_box' ) )
 		 * checks if we are currently viewing a post creation site and hooks into the admin_menu as well as into the save_post to create and safe the meta boxes
 		 * It also creates the html object necessary to render the boxes 
 		 */
-		function avia_meta_box($avia_superobject)
+		function __construct($avia_superobject)
 		{	
 			
 			if(basename( $_SERVER['PHP_SELF']) == "post-new.php" 

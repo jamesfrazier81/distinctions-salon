@@ -36,7 +36,7 @@ if( ! class_exists( 'avia_adminpages' ) )
          * The constructor sets up the superobject and then hooks into wordpress and creates the option pages based on the $this->avia_superobject->option_page_data array.
          * The method that gets attached to the hook is attach_options_to_menu.
          */
-		function avia_adminpages(&$avia_superobject)
+		function __construct(&$avia_superobject)
 		{
 			$this->avia_superobject = $avia_superobject;
 			add_action('admin_menu', array(&$this, 'attach_options_to_menu'));
@@ -90,6 +90,12 @@ if( ! class_exists( 'avia_adminpages' ) )
 					wp_enqueue_style($filename , AVIA_CSS_URL . $file, false, AV_FRAMEWORK_VERSION); 
 				}
 			}
+			
+			//load the new css styles if the theme supports them
+			if(current_theme_supports('avia_improved_backend_style'))
+			{
+				wp_enqueue_style(  'avia_admin_new', AVIA_CSS_URL . 'conditional_load/avia_admin_modern.css',  false, AV_FRAMEWORK_VERSION); 
+			}
 		}
 		
 		
@@ -124,8 +130,8 @@ if( ! class_exists( 'avia_adminpages' ) )
 		{	
 			if(!isset($this->avia_superobject->option_pages)) return;
 				
-			$page_creation_method = 'add_object_page';
-			if(!function_exists($page_creation_method)) { $page_creation_method = 'add_menu_page'; }
+			$page_creation_method = 'add_object_page'; //deprecated since 4.5
+			if(function_exists('add_menu_page')) { $page_creation_method = 'add_menu_page'; }
 		    
 			
 			foreach( $this->avia_superobject->option_pages as $key => $data_set )
@@ -142,7 +148,9 @@ if( ! class_exists( 'avia_adminpages' ) )
 														$menu_title, 									// menu title
 														'manage_options', 								// capability
 														$top_level, 									// menu slug (and later also database options key)
-														array(&$this, 'render_page')					// executing function
+														array(&$this, 'render_page'),					// executing function
+														"dashicons-admin-home",
+														26
 													);
 				}
 				

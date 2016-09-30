@@ -45,7 +45,17 @@ if ( !class_exists( 'avia_sc_masonry_entries' ) )
 			{
 				$this->elements = array(
 
-
+				array(
+							"type" 	=> "tab_container", 'nodescription' => true
+						),
+						
+				array(
+						"type" 	=> "tab",
+						"name"  => __("Masonry Content" , 'avia_framework'),
+						'nodescription' => true
+					),
+					
+					
                    array(
 						"name" 	=> __("Which Entries?", 'avia_framework' ),
 						"desc" 	=> __("Select which entries should be displayed by selecting a taxonomy", 'avia_framework' ),
@@ -161,9 +171,11 @@ if ( !class_exists( 'avia_sc_masonry_entries' ) )
 						__('Large Gap',  'avia_framework' ) =>'large',
 					)),
 				
+				
+				
 				array(
 					"name" 	=> __("Image overlay effect", 'avia_framework' ),
-					"desc" 	=> __("Do you want to display the image overlay effect that gets removed on mouseover?", 'avia_framework' ),
+					"desc" 	=> __("Do you want to display the image overlay?", 'avia_framework' ),
 					"id" 	=> "overlay_fx",
 					"type" 	=> "select",
 					"std" 	=> "active",
@@ -171,7 +183,24 @@ if ( !class_exists( 'avia_sc_masonry_entries' ) )
 						__('Overlay activated',  'avia_framework' ) =>'active',
 						__('Overlay deactivated',  'avia_framework' ) =>'',
 					)),
+				
+				array(	"name" 	=> __("For Developers: Section ID", 'avia_framework' ),
+						"desc" 	=> __("Apply a custom ID Attribute to the section, so you can apply a unique style via CSS. This option is also helpful if you want to use anchor links to scroll to a sections when a link is clicked", 'avia_framework' )."<br/><br/>".
+								   __("Use with caution and make sure to only use allowed characters. No special characters can be used.", 'avia_framework' ),
+			            "id" 	=> "id",
+			            "type" 	=> "input",
+			            "std" => ""),
+				
+				array(
+							"type" 	=> "close_div",
+							'nodescription' => true
+						),
 					
+					array(
+							"type" 	=> "tab",
+							"name"	=> __("Element captions",'avia_framework' ),
+							'nodescription' => true
+						),	
 				
 				array(
 					"name" 	=> __("Element Title and Excerpt", 'avia_framework' ),
@@ -186,9 +215,23 @@ if ( !class_exists( 'avia_sc_masonry_entries' ) )
 						__('Display Neither',  'avia_framework' ) =>'none',
 					)),	
 				
+				
+				array(
+					"name" 	=> __("Element Title and Excerpt Styling", 'avia_framework' ),
+					"desc" 	=> __("You can choose the styling for the title and excerpt here", 'avia_framework' ),
+					"id" 	=> "caption_styling",
+					"type" 	=> "select",
+					"std" 	=> "always",
+					"required" => array('caption_elements','not','none'),
+					"subtype" => array(
+						__('Default display (at the bottom of the elements image)',  'avia_framework' ) =>'',
+						__('Display as centered overlay (overlays the image)',  'avia_framework' ) =>'overlay',
+					)),	
+				
+				
 					
 				array(
-					"name" 	=> __("Element Title and Excerpt", 'avia_framework' ),
+					"name" 	=> __("Element Title and Excerpt display settings", 'avia_framework' ),
 					"desc" 	=> __("You can choose whether to always display Title and Excerpt or only on hover", 'avia_framework' ),
 					"id" 	=> "caption_display",
 					"type" 	=> "select",
@@ -197,15 +240,54 @@ if ( !class_exists( 'avia_sc_masonry_entries' ) )
 					"subtype" => array(
 						__('Always Display',  'avia_framework' ) =>'always',
 						__('Display on mouse hover',  'avia_framework' ) =>'on-hover',
+						__('Hide on mouse hover',  'avia_framework' ) =>'on-hover-hide',
 					)),	
 					
 					
-				 array(	"name" 	=> __("For Developers: Section ID", 'avia_framework' ),
-						"desc" 	=> __("Apply a custom ID Attribute to the section, so you can apply a unique style via CSS. This option is also helpful if you want to use anchor links to scroll to a sections when a link is clicked", 'avia_framework' )."<br/><br/>".
-								   __("Use with caution and make sure to only use allowed characters. No special characters can be used.", 'avia_framework' ),
-			            "id" 	=> "id",
-			            "type" 	=> "input",
-			            "std" => ""),
+				 
+			     array(
+							"type" 	=> "close_div",
+							'nodescription' => true
+						),
+						
+				array(
+						"type" 	=> "tab",
+						"name"  => __("Element Colors" , 'avia_framework'),
+						'nodescription' => true
+					),
+					
+				array(
+							"name" 	=> __("Custom Colors", 'avia_framework' ),
+							"desc" 	=> __("Either use the themes default colors or apply some custom ones", 'avia_framework' ),
+							"id" 	=> "color",
+							"type" 	=> "select",
+							"std" 	=> "",
+							"subtype" => array( __('Default', 'avia_framework' )=>'',
+												__('Define Custom Colors', 'avia_framework' )=>'custom'),
+												
+					),
+					
+					array(	
+							"name" 	=> __("Custom Background Color", 'avia_framework' ),
+							"desc" 	=> __("Select a custom background color. Leave empty to use the default", 'avia_framework' ),
+							"id" 	=> "custom_bg",
+							"type" 	=> "colorpicker",
+							"std" 	=> "",
+							//"container_class" => 'av_third av_third_first',
+							"required" => array('color','equals','custom')
+						),	
+						
+				
+				array(
+						"type" 	=> "close_div",
+						'nodescription' => true
+					),
+				
+						
+				array(
+							"type" 	=> "close_div",
+							'nodescription' => true
+						),
 					
 				);
 
@@ -315,9 +397,14 @@ if ( !class_exists( 'avia_sc_masonry_entries' ) )
 				$masonry->query_entries();
 				$masonry_html = $masonry->html();
 				
-				
-				
+
 				if(!ShortcodeHelper::is_top_level()) return $masonry_html;
+				
+				
+				if( !empty( $atts['color'] ) && !empty( $atts['custom_bg']) )
+				{
+					$params['class'] .= " masonry-no-border";
+				}
 				
 				$output .=  avia_new_section($params);
 				$output .= $masonry_html;

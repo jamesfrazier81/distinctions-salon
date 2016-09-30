@@ -238,14 +238,14 @@ array(
 									"type" 	=> "select",
 									"std" 	=> "caption_bottom",
 									"subtype" => array(
-												'Right Framed'=>'caption_right caption_right_framed caption_framed',
-												'Left Framed'=>'caption_left caption_left_framed caption_framed', 
-												'Bottom Framed'=>'caption_bottom caption_bottom_framed caption_framed',
-												'Center Framed'=>'caption_center caption_center_framed caption_framed',
-												'Right without Frame'=>'caption_right',
-												'Left without Frame'=>'caption_left',
-												'Bottom without Frame'=>'caption_bottom',
-												'Center without Frame'=>'caption_center'
+										__('Right Framed',			'avia_framework' ) =>'caption_right caption_right_framed caption_framed',
+										__('Left Framed',			'avia_framework' ) =>'caption_left caption_left_framed caption_framed', 
+										__('Bottom Framed',			'avia_framework' ) =>'caption_bottom caption_bottom_framed caption_framed',
+										__('Center Framed',			'avia_framework' ) =>'caption_center caption_center_framed caption_framed',
+										__('Right without Frame',	'avia_framework' ) =>'caption_right',
+										__('Left without Frame',	'avia_framework' ) =>'caption_left',
+										__('Bottom without Frame',	'avia_framework' ) =>'caption_bottom',
+										__('Center without Frame',	'avia_framework' ) =>'caption_center'
 											),
 									),
 									
@@ -562,6 +562,17 @@ array(
 							"std" 	=> "extra_large",
 							"subtype" =>  AviaHelper::get_registered_image_sizes(1000, true)		
 							),
+					
+					array(	
+							"name" 	=> __("Slideshow Image scrolling", 'avia_framework' ),
+							"desc" 	=> __("Choose the behaviour of the slideshow image when scrolling up or down on the page", 'avia_framework' ),
+							"id" 	=> "image_attachment",
+							"type" 	=> "select",
+							"std" 	=> "",
+							"subtype" => array(__('Parallax','avia_framework' ) =>'', __('Fixed','avia_framework' ) =>'fixed', __('Scroll','avia_framework' ) =>'scroll'),
+							),
+					
+					
 								
 					array(	
 							"name" 	=> __("Slideshow Transition", 'avia_framework' ),
@@ -603,7 +614,8 @@ array(
 						"id" 	=> "control_layout",
 						"type" 	=> "select",
 						"std" 	=> "",
-						"subtype" => array(__('Default','avia_framework' ) =>'',__('Minimal','avia_framework' ) =>'av-control-minimal',__('Hidden','avia_framework' ) =>'av-control-hidden')),	
+						"subtype" => array(__('Default','avia_framework' ) =>'av-control-default',__('Minimal White','avia_framework' ) =>'av-control-minimal', __('Minimal Black','avia_framework' ) =>'av-control-minimal av-control-minimal-dark',__('Hidden','avia_framework' ) =>'av-control-hidden')),	
+					
 					
 					array(	
 						"name" 	=> __("Display a scroll down arrow", 'avia_framework' ),
@@ -713,7 +725,8 @@ array(
 				'control_layout'=> '',
 				'perma_caption'	=> '',
 				'autoplay_stopper'=>'',
-				'content'		=> ShortcodeHelper::shortcode2array($content, 1)
+				'image_attachment'=>'',
+				'content'		  => ShortcodeHelper::shortcode2array($content, 1)
 				
 				), $atts, $this->config['shortcode']);
 				

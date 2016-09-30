@@ -244,7 +244,7 @@ if ( !class_exists( 'avia_sc_heading' ) )
 	        		if(!empty($styling)) $styling = "style='{$styling}'";
 	        		
 	        		//check if we got a subheading
-	        		if(!empty($subheading_active) && !empty($content))
+	        		if( !empty( $style ) && !empty( $subheading_active ) && !empty( $content ) )
 	        		{
 	        			
 	        			$content = "<div class ='av-subheading av-{$subheading_active} {$subheading_extra}' style='font-size:{$subheading_size}px;'>".ShortcodeHelper::avia_apply_autop(ShortcodeHelper::avia_remove_autop($content) )."</div>";

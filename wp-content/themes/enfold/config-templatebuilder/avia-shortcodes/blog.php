@@ -347,7 +347,18 @@ if ( !class_exists( 'avia_sc_blog' ) )
                 if(empty($params['blog_type']) || $params['blog_type'] == 'posts') $params['post_type'] = 'post';
                 if(empty($params['post_type'])) $params['post_type'] = get_post_types();
                 if(is_string($params['post_type'])) $params['post_type'] = explode(',', $params['post_type']);
-
+				
+				//wordpress 4.4 offset fix
+				if( $params['offset'] == 0 )
+				{
+					$params['offset'] = false;
+				}
+				else
+				{	
+					//if the offset is set the paged param is ignored. therefore we need to factor in the page number
+					$params['offset'] = $params['offset'] + ( ($page -1 ) * $params['items']);
+				}
+		
 				//if we find categories perform complex query, otherwise simple one
 				if(isset($terms[0]) && !empty($terms[0]) && !is_null($terms[0]) && $terms[0] != "null" && !empty($params['taxonomy']))
 				{
@@ -359,7 +370,8 @@ if ( !class_exists( 'avia_sc_blog' ) )
 									'tax_query' => array( 	array( 	'taxonomy' 	=> $params['taxonomy'],
 																	'field' 	=> 'id',
 																	'terms' 	=> $terms,
-																	'operator' 	=> 'IN')));
+																	'operator' 	=> 'IN'))
+																	);
 				}
                 else
 				{
@@ -372,7 +384,7 @@ if ( !class_exists( 'avia_sc_blog' ) )
 
 				$query = apply_filters('avia_blog_post_query', $query, $params);
 
-				query_posts($query);
+				$results = query_posts($query);
 
                 // store the queried post ids in
                 if( have_posts() )

@@ -1,4 +1,7 @@
 <?php
+	
+	if ( !defined('ABSPATH') ){ die(); }
+	
 /**
  * The template for displaying Comments.
  *

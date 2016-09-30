@@ -1,5 +1,7 @@
 <?php
-global $avia_config;
+	if ( !defined('ABSPATH') ){ die(); }
+	
+	global $avia_config;
 
 	/*
 	 * get_header is a basic wordpress function, used to retrieve the header.php file in your theme directory.
@@ -24,7 +26,7 @@ global $avia_config;
                     * called loop-page.php and that will be used instead.
                     */
 
-                    $avia_config['size'] = avia_layout_class( 'main' , false) == 'entry_without_sidebar' ? '' : 'entry_with_sidebar';
+                    $avia_config['size'] = avia_layout_class( 'main' , false) == 'fullsize' ? 'entry_without_sidebar' : 'entry_with_sidebar';
                     get_template_part( 'includes/loop', 'page' );
                     ?>
 

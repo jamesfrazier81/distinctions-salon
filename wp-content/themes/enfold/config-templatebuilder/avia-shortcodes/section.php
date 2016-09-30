@@ -159,10 +159,9 @@ if ( !class_exists( 'avia_sc_section' ) )
 						"desc"  => __("Chose a border styling for the top of your section",'avia_framework' ),
 						"type" 	=> "select",
 						"std" 	=> "no-shadow",
-						"subtype" => array( __('Display simple top border','avia_framework' )	=>'no-shadow',  
+						"subtype" => array( __('Display a simple 1px top border','avia_framework' )	=>'no-shadow',  
 											__('Display a small styling shadow at the top of the section','avia_framework' )	=>'shadow',
 											__('No border styling','avia_framework' )	=>'no-border-styling',
-						                      
 						                  )
 				    ),
 				    
@@ -176,8 +175,53 @@ if ( !class_exists( 'avia_sc_section' ) )
 						"subtype" => array(   
 											__('No border styling','avia_framework' )	=>'no-border-styling',
 											__('Display a small arrow that points down to the next section','avia_framework' )	=>'border-extra-arrow-down',
+											__('Diagonal section border','avia_framework' )	=>'border-extra-diagonal',
 						                  )
 				    ),
+				    
+				    
+				     array(
+						"name" 		=> __("Diagonal Border: Color", 'avia_framework' ),
+						"desc" 		=> __("Select a custom background color for your Section border here. ", 'avia_framework' ),
+						"id" 		=> "bottom_border_diagonal_color",
+						"type" 		=> "colorpicker",
+						"container_class" 	=> "av_third av_third_first",
+                        "required" => array('bottom_border','contains','diagonal'),
+						"std" 		=> "#333333",
+					),
+					
+					array(
+						"name" 	=> __("Diagonal Border: Direction",'avia_framework' ),
+						"desc" 	=> __("Set the direction of the diagonal border", 'avia_framework' ),
+						"id" 	=> "bottom_border_diagonal_direction",
+						"type" 	=> "select",
+						"std" 	=> "scroll",
+						"container_class" 	=> "av_third",
+                        "required" => array('bottom_border','contains','diagonal'),
+						"subtype" => array(
+							__('Slanting from left to right','avia_framework' )=>'',
+							__('Slanting from right to left' ) =>'border-extra-diagonal-inverse',
+							
+							)
+						),
+				    
+				    array(
+						"name" 	=> __("Diagonal Border Box Style",'avia_framework' ),
+						"desc" 	=> __("Set the style shadow of the border", 'avia_framework' ),
+						"id" 	=> "bottom_border_style",
+						"type" 	=> "select",
+						"std" 	=> "scroll",
+						"container_class" 	=> "av_third",
+                        "required" => array('bottom_border','contains','diagonal'),
+						"subtype" => array(
+							__('Minimal','avia_framework' )=>'',
+							__('Box shadow' ) =>'diagonal-box-shadow',
+							
+							)
+						),
+				    
+				    
+				    
 				    
 				    array(	
 						"name" 	=> __("Display a scroll down arrow", 'avia_framework' ),
@@ -275,7 +319,8 @@ if ( !class_exists( 'avia_sc_section' ) )
 						                      __('Repeat','avia_framework' )             =>'repeat',
 						                      __('Tile Horizontally','avia_framework' )  =>'repeat-x',
 						                      __('Tile Vertically','avia_framework' )    =>'repeat-y',
-						                      __('Stretch to fit','avia_framework' )     =>'stretch'
+						                      __('Stretch to fit (stretches image to cover the element)','avia_framework' )     =>'stretch',
+						                      __('Scale to fit (scales image so the whole image is always visible)','avia_framework' )     =>'contain'
 						                      )
 				  ),
 
@@ -435,7 +480,10 @@ array(
 			    								'overlay_color' => '',
 			    								'overlay_pattern' => '',
 			    								'overlay_custom_pattern' => '',
-			    								'scroll_down' => ''
+			    								'scroll_down' => '',
+			    								'bottom_border_diagonal_color' => '',
+			    								'bottom_border_diagonal_direction' => '',
+			    								'bottom_border_style'=>''
 			    								
 			    								), 
 			    							$atts, $this->config['shortcode']);
@@ -482,6 +530,11 @@ array(
 					{
 						$background .= "background-repeat: no-repeat; ";
 						$class .= " avia-full-stretch";
+					} 
+					else if($repeat == "contain")
+					{
+						$background .= "background-repeat: no-repeat; ";
+						$class .= " avia-full-contain";
 					}
 					else
 					{
@@ -498,6 +551,7 @@ array(
 					{
 						$attachment_class = "";
 						if($repeat == 'stretch' || $repeat == 'no-repeat' ){ $attachment_class .= " avia-full-stretch"; }
+						if($repeat == 'contain'  ){ $attachment_class .= " avia-full-contain"; }
 					
 						$class .= " av-parallax-section";
 						$speed = apply_filters('avf_parallax_speed', "0.3", $params['id']); 
@@ -604,6 +658,16 @@ array(
 				{
 					$backgroundEl = "";
 					$backgroundElColor = !empty($custom_bg) ? $custom_bg : $avia_config['backend_colors']['color_set'][$color]['bg'];
+					
+					if(strpos($bottom_border, 'diagonal') !== false)
+					{
+						// bottom_border_diagonal_direction // bottom_border_diagonal_color
+						$backgroundElColor = "#333333";
+						if(isset($bottom_border_diagonal_color)) $backgroundElColor = $bottom_border_diagonal_color;
+						
+						$bottom_border .= " " . $bottom_border_diagonal_direction . " " .$bottom_border_style;
+					}
+					
 					
 					if($backgroundElColor) $backgroundEl = " style='background-color:{$backgroundElColor};' ";
 					
@@ -740,6 +804,9 @@ if(!function_exists('avia_new_section'))
 	        		
 	        	}
 	        	$output .= $before_new;
+	        	
+	        	if($class == "main_color") $class .= " av_default_container_wrap";
+	        	
 	        	$output .= "<div {$id} class='{$class} container_wrap ".avia_layout_class( 'main' , false )."' {$bg} {$data} {$style}>"; 
 	        	$output .= !empty($bg_slider) ? $bg_slider->html() : "";
 	        	$output .= $attach;

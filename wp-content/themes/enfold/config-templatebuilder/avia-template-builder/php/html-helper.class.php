@@ -253,13 +253,26 @@ if ( !class_exists( 'AviaHtmlHelper' ) ) {
 			
 			
 			$label = isset($element['add_label']) ? $element['add_label'] : __('Add','avia_framework' );
-			$label_class = isset($element['add_label']) ? "avia-custom-label" : "";
+			
+			
+			//since adding the clone event we display only custom labels and not only the "+" symbol
+			//$label_class = isset($element['add_label']) ? "avia-custom-label" : "";
+			$label_class = "avia-custom-label";
+			
 			
 			$output .= "</div>";
 			
 			if(!isset($element['disable_manual']))
 			{
 				$output .= "<a class='avia-attach-modal-element-add avia-add {$label_class}'>".$label."</a>";
+				
+				
+				if(!isset($element['disable_cloning']))
+				{
+					$clone_label = isset($element['clone_label']) ? $element['clone_label'] : __('Copy and add last entry','avia_framework' );
+					
+					$output .= "<a class='avia-attach-modal-element-clone avia-clone {$label_class}'>".$clone_label."</a>";
+				}
 			}
 			
 			//go the new wordpress way and instead of ajax-loading new items, prepare an empty js template
@@ -878,7 +891,9 @@ if ( !class_exists( 'AviaHtmlHelper' ) ) {
 			{
 				$output .= self::display_image($url);			
 			}
-			$output .= self::$element['data']['save_to']($element);
+			
+			//$output .= self::$element['data']['save_to']($element);
+			$output .= call_user_func(array('self', $element['data']['save_to']), $element);
 			
 			//fake img for multi_image element
 			if(isset($fetch))
@@ -1018,7 +1033,7 @@ if ( !class_exists( 'AviaHtmlHelper' ) ) {
 				
 		        foreach($entries as $key => $entry)
 		        {
-			    	if($entry->parent)
+			    	if( !empty($entry->parent) )
 			    	{
 				    	$parents[$entry->parent][$entry->term_id] = $entry;
 				    	unset($entries[$key]);

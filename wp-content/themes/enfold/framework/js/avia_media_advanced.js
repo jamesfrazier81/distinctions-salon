@@ -78,7 +78,9 @@
 					value_field:	value_field,
 					image_field:	image_field,
 					label:			label,
-					video:			video
+					video:			video,
+					_wpnonce: 		$('input[name=avia-nonce]').val(),
+					_wp_http_referer: $('input[name=_wp_http_referer]').val(),
 				};
 				
 				//remove thickbox title
@@ -307,7 +309,6 @@
 		
 		activate_tabs: function(scope)
 		{	
-		
 			if(!scope || scope == 'undefined') scope = '.avia_sortable_gallery_container';
 			var container = $(scope);
 			
@@ -439,6 +440,8 @@
 				context: 		gallery_data.page_context,
 				apply_all:		gallery_data.attach_to_post,
 				std:			{slideshow_image: attachment_id},
+				_wpnonce: 		gallery_data._wpnonce,
+				_wp_http_referer: gallery_data._wp_http_referer,
 				ajax_decode:	true
 			};
 			

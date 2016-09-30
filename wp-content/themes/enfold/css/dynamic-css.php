@@ -33,7 +33,7 @@ $output = "";
 $body_color = "";
 
 extract($color_set);
-extract($main_color);
+if ($main_color !== NULL) { extract($main_color); }
 extract($styles);
 
 unset($background_image);
@@ -478,12 +478,12 @@ $stripe = avia_backend_calculate_similar_color($primary, 'lighter', 2);
 $stripe2 = avia_backend_calculate_similar_color($primary, 'lighter', 1);
 
 $output.= "
-$key tr:nth-child(even), $key .avia-data-table .avia-heading-row .avia-desc-col, $key .avia-data-table .avia-highlight-col, $key .pricing-table>li:nth-child(even), body $key .pricing-table.avia-desc-col li{
+$key tr:nth-child(even), $key .avia-data-table .avia-heading-row .avia-desc-col, $key .avia-data-table .avia-highlight-col, $key .pricing-table>li:nth-child(even), body $key .pricing-table.avia-desc-col li, #top $key  .avia-data-table.avia_pricing_minimal th{
 background-color:$bg;
 color: $color;
 }
 
-$key table caption, $key tr:nth-child(even), $key .pricing-table>li:nth-child(even){
+$key table caption, $key tr:nth-child(even), $key .pricing-table>li:nth-child(even), #top $key  .avia-data-table.avia_pricing_minimal td{
 color: $meta;
 }
 
@@ -672,15 +672,23 @@ background-color:$bg2;
 			background-color:$bg;
 			}
 			
+			$key .av-hamburger-inner, $key .av-hamburger-inner::before, $key .av-hamburger-inner::after{
+				background-color:$meta;
+			}
+			
 			
 			";
 			
 		if(!empty($avia_config['backend_colors']['menu_transparent']))
 		{
-			$output .= "#top {$key}.av_header_transparency, #top {$key}.av_header_transparency .phone-info.with_nav span{
-			color: ".$avia_config['backend_colors']['menu_transparent']."
+			$output .= "
+			#top #wrap_all {$key}.av_header_transparency, #top #wrap_all {$key}.av_header_transparency .phone-info.with_nav span,
+			#top #header{$key}.av_header_transparency .av-main-nav > li > a .avia-menu-text, #top #header{$key}.av_header_transparency .av-main-nav > li > a .avia-menu-subtext{
+				color: ".$avia_config['backend_colors']['menu_transparent']."
 			}
-			#top {$key}.av_header_transparency .avia-menu-fx {background:".$avia_config['backend_colors']['menu_transparent'].";}
+			
+			#top {$key}.av_header_transparency .avia-menu-fx, 
+			.av_header_transparency .av-hamburger-inner, .av_header_transparency .av-hamburger-inner::before, .av_header_transparency .av-hamburger-inner::after{background:".$avia_config['backend_colors']['menu_transparent'].";}
 			";
 		}
 
@@ -705,12 +713,12 @@ background-color:$bg2;
 			/*contact form picker*/
 
 			$output .= "
-			.avia-datepicker-div .ui-datepicker-month, .avia-datepicker-div .ui-datepicker-year{color:$heading;}
-			.avia-datepicker-div{ background: $bg; border:1px solid $border; }
-			.avia-datepicker-div a{ color:$meta; background-color: $bg2; }
-			.avia-datepicker-div a.ui-state-active, .avia-datepicker-div a.ui-state-highlight{ color:$primary; }
-			.avia-datepicker-div a.ui-state-hover{ color:$bg2; background-color: $meta; }
-			.avia-datepicker-div .ui-datepicker-buttonpane button{ background-color: $primary; color: $constant_font; border-color: $primary; }
+			#top .avia-datepicker-div .ui-datepicker-month, #top .avia-datepicker-div .ui-datepicker-year{color:$heading;}
+			#top .avia-datepicker-div{ background: $bg; border:1px solid $border; }
+			#top .avia-datepicker-div a{ color:$meta; background-color: $bg2; }
+			#top .avia-datepicker-div a.ui-state-active, #top .avia-datepicker-div a.ui-state-highlight{ color:$primary; }
+			#top .avia-datepicker-div a.ui-state-hover{ color:$bg2; background-color: $meta; }
+			#top .avia-datepicker-div .ui-datepicker-buttonpane button{ background-color: $primary; color: $constant_font; border-color: $primary; }
 
 			";
 			
@@ -823,12 +831,12 @@ $avia_config['style'] = array(
 
 		array(
 		'key'	=>	'direct_input',
-		'value'	=> ".html_header_transparency #top .avia-builder-el-0 .container, .html_header_transparency #top .avia-builder-el-0 .slideshow_inner_caption{padding-top:".avia_get_header_scroll_offset()."px;}"
+		'value'	=> ".html_header_transparency #top .avia-builder-el-0 .container, .html_header_transparency #top .avia-builder-el-0 .slideshow_caption{padding-top:".avia_get_header_scroll_offset()."px;}"
 		),
 
 		//google webfonts
 		array(
-		'elements'	=> 'h1, h2, h3, h4, h5, h6, #top .title_container .main-title, tr.pricing-row td, #top .portfolio-title, .callout .content-area, .avia-big-box .avia-innerbox, .av-special-font, .av-current-sort-title, .html_elegant-blog #top .minor-meta',
+		'elements'	=> 'h1, h2, h3, h4, h5, h6, #top .title_container .main-title, tr.pricing-row td, #top .portfolio-title, .callout .content-area, .avia-big-box .avia-innerbox, .av-special-font, .av-current-sort-title, .html_elegant-blog #top .minor-meta, #av-burger-menu-ul li',
 		'key'	=>	'google_webfont',
 		'value'		=> avia_get_option('google_webfont')
 		),

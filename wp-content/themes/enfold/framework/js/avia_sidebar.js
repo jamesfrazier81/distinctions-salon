@@ -1,5 +1,5 @@
 /**
- * This file holds the main javascript functions needed for avia-media uploads
+ * This file holds the main javascript functions needed for the functionallity of the widget area creator at wp-admin/widgets.php
  *
  * @author		Christian "Kriesi" Budschedl
  * @copyright	Copyright ( c ) Christian Budschedl
@@ -51,11 +51,11 @@
         	if(delete_it == false) return false;
         
             var widget      = $(e.currentTarget).parents('.widgets-holder-wrap:eq(0)'),
-                title       = widget.find('.sidebar-name h3'),
+                title       = widget.find('.sidebar-name h3 , .sidebar-name h2'),
                 spinner     = title.find('.spinner'),
                 widget_name = $.trim(title.text()),
                 obj         = this;
-        
+				
             $.ajax({
 	 		  type: "POST",
 	 		  url: window.ajaxurl,

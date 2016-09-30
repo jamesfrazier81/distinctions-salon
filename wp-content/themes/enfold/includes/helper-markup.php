@@ -88,7 +88,7 @@ if(!function_exists('avia_markup_helper'))
                 $attributes['itemtype']  = 'https://schema.org/CreativeWork';
 
                 //* Blog posts microdata
-                if ( 'post' === $post->post_type )
+                if ( is_object($post) && 'post' === $post->post_type )
                 {
                     $attributes['itemtype']  = 'https://schema.org/BlogPosting';
 
@@ -153,12 +153,11 @@ if(!function_exists('avia_markup_helper'))
                 break;
 
             case 'author_name':
-                $attributes['itemprop'] = 'name';
+                $attributes['itemprop'] = 'author';
                 break;
 
             case 'entry_time':
             
-            	
                 $attributes['itemprop'] = 'datePublished';
                 $attributes['datetime'] = get_the_time('c', $args['id']);
                 break;
@@ -237,6 +236,25 @@ if(!function_exists('avia_markup_helper'))
                 $attributes['itemscope'] = 'itemscope';
                 $attributes['itemtype']  = 'https://schema.org/WPFooter';
                 break;
+                
+           case 'blog_publisher':
+                $attributes['itemprop']  = 'publisher';
+                $attributes['itemtype']  = 'https://schema.org/Organization';
+                $attributes['itemscope'] = 'itemscope';
+                break;
+			
+			case 'blog_date_modified':
+                $attributes['itemprop']  = 'dateModified';
+                $attributes['itemtype']  = 'https://schema.org/dateModified';
+                break;
+			
+			case 'blog_mainEntityOfPage':
+                $attributes['itemprop']  = 'mainEntityOfPage';
+                $attributes['itemtype']  = 'https://schema.org/mainEntityOfPage';
+                break;
+			
+			
+			
         }
 
 
@@ -262,3 +280,116 @@ if(!function_exists('avia_markup_helper'))
         }
     }
 }
+
+
+
+
+if(!function_exists('av_blog_entry_markup_helper'))
+{
+	function av_blog_entry_markup_helper( $id , $exclude = array())
+	{
+		if('inactive' == avia_get_option('markup')) return;
+		
+		$logo = $logo_url = $logo_h = $logo_w = $url_string = $url_h = $url_w = "";
+		$post = get_post($id);
+		if($logo = avia_get_option('logo'))
+		{
+			 $logo = apply_filters('avf_logo', $logo);
+			 if(is_numeric($logo)){ 
+				 $logo = wp_get_attachment_image_src($logo, 'full'); 
+				 $logo_url = $logo[0]; 
+				}
+				else
+				{
+					$logo_url = $logo;
+				}
+		} 
+				
+		$thumb_id = get_post_thumbnail_id($id);  
+		
+		if($thumb_id)
+		{
+			$url = wp_get_attachment_image_src($thumb_id, 'full'); 
+			$url_string = $url[0];
+			$url_w = $url[1];
+			$url_h = $url[2];
+			
+		}
+		else
+		{
+			if(is_array($logo)){			
+				$url_string = $logo[0];
+				$url_w = $logo[1];
+				$url_h = $logo[2];
+			}
+			else
+			{
+				$url_string = $logo;
+				$url_w = 0;
+				$url_h = 0;
+			}
+		}
+		
+		
+		$author_name 		= apply_filters('avf_author_name', get_the_author_meta('display_name', $post->post_author), $post->post_author);
+		$publisher_markup 	= avia_markup_helper(array('context' => 'blog_publisher','echo'=>false));
+		$author_markup 		= avia_markup_helper(array('context' => 'author','echo'=>false));
+		$date_markup 		= avia_markup_helper(array('context' => 'blog_date_modified','echo'=>false));
+		$entry_time_markup 	= avia_markup_helper(array('context' => 'entry_time','echo'=>false));
+		$main_entity_markup = avia_markup_helper(array('context' => 'blog_mainEntityOfPage','echo'=>false));
+		$image_markup 		= avia_markup_helper(array('context' => 'image','echo'=>false));		
+		
+		$output = "";
+		
+		if( !in_array('image', $exclude) )
+		{
+			$output .= "
+			<span class='av-structured-data' {$image_markup} itemprop='image'>
+					   <span itemprop='url' >{$url_string}</span>
+					   <span itemprop='height' >{$url_h}</span>
+					   <span itemprop='width' >{$url_w}</span>
+				  </span>";
+		}
+		
+		if( !in_array('publisher', $exclude) )
+		{
+			$output .= "<span class='av-structured-data' {$publisher_markup}>
+				<span itemprop='name'>{$author_name}</span>
+				<span itemprop='logo' itemscope itemtype='http://schema.org/ImageObject'>
+				   <span itemprop='url'>{$logo_url}</span>
+				 </span>
+			  </span>";
+		}
+		
+		if( !in_array('author', $exclude) )
+		{	  
+			$output .= "<span class='av-structured-data' {$author_markup}><span itemprop='name'>{$author_name}</span></span>";
+		}
+		if( !in_array('date', $exclude) )
+		{
+			$output .= "<span class='av-structured-data' {$entry_time_markup}>{$post->post_date}</span>";
+		}
+		
+		if( !in_array('date_modified', $exclude) )
+		{
+			$output .= "<span class='av-structured-data' {$date_markup}>{$post->post_modified}</span>";
+		}
+		
+		if( !in_array('mainEntityOfPage', $exclude) )
+		{
+			$output .= "<span class='av-structured-data' {$main_entity_markup}><span itemprop='name'>{$post->post_title}</span></span>";
+		}
+		
+		if(!empty($output)) $output = "<span class='hidden'>{$output}</span>";
+		
+		return $output;
+		
+	}
+}
+
+
+
+
+
+
+

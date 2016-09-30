@@ -80,7 +80,7 @@ if ( !class_exists( 'avia_sc_toggle' ) )
                             "desc" 	=> __("Enter some content here", 'avia_framework' ) ,
                             "id" 	=> "content",
                             "type" 	=> "tiny_mce",
-                            "std" 	=> "Toggle Content goes here",
+                            "std" 	=> __("Toggle Content goes here", 'avia_framework' ),
                         ),
 
                         array(
@@ -263,16 +263,21 @@ if ( !class_exists( 'avia_sc_toggle' ) )
                 $first_item_text = apply_filters('avf_toggle_sort_first_label', __('All','avia_framework'), $toggle_atts);
                 $start = array($first_item_text => true);
                 avia_sc_toggle::$tags = $start + avia_sc_toggle::$tags;
-
+				
+				$sep = apply_filters( 'avf_toggle_sort_seperator', '/', $toggle_atts );
+				
                 foreach(avia_sc_toggle::$tags as $key => $value)
                 {
                     $output .= '<a href="#" data-tag="{'.$key.'}" class="'.$first.'">'.$key.'</a>';
-                    $output .= "<span class='tag-seperator'>/</span>";
+                    $output .= "<span class='tag-seperator'>{$sep}</span>";
                     $first = "";
                 }
             }
 
-            if(!empty($output)) $output = "<div class='taglist'>{$output}</div>";
+            if( !empty($output) ) 
+            { 
+	            $output = "<div class='taglist'>{$output}</div>";
+	        }
             return $output;
         }
 

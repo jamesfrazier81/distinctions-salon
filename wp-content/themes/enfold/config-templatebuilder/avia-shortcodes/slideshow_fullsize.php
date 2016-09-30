@@ -231,14 +231,14 @@ if ( !class_exists( 'avia_sc_slider_full' ) )
 									"type" 	=> "select",
 									"std" 	=> "caption_bottom",
 									"subtype" => array(
-												'Right Framed'=>'caption_right caption_right_framed caption_framed',
-												'Left Framed'=>'caption_left caption_left_framed caption_framed', 
-												'Bottom Framed'=>'caption_bottom caption_bottom_framed caption_framed',
-												'Center Framed'=>'caption_center caption_center_framed caption_framed',
-												'Right without Frame'=>'caption_right',
-												'Left without Frame'=>'caption_left',
-												'Bottom without Frame'=>'caption_bottom',
-												'Center without Frame'=>'caption_center'
+                                        __('Right Framed',  		'avia_framework' )=>'caption_right caption_right_framed caption_framed',
+										__('Left Framed',  			'avia_framework' )=>'caption_left caption_left_framed caption_framed', 
+										__('Bottom Framed',  		'avia_framework' )=>'caption_bottom caption_bottom_framed caption_framed',
+										__('Center Framed',  		'avia_framework' )=>'caption_center caption_center_framed caption_framed',
+										__('Right without Frame',  	'avia_framework' )=>'caption_right',
+										__('Left without Frame',  	'avia_framework' )=>'caption_left',
+										__('Bottom without Frame',  'avia_framework' )=>'caption_bottom',
+										__('Center without Frame',  'avia_framework' )=>'caption_center'
 											),
 									),
 									
@@ -601,7 +601,7 @@ if ( !class_exists( 'avia_sc_slider_full' ) )
 						"id" 	=> "control_layout",
 						"type" 	=> "select",
 						"std" 	=> "av-control-default",
-						"subtype" => array(__('Default','avia_framework' ) =>'av-control-default',__('Minimal','avia_framework' ) =>'av-control-minimal',__('Hidden','avia_framework' ) =>'av-control-hidden')),	
+						"subtype" => array(__('Default','avia_framework' ) =>'av-control-default',__('Minimal White','avia_framework' ) =>'av-control-minimal', __('Minimal Black','avia_framework' ) =>'av-control-minimal av-control-minimal-dark',__('Hidden','avia_framework' ) =>'av-control-hidden')),	
 						
 					array(	
 						"name" 	=> __("Use first slides caption as permanent caption", 'avia_framework' ),

@@ -1,7 +1,7 @@
 <?php
+if ( !defined('ABSPATH') ){ die(); }
 
 global $avia_config;
-
 
 /*
  * if you run a child theme and dont want to load the default functions.php file
@@ -56,6 +56,13 @@ add_theme_support('avia_mega_menu');
 
 
 
+/*
+ * add support for improved backend styling
+ */
+ 
+add_theme_support('avia_improved_backend_style');
+
+
 
 /*
  * deactivates the default mega menu and allows us to pass individual menu walkers when calling a menu
@@ -91,6 +98,26 @@ if(!function_exists('avia_lang_setup'))
 	
 	avia_lang_setup();
 }
+
+
+/*
+function that changes the icon of the  theme update tab
+*/
+
+if(!function_exists('avia_theme_update_filter'))
+{
+	function avia_theme_update_filter( $data )
+	{
+		if(current_theme_supports('avia_improved_backend_style'))
+		{
+			$data['icon'] = 'new/arrow-repeat-two-7@3x.png';
+		}
+		return $data;
+	}
+	
+	add_filter('avf_update_theme_tab', 'avia_theme_update_filter', 30, 1);
+}
+
 
 
 
@@ -370,7 +397,7 @@ if(!function_exists('avia_nav_menus'))
 
 	$avia_config['nav_menus'] = array(	'avia' => array('html' => __('Main Menu', 'avia_framework')),
 										'avia2' => array(
-													'html' => __('Secondary Menu <br/><small>(Will be displayed if you selected a header layout that supports a submenu <a target="_blank" href="'.admin_url('?page=avia#goto_header').'">here</a>)</small>', 'avia_framework'),
+													'html' => ''.__('Secondary Menu', 'avia_framework').' <br/><small>('.__('Will be displayed if you selected a header layout that supports a submenu', 'avia_framework').' <a target="_blank" href="'.admin_url('?page=avia#goto_header').'">'.__('here', 'avia_framework').'</a>)</small>',
 													'plain'=> __('Secondary Menu - will be displayed if you selected a header layout that supports a submenu', 'avia_framework')),
 										'avia3' => array(
 													'html' => __('Footer Menu <br/><small>(no dropdowns)</small>', 'avia_framework'),
@@ -400,7 +427,6 @@ require_once( 'includes/helper-template-logic.php' ); 			// holds the template l
 require_once( 'includes/helper-social-media.php' ); 			// holds some helper functions necessary for twitter and facebook buttons
 require_once( 'includes/helper-post-format.php' ); 				// holds actions and filter necessary for post formats
 require_once( 'includes/helper-markup.php' ); 					// holds the markup logic (schema.org and html5)
-require_once( 'includes/admin/register-plugins.php');			// register the plugins we need
 
 if(current_theme_supports('avia_conditionals_for_mega_menu'))
 {
@@ -502,8 +528,26 @@ add_theme_support( 'avia_post_meta_compat');
 add_theme_support('force-post-thumbnails-in-widget');
 
 
+/*
+ * display page titles via wordpress default output
+ */
+function av_theme_slug_setup() 
+{
+   add_theme_support( 'title-tag' );
+}
 
+add_action( 'after_setup_theme', 'av_theme_slug_setup' );
 
+/*title fallback*/
+if ( ! function_exists( '_wp_render_title_tag' ) )
+{
+    function av_theme_slug_render_title() 
+    {
+	    echo "<title>" . avia_set_title_tag() ."</title>";
+	}
+	add_action( 'wp_head', 'av_theme_slug_render_title' );
+}
+    
 
 
 

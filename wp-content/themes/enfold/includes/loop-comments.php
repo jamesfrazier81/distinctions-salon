@@ -26,18 +26,18 @@ function avia_inc_custom_comments($comment, $args, $depth)
             <div class='comment_content'>
                 <header class="comment-header">
                     <?php
-                    $author = '<cite class="comment_author_name"'.avia_markup_helper(array('context' => 'author_name','echo'=>false)).'>'.get_comment_author().'</cite>';
+                    $author = '<cite class="comment_author_name">'.get_comment_author().'</cite>';
                     $link = get_comment_author_url();
                     if(!empty($link))
-                        $author = '<a rel="nofollow" href="'.$link.'" '.avia_markup_helper(array('context' => 'comment_author_url','echo'=>false)).'>'.$author.'</a>';
+                        $author = '<a rel="nofollow" href="'.$link.'" >'.$author.'</a>';
 
-                    printf('<cite class="author_name heading"'.avia_markup_helper(array('context' => 'comment_author','echo'=>false)).'>%s</cite> <span class="says">%s</span>', $author, __('says:','avia_framework')) ?>
+                    printf('<cite class="author_name heading">%s</cite> <span class="says">%s</span>', $author, __('says:','avia_framework')) ?>
                     <?php edit_comment_link(__('(Edit)','avia_framework'),'  ','') ?>
 
                     <!-- display the comment metadata like time and date-->
                         <div class="comment-meta commentmetadata">
                             <a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>">
-                                <time <?php avia_markup_helper(array('context' => 'comment_time'));?>>
+                                <time <?php /* avia_markup_helper(array('context' => 'comment_time'));*/ ?> >
                                     <?php printf(__('%1$s at %2$s','avia_framework'), get_comment_date(),  get_comment_time()) ?>
                                 </time>
                             </a>
@@ -45,7 +45,7 @@ function avia_inc_custom_comments($comment, $args, $depth)
                 </header>
 
                 <!-- display the comment text -->
-                <div class='comment_text entry-content-wrapper clearfix' <?php avia_markup_helper(array('context' => 'comment_text'));?>>
+                <div class='comment_text entry-content-wrapper clearfix' <?php /* avia_markup_helper(array('context' => 'comment_text')); */ ?>>
                 <?php comment_text(); ?>
                 <?php if ($comment->comment_approved == '0') : ?>
                 <em><?php _e('Your comment is awaiting moderation.','avia_framework') ?></em>

@@ -39,7 +39,7 @@ if( ! class_exists( 'avia_database_set' ) )
 		/**
 		 *  The constructor sets the default element for iteration
 		 */
-		function avia_database_set($avia_superobject = false)
+		function __construct($avia_superobject = false)
 		{
 			if(!$avia_superobject)
 			{ 

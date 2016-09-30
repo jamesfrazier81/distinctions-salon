@@ -483,6 +483,11 @@ if ( !class_exists( 'avia_product_slider' ) )
                 $params['offset'] = 0;
                 $no_duplicates = true;
             }
+            
+            if( $params['offset'] == 0 )
+			{
+				$params['offset'] = false;
+			}
 
 
 			// Meta query

@@ -10,7 +10,7 @@ if(isset($headerS['disabled'])) return;
 
 ?>
 
-<header id='header' class=' header_color <?php avia_is_dark_bg('header_color'); echo " ".$headerS['header_class']; ?>' <?php avia_markup_helper(array('context' => 'header','post_type'=>'forum'));?>>
+<header id='header' class='all_colors header_color <?php avia_is_dark_bg('header_color'); echo " ".$headerS['header_class']; ?>' <?php avia_markup_helper(array('context' => 'header','post_type'=>'forum'));?>>
 
 <?php
 
@@ -116,7 +116,7 @@ if($headerS['header_topbar'] == true)
 						$addition = false;
 						if( !empty($headerS['header_transparency']) && !empty($headerS['header_replacement_logo']) )
 						{
-							$addition = "<img src='".$headerS['header_replacement_logo']."' class='alternate' alt='' />";
+							$addition = "<img src='".$headerS['header_replacement_logo']."' class='alternate' alt='' title='' />";
 						}
 						
 						$output .= avia_logo(AVIA_BASE_URL.'images/layout/logo.png', $addition, 'strong', true);

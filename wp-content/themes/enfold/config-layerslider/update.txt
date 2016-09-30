@@ -4,4 +4,3 @@
 
 - copy both sample folders to new layerslider folder
 - remove all skins but "fullwidth" and "noskin" and "preview" from the new layerslider static/skins folder
-

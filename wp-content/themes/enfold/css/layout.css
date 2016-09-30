@@ -323,6 +323,8 @@ margin-top:0px;
 	overflow: hidden;
 }
 
+.html_header_sidebar .container_wrap { width: 100%; }
+
 #header .avia-custom-sidebar-widget-area{margin:0; padding:0; float:none;}
 #header .avia-custom-sidebar-widget-area .widget{border-top-style: solid; border-top-width:1px; padding:40px; width:100%; overflow: hidden;}
 
@@ -332,8 +334,9 @@ margin-top:0px;
 .html_header_sidebar #top #header .social_bookmarks li.social_icon_1 a{border:none;}
 .html_header_sidebar #top #header .social_bookmarks li a{width:100%; border-radius: 0; border-left-style: solid; border-left-width: 1px; padding:10px 0;}
 
+.html_header_sidebar .av_default_container_wrap, .html_header_sidebar .container_wrap_first{ float: left; }
 
-/*main header on top, logo bellow*/
+/*main header on top, logo below*/
 
 .html_top_nav_header #header_main_alternate{border-top:none; border-bottom-style: solid; border-bottom-width:1px; }
 .html_top_nav_header.html_minimal_header #header_main_alternate{border:none;}
@@ -344,6 +347,254 @@ margin-top:0px;
 .html_top_nav_header .av-logo-container{height:88px;}
 .html_top_nav_header.html_large .av-logo-container{height:150px;}
 .html_top_nav_header #header_main{border:none;}
+
+
+/*burger menu*/
+
+.av-hamburger {
+padding: 0 0 0 0;
+display: inline-block;
+cursor: pointer;
+font: inherit;
+color: inherit;
+text-transform: none;
+background-color: transparent;
+border: 0;
+margin: 0;
+overflow: visible; 
+}
+
+
+.av-hamburger-box {
+width: 40px;
+height: 24px;
+display: inline-block;
+position: relative; 
+}
+
+.av-hamburger-inner {
+display: block;
+top: 50%;
+margin-top: -2px; 
+}
+
+.av-hamburger-inner, .av-hamburger-inner::before, .av-hamburger-inner::after {
+width: 40px;
+height: 3px;
+background-color: #000;
+border-radius: 3px;
+position: absolute;
+transition: transform 0.15s ease; 
+}
+.av-hamburger-inner::before, .av-hamburger-inner::after {
+content: "";
+display: block; 
+}
+
+.av-hamburger-inner::before {
+top: -10px; 
+}
+
+.av-hamburger-inner::after {
+bottom: -10px; 
+}
+
+/*
+ * Spin
+ */
+.av-hamburger--spin .av-hamburger-inner {
+transition-duration: 0.3s;
+transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19); 
+}
+
+.av-hamburger--spin .av-hamburger-inner::before {
+transition: top 0.1s 0.34s ease-in, opacity 0.1s ease-in, background-color 0.15s ease; 
+}
+
+.av-hamburger--spin .av-hamburger-inner::after {
+transition: bottom 0.1s 0.34s ease-in, transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) , background-color 0.15s ease;
+}
+
+.av-hamburger--spin.is-active .av-hamburger-inner {
+transform: rotate(225deg);
+transition-delay: 0.14s;
+transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); 
+}
+
+.av-hamburger--spin.is-active .av-hamburger-inner::before {
+top: 0;
+opacity: 0;
+transition: top 0.1s ease-out, opacity 0.1s 0.14s ease-out, background-color 0.15s ease; 
+}
+
+.av-hamburger--spin.is-active .av-hamburger-inner::after {
+bottom: 0;
+transform: rotate(-90deg);
+transition: bottom 0.1s ease-out, transform 0.3s 0.14s cubic-bezier(0.215, 0.61, 0.355, 1), background-color 0.15s ease;
+}
+
+
+/*own additions*/
+.html_burger_menu .av-burger-menu-main{ display:none; }
+.js_active.html_burger_menu #avia-menu > li{display:none;} 
+.js_active.html_burger_menu #avia-menu .av-burger-menu-main, 
+.html_burger_menu #top #avia-menu .menu-item-search-dropdown{ display:block; }
+
+.av-burger-menu-main{cursor: pointer;}
+.av-hamburger strong{display:none;}
+.av-hamburger-box {
+    height: 8px;
+}
+
+.av-hamburger-inner, .av-hamburger-inner::before, .av-hamburger-inner::after {
+	width:100%;
+	
+}
+
+.html_burger_menu #top #wrap_all .menu-item-search-dropdown > a{font-size:24px;}
+html.av-burger-overlay-active #top .menu-item-search-dropdown > a{color:#fff;}
+
+/*
+* Spin Reverse
+*/
+.av-hamburger--spin-r .av-hamburger-inner {
+transition-duration: 0.3s;
+transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19); }
+.av-hamburger--spin-r .av-hamburger-inner::before {
+transition: top 0.1s 0.34s ease-in, opacity 0.1s ease-in; }
+.av-hamburger--spin-r .av-hamburger-inner::after {
+transition: bottom 0.1s 0.34s ease-in, -webkit-transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+transition: bottom 0.1s 0.34s ease-in, transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+transition: bottom 0.1s 0.34s ease-in, transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19), -webkit-transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19); }
+
+.av-hamburger--spin-r.is-active .av-hamburger-inner {
+-webkit-transform: rotate(-225deg);
+  transform: rotate(-225deg);
+transition-delay: 0.14s;
+transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
+.av-hamburger--spin-r.is-active .av-hamburger-inner::before {
+top: 0;
+opacity: 0;
+transition: top 0.1s ease-out, opacity 0.1s 0.14s ease-out; }
+.av-hamburger--spin-r.is-active .av-hamburger-inner::after {
+bottom: 0;
+-webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+transition: bottom 0.1s ease-out, -webkit-transform 0.3s 0.14s cubic-bezier(0.215, 0.61, 0.355, 1);
+transition: bottom 0.1s ease-out, transform 0.3s 0.14s cubic-bezier(0.215, 0.61, 0.355, 1);
+transition: bottom 0.1s ease-out, transform 0.3s 0.14s cubic-bezier(0.215, 0.61, 0.355, 1), -webkit-transform 0.3s 0.14s cubic-bezier(0.215, 0.61, 0.355, 1); }
+
+.av-burger-overlay{
+position: fixed;
+width: 100%;
+height: 100%;
+top: 0;
+left: 0;
+right: 0;
+z-index:100;
+display: none;
+overflow: auto;
+opacity: 0;
+}
+
+.av-burger-overlay-inner, .av-burger-overlay-bg{
+position: absolute;
+top: 0;
+left: 0;
+height:100%;
+width: 100%;
+min-height: 700px;
+display:table;
+vertical-align: middle;
+text-align: center;
+z-index: 5;
+}
+
+.av-burger-overlay-bg{
+z-index: 3;
+opacity: 0.9;
+background: #000;
+display: block;
+position: fixed;
+}
+
+html.av-burger-overlay-active #header_meta, 
+html.av-burger-overlay-active #menu-item-shop.cart_dropdown,
+html.av-burger-overlay-active .cart_dropdown,
+html.av-burger-overlay-active #top .social_bookmarks{
+    z-index: 1;
+}
+
+
+
+
+.av-burger-overlay-active #avia-menu{
+	z-index: 200;
+	position: relative;
+}
+
+
+.av-burger-overlay-active #top .av-hamburger-inner, .av-burger-overlay-active #top .av-hamburger-inner::before, .av-burger-overlay-active #top .av-hamburger-inner::after{
+	background-color:#fff;
+}
+
+.av-burger-overlay-active #scroll-top-link{z-index:150;}
+
+
+#av-burger-menu-ul{display: table-cell; height: 100%; vertical-align: middle; }
+#av-burger-menu-ul li{display:block; height:auto; width:100%; padding:0.3em 0; font-size: 35px;}
+
+#top #wrap_all #av-burger-menu-ul li{line-height:1.6em;}
+#top #wrap_all #av-burger-menu-ul li li{font-size: 0.6em; line-height:1.4em;}
+#top #wrap_all #av-burger-menu-ul li a{color:#fff; height:auto !important; line-height:inherit !important; font-size: inherit;}
+#av-burger-menu-ul li a:hover, #av-burger-menu-ul li a:active, #av-burger-menu-ul li a:focus{text-decoration: none; opacity: 0.7;}
+.av-burger-overlay-active #top #wrap_all #menu-item-search a, .av-burger-overlay-active #top #wrap_all #menu-item-search a:hover{
+	color:#fff;
+}
+
+#top #wrap_all #av-burger-menu-ul > li{
+	opacity:0;
+	position: relative;
+	top:18px;
+	-webkit-transition: opacity 0.3s ease-out, top 0.3s ease-out;
+	transition: 		opacity 0.3s ease-out, top 0.3s ease-out;
+}
+
+#top #wrap_all #av-burger-menu-ul > li.av-active-burger-items{
+	opacity:1;
+	top:0;
+}
+
+
+#top #av-burger-menu-ul .av-menu-button > a .avia-menu-text{
+	    padding: 0.5em 1.5em;
+}
+#top #av-burger-menu-ul .av-menu-button{
+    margin-top: 0.4em;
+}
+#av-burger-menu-ul li ul {
+	display:none;
+	background:transparent;
+	}
+
+
+#av-burger-menu-ul li ul li a {
+    font-size: 1.3em;
+}
+
+#av-burger-menu-ul li a .avia-menu-text{
+}
+
+#av-burger-menu-ul li a .avia-menu-subtext{
+	display: block;
+    font-size: 0.6em;
+    line-height: 1.2em;
+    margin: -10px 0 13px 0;
+    opacity: 0.7;
+    text-transform: none;
+}
+
+#av-burger-menu-ul .avia-menu-fx{display:none;}
 
 /*logo*/
 
@@ -654,14 +905,14 @@ text-decoration: underline;
 #top #wrap_all .av_header_border_disabled .av-menu-button > a{border:none; }
 .av-menu-button + .av-menu-button{margin-left: -10px;}
 .av-menu-button + .av-menu-button > a{padding-left:0px;}
-.av-menu-button > a .avia-menu-text{ padding: 9px;}
+#top .av-menu-button > a .avia-menu-text{ padding: 9px;}
 #top .av-menu-button > a .avia-menu-text{border: 2px solid;  border-radius: 2px;}
 .av-menu-button > a .avia-menu-fx{display:none}
 .av-menu-button-colored  > a .avia-menu-text{ padding: 11px 10px 10px 10px; }
 #top .av-menu-button-colored  > a .avia-menu-text{border-bottom: 1px solid; border-left: none; border-right: none; border-top: none; border-radius: 3px;}
 .av-menu-button-colored  > a:hover .avia-menu-text{opacity: 0.9;}
 #top #header .av-menu-button > a .avia-menu-subtext{display:none;}
-#top #header .av-menu-button > a .avia-menu-text{text-align: center;}
+#top #header .av-menu-button > a .avia-menu-text{text-align: center; white-space: nowrap;}
 
 
 /*ajax search*/
@@ -734,7 +985,7 @@ top: 15px;
 #top #s{width:100%; position: relative; padding:11px 47px 11px 5px;  z-index: 1; margin:0; box-shadow: none;}
 #top #searchsubmit, .ajax_load{
 width: 40px;
-height: 39px;
+height: 100%;
 line-height: 40px;
 padding: 0;
 position: absolute; right: 0; top : 0;
@@ -743,6 +994,7 @@ margin:0;
 border-radius: 0;
 min-width: 40px;
 }
+
 
 .avia_mobile #top #searchsubmit, .avia_mobile .ajax_load{
 height: 41px;
@@ -938,6 +1190,7 @@ vertical-align: middle;
 float: none;
 top:0;
 left:0;
+table-layout: fixed;
 }
 
 #top.boxed.avia-blank{
@@ -966,6 +1219,48 @@ border-bottom-width: 1px;
 #top.avia-blank #main .container_wrap:first-child{
 border-top-style: solid;
 border-top-width: 1px;
+}
+
+/*--------------------framed layout---------------*/
+.av-frame{
+	position: fixed;
+	z-index: 600;
+}
+
+.html_av-framed-box .av-frame.av-frame-vert{
+	left:0;
+	width:100%;
+	top:0;
+}
+
+.html_av-framed-box .av-frame.av-frame-hor{
+	top:0;
+	height:100%;
+	left:0;
+}
+
+.html_av-framed-box .av-frame.av-frame-bottom{
+	top:auto;
+	bottom:0;
+}
+
+.html_av-framed-box .av-frame.av-frame-right{
+	left:auto;
+	right:0;
+}
+
+.html_av-framed-box.html_av_admin_bar_active .av-frame.av-frame-top{
+	margin-top:32px;
+}
+
+.html_header_top.html_header_sticky.html_av-framed-box #header{
+	left:0;
+}
+
+.html_header_top.html_header_sticky.html_av-framed-box #header_main,
+.html_header_top.html_header_sticky.html_av-framed-box #header_meta
+{
+	margin:0 50px;
 }
 
 
@@ -3480,9 +3775,15 @@ animation:         avia_pop_small 0.5s 1 cubic-bezier(0.175, 0.885, 0.320, 1.275
 		.responsive.html_header_sidebar #header .av-main-nav > li > a .avia-menu-subtext{font-size: 11px; }
 		.responsive.html_header_sidebar #header .avia-custom-sidebar-widget-area .widget{padding:10%;}
 		.responsive.html_header_sidebar .logo{padding: 10%;}
+		
+		/*framed layout*/
+		.responsive .av-frame{display:none;}
+		.responsive.html_av-framed-box{padding:0;}
+		.responsive.html_header_top.html_header_sticky.html_av-framed-box #header_main,
+		.responsive.html_header_top.html_header_sticky.html_av-framed-box #header_meta{ margin:0 auto; }
+		.responsive #top .avia-post-prev { left: 0px; }
+		.responsive #top .avia-post-next { right: 0px; }
 	}
-
-
 
 	/* Tablet Portrait size to standard 960 (devices and browsers) */
 	@media only screen and (min-width: 768px) and (max-width: 989px) {
@@ -3502,6 +3803,11 @@ animation:         avia_pop_small 0.5s 1 cubic-bezier(0.175, 0.885, 0.320, 1.275
 		
 		.responsive #top #wrap_all .grid-sort-container .av_one_sixth{ width:33.3%; margin-bottom: 0;}
 		.responsive body.boxed#top, .responsive.html_boxed.html_header_sticky #top #header, .responsive.html_boxed.html_header_transparency #top #header{max-width: 100%;}
+		
+		.responsive.html_header_top.html_header_sticky.html_bottom_nav_header.html_mobile_menu_tablet #main{ margin-top:-50px; }
+		.responsive.html_header_top.html_header_sticky.html_bottom_nav_header.html_top_nav_header.html_mobile_menu_tablet #main{ margin-top:0; }
+		
+		.responsive #top .av-hide-on-tablet{display:none !important;}
 		}
 
 	/* All Mobile Sizes (devices and browser) */
@@ -3530,7 +3836,9 @@ animation:         avia_pop_small 0.5s 1 cubic-bezier(0.175, 0.885, 0.320, 1.275
 		.responsive .title_container .breadcrumb{position: relative;right:auto; top:-6px; margin:0; left:-2px;}
 		.responsive .pagination{padding-left: 0; padding-right: 0;}
 		.responsive #header .main_menu .social_bookmarks{display:none;}
-
+		.responsive #top .av-hide-on-mobile, .responsive #top .av-hide-on-tablet{display:none !important;}
+		
+		
 		/*header*/
 		.responsive #top .av_header_transparency.av_alternate_logo_active .logo a > img{opacity:1}
 		.responsive #top .av_header_transparency .logo img.alternate{display:none;}

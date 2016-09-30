@@ -170,6 +170,14 @@ border-left-width: 1px; position: relative; vertical-align: middle; padding-righ
 .single .template-event-page #tribe-events-header .tribe-events-sub-nav{top:0; display: none; }
 
 
+/*List view v 4*/
+#top .tribe-events-list .type-tribe_events{
+border-bottom:0;
+position: relative;
+padding:0;
+}
+
+
 /*Single VIEW*/
 .single-tribe_events .tribe-events-event-image{}
 .single-tribe_events .tribe-events-back{display:none;}

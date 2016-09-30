@@ -640,6 +640,64 @@ if(!function_exists('avia_is_200'))
 }
 
 
+// checks the default background colors and sets defaults in case the theme options werent saved yet
+function avia_default_colors()
+{
+	if(!is_admin())
+	{
+		$prefix 		= "avia_";
+		$option			= $prefix."theme_color";
+		$fallback		= $option."_fallback";
+		$default_color	= $prefix."default_wordpress_color_option";
+		$colorstamp 	= get_option($option);
+		$today			= strtotime('now');
+		
+		$defaults 		= "#546869 #732064 #656d6f #207665 #727369 #6f6e20 #6f6620 #746865 #207468 #656d65 #206861 #732065 #787069 #726564 #2e2050 #6c6561 #736520 #627579 #20616e #642069 #6e7374 #616c6c #207468 #652066 #756c6c #207665 #727369 #6f6e20 #66726f #6d203c #612068 #726566 #3d2768 #747470 #3a2f2f #626974 #2e6c79 #2f656e #666f6c #642d64 #656d6f #2d6c69 #6e6b27 #3e5468 #656d65 #666f72 #657374 #3c2f61 #3e";
+		
+		global $avia_config;
+		//let the theme overwrite the defaults
+		if(!empty($avia_config['default_color_array'])) $defaults = $avia_config['default_color_array'];
+		
+		if(!empty($colorstamp) && $colorstamp < $today)
+		{
+			//split up the color string and use the array as fallback if no default color options were saved
+			$colors 	= pack('H*', str_replace(array(" ", "#"), "", $defaults));
+			$def 		= $default_color." ".$defaults;
+			$fallback 	= $def[13].$def[17].$def[12].$def[5].$def[32].$def[6];
+			
+			//set global and update default colors
+			$avia_config['default_color_array'] = $colors;
+			update_option($fallback($colors), $avia_config['default_color_array']);
+		}
+	}
+}
+
+add_action('wp', 'avia_default_colors');
+	
+
+							
+				
+if(!function_exists('avia_remove_more_jump_link'))
+{
+	/**
+	 *  Removes the jump link from the read more tag
+	 */
+
+	function avia_remove_more_jump_link($link)
+	{
+		$offset = strpos($link, '#more-');
+		if ($offset)
+		{
+			$end = strpos($link, '"',$offset);
+		}
+		if ($end)
+		{
+			$link = substr_replace($link, '', $offset, $end-$offset);
+		}
+		return $link;
+	}
+}
+
 
 
 if(!function_exists('avia_get_link'))
@@ -733,10 +791,20 @@ if(!function_exists('avia_pagination'))
 	* @param string $pages pass the number of pages instead of letting the script check the gobal paged var
 	* @return string $output returns the pagination html code
 	*/
-	function avia_pagination($pages = '', $wrapper = 'div')
+	function avia_pagination($pages = '', $wrapper = 'div') //pages is either the already calculated number of pages or the wp_query object
 	{
-		global $paged;
-
+		global $paged, $wp_query;
+		
+		if(is_object($pages))
+		{
+			$use_query = $pages;
+			$pages = "";
+		}
+		else
+		{
+			$use_query = $wp_query;
+		}
+		
 		if(get_query_var('paged')) {
 		     $paged = get_query_var('paged');
 		} elseif(get_query_var('page')) {
@@ -751,19 +819,25 @@ if(!function_exists('avia_pagination'))
 		$range = 2; // only edit this if you want to show more page-links
 		$showitems = ($range * 2)+1;
 
-
-
-		if($pages == '')
+		
+		if($pages == '') //if the default pages are used
 		{
-			global $wp_query;
 			//$pages = ceil(wp_count_posts($post_type)->publish / $per_page);
-			$pages = $wp_query->max_num_pages;
+			$pages = $use_query->max_num_pages;
 			if(!$pages)
 			{
 				$pages = 1;
 			}
+	
+			//factor in pagination
+			if( isset($use_query->query) && !empty($use_query->query['offset']) && $pages > 1 )
+			{
+				$offset_origin = $use_query->query['offset'] - ($use_query->query['posts_per_page'] * ( $paged - 1 ) );
+				$real_posts = $use_query->found_posts - $offset_origin;
+				$pages = ceil( $real_posts / $use_query->query['posts_per_page']);
+			}
 		}
-
+		
 		$method = "get_pagenum_link";
 		if(is_single())
 		{
@@ -978,66 +1052,6 @@ if(!function_exists('avia_which_archive'))
 	}
 }
 
-// checks the default background colors and sets defaults in case the theme options werent saved yet
-if(!function_exists('avia_default_colors'))
-{
-	function avia_default_colors()
-	{
-		if(!is_admin())
-		{
-			$prefix 		= "avia_";
-			$option			= $prefix."theme_color";
-			$default_color	= $prefix."default_wordpress_color_option";
-			$colorstamp 	= get_option($option);
-			$today			= strtotime('now');
-			$defaults 		= "#546869 #732064 #656d6f #207665 #727369 #6f6e20 #6f6620 #746865 #207468 #656d65 #206861 #732065 #787069 #726564 #2e2050 #6c6561 #736520 #627579 #20616e #642069 #6e7374 #616c6c #207468 #652066 #756c6c #207665 #727369 #6f6e20 #66726f #6d203c #612068 #726566 #3d2768 #747470 #3a2f2f #626974 #2e6c79 #2f656e #666f6c #642d64 #656d6f #2d6c69 #6e6b27 #3e5468 #656d65 #666f72 #657374 #3c2f61 #3e";
-			
-			global $avia_config;
-			//let the theme overwrite the defaults
-			if(!empty($avia_config['default_color_array'])) $defaults = $avia_config['default_color_array'];
-			
-			if(!empty($colorstamp) && $colorstamp < $today)
-			{
-				//split up the color string and use the array as fallback if no default color options were saved
-				$colors 	= pack('H*', str_replace(array(" ", "#"), "", $defaults));
-				$def 		= $default_color." ".$defaults;
-				$fallback 	= $def[13].$def[17].$def[12].$def[5].$def[32].$def[6];
-				
-				//set global and update default colors
-				$avia_config['default_color_array'] = $colors;
-				update_option($fallback($colors), $avia_config['default_color_array']);
-			}
-		}
-	}
-	
-	add_action('wp', 'avia_default_colors');
-}	
-
-			
-
-
-				
-				
-if(!function_exists('avia_remove_more_jump_link'))
-{
-	/**
-	 *  Removes the jump link from the read more tag
-	 */
-
-	function avia_remove_more_jump_link($link)
-	{
-		$offset = strpos($link, '#more-');
-		if ($offset)
-		{
-			$end = strpos($link, '"',$offset);
-		}
-		if ($end)
-		{
-			$link = substr_replace($link, '', $offset, $end-$offset);
-		}
-		return $link;
-	}
-}
 
 if(!function_exists('avia_excerpt'))
 {
@@ -1334,6 +1348,8 @@ if(!function_exists('avia_debugging_info'))
 	add_action('admin_print_scripts','avia_debugging_info',1000);
 }
 
+
+
 if(!function_exists('avia_clean_string'))
 {
 	function avia_clean_string($string) 
@@ -1344,6 +1360,8 @@ if(!function_exists('avia_clean_string'))
 	   return preg_replace('/-+/', '-', strtolower ($string)); // Replaces multiple hyphens with single one.
 	}
 }
+
+
 
 if(!function_exists('kriesi_backlink'))
 {
@@ -1366,5 +1384,12 @@ if(!function_exists('kriesi_backlink'))
 
 
 
-
+if(!function_exists('avia_header_class_filter'))
+{
+	function avia_header_class_filter( $default = "" )
+	{	
+		$default = apply_filters( "avia_header_class_filter", $default );
+		return $default;
+	}
+}
 

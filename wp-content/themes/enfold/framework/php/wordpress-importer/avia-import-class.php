@@ -51,6 +51,12 @@ class avia_wp_import extends WP_Import
 			update_option($avia->option_prefix.'_dynamic_elements', $dynamic_elements);
 		}
 		
+		if(!empty($fonts))
+		{
+			$this->import_iconfont( $fonts );
+		}
+		
+		
 		if(!empty($widget_settings))
 		{
 			$widget_settings = unserialize(base64_decode($widget_settings));
@@ -66,6 +72,72 @@ class avia_wp_import extends WP_Import
 		
 		
 	}
+	
+	public function import_iconfont( $new_fonts )
+	{
+		//update iconfont option 
+		$key 			= 'avia_builder_fonts';
+		$fonts_old 		= get_option( $key );
+		
+		if(empty($fonts_old)) $fonts_old = array();
+
+		$new_fonts 		= unserialize(base64_decode($new_fonts));
+		$merged_fonts 	= array_merge( $new_fonts , $fonts_old );
+		$files_to_copy  = array("config.json", "FONTNAME.svg", "FONTNAME.ttf", "FONTNAME.eot", "FONTNAME.woff");	
+		update_option($key, $merged_fonts);
+		
+		
+		
+		$http 			= new WP_Http();
+		$font_uploader 	= new avia_font_manager();
+		$paths			= $font_uploader->paths;
+		
+		//if a temp dir already exists remove it and create a new one
+		if(!is_dir($paths['tempdir']))
+		{
+			$fontdir = avia_backend_create_folder($paths['tempdir'], false);
+			if(!$fontdir) echo('Wasn\'t able to create the folder for font files');
+		}
+		
+		//download iconfont files into uploadsfolder
+		foreach ($new_fonts as $font_name => $font)
+		{
+			if(empty($fonts_old[$font_name]))
+			{
+				//folder name
+				$new_font_folder = trailingslashit($paths['tempdir']);
+				
+				//if a sub dir already exists remove it and create a new one
+				if(is_dir($new_font_folder)) $font_uploader->delete_folder( $new_font_folder );
+				
+				$subpdir = avia_backend_create_folder($new_font_folder, false);
+				if(!$subpdir)
+				{ 
+					echo('Wasn\'t able to create sub-folder for font files');
+				}
+				
+				
+				//iterate over files on remote server and create the same ones on this server
+				foreach ($files_to_copy as $file_to_copy)
+				{
+					$file_to_copy 	= str_replace("FONTNAME", $font_name, $file_to_copy);
+					$origin_url 	= $font['origin_folder'].trailingslashit($font['folder']).$file_to_copy;
+					$new_path		= trailingslashit($new_font_folder).$file_to_copy;
+					$headers 		= $http->request( $origin_url, array('stream'=>true, 'filename'=>$new_path) );
+				}
+				
+				
+				//create a config file
+				$font_uploader->font_name = $font_name;
+				$font_uploader->create_config();
+				
+			}
+		}
+	}
+	
+	
+	
+	
 	
 	/**
 	 *  Extracts the default values from the option_page_data array in case no database savings were done yet
@@ -267,7 +339,7 @@ class avia_wp_import extends WP_Import
 		}
 
 		foreach ( $item['postmeta'] as $meta )
-			$$meta['key'] = $meta['value'];
+			${$meta['key']} = $meta['value']; //kriesi mod: php 7 fix - added braces
 
 		if ( 'taxonomy' == $_menu_item_type && isset( $this->processed_terms[intval($_menu_item_object_id)] ) ) {
 			$_menu_item_object_id = $this->processed_terms[intval($_menu_item_object_id)];

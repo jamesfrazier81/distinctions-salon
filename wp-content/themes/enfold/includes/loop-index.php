@@ -85,7 +85,9 @@ if (have_posts()) :
 	 */
 
 	echo "<article class='".implode(" ", get_post_class('post-entry post-entry-type-'.$post_format . " " . $post_class . " ".$with_slider))."' ".avia_markup_helper(array('context' => 'entry','echo'=>false)).">";
-
+		
+		
+		
         //default link for preview images
         $link = !empty($url) ? $url : get_permalink();
         
@@ -209,8 +211,8 @@ if (have_posts()) :
 				echo $title;
 				
                 echo "<span class='post-meta-infos'>";
-                $markup = avia_markup_helper(array('context' => 'entry_time','echo'=>false));
-                echo "<time class='date-container minor-meta updated' $markup>".get_the_time(get_option('date_format'))."</time>";
+                
+                echo "<time class='date-container minor-meta updated' >".get_the_time(get_option('date_format'))."</time>";
                 echo "<span class='text-sep text-sep-date'>/</span>";
 
 
@@ -236,7 +238,7 @@ if (have_posts()) :
 
 
                     echo '<span class="blog-author minor-meta">'.__('by','avia_framework')." ";
-                    echo '<span class="entry-author-link" '.avia_markup_helper(array('context' => 'author_name','echo'=>false)).'>';
+                    echo '<span class="entry-author-link" >';
                     echo '<span class="vcard author"><span class="fn">';
                     the_author_posts_link();
                     echo '</span></span>';
@@ -282,6 +284,7 @@ if (have_posts()) :
         echo "<div class='post_delimiter'></div>";
         echo "</div>";
         echo "<div class='post_author_timeline'></div>";
+        echo av_blog_entry_markup_helper($current_post['the_id']);
 	echo "</article>";
 
 	$post_loop_count++;

@@ -10,7 +10,7 @@ if ( !class_exists( 'AviaBuilder' ) ) {
 
 	class AviaBuilder
 	{
-		const VERSION = '0.8';
+		const VERSION = '0.9.1';
 		public static $mode = "";
 		public static $path = array();
 		public static $resources_to_load = array();
@@ -177,7 +177,7 @@ if ( !class_exists( 'AviaBuilder' ) ) {
 			
 			//default wordpress hooking
 			add_action('wp_head', array($this,'load_shortcode_assets'), 2000);
-			add_action( 'template_redirect',array($this, 'template_redirect'), 1000);
+			add_filter( 'template_include' , array($this, 'template_include'), 2000); 
 		}
 		
 		/**
@@ -209,9 +209,9 @@ if ( !class_exists( 'AviaBuilder' ) ) {
 		public function admin_scripts_styles()
 		{
 			$ver = AviaBuilder::VERSION;
-		
+			
 			#js
-			wp_enqueue_script('avia_builder_js', $this->paths['assetsURL'].'js/avia-builder.js', array('jquery','jquery-ui-core', 'jquery-ui-sortable', 'jquery-ui-droppable','jquery-ui-datepicker','wp-color-picker','media-editor'), $ver, TRUE );
+			wp_enqueue_script('avia_builder_js', $this->paths['assetsURL'].'js/avia-builder.js', array('jquery','jquery-ui-core', 'jquery-ui-sortable', 'jquery-ui-droppable','jquery-ui-datepicker','wp-color-picker','media-editor','post'), $ver, TRUE );
 			wp_enqueue_script('avia_element_js' , $this->paths['assetsURL'].'js/avia-element-behavior.js' , array('avia_builder_js'), $ver, TRUE );
 			wp_enqueue_script('avia_modal_js' , $this->paths['assetsURL'].'js/avia-modal.js' , array('jquery', 'avia_element_js', 'wp-color-picker'), $ver, TRUE );
 			wp_enqueue_script('avia_history_js' , $this->paths['assetsURL'].'js/avia-history.js' , array('avia_element_js'), $ver, TRUE );
@@ -258,6 +258,8 @@ if ( !class_exists( 'AviaBuilder' ) ) {
 		 **/
 		public function setFullwidthElements($elements = array())
 	 	{
+		 	$elements = apply_filters('avf_fwd_elements', $elements);
+		 	
 			AviaBuilder::$full_el_no_section = $elements;
 			AviaBuilder::$full_el = array_merge(array('av_section'), $elements);
 		}
@@ -443,7 +445,7 @@ if ( !class_exists( 'AviaBuilder' ) ) {
 		/**
 		 *function that checks if a dynamic template exists and uses that template instead of the default page template
 		 **/
-    	public function template_redirect()
+    	public function template_include( $original_template )
     	{	
     		global $avia_config;
     	
@@ -467,8 +469,7 @@ if ( !class_exists( 'AviaBuilder' ) ) {
     	   	   		if("default" == $template_file || empty($template_file))
     	   	   		{
     	   	   			$avia_config['conditionals']['is_builder_template'] = true;
-                    	require_once($template);
-                    	exit();
+    	   	   			return $template;
     	   	   		}
     	   	   }
     	   	   
@@ -477,11 +478,12 @@ if ( !class_exists( 'AviaBuilder' ) ) {
     	   	   {
     	   	   		if($template = locate_template('page.php', false))
     	   	   		{
-    	   	   			require_once($template);
-    	   	   			exit();
+    	   	   			return $template;
     	   	   		}
     	   	   }
     	   	}
+    	   	
+    	   	return $original_template;
     	}
     	
     	public function apply_editor_wrap()

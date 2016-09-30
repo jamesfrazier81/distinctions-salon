@@ -89,7 +89,8 @@ if ( !class_exists( 'avia_sc_featureimage_slider' ))
 						"std" 	=> "title",
 						"subtype" => array(
 							__('Only Title',  'avia_framework' ) =>'title',
-							__('Only Title + Read More Button',  'avia_framework' ) =>'title_read_more',
+							__('Title + Read More Button',  'avia_framework' ) =>'title_read_more',
+							__('Title + Excerpt + Read More Button',  'avia_framework' ) =>'title_excerpt_read_more',
 							)
 					),
 
@@ -130,7 +131,7 @@ if ( !class_exists( 'avia_sc_featureimage_slider' ))
 						"id" 	=> "control_layout",
 						"type" 	=> "select",
 						"std" 	=> "",
-						"subtype" => array(__('Default','avia_framework' ) =>'',__('Minimal','avia_framework' ) =>'av-control-minimal',__('Hidden','avia_framework' ) =>'av-control-hidden')),
+						"subtype" => array(__('Default','avia_framework' ) =>'av-control-default',__('Minimal White','avia_framework' ) =>'av-control-minimal', __('Minimal Black','avia_framework' ) =>'av-control-minimal av-control-minimal-dark',__('Hidden','avia_framework' ) =>'av-control-hidden')),	
 					
 					
 					
@@ -438,7 +439,11 @@ if ( !class_exists( 'avia_feature_image_slider' ) )
 				    							'overlay_pattern' 	=> '',
 				    							'overlay_custom_pattern' => '',
                                                 
-		                                 		), $atts, 'av_postslider');
+		                                 		), $atts, 'av_feature_image_slider');
+		                                 		
+		   if($this->atts['autoplay'] == "no")   
+		   	$this->atts['autoplay'] = false;                               		
+		                                 		
 		}
 
 		public function html()
@@ -538,13 +543,20 @@ if ( !class_exists( 'avia_feature_image_slider' ) )
 					$caption .= ' <div class="slideshow_inner_caption">';
 					$caption .= ' <div class="slideshow_align_caption">';
 					$caption .= ' <h2 class="avia-caption-title"><a href="'.$link.'">'.$title.'</a></h2>';
-/*
-					$caption .= ' <div class="avia-caption-content " itemprop="description">';
-					$caption .= ' <p>Once the user scrolls down the header color will change</p>';
-					$caption .= ' </div>';
-*/							 
+			
+					if(strpos($this->atts['contents'], 'excerpt')  !== false)
+					{
+						$excerpt = !empty($slide->post_excerpt) ? $slide->post_excerpt : avia_backend_truncate($slide->post_content, apply_filters( 'avf_feature_image_slider_excerpt_length' , 320) , apply_filters( 'avf_feature_image_slider_excerpt_delimiter' , " "), "…", true, '');
+						
+						if(!empty($excerpt)){
+							$caption .= ' <div class="avia-caption-content " itemprop="description">';
+							$caption .= wpautop($excerpt);
+							$caption .= ' </div>';
+						}
+					}
+		
 					
-					if($this->atts['contents'] == 'title_read_more')
+					if(strpos($this->atts['contents'], 'read_more')  !== false)
 					{
 						$caption .= ' <a href="'.$link.'" class="avia-slideshow-button avia-button avia-color-light " data-duration="800" data-easing="easeInOutQuad">'.__('Read more', 'avia_framework').'</a>';
 					

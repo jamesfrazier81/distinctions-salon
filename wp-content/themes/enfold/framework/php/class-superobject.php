@@ -77,7 +77,7 @@ if( ! class_exists( 'avia_superobject' ) )
 	    /**
          * The constructor sets up  $base_data and $option_prefix. It then gets database values and if we are viewing the backend it calls the option page creator as well
          */
-		public function avia_superobject( $base_data )
+		public function __construct( $base_data )
 		{	
 			$this->base_data = $base_data;
 			$this->option_prefix = 'avia_options_'.avia_backend_safe_string( $this->base_data['prefix'] );

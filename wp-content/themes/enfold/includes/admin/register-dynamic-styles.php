@@ -8,13 +8,15 @@ function avia_prepare_dynamic_styles($options = false)
 	$color_set 	= $styles		= array();
 	$post_id 					= avia_get_the_ID();
 	$options 					= apply_filters('avia_pre_prepare_colors', $options);
-
+	
+	if($options === "") { $options = array(); }
+	
 	//boxed or stretched layout
 	$avia_config['box_class'] = empty($options['color-body_style']) ? "stretched" : $options['color-body_style'];
 	
 	//transparency color for header menu
 	$avia_config['backend_colors']['menu_transparent'] = empty($options['header_replacement_menu']) ? "" : $options['header_replacement_menu']; 
-	
+
 	
 	//iterate over the options array to get the color and bg image options and save them to new array
 	foreach ($options as $key => $option)

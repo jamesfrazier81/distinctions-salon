@@ -134,6 +134,40 @@ if ( !class_exists( 'avia_sc_iconlist' ) )
 						"subtype" => array(	__('Left', 'avia_framework' )  =>'left',
 											__('Right', 'avia_framework' ) =>'right',
 					)),
+					
+					
+					array(
+						"name" 	=> __("Icon List Styling", 'avia_framework' ),
+						"desc" 	=> __("Change the styling of your iconlist", 'avia_framework' ),
+						"id" 	=> "iconlist_styling",
+						"type" 	=> "select",
+						"std" 	=> "",
+						"subtype" => array(	__('Default (Big List)', 'avia_framework' )  =>'',
+											__('Minimal small list', 'avia_framework' ) =>'av-iconlist-small',
+					)),
+					
+					
+					array(	
+						"name" 	=> __("Title Font Size", 'avia_framework' ),
+						"desc" 	=> __("Select a custom font size. Leave empty to use the default", 'avia_framework' ),
+						"id" 	=> "custom_title_size",
+						"type" 	=> "select",
+						"std" 	=> "",
+						"container_class" => 'av_half',
+						"subtype" => AviaHtmlHelper::number_array(10,50,1, array( __("Default Size", 'avia_framework' )=>''), 'px'),
+							),
+						
+					array(	
+						"name" 	=> __("Content Font Size", 'avia_framework' ),
+						"desc" 	=> __("Select a custom font size. Leave empty to use the default", 'avia_framework' ),
+						"id" 	=> "custom_content_size",
+						"type" 	=> "select",
+						"std" 	=> "",
+						"container_class" => 'av_half av_no_bottom',
+						"subtype" => AviaHtmlHelper::number_array(10,50,1, array( __("Default Size", 'avia_framework' )=>''), 'px'),
+						),
+					
+					
 
 					array(
 							"type" 	=> "close_div",
@@ -281,7 +315,12 @@ if ( !class_exists( 'avia_sc_iconlist' ) )
 				
 				'font_color' => "",
 				'custom_title' => '',
-				'custom_content' => ''
+				'custom_content' => '',
+				'custom_title_size' => '',
+				'custom_content_size' => '',
+				
+				
+				'iconlist_styling' => ''
 				
 				), $atts, $this->config['shortcode']));
 				
@@ -290,13 +329,14 @@ if ( !class_exists( 'avia_sc_iconlist' ) )
 				$this->title_styling 		= "";
 				$this->content_styling 		= "";
 				$this->content_class 		= "";
+				$this->iconlist_styling 	= $iconlist_styling == 'av-iconlist-small' ? "av-iconlist-small" : "av-iconlist-big";
 				
 				if($color == "custom")
 				{
 					$this->icon_html_styling .= !empty($custom_bg) ? "background-color:{$custom_bg}; " : "";
 					$this->icon_html_styling .= !empty($custom_border) ? "border:1px solid {$custom_border}; " : "";
 					$this->icon_html_styling .= !empty($custom_font) ? "color:{$custom_font}; " : "";
-					if($this->icon_html_styling) $this->icon_html_styling = " style='{$this->icon_html_styling}'" ;
+					
 				}
 				
 				if($font_color == "custom")
@@ -304,17 +344,34 @@ if ( !class_exists( 'avia_sc_iconlist' ) )
 					$this->title_styling 		.= !empty($custom_title) ? "color:{$custom_title}; " : "";
 					$this->content_styling 		.= !empty($custom_content) ? "color:{$custom_content}; " : "";
 					
-					if($this->title_styling) 	$this->title_styling = " style='{$this->title_styling}'" ;
 					if($this->content_styling) 	
 					{
 						$this->content_class = "av_inherit_color";
-						$this->content_styling = " style='{$this->content_styling}'" ;
 					}
 				}
 				
+				if($custom_title_size)
+				{
+					$this->title_styling .= "font-size:{$custom_title_size}px; ";
+					if($this->iconlist_styling  == 'av-iconlist-small'){
+						$this->icon_html_styling .= "font-size:{$custom_title_size}px; ";
+					}
+				}
+				
+				if($custom_content_size)
+				{
+					$this->content_styling .= "font-size:{$custom_content_size}px; ";
+				}
+				
+				
+				if($this->icon_html_styling) $this->icon_html_styling = " style='{$this->icon_html_styling}'" ;
+				if($this->title_styling)  {	$this->title_styling = " style='{$this->title_styling}'" ; }
+				if($this->content_styling){ $this->content_styling = " style='{$this->content_styling}'" ; }
+					
+					
 				$output	 = "";
 				$output .= "<div class='avia-icon-list-container ".$meta['el_class']."'>";
-				$output .= "<ul class='avia-icon-list avia-icon-list-{$position} avia_animate_when_almost_visible'>";
+				$output .= "<ul class='avia-icon-list avia-icon-list-{$position} {$this->iconlist_styling} avia_animate_when_almost_visible'>";
 				$output .= ShortcodeHelper::avia_remove_autop( $content, true );
 				$output .= "</ul>";
 				$output .= "</div>";
@@ -326,8 +383,6 @@ if ( !class_exists( 'avia_sc_iconlist' ) )
 			function av_iconlist_item($atts, $content = "", $shortcodename = "")
 			{
                 $atts =  shortcode_atts(array('title' => '', 'link' => '', 'icon' => '', 'font' =>'', 'linkelement' =>'', 'linktarget' => '', 'custom_markup' => '', 
-                
-				
                 
                 ), $atts, 'av_iconlist_item');
                 
@@ -375,6 +430,16 @@ if ( !class_exists( 'avia_sc_iconlist' ) )
                 {
                 	$contentClass = "av-iconlist-empty";
                 }
+                
+                $title_el = "h4";
+                $iconlist_title = "";
+                if($this->iconlist_styling == "av-iconlist-small")
+                {
+	                $title_el = "div";
+	                $iconlist_title = "_" . "small";
+	            }
+                
+                
 
 				$output  = "";
 				$output .= "<li>";
@@ -383,7 +448,7 @@ if ( !class_exists( 'avia_sc_iconlist' ) )
 				$output .=              "<div class='iconlist_content_wrap'>";
                 $output .=                  '<header class="entry-content-header">';
                 $markup = avia_markup_helper(array('context' => 'entry_title','echo'=>false, 'custom_markup'=>$atts['custom_markup']));
-				$output .=                      "<h4 class='iconlist_title' {$markup} {$this->title_styling}>".$atts['title']."</h4>";
+				$output .=                      "<{$title_el} class='iconlist_title{$iconlist_title}' {$markup} {$this->title_styling}>".$atts['title']."</{$title_el}>";
                 $output .=                  '</header>';
                 $markup = avia_markup_helper(array('context' => 'entry_content','echo'=>false, 'custom_markup'=>$atts['custom_markup']));
 				$output .=                  "<div class='iconlist_content {$this->content_class}' {$markup} {$this->content_styling}>".ShortcodeHelper::avia_apply_autop(ShortcodeHelper::avia_remove_autop( $content ) )."</div>";

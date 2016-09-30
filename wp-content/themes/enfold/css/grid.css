@@ -1,6 +1,4 @@
-/*
-* COMPILED WITH LESS
-*/
+
 /* Table of Contents
 ==================================================
     #Base 960 Grid
@@ -61,6 +59,7 @@ html.responsive { min-width: 0px; }
 .boxed #wrap_all {
   overflow: visible; /*needed for cart icon */
 }
+
 
 /* Nested Column Classes */
 body .unit.alpha, body .units.alpha, body div .first {

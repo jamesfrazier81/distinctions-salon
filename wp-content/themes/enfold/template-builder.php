@@ -1,5 +1,7 @@
 <?php
-global $avia_config, $post;
+	if ( !defined('ABSPATH') ){ die(); }
+	
+	global $avia_config, $post;
 
 	if ( post_password_required() )
     {

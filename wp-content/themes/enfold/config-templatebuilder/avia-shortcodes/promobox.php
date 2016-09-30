@@ -69,7 +69,7 @@ if ( !class_exists( 'avia_sc_promobox' ) )
 				            "id" 	=> "label",
 				            "type" 	=> "input",
 				            "required" => array('button','equals','yes'),
-				            "std" => "Click me"),
+				            "std" => __("Click me", 'avia_framework' )),
 				    array(
 							"name" 	=> __("Button Link?", 'avia_framework' ),
 							"desc" 	=> __("Where should your button link to?", 'avia_framework' ),

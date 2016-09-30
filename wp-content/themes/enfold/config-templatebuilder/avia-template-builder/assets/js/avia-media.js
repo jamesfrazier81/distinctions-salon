@@ -28,7 +28,6 @@
 		//fetch preExisting selection of galleries. change the gallery state based on wheter we got a selection or not to "Edit gallery" or "AAdd gallery"
 		fetch_selection = function(ids, options)
 		{
-			
 			if(typeof ids == 'undefined') return; //<--happens on multi_image insert for modal group
 		
 			var id_array = ids.split(','),

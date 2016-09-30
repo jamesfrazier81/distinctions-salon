@@ -42,7 +42,17 @@ if ( !class_exists( 'avia_sc_masonry_gallery' ) )
 			function popup_elements()
 			{
 				$this->elements = array(
-
+				
+				array(
+							"type" 	=> "tab_container", 'nodescription' => true
+						),
+				
+				array(
+						"type" 	=> "tab",
+						"name"  => __("Masonry Content" , 'avia_framework'),
+						'nodescription' => true
+					),
+				
                   array(
 							"name" 	=> __("Edit Gallery",'avia_framework' ),
 							"desc" 	=> __("Create a new Gallery by selecting existing or uploading new images",'avia_framework' ),
@@ -125,33 +135,6 @@ if ( !class_exists( 'avia_sc_masonry_gallery' ) )
 						__('Overlay activated',  'avia_framework' ) =>'active',
 						__('Overlay deactivated',  'avia_framework' ) =>'',
 					)),
-					
-				
-				array(
-					"name" 	=> __("Image Title and Caption", 'avia_framework' ),
-					"desc" 	=> __("You can choose if you want to display title and/or caption", 'avia_framework' ),
-					"id" 	=> "caption_elements",
-					"type" 	=> "select",
-					"std" 	=> "title excerpt",
-					"subtype" => array(
-						__('Display Title and Caption',  'avia_framework' ) =>'title excerpt',
-						__('Display Title',  'avia_framework' ) =>'title',
-						__('Display Caption',  'avia_framework' ) =>'excerpt',
-						__('Display Neither',  'avia_framework' ) =>'none',
-					)),	
-				
-					
-				array(
-					"name" 	=> __("Element Title and Caption", 'avia_framework' ),
-					"desc" 	=> __("You can choose whether to always display Title and Caption or only on hover", 'avia_framework' ),
-					"id" 	=> "caption_display",
-					"type" 	=> "select",
-					"std" 	=> "always",
-					"required" => array('caption_elements','not','none'),
-					"subtype" => array(
-						__('Always Display',  'avia_framework' ) =>'always',
-						__('Display on mouse hover',  'avia_framework' ) =>'on-hover',
-					)),	
 				
 				array(
 					"name" 	=> __("Image Link", 'avia_framework' ),
@@ -172,6 +155,103 @@ if ( !class_exists( 'avia_sc_masonry_gallery' ) )
 			            "id" 	=> "id",
 			            "type" 	=> "input",
 			            "std" => ""),
+					
+				array(
+							"type" 	=> "close_div",
+							'nodescription' => true
+						),
+					
+					array(
+							"type" 	=> "tab",
+							"name"	=> __("Element captions",'avia_framework' ),
+							'nodescription' => true
+						),
+					
+				
+				array(
+					"name" 	=> __("Element Title and Excerpt", 'avia_framework' ),
+					"desc" 	=> __("You can choose if you want to display title and/or excerpt", 'avia_framework' ),
+					"id" 	=> "caption_elements",
+					"type" 	=> "select",
+					"std" 	=> "title excerpt",
+					"subtype" => array(
+						__('Display Title and Excerpt',  'avia_framework' ) =>'title excerpt',
+						__('Display Title',  'avia_framework' ) =>'title',
+						__('Display Excerpt',  'avia_framework' ) =>'excerpt',
+						__('Display Neither',  'avia_framework' ) =>'none',
+					)),	
+				
+				
+				array(
+					"name" 	=> __("Element Title and Excerpt Styling", 'avia_framework' ),
+					"desc" 	=> __("You can choose the styling for the title and excerpt here", 'avia_framework' ),
+					"id" 	=> "caption_styling",
+					"type" 	=> "select",
+					"std" 	=> "always",
+					"required" => array('caption_elements','not','none'),
+					"subtype" => array(
+						__('Default display (at the bottom of the elements image)',  'avia_framework' ) =>'',
+						__('Display as centered overlay (overlays the image)',  'avia_framework' ) =>'overlay',
+					)),	
+				
+				
+					
+				array(
+					"name" 	=> __("Element Title and Excerpt display settings", 'avia_framework' ),
+					"desc" 	=> __("You can choose whether to always display Title and Excerpt or only on hover", 'avia_framework' ),
+					"id" 	=> "caption_display",
+					"type" 	=> "select",
+					"std" 	=> "always",
+					"required" => array('caption_elements','not','none'),
+					"subtype" => array(
+						__('Always Display',  'avia_framework' ) =>'always',
+						__('Display on mouse hover',  'avia_framework' ) =>'on-hover',
+						__('Hide on mouse hover',  'avia_framework' ) =>'on-hover-hide',
+					)),	
+				
+				
+			        array(
+							"type" 	=> "close_div",
+							'nodescription' => true
+						),
+						
+					array(
+						"type" 	=> "tab",
+						"name"  => __("Element Colors" , 'avia_framework'),
+						'nodescription' => true
+					),
+					
+				array(
+							"name" 	=> __("Custom Colors", 'avia_framework' ),
+							"desc" 	=> __("Either use the themes default colors or apply some custom ones", 'avia_framework' ),
+							"id" 	=> "color",
+							"type" 	=> "select",
+							"std" 	=> "",
+							"subtype" => array( __('Default', 'avia_framework' )=>'',
+												__('Define Custom Colors', 'avia_framework' )=>'custom'),
+												
+					),
+					
+					array(	
+							"name" 	=> __("Custom Background Color", 'avia_framework' ),
+							"desc" 	=> __("Select a custom background color. Leave empty to use the default", 'avia_framework' ),
+							"id" 	=> "custom_bg",
+							"type" 	=> "colorpicker",
+							"std" 	=> "",
+							//"container_class" => 'av_third av_third_first',
+							"required" => array('color','equals','custom')
+						),	
+						
+				
+				array(
+						"type" 	=> "close_div",
+						'nodescription' => true
+					),
+					
+				array(
+							"type" 	=> "close_div",
+							'nodescription' => true
+						),
 					
 				);
 			}
@@ -271,6 +351,12 @@ if ( !class_exists( 'avia_sc_masonry_gallery' ) )
 				$masonry_html = $masonry->html();
 				
 				if(!ShortcodeHelper::is_top_level()) return $masonry_html;
+				
+				if( !empty( $atts['color'] ) && !empty( $atts['custom_bg']) )
+				{
+					$params['class'] .= " masonry-no-border";
+				}
+				
 				
 				$output .=  avia_new_section($params);
 				$output .= $masonry_html;

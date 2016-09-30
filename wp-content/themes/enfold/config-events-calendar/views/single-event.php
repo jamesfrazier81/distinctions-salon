@@ -21,7 +21,16 @@ $event_id = get_the_ID();
 	<p class="tribe-events-back"><a href="<?php echo tribe_get_events_link() ?>"> <?php _e( '&laquo; All Events', 'avia_framework' ) ?></a></p>
 
 	<!-- Notices -->
-	<?php tribe_events_the_notices() ?>
+	<?php 
+		if(function_exists('tribe_the_notices') )
+		{
+			tribe_the_notices();
+		}
+		else
+		{
+			tribe_events_the_notices();
+		}
+		?>
 
 
 	<?php while ( have_posts() ) :  the_post(); ?>

@@ -105,7 +105,7 @@ filter:alpha(opacity=15);
 #top .custom-color-heading a{text-decoration: underline; }
 #top .custom-color-heading a:hover{opacity:0.8; text-decoration: none;}
 
-.av-inherit-size .av-special-heading-tag{ font-size: 1em; }
+#top #wrap_all .av-inherit-size .av-special-heading-tag{ font-size: 1em; }
 .av-thin-font .av-special-heading-tag, .modern-quote .av-special-heading-tag{font-weight: 300;}
 .av-thin-font strong, .modern-quote strong{font-weight: 600;}
 
@@ -143,7 +143,7 @@ body .av-special-heading.blockquote .special-heading-border{display:none;}
 .av-subheading_above{margin-bottom:0.3em;}
 .av-subheading.av_custom_color{opacity: 0.8;}
 @media only screen and (max-width: 767px) {
-.av-inherit-size .av-special-heading-tag{ font-size: 0.8em; }
+#top #wrap_all .av-inherit-size .av-special-heading-tag{ font-size: 0.8em; }
 }
 
 
@@ -184,6 +184,10 @@ transition: 		opacity 1.2s ease-in;
 
 .avia-full-stretch{
 background-size: cover !important;
+}
+
+.avia-full-contain{
+background-size: contain !important;
 }
 
 .avia_mobile .avia-full-stretch{
@@ -241,7 +245,7 @@ height:100% !important;
 /*handle video section on mobile*/
 
 .avia_mobile #top .av-parallax-section{z-index: 0; -webkit-transform: translate3d(0,0,0);}
-.avia_mobile #top .av-parallax{position: fixed; z-index: -10;}
+.avia_mobile #top .av-parallax{position: absolute; z-index: -10;}
 .avia_mobile #top .av-parallax .container{z-index: 10; }
 .avia_mobile #top .av-section-mobile-video-disabled .av-section-video-bg{display:none;}
 .avia_desktop #top .av-section-mobile-video-disabled{background-image: none !important;}
@@ -300,6 +304,8 @@ transition: 		opacity 0.3s ease-in-out;}
 	clear:both;
 }
 
+
+
 .avia_transform .av-extra-border-element .av-extra-border-outer{
 overflow: hidden;
 height:100%;
@@ -307,7 +313,7 @@ width:100%;
 position: absolute;
 }
 
-.avia_transform .av-extra-border-element .av-extra-border-inner{
+.avia_transform .av-extra-border-element.border-extra-arrow-down .av-extra-border-inner{
 position: absolute;
 left: 50%;
 width: 50px;
@@ -316,6 +322,40 @@ height: 50px;
 transform: translateX(-50%) rotate(45deg);
 top: -39px;
 }
+
+
+
+.avia_transform .av-extra-border-element.border-extra-diagonal{
+	height:250px;
+	margin-top: -250px;
+}
+
+.avia_transform .av-extra-border-element.border-extra-diagonal .av-extra-border-inner{
+	top: 250px;
+    right: 0;
+    width: 110%;
+    height: 100%;
+    -webkit-transform-origin: right top;
+    transform-origin: right top;
+    -webkit-transform: rotate(5deg);
+    transform: rotate(5deg);
+    position: absolute;
+}
+
+.avia_transform .av-extra-border-element.border-extra-diagonal.border-extra-diagonal-inverse .av-extra-border-inner{
+	-webkit-transform: rotate(-5deg);
+    transform: rotate(-5deg);
+    -webkit-transform-origin: left top;
+    transform-origin: left top;
+    right:auto;
+    left:0;
+}
+
+.av-extra-border-element.diagonal-box-shadow .av-extra-border-inner{
+    box-shadow: 0 0 44px -8px rgba(0,0,0,0.2);
+}
+
+
 
 
 div .av-section-color-overlay-wrap{position: relative; width:100%; }
@@ -478,7 +518,6 @@ padding: 2px 0 0 0;
 position: relative;
 margin:0 0 16px 0;
 clear:none;
-overflow: hidden;
 letter-spacing: 1px;
 text-transform: uppercase;
 font-size:1.25em;
@@ -564,6 +603,7 @@ border-right-width: 1px;
 border-right-style: dashed;
 }
 
+.avia-icon-list .iconlist_content{line-height: 1.65em;}
 .avia-icon-list .iconlist_content li {
 min-height: 0;
 padding: 0;
@@ -572,13 +612,42 @@ list-style: disc outside;
 
 .avia-icon-list li:last-child .iconlist-timeline{display:none;}
 
+
+/*iconlist small*/
+#top .av-iconlist-small li{padding:0px; min-height:0px;}
+#top .av-iconlist-small article.article-icon-entry{ min-height:0px; }
+#top .av-iconlist-small .iconlist-timeline{display:none;}
+#top .av-iconlist-small .iconlist_icon{
+	background: transparent; color: inherit; height: 1.45em; width: 1.45em;
+	line-height: 1.45em; font-size: inherit; margin-right: 0.25em;
+}
+#top .av-iconlist-small.avia-icon-list-right .iconlist_icon {
+    float: right;
+    margin-left: 0.1em;
+    margin-right: 2px;
+}
+
+#top .av-iconlist-small .iconlist_content_wrap{
+	min-height: 0;
+	padding: 0;
+}
+
+.av-iconlist-small .iconlist_title_small {
+    line-height: 1.45em;
+}
+
+.av-iconlist-small .iconlist_content p:first-child{
+	margin-top: 2px;
+}
+
+
 /*right icons*/
 .avia-icon-list-right {text-align: right;}
 .avia-icon-list-right .iconlist_icon{float:right; margin-left:30px; margin-right:0;  margin-right:2px; }
 .avia-icon-list-right .iconlist-timeline{left: auto; right: 32px;}
 
 /*iconlist animation*/
-.avia_transform .avia-icon-list .iconlist_icon{
+.avia_transform .avia-icon-list.av-iconlist-big .iconlist_icon{
 opacity: 0.1;
 -webkit-transform:scale(0.5);
 -ms-transform:scale(0.5);
@@ -589,7 +658,7 @@ transform:scale(0.5);
 height: 0%;
 }
 
-.avia_transform .avia-icon-list .avia_start_animation .iconlist_icon{
+.avia_transform .avia-icon-list.av-iconlist-big .avia_start_animation .iconlist_icon{
 -webkit-animation: avia_appear 1s 1 cubic-bezier(0.175, 0.885, 0.320, 1.275); /* Safari 4+ */
 animation:         avia_appear 1s 1 cubic-bezier(0.175, 0.885, 0.320, 1.275); /* IE 10+ */
 opacity: 1;
@@ -598,7 +667,7 @@ opacity: 1;
 transform:scale(1);
 }
 
-.avia_transform .avia-icon-list .avia_start_animation .iconlist-timeline{
+.avia_transform .avia-icon-list.av-iconlist-big .avia_start_animation .iconlist-timeline{
 -webkit-animation: avia_slide_down 1s 1 cubic-bezier(0.175, 0.885, 0.320, 1.275); /* Safari 4+ */
 animation:         avia_slide_down 1s 1 cubic-bezier(0.175, 0.885, 0.320, 1.275); /* IE 10+ */
 height: 100%;
@@ -1483,20 +1552,20 @@ animation:         avia-bg-move 1.2s linear infinite; /* IE 10+ */
 
 
 
-.avia-datepicker-div{ background: #fff; border:1px solid #e1e1e1; }
-.avia-datepicker-div a{ color:#333; background-color: #f8f8f8; }
-.avia-datepicker-div a.ui-state-active{ color:#8bba34; }
-.avia-datepicker-div a.ui-state-highlight{ color:#8bba34; }
-.avia-datepicker-div a.ui-state-hover{ color:#FFF; background-color: #bbb; }
-.avia-datepicker-div .ui-datepicker-buttonpane button{ background-color: #8BBA34; color: #FFF; border-color: #8BBA34; }
+#top .avia-datepicker-div{ background: #fff; border:1px solid #e1e1e1; font-size:15px;}
+#top .avia-datepicker-div a{ color:#333; background-color: #f8f8f8; background-image:none; }
+#top .avia-datepicker-div a.ui-state-active{ color:#8bba34; }
+#top .avia-datepicker-div a.ui-state-highlight{ color:#8bba34; }
+#top .avia-datepicker-div a.ui-state-hover{ color:#FFF; background-color: #bbb; }
+#top .avia-datepicker-div .ui-datepicker-buttonpane button{ background-color: #8BBA34; color: #FFF; border-color: #8BBA34; }
 
 
-.avia-datepicker-div.ui-datepicker { width: 300px; padding: 20px; display: none; box-shadow: 0px 0px 44px 0px rgba(0, 0, 0, 0.2);}
-.avia-datepicker-div.ui-datepicker .ui-datepicker-header { position:relative; padding:.2em 0; }
-.avia-datepicker-div.ui-datepicker .ui-datepicker-prev, .avia-datepicker-div.ui-datepicker .ui-datepicker-next { position:absolute; top: 3px; width: 50px;   text-align: center; line-height: 32px; cursor: pointer;}
-.avia-datepicker-div.ui-datepicker .ui-datepicker-prev { left:2px; }
-.avia-datepicker-div.ui-datepicker .ui-datepicker-next { right:2px; }
-.avia-datepicker-div.ui-datepicker .ui-datepicker-title { margin: 0px 53px; line-height: 32px; text-align: center; font-weight: bold; letter-spacing: 1.5px; text-transform: uppercase;}
+#top .avia-datepicker-div.ui-datepicker { width: 300px; padding: 20px; display: none; box-shadow: 0px 0px 44px 0px rgba(0, 0, 0, 0.2); border-radius: 0;}
+#top .avia-datepicker-div.ui-datepicker .ui-datepicker-header { position:relative; padding:.2em 0; background: transparent; border: none;}
+#top .avia-datepicker-div.ui-datepicker .ui-datepicker-prev, #top .avia-datepicker-div.ui-datepicker .ui-datepicker-next { position:absolute; top: 4px; width: 50px;   text-align: center; line-height: 34px; height: 34px; cursor: pointer; border-radius: 0; text-decoration: none; font-size:12px; }
+#top .avia-datepicker-div.ui-datepicker .ui-datepicker-prev { left:2px; }
+#top .avia-datepicker-div.ui-datepicker .ui-datepicker-next { right:2px; }
+#top .avia-datepicker-div.ui-datepicker .ui-datepicker-title { margin: 0px 53px; line-height: 32px; text-align: center; font-weight: bold; letter-spacing: 1.5px; text-transform: uppercase;}
 
 #top .ui-datepicker-title select {
     width: 72px;
@@ -1507,19 +1576,29 @@ animation:         avia-bg-move 1.2s linear infinite; /* IE 10+ */
     border-radius: 0px;
 }
 
-.avia-datepicker-div.ui-datepicker .ui-datepicker-title select { font-size:1em; margin:1px 0; }
-.avia-datepicker-div.ui-datepicker select.ui-datepicker-month-year {width: 100%;}
-.avia-datepicker-div.ui-datepicker select.ui-datepicker-month,
-.avia-datepicker-div.ui-datepicker select.ui-datepicker-year { width: 49%;}
-.avia-datepicker-div.ui-datepicker table {width: 100%; font-size: .9em; border-collapse: collapse; margin:0 0 .4em; }
-.avia-datepicker-div.ui-datepicker th { padding: .7em .3em; text-align: center; font-weight: bold; border: 0;  }
-.avia-datepicker-div.ui-datepicker td { border: 0; padding: 1px; }
-.avia-datepicker-div.ui-datepicker td span, .ui-datepicker td a { display: block; padding: .2em; text-align: center; text-decoration: none; }
-.avia-datepicker-div.ui-datepicker .ui-datepicker-buttonpane { background-image: none; margin: .7em 0 0 0; padding:0 .2em; border-left: 0; border-right: 0; border-bottom: 0; }
-.avia-datepicker-div.ui-datepicker .ui-datepicker-buttonpane button { float: right; margin: .5em .2em .4em; cursor: pointer; padding: 10px 20px; width:auto; overflow:visible; border: none;
-border-radius: 3px;}
-.avia-datepicker-div.ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-current { float:left; }
-
+#top .avia-datepicker-div.ui-datepicker .ui-datepicker-title select { font-size:14px; margin:1px; }
+#top .avia-datepicker-div.ui-datepicker select.ui-datepicker-month-year {width: 100%;}
+#top .avia-datepicker-div.ui-datepicker select.ui-datepicker-month,
+#top .avia-datepicker-div.ui-datepicker select.ui-datepicker-year { width: 48%;}
+#top .avia-datepicker-div.ui-datepicker select.ui-datepicker-year {float:right;}
+#top .avia-datepicker-div.ui-datepicker table {width: 100%; font-size: .9em; border-collapse: collapse; margin:0 0 .4em; }
+#top .avia-datepicker-div.ui-datepicker th { padding: .7em .3em; text-align: center; font-weight: bold; border: 0;  }
+#top .avia-datepicker-div.ui-datepicker td { border: 0; padding: 1px; }
+#top .avia-datepicker-div.ui-datepicker td span, #top .avia-datepicker-div.ui-datepicker td a { border:none; display: block; padding: .2em; text-align: center; text-decoration: none; }
+#top .avia-datepicker-div.ui-datepicker .ui-datepicker-buttonpane { background-image: none; margin: .7em 0 0 0; padding:0 .2em; border-left: 0; border-right: 0; border-bottom: 0; }
+#top .avia-datepicker-div.ui-datepicker .ui-datepicker-buttonpane button { float: right; margin: .5em 0 .4em; cursor: pointer; padding: 10px 20px; width:auto; overflow:visible; border: none; background-image: none;
+border-radius: 3px; font-size: 13px;}
+#top .avia-datepicker-div.ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-current { float:left; }
+#top .avia-datepicker-div .ui-widget-content{background: transparent; border: none;}
+#top .avia-datepicker-div.ui-datepicker .ui-datepicker-prev span, #top .avia-datepicker-div.ui-datepicker .ui-datepicker-next span{
+	text-indent: 0;
+    overflow: visible;
+    background-image: none;
+    display: inline;
+    position: static;
+    margin: 0;
+    font-weight: normal;
+}
 
 /* RTL support */
 .avia-datepicker-div.ui-datepicker-rtl { direction: rtl; }
@@ -1560,6 +1639,8 @@ border-radius: 3px;}
 #top .av-custom-form-color .button:hover{}
 
 #top .av-light-form, #top .av-light-form + .ajaxresponse *{color:#fff;}
+#top .av-light-form + .ajaxresponse .avia-form-success{background: transparent; }
+
 #top div .av-light-form .input-text, #top div .av-light-form input[type='text'], #top div .av-light-form input[type='input'], #top div .av-light-form input[type='password'], #top div .av-light-form input[type='email'], #top div .av-light-form input[type='number'], #top div .av-light-form input[type='url'], #top div .av-light-form input[type='tel'], #top div .av-light-form input[type='search'], #top div .av-light-form textarea, #top div .av-light-form select, div div .av-light-form .button{
 	color: #fff;
 	border-color: #fff;
@@ -1568,6 +1649,8 @@ border-radius: 3px;}
 }
 
 #top .av-dark-form, #top .av-dark-form + .ajaxresponse *{color:#222;}
+#top .av-dark-form + .ajaxresponse .avia-form-success{background: transparent; }
+
 #top div .av-dark-form .input-text, #top div .av-dark-form input[type='text'], #top div .av-dark-form input[type='input'], #top div .av-dark-form input[type='password'], #top div .av-dark-form input[type='email'], #top div .av-dark-form input[type='number'], #top div .av-dark-form input[type='url'], #top div .av-dark-form input[type='tel'], #top div .av-dark-form input[type='search'], #top div .av-dark-form textarea, #top div .av-dark-form select, div div .av-dark-form .button{
 	color: #222;
 	border-color: #222;
@@ -1581,7 +1664,7 @@ border-radius: 3px;}
 @media only screen and (max-width: 479px) {
 
 	.responsive .avia_ajax_form .form_element{
-	width:100%; clear: both; margin-right:0; float: none;
+	width:100%; clear: both; margin-right:0; margin-left:0;  float: none;
 	}
 }
 
@@ -1592,7 +1675,7 @@ Table
 /*data table*/
 
 
-div .avia-table {background: transparent; width:100%; clear:both; margin:30px 0;}
+div .avia-table {background: transparent; width:100%; clear:both; margin:30px 0; table-layout: fixed;}
 .avia-data-table .avia-heading-row .avia-desc-col{border-top:none; border-left:none;}
 .avia-data-table .avia-button-row td{text-align: center;}
 .avia-data-table .avia-center-col{text-align: center;}
@@ -1601,6 +1684,12 @@ div .avia-table {background: transparent; width:100%; clear:both; margin:30px 0;
 .avia-data-table .avia-desc-col{text-align: right;}
 .avia-data-table .avia-pricing-row small{display: block; font-size: 11px; font-style: italic; line-height: 1.7em; }
 .avia-data-table .avia-pricing-row .avia-desc-col{font-size: 14px; text-align: right;}
+
+/*minimal data table*/
+.avia-data-table.avia_pricing_minimal th,
+.avia-data-table.avia_pricing_minimal td{text-align: center; padding:12px; color: inherit; }
+#top .avia-data-table.avia_pricing_minimal tr{background: transparent;}
+
 
 
 @media only screen and (max-width: 767px)
@@ -1795,6 +1884,11 @@ Post Slider
 	display:none;
 }
 
+/*fix blur on content slider in safari*/
+.avia-safari .avia-content-slider, .avia-safari .avia-content-slider-inner, .avia-safari .avia-content-slider-inner .slide-entry-wrap { 
+-webkit-perspective: 0 !important;
+}
+
 
 @media only screen and (max-width: 767px)
 {
@@ -1892,7 +1986,7 @@ table-layout: fixed;
 }
 
 #top .isotope-item.special_av_fullwidth .av_table_col .grid-entry-excerpt {
-    font-size: 13px;
+    font-size: 1em;
     font-style: normal;
 }
 
@@ -2223,6 +2317,7 @@ visibility: hidden;
 opacity: 0;
 }
 
+#top .masonry-no-border{border-top:none;}
 
 .av-masonry-entry.av-landscape-img{
 width:49.80%;
@@ -2326,6 +2421,9 @@ animation:         avia_msonry_show 0.8s 1 cubic-bezier(0.175, 0.885, 0.320, 1.0
 .av-1px-gap.av-flex-size .av-masonry-entry .av-inner-masonry{ position: relative; margin-right:1px; margin-bottom:1px; }
 .av-large-gap.av-flex-size .av-masonry-entry .av-inner-masonry{ position: relative; margin-right:15px; margin-bottom:15px; }
 
+
+
+
 /*firefox 1px gap fix*/
 .avia-mozilla .av-1px-gap.av-flex-size .av-masonry-entry .av-inner-masonry{ margin-bottom:2px; }
 
@@ -2342,17 +2440,61 @@ animation:         avia_msonry_show 0.8s 1 cubic-bezier(0.175, 0.885, 0.320, 1.0
 .av-fixed-size .av-masonry-entry.av-portrait-img .av-inner-masonry-sizer{ padding-bottom:160%;}
 .av-fixed-size .av-masonry-entry.av-portrait-img.av-landscape-img  .av-inner-masonry-sizer{ padding-bottom:80%;}
 
-#top .av-fixed-size .av-masonry-entry.av-masonry-item-no-image .av-inner-masonry-content{ display: table; position: relative; height: 100%;width:100%;}
-#top .av-fixed-size .av-masonry-entry.av-masonry-item-no-image .av-inner-masonry-content-pos{display:table-cell;  vertical-align: middle; text-align: center;}
+#top .av-fixed-size .av-masonry-entry.av-masonry-item-no-image .av-inner-masonry-content,
+#top .av-caption-style-overlay .av-masonry-item-with-image .av-inner-masonry-content{ display: table; position: relative; height: 100%;width:100%; bottom:0;}
+#top .av-fixed-size .av-masonry-entry.av-masonry-item-no-image .av-inner-masonry-content-pos,
+#top .av-caption-style-overlay .av-masonry-item-with-image .av-inner-masonry-content-pos{display:table-cell;  vertical-align: middle; text-align: center;}
+#top .av-caption-style-overlay .av-masonry-item-with-image .av-inner-masonry {
+    background: transparent;
+}
 
 
 
-
-.av-fixed-size .av-masonry-entry .av-inner-masonry-content, .av-caption-on-hover .av-masonry-item-with-image.av-masonry-entry .av-inner-masonry-content{
+.av-fixed-size .av-masonry-entry .av-inner-masonry-content, 
+.av-caption-on-hover .av-masonry-item-with-image.av-masonry-entry .av-inner-masonry-content,
+.av-flex-size.av-caption-on-hover-hide .av-masonry-entry.av-masonry-item-with-image  .av-inner-masonry-content
+{
 position: absolute;
 bottom: -1px; /*fixes hover bug that lets 1px img shine through at bottom when font is big*/
 }
 
+/*overlay styling*/
+#top .av-caption-style-overlay .av-masonry-item-with-image .av-inner-masonry-content{
+background: rgba(0,0,0,0.35);
+}
+
+#top .av-caption-style-overlay.av-hover-overlay- .av-masonry-item-with-image .av-inner-masonry-content{
+background: transparent;
+}
+
+#top .av-caption-style-overlay .av-masonry-item-with-image .av-inner-masonry-content *,
+#top .av-caption-style-overlay .av-masonry-item-with-image ins:before,
+#top #wrap_all .av-caption-style-overlay .av-masonry-item-with-image del{
+color:#fff;
+}
+
+
+#top .av-caption-style-overlay .av-masonry-item-with-image .av-inner-masonry-content .avia-arrow, 
+#top .av-caption-style-overlay .av-masonry-item-with-image .av-inner-masonry-content .av-icon-display{
+display: none;
+}
+
+#top #wrap_all .av-caption-style-overlay.av-flex-size .av-masonry-entry.av-masonry-item-with-image .av-inner-masonry-content{ 
+	position: absolute; top:-2px; left:-2px; right: -2px; bottom:-2px; display:block; height: auto; width:auto;
+}
+
+#top .av-caption-style-overlay.av-flex-size .av-masonry-entry.av-masonry-item-with-image .av-inner-masonry-content-pos{
+	display:table; height: 100%; width:100%;
+}
+
+#top .av-caption-style-overlay.av-flex-size .av-masonry-entry.av-masonry-item-with-image .av-inner-masonry-content-pos-content{
+	display: table-cell;
+    vertical-align: middle;
+}
+
+#top .av-caption-style-overlay .av-masonry-entry .av-masonry-entry-title{
+font-size: 1.5em;
+}
 
 
 /*hover effect*/
@@ -2364,7 +2506,9 @@ transition: 		all 0.4s ease-in-out;
 }
 
 .avia_desktop .av-hover-overlay-active .av-masonry-image-container{opacity: 0.7;}
-.avia_desktop .av-hover-overlay-active .av-masonry-entry:hover .av-masonry-image-container{ opacity: 1;}
+.avia_desktop .av-hover-overlay-active .av-masonry-entry:hover .av-masonry-image-container,
+.avia_desktop .av-hover-overlay-active.av-caption-style-overlay .av-masonry-entry .av-masonry-image-container
+{ opacity: 1;}
 .avia_desktop .av-masonry-entry:hover .av-masonry-image-container{
 -webkit-transform: 	scale(1.05,1.05);
 transform: 			scale(1.05,1.05);
@@ -2374,11 +2518,18 @@ transform: 			scale(1.05,1.05);
 .avia_desktop .av-caption-on-hover .av-masonry-item-with-image .av-inner-masonry-content{opacity: 0; filter:alpha(opacity=00);}
 .avia_desktop .av-caption-on-hover .av-masonry-item-with-image.av-masonry-entry:hover .av-inner-masonry-content{opacity: 1; filter:alpha(opacity=100);}
 
+
+.avia_desktop .av-caption-on-hover-hide .av-masonry-item-with-image .av-inner-masonry-content{opacity: 1; filter:alpha(opacity=100);}
+.avia_desktop .av-caption-on-hover-hide .av-masonry-item-with-image.av-masonry-entry:hover .av-inner-masonry-content{opacity: 0; filter:alpha(opacity=00);}
+
+
+
 .avia_desktop .av-inner-masonry-content{ /*fixes flickering issue when caption/excerpt is visible by default and sorting is activated . may also try to replace it with -webkit-transform-style: preserve-3d;*/
 -webkit-backface-visibility:hidden;
 }
 
-.avia_desktop.avia_transform3d .av-caption-on-hover .av-masonry-entry.av-masonry-item-with-image .av-inner-masonry-content{
+.avia_desktop.avia_transform3d .av-caption-on-hover.av-caption-style- .av-masonry-entry.av-masonry-item-with-image .av-inner-masonry-content,
+.avia_desktop.avia_transform3d .av-caption-on-hover-hide.av-caption-style- .av-masonry-entry.av-masonry-item-with-image:hover .av-inner-masonry-content{
 -webkit-backface-visibility: hidden;
 -moz-backface-visibility: hidden;
 backface-visibility: hidden;
@@ -2391,9 +2542,13 @@ transform: rotateX(120deg);
 transform-style: preserve-3d;
 }
 
-.avia_desktop.avia_transform3d .av-caption-on-hover .av-masonry-entry.av-masonry-item-with-image:hover .av-inner-masonry-content{
+.avia_desktop.avia_transform3d .av-caption-on-hover-hide.av-caption-style- .av-masonry-entry.av-masonry-item-with-image .av-inner-masonry-content,
+.avia_desktop.avia_transform3d .av-caption-on-hover.av-caption-style- .av-masonry-entry.av-masonry-item-with-image:hover .av-inner-masonry-content{
 -webkit-transform: 	rotateX(0deg);
 transform: 			rotateX(0deg);
+-webkit-transform-origin: center bottom;
+-moz-transform-origin: center bottom;
+transform-origin: center bottom;
 }
 
 
@@ -2474,9 +2629,12 @@ filter:alpha(opacity=00);
 /*masonry post types and variations*/
 /*product*/
 .av-masonry-entry.sale .av-masonry-entry-title{ padding-right:48px;}
-#top .av-masonry-entry.type-product .av-masonry-image-container{opacity: 1; -webkit-transform: scale(1);transform:scale(1); }
+#top .av-masonry-entry.type-product .av-masonry-image-container{-webkit-transform: scale(1);transform:scale(1); }
 #top .av-masonry-entry .price, #top .av-masonry-entry .price span, #top .av-masonry-entry del, #top .av-masonry-entry ins {font-size: 14px;}
 #top .av-masonry-entry .onsale{ top:20px; right:20px;}
+
+#top .av-caption-style-overlay .av-masonry-entry .onsale{ top:0px; right:0px; border-radius: 0;}
+#top .av-caption-style-overlay .av-masonry-entry.sale .av-masonry-entry-title{ padding-right:0px;}
 
 #top .av-masonry-entry .av-inner-masonry .av-masonry-overlay{opacity: 0; filter:alpha(opacity=0); width:100%; z-index: 10; position: absolute; top:0; left:0; right:0; bottom:0;}
 #top .av-masonry-entry:hover .av-inner-masonry .av-masonry-overlay{  opacity: 1; filter:alpha(opacity=100);  }
@@ -2790,7 +2948,7 @@ padding:20px;
 .avia-testimonial-name{display:block;}
 .avia-testimonial-arrow-wrap{display:none;}
 
-.avia-testimonial-wrapper{display:table; margin: 30px 0; clear:both; }
+.avia-testimonial-wrapper{display:table; margin: 30px 0; clear:both; width: 100%; table-layout: fixed; }
 .avia-testimonial-row{display: table-row;}
 body div .avia-testimonial{display: table-cell; float:none;}
 
@@ -2821,10 +2979,11 @@ transform:scale(1);
 .avia-slider-testimonials .avia-testimonial-content p:last-child{margin-bottom: 0;}
 .avia-slider-testimonials .avia-testimonial-arrow-wrap{display: block; position: absolute; top: -14px; left: 14px; overflow: hidden; width: 10px; height: 10px;}
 .avia-slider-testimonials .avia-testimonial-name{font-size:14px;}
+.avia_mobile .avia-slider-testimonials {pointer-events: none;}
 
 
 /*slider large*/
-#top .av-large-testimonial-slider { text-align: center; }
+#top .av-large-testimonial-slider { text-align: center; pointer-events: all;}
 #top .av-large-testimonial-slider .avia-testimonial-content{ border:none; padding: 0; background: transparent; font-size: 1.3em; line-height: 1.65em;}
 #top .av-large-testimonial-slider .avia-testimonial-meta{display: inline-block; width:auto; margin:30px 0 0 0;}
 #top .av-large-testimonial-slider .avia-testimonial-arrow-wrap{display:none;}
@@ -2874,6 +3033,7 @@ background: black;
 background: rgba(0, 0, 0, 0.5);
 padding: 1px 10px 2px 10px;
 border-radius: 3px;
+line-height: 21px;
 }
 .progressbar-icon{float:left;margin-right:5px;}
 .icon-bar-no .progressbar-icon{display:none;}
@@ -3379,6 +3539,12 @@ text-indent: 0px;
 #top .av-control-minimal .avia-slideshow-dots a{border:2px solid #fff; background: transparent; padding: 5px;}
 #top .av-control-minimal .avia-slideshow-dots a.active{background: #fff;}
 
+#top .av-control-minimal-dark .avia-slideshow-arrows a{ color: #000; }
+#top .av-control-minimal-dark .avia-slideshow-arrows a:before{border-color: #000;}
+#top .av-control-minimal-dark .avia-slideshow-dots a{border-color: #000;}
+#top .av-control-minimal-dark .avia-slideshow-dots a.active{background: #000;}
+
+#top .scroll-down-link.av-control-minimal-dark{color:#000;}
 
 
 
@@ -3636,10 +3802,10 @@ display: block;
 
 /*caption frame*/
 .avia-caption-content{line-height: 1.3em;}
+.avia-caption-content p {margin:15px 0;}
 
 .caption_framed .slideshow_caption .avia-caption-content p, .caption_framed .slideshow_caption .avia-caption-title,
-.avia-caption .avia-caption-content p, .avia-caption .avia-caption-title
-{
+.avia-caption .avia-caption-content p, .avia-caption .avia-caption-title{
 background: #000;
 filter: alpha(opacity = 80);
 background: rgba(0, 0, 0, 0.5);
@@ -3716,7 +3882,7 @@ visibility: visible;
 animation:         caption-top    0.5s 1 ease-out;
 }
 
-.avia_transform .av_slideshow_full.avia-fade-slider .active-slide .avia-caption-button,
+.avia_transform .av_slideshow_full.avia-fade-slider .active-slide .avia-slideshow-button,
 .avia_transform .av_fullscreen.avia-fade-slider .active-slide .avia-slideshow-button
 {
 visibility: visible;
@@ -3775,13 +3941,18 @@ Slideshow Fullscreen
 .avia-fullscreen-slider .avia-slideshow-inner{width:100%; height:100%; position: absolute;
 	
 -ms-perspective: 1000px; /*fixes: ie11 css flicker of following elements on transition*/
--ms-backface-visibility: hidden;
-	
+-ms-backface-visibility: hidden;	
 }
+
 .avia-fullscreen-slider .avia-slideshow>ul>li{width:100%; height:100%;
 background-size: cover;
 background-position: center center;
 }
+
+.avia-fullscreen-slider .avia-slideshow[data-image_attachment="fixed"]>ul>li{
+	background-attachment: fixed;
+}
+
 
 .avia-fullscreen-slider .avia-slide-wrap{display:block; width:100%; height:100%;}
 .avia-fullscreen-slider .caption_container{height:100%;}
@@ -3801,8 +3972,8 @@ background-position: center center;
 
 
 .avia-multi-slideshow-button{min-width: 140px;}
-.avia-multi-slideshow-button.avia-slideshow-button{margin-right:10px;}
-.avia-multi-slideshow-button.avia-slideshow-button-2{margin-left:10px;}
+.avia-multi-slideshow-button.avia-slideshow-button{margin-right:20px;}
+.avia-multi-slideshow-button.avia-slideshow-button-2{margin-right:0px;}
 
 #top .scroll-down-link {
 height: 60px;
@@ -3831,6 +4002,9 @@ animation:         avia_fade_move_down 2s ease-in-out infinite;
 
 @media only screen and (max-width: 767px) {
 .avia-fullscreen-slider .avia-slideshow{min-height: 150px;}
+.caption_right .slideshow_align_caption {
+	text-align:right;
+}
 }
 
 
@@ -3871,6 +4045,20 @@ background-position: center center;
 
 .avia_desktop .avia-featureimage-slideshow .avia-slideshow-arrows a{ opacity: 0; }
 #top .avia-featureimage-slideshow:hover .avia-slideshow-arrows a{opacity: 1;}
+
+#top .avia-featureimage-slideshow .avia-caption-content{
+	margin:0 auto;
+	max-width: 600px;
+	padding-top: 4px;
+}
+
+
+@media only screen and (max-width: 767px)
+{
+	#top .avia-featureimage-slideshow .avia-caption-content{
+	display:none;
+	}
+}
 
 
 /* ======================================================================================================================================================
@@ -4087,6 +4275,10 @@ Partner/Logo Slider + Content Slider
 	}
 }
 
+@media only screen and (max-width: 479px)
+{
+	.responsive #top #wrap_all .avia-logo-element-container.avia-logo-grid .flex_column{margin:0;}
+}
 
 
 
@@ -4187,6 +4379,8 @@ AVIACCORDION
 #top .aviaccordion-preview-title-wrap{ position: relative; display: table; height:100%; width:100%; background:#000; background: rgba(0,0,0,0.5); padding:0; filter:alpha(opacity=60);}
 #top .aviaccordion-preview-title{display: table-cell; vertical-align: middle; color:#fff;  -webkit-font-smoothing: subpixel-antialiased;  padding:10%;}
 #top .aviaccordion-preview-title h3{color:#fff;}
+#top .aviaccordion-excerpt{line-height: 1.65em;}
+#top .aviaccordion .av-accordion-text-center{text-align: center;}
 
 #top .aviaccordion-title{text-transform: uppercase;  font-size: 14px;}
 
@@ -4251,8 +4445,10 @@ position: relative;
 }
 
 #top .mobile_menu_toggle .av-current-placeholder{font-size: 14px; vertical-align: bottom; display: inline-block; margin-left:20px;}
-
-
+#top .av-subnav-menu li:hover > ul { z-index: 10; }
+#top .av-submenu-container:hover {
+    z-index: 400 !important;
+}
 
 
 @media only screen and (max-width: 767px)
@@ -4290,7 +4486,7 @@ Countdown
 .av-countdown-cell{display: table-cell; }
 .av-countdown-cell-inner{display: block; margin:1px 1px 0 0; padding:20px;}
 .av-countdown-time{display: block; font-size:40px; line-height: 1em; font-weight:100; color:inherit; text-decoration: none;}
-.av-countdown-time-label{display: block; text-transform: uppercase; color:inherit; overflow: hidden; text-overflow: ellipsis;}
+.av-countdown-time-label{display: block; text-transform: uppercase; color:inherit; overflow: hidden; text-overflow: ellipsis; -moz-hyphens: inherit;}
 .av-countdown-timer-title{display: block; font-size:30px; line-height: 1.3em; margin:0 0 15px 0; text-decoration: none; position: relative;  }
 .av-countdown-timer-title:hover{text-decoration: none;}
 .av-countdown-timer-title-bottom{margin:15px 0 0 0;}
@@ -4345,10 +4541,12 @@ Text Rotator
 
 
 .av-rotator-text-single{display: none; top:0; }
-.av-rotator-text-single:first-child{display: inline;}
-.av-rotator-multiline-on{display:block;}
+.av-rotator-text-single:first-child{display: inline-block;}
+
+
 #top .av-rotator-container a:hover{text-decoration: underline;}
 .av-fixed-rotator-width .av-rotator-text{text-align: left; display: inline-block; }
+.av-rotation-container-center .av-rotator-multiline-on.av-rotator-text{display:block; margin:0 auto;}
 
 @media only screen and (max-width: 767px)
 {

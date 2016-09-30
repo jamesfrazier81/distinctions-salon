@@ -127,7 +127,7 @@ if ( !class_exists( 'avia_sc_tab' ) )
                             "desc" 	=> __("Enter some content here", 'avia_framework' ) ,
                             "id" 	=> "content",
                             "type" 	=> "tiny_mce",
-                            "std" 	=> "Tab Content goes here",
+                            "std" 	=> __("Tab Content goes here", 'avia_framework' ),
                         ),
 
                     )

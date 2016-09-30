@@ -33,6 +33,15 @@ if(!function_exists('avia_ajax_modify_set'))
 {
 	function avia_ajax_modify_set()
 	{	
+		$check = 'avia_nonce_save_backend';
+		
+		if($_POST['context'] =='metabox')
+		{
+			$check = "avia_nonce_save_metabox";
+		}
+		
+		check_ajax_referer($check);
+		
 		if(isset($_POST['ajax_decode'])) $_POST = ajax_decode_deep($_POST);
 	
 		//add a new set
@@ -55,11 +64,23 @@ if(!function_exists('avia_ajax_modify_set'))
 				if($_POST['context'] =='custom_set')
 				{
 					$inclusion_link = sanitize_text_field($_POST['configFile']);
+					$link			= false;
+					
+					switch($inclusion_link)
+					{
+						case "dynamic" :
+						case AVIA_BASE."includes/admin/register-admin-dynamic-options.php" :
+						case "includes/admin/register-admin-dynamic-options.php" : $link = AVIA_BASE."includes/admin/register-admin-dynamic-options.php"; break;
+						case "one_page": 
+						case "includes/admin/register-admin-dynamic-one-page-portfolio.php": $link = AVIA_BASE."includes/admin/register-admin-dynamic-one-page-portfolio.php"; break;
 
-					if(strpos($inclusion_link, AVIA_BASE) === false) $inclusion_link = AVIA_BASE.$inclusion_link;
-
-					@include($inclusion_link);
-					$sets->elements = $elements;
+					}
+					
+					if($link)
+					{
+						@include($link);
+						$sets->elements = $elements;
+					}
 				}
 			}
 

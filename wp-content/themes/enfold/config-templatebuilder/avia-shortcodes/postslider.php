@@ -216,7 +216,7 @@ array(
 if ( !class_exists( 'avia_post_slider' ) )
 {
 	class avia_post_slider
-	{
+	{	
 		static  $slide = 0;
 		protected $atts;
 		protected $entries;
@@ -367,7 +367,9 @@ if ( !class_exists( 'avia_post_slider' ) )
 								$title = '';
 								break;
 					}
-
+					
+					$title = apply_filters( 'avf_postslider_title', $title, $entry );
+					
 					if($loop_counter == 1) $output .= "<div class='slide-entry-wrap'>";
 					
 					$post_format = get_post_format($the_id) ? get_post_format($the_id) : 'standard';
@@ -454,6 +456,9 @@ if ( !class_exists( 'avia_post_slider' ) )
                     $output .= '<footer class="entry-footer">';
                     if( !empty($meta) ) $output .= $meta;
                     $output .= '</footer>';
+                    
+                    $output .= av_blog_entry_markup_helper( $the_id );
+                    
 					$output .= "</article>";
 
 					$loop_counter ++;
@@ -478,15 +483,15 @@ if ( !class_exists( 'avia_post_slider' ) )
 			{
 				$output .= $this->slide_navigation_arrows();
 			}
-
+			
+			global $wp_query;
             if($use_main_query_pagination == 'yes' && $paginate == "yes")
             {
-                global $wp_query;
                 $avia_pagination = avia_pagination($wp_query->max_num_pages, 'nav');
             }
             else if($paginate == "yes")
             {
-                $avia_pagination = avia_pagination($this->entries->max_num_pages, 'nav');
+                $avia_pagination = avia_pagination($this->entries, 'nav');
             }
 
             if(!empty($avia_pagination)) $output .= "<div class='pagination-wrap pagination-slider'>{$avia_pagination}</div>";
@@ -513,7 +518,7 @@ if ( !class_exists( 'avia_post_slider' ) )
 
 		//fetch new entries
 		public function query_entries($params = array())
-		{
+		{	
 			global $avia_config;
 
 			if(empty($params)) $params = $this->atts;
@@ -545,9 +550,23 @@ if ( !class_exists( 'avia_post_slider' ) )
 
 				if($params['offset'] == 'no_duplicates')
                 {
-                    $params['offset'] = 0;
+                    $params['offset'] = false;
                     $no_duplicates = true;
                 }
+                
+                
+				//wordpress 4.4 offset fix
+				if( $params['offset'] == 0 )
+				{
+					$params['offset'] = false;
+				}
+				else
+				{	
+					//if the offset is set the paged param is ignored. therefore we need to factor in the page number
+					$params['offset'] = $params['offset'] + ( ($page -1 ) * $params['items']);
+				}
+				
+				
 
                 if(empty($params['post_type'])) $params['post_type'] = get_post_types();
                 if(is_string($params['post_type'])) $params['post_type'] = explode(',', $params['post_type']);
@@ -573,7 +592,7 @@ if ( !class_exists( 'avia_post_slider' ) )
 
 			$query = apply_filters('avia_post_slide_query', $query, $params);
 
-			$this->entries = new WP_Query( $query );
+			@$this->entries = new WP_Query( $query ); //@ is used to prevent errors caused by wpml
 
 		    // store the queried post ids in
             if( $this->entries->have_posts() )

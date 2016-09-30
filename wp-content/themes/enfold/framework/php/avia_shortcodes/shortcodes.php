@@ -28,7 +28,7 @@
 
 class avia_shortcodes{
 	
-	function avia_shortcodes() {
+	function __construct() {
 		
 		add_action( 'admin_init', array( &$this, 'action_admin_init' ) );
 		add_action( 'wp_ajax_scn_check_url_action', array( &$this, 'ajax_action_check_url' ) );

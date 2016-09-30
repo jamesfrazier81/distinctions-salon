@@ -317,8 +317,9 @@ if(defined('ICL_SITEPRESS_VERSION') && defined('ICL_LANGUAGE_CODE'))
 	//Add all the necessary filters. There are a LOT of WordPress functions, and you may need to add more filters for your site.
 	if(!function_exists('avia_wpml_correct_domain_in_url'))
 	{
+		// some installs require this fix: https://wpml.org/errata/enfold-theme-styles-not-loading-with-different-domains/
 		if (!is_admin()) {
-
+		
 			add_filter ('home_url', 'avia_wpml_correct_domain_in_url');
 			add_filter ('site_url', 'avia_wpml_correct_domain_in_url');
 			add_filter ('get_option_siteurl', 'avia_wpml_correct_domain_in_url');
@@ -445,7 +446,7 @@ if(defined('ICL_SITEPRESS_VERSION') && defined('ICL_LANGUAGE_CODE'))
 				padding: 7px 0;
 				border-top:1px solid #e1e1e1;
 				}
-				.avia_cur_lang, .avia_cur_lang_edit{padding:3px 0; z-index:300; position:relative; cursor:pointer; color: #5C951E; display:block;}
+				.avia_cur_lang, .avia_cur_lang_edit{ font-size:11px; padding:3px 0; z-index:300; position:relative; cursor:pointer; color: #5C951E; display:block;}
 				.avia_cur_lang_edit{ color: #7D8388;}
 				.avia_cur_lang img{margin:0px 4px -1px 0;}
 				</style>
@@ -548,8 +549,8 @@ if(defined('ICL_SITEPRESS_VERSION') && defined('ICL_LANGUAGE_CODE'))
 	if(!function_exists('avia_append_lang_flags'))
 	{
 		//first append search item to main menu
-		add_filter( 'wp_nav_menu_items', 'avia_append_lang_flags', 20, 2 );
-		add_filter( 'avf_fallback_menu_items', 'avia_append_lang_flags', 20, 2 );
+		add_filter( 'wp_nav_menu_items', 'avia_append_lang_flags', 9998, 2 );
+		add_filter( 'avf_fallback_menu_items', 'avia_append_lang_flags', 9998, 2 );
 		
 		function avia_append_lang_flags( $items, $args )
 		{
@@ -621,7 +622,7 @@ if(defined('ICL_SITEPRESS_VERSION') && defined('ICL_LANGUAGE_CODE'))
 			{
 				foreach ($query['tax_query'][0]['terms'] as $id)
 				{
-					$xlat = icl_object_id($id, $query['tax_query'][0]['taxonomy'], true);
+					$xlat = @icl_object_id($id, $query['tax_query'][0]['taxonomy'], true);
 					if(!is_null($xlat)) $res[] = $xlat;
 				}
 			
@@ -631,7 +632,7 @@ if(defined('ICL_SITEPRESS_VERSION') && defined('ICL_LANGUAGE_CODE'))
 			{
 				foreach($query['post__in'] as $id)
 				{
-					$xlat = icl_object_id($id, $query['post_type'], true);
+					$xlat = @icl_object_id($id, $query['post_type'], true);
 					if(!is_null($xlat)) $res[] = $xlat;
 				}
 				
@@ -689,7 +690,24 @@ if(defined('ICL_SITEPRESS_VERSION') && defined('ICL_LANGUAGE_CODE'))
 
 }
 
-
+/*fix for: https://wpml.org/errata/translation-editor-support-avia-layout-builder-enfold/*/
+if(!function_exists('avia_wpml_sync_avia_layout_builder'))
+{
+	add_action( 'wpml_translation_job_saved', 'avia_wpml_sync_avia_layout_builder', 10, 3 );
+	
+	function avia_wpml_sync_avia_layout_builder( $new_post_id, $fields, $job ) {
+	    if ( isset( $fields['body']['data'] ) ) {
+	        if ( 'active' === get_post_meta( $new_post_id, '_aviaLayoutBuilder_active', true ) ) {
+	            update_post_meta(
+	                $new_post_id,
+	                '_aviaLayoutBuilderCleanData',
+	                $fields['body']['data']
+	            );
+	        }
+	    }
+	}
+	
+}
 
 
 

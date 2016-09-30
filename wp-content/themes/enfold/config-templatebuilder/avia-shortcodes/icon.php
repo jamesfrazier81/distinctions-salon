@@ -129,7 +129,8 @@ if ( !class_exists( 'av_font_icon' ) )
 					
 				array(
 						"name" 	=> __("Optional Tooltip",'avia_framework' ),
-						"desc" 	=> __("Add a tooltip for this Icon. The tooltip will appear on mouse over",'avia_framework' ),
+						"desc" 	=> __("Add a tooltip for this Icon. The tooltip will appear on mouse over",'avia_framework' )
+						."<br/><small>". __("Please note: Images within the tooltip are currently not supported",'avia_framework' )."</small>",
 						"id" 	=> "content",
 						"type" 	=> "textarea",
 						"std" 	=> ""),
@@ -149,7 +150,9 @@ if ( !class_exists( 'av_font_icon' ) )
                     "name"  => __("Icon Color", 'avia_framework' ),
                     "desc"  => __("Here you can set the  color of the icon. Enter no value if you want to use the standard font color.", 'avia_framework' ),
                     "id"    => "color",
+                    "rgba" 	=> true,
                     "type"  => "colorpicker"),	
+                    
 				array(
 						"type" 	=> "close_div",
 						'nodescription' => true

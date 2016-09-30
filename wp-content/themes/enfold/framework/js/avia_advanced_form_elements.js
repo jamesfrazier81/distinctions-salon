@@ -761,7 +761,9 @@ avia_clone_sets: function to modify sets: add them, remove them and recalculate 
 						action: 'avia_ajax_modify_set',
 						method: 'add',
 						elementSlug: elementSlug,
-						context: page_context
+						context: page_context,
+						_wpnonce: $('input[name=avia-nonce]').val(),
+						_wp_http_referer: $('input[name=_wp_http_referer]').val(),
 						
 					},
 					beforeSend: function()

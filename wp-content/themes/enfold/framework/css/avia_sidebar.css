@@ -18,11 +18,7 @@ cursor: pointer;
 }
 
 .activate_spinner{
-display: block !important;
-position: absolute;
-top: 10px;
-right: 4px;
-background-color: #ECECEC;
+visibility: visible;
 }
 
 .avia-add-widget {

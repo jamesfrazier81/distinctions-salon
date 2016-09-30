@@ -64,10 +64,6 @@
     });
 
 
-	$(window).load(function(){
-	//initialize after images are loaded
-	});
-
 
 
 
@@ -146,7 +142,7 @@
 		//activates animation for iconlist
 		if($.fn.avia_sc_iconlist)
 		{
-			$('.avia-icon-list', container).avia_sc_iconlist();
+			$('.avia-icon-list.av-iconlist-big', container).avia_sc_iconlist();
 		}
 
 		//activates animation for progress bar
@@ -455,7 +451,7 @@
 	{
 		loading: false, 
 		finished: false, 
-		src: 'https://maps.googleapis.com/maps/api/js?v=3.6&sensor=false&callback=aviaOnGoogleMapsLoaded' 
+		src: 'https://maps.googleapis.com/maps/api/js?v=3.24&callback=aviaOnGoogleMapsLoaded' 
 	}
 	
   	$.AviaMapsAPI.prototype =
@@ -475,6 +471,11 @@
 				var script 	= document.createElement('script');
 				script.type = 'text/javascript';	
 				script.src 	= $.AviaMapsAPI.apiFiles.src;
+				
+				if(avia_framework_globals.gmap_api != 'undefined' && avia_framework_globals.gmap_api != "")
+				{
+					script.src 	+= "&key=" + avia_framework_globals.gmap_api;
+				}
 				
       			document.body.appendChild(script);
 			}
@@ -517,6 +518,7 @@
 				center: new google.maps.LatLng(this.$data.marker[0].lat, this.$data.marker[0].long),
 				styles:[{featureType: "poi", elementType: "labels", stylers: [ { visibility: "off" }] }]
 			};
+			
 
 			this.map = new google.maps.Map(this.container, this.mapVars);
 		
@@ -546,7 +548,7 @@
 		
 		_applyMapStyle: function()
 		{
-			var stylers = [], style = [], mapType;
+			var stylers = [], style = [], mapType, style_color = "";
 			
 			if(this.$data.hue != "") stylers.push({hue: this.$data.hue});
 			if(this.$data.saturation != "") stylers.push({saturation: this.$data.saturation});
@@ -563,7 +565,50 @@
 						  	{ visibility: "off" }
 					      ]
 					    }];
+					    
+				
+				if(this.$data.saturation == "fill")
+				{
+					   
+					style_color = this.$data.hue || "#242424";
 					
+					var c = style_color.substring(1);      // strip #
+					var rgb = parseInt(c, 16);   // convert rrggbb to decimal
+					var r = (rgb >> 16) & 0xff;  // extract red
+					var g = (rgb >>  8) & 0xff;  // extract green
+					var b = (rgb >>  0) & 0xff;  // extract blue
+					
+					var luma = 0.2126 * r + 0.7152 * g + 0.0722 * b; // per ITU-R BT.709
+					var lightness = 1;
+					var street_light = 2;
+					
+					if (luma > 60) {
+					    lightness = -1;
+					    street_light = 3;
+					}
+					if (luma > 220) {
+					    lightness = -2;
+					    street_light = -2;
+					}
+					
+				style = [
+{"featureType":"all","elementType":"all","stylers":[{"color":style_color},{"lightness":0}]},
+{"featureType":"all","elementType":"labels.text.fill","stylers":[{"color":style_color},{"lightness":(25 * street_light)}]},
+{"featureType":"all","elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":style_color},{"lightness":3}]},
+{"featureType":"all","elementType":"labels.icon","stylers":[{"visibility":"off"}]},
+{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":style_color},{"lightness":30}]},
+{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":style_color},{"lightness":30},{"weight":1.2}]},
+{"featureType":"landscape","elementType":"geometry","stylers":[{visibility: 'simplified'},{"color":style_color},{"lightness":3}]},
+{"featureType":"poi","elementType":"geometry","stylers":[{ "visibility": "off" }]},
+{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":style_color},{"lightness":-3}]},
+{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":style_color},{"lightness":2},{"weight":0.2}]},
+{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":style_color},{"lightness":-3}]},
+{"featureType":"road.local","elementType":"geometry","stylers":[{"color":style_color},{"lightness":-3}]},
+{"featureType":"transit","elementType":"geometry","stylers":[{"color":style_color},{"lightness":-3}]},
+{"featureType":"water","elementType":"geometry","stylers":[{"color":style_color},{"lightness":-20}]}
+						];
+				}	
+				
 				mapType = new google.maps.StyledMapType(style, { name:"av_map_style" });
 				this.map.mapTypes.set('av_styled_map', mapType);
 				this.map.setMapTypeId('av_styled_map');
@@ -1308,7 +1353,9 @@ $.fn.avia_masonry = function(options)
 							$.avia_utilities.preload({container: load_container, single_callback:  function()
 							{
 								var links = masonry.find('.av-masonry-sort a'),
-									    filter_container = masonry.find('.av-sort-by-term');
+									filter_container = masonry.find('.av-sort-by-term'),
+									allowed_filters = filter_container.data("av-allowed-sort");
+									console.log(allowed_filters);
 								
 								filter_container.hide();
 								
@@ -1319,7 +1366,8 @@ $.fn.avia_masonry = function(options)
 								setTimeout(function(){ the_win.trigger('av-height-change'); }, 550);
 								if(links)
 								{
-									$(links).each(function(filterlinkindex){
+									$(links).each(function(filterlinkindex)
+									{
 										var filterlink = $(this),
 										sort = filterlink.data('filter');
 
@@ -1327,8 +1375,8 @@ $.fn.avia_masonry = function(options)
 										{
 										    $(new_items).each(function(itemindex){
 										        var item = $(this);
-										
-										        if(item.hasClass(sort))
+												
+										        if(item.hasClass(sort) && allowed_filters.indexOf(sort) !== -1)
 										        {
 										            var term_count = filterlink.find('.avia-term-count').text();
 										            filterlink.find('.avia-term-count').text(' ' + (parseInt(term_count) + 1) + ' ');
@@ -1766,6 +1814,9 @@ $.fn.avia_masonry = function(options)
     		
     		if(this.$slider.data('slide_height')) this.options.height = this.$slider.data('slide_height');
     		
+    		//if background attachment is set to fixed or scroll disable the parallax effect
+    		this.options.parallax_enabled = this.$slider.data('image_attachment') == "" ? true : false;
+    		
     		//elements that get subtracted from the image height
     		this.$subtract = $(this.options.subtract);
     		
@@ -1779,8 +1830,10 @@ $.fn.avia_masonry = function(options)
     		//parallax scroll if element if leaving viewport
 			setTimeout(function()
 			{
-				if(!_self.isMobile) //disable parallax scrolling on mobile
-    			_self.$win.on( 'scroll', $.proxy( _self._on_scroll, _self) );
+				if(!_self.isMobile && _self.options.parallax_enabled) //disable parallax scrolling on mobile
+    			{
+	    			_self.$win.on( 'scroll', $.proxy( _self._on_scroll, _self) );
+    			}
     			
     		},100);
 			/**/
@@ -2828,12 +2881,12 @@ $.fn.avia_sc_tabs= function(options)
 					 	{
 					 		if(currentElement.is(':checked')) { value = true } else {value = ''}
 					 	}
-
+					 	
 					 	send.dataObj[name] = encodeURIComponent(value);
 
 					 	if(classes && classes.match(/is_empty/))
 						{
-							if(value == '')
+							if(value == '' || value == null)
 							{
 								surroundingElement.removeClass("valid error ajax_alert").addClass("error");
 								send.validationError = true;
@@ -3278,7 +3331,7 @@ $.fn.avia_sc_tabs= function(options)
     			
     		this.open = itemNo;
     		
-    		if(_self.autoplay && typeof slide != "undefined") { clearInterval(_self.autoplay); _self.autoplay == false; }
+    		if(_self.autoplay && typeof slide != "undefined") { clearInterval(_self.autoplay); _self.autoplay = false; }
     		
     		this.$slides.removeClass('aviaccordion-active-slide').each(function(i)
     		{
@@ -3402,7 +3455,7 @@ $.fn.aviaccordion = function( options )
 	    	var _self 		= this, 
 	    		modifier 	= 30 * _self.options.animation, 
 	    		fade_out 	= {opacity:0}, 
-	    		fade_start  = {display:'inline', opacity:0},
+	    		fade_start  = {display:'inline-block', opacity:0},
 	    		fade_in		= {opacity:1};
 	    		
     		this.$next = _self.$slides.eq(this.open);
@@ -4184,6 +4237,7 @@ Avia Slideshow
 		_bgPreloadImages : function(callback)
     	{
     		this._getImageURLS();
+    		
     		this._preloadSingle(0, function()
     		{
     			this._kickOff();
@@ -4229,7 +4283,14 @@ Avia Slideshow
 					if(typeof callback == 'function') callback.apply( _self, [objImage, key] );
 				});
 				
-				objImage.src = _self.imageUrls[key]['url'];
+				if(_self.imageUrls[key]['url'] != "")
+				{
+					objImage.src = _self.imageUrls[key]['url'];
+				}
+				else
+				{
+					$(objImage).trigger('error');
+				}
 			}
 			else
 			{
@@ -4462,12 +4523,14 @@ Avia Slideshow
 		
 		_slide: function(dir)
 		{
-			var sliderWidth		= this.$slider.width(),
+			var dynamic			= false, //todo: pass by option if a slider is dynamic
+				modifier		= dynamic == true ? 2 : 1,
+				sliderWidth		= this.$slider.width(),
 				direction		= dir === 'next' ? -1 : 1,
 				property  		= this.browserPrefix + 'transform',
 				reset			= {}, transition = {},  transition2 = {},
 				trans_val 		= ( sliderWidth * direction * -1),
-				trans_val2 		= ( sliderWidth * direction);
+				trans_val2 		= ( sliderWidth * direction) / modifier;
 			
 			//do a css3 animation
 			if(this.cssActive)
@@ -4494,17 +4557,25 @@ Avia Slideshow
 				transition2.left = 0;
 			}
 			
+			if(dynamic)
+			{
+				transition['z-index']  = "1";
+				transition2['z-index']  = "2";
+			}
+			
 			this._slide_animate(reset, transition, transition2);
 		},
 		
 		_slide_up: function(dir)
 		{
-			var sliderHeight	= this.$slider.height(),
+			var dynamic			= true, //todo: pass by option if a slider is dynamic
+				modifier		= dynamic == true ? 2 : 1,
+				sliderHeight	= this.$slider.height(),
 				direction		= dir === 'next' ? -1 : 1,
 				property  		= this.browserPrefix + 'transform',
 				reset			= {}, transition = {},  transition2 = {},
 				trans_val 		= ( sliderHeight * direction * -1),
-				trans_val2 		= ( sliderHeight * direction);
+				trans_val2 		= ( sliderHeight * direction) / modifier;
 			
 			//do a css3 animation
 			if(this.cssActive)
@@ -4531,6 +4602,11 @@ Avia Slideshow
 				transition2.top = 0;
 			}
 			
+			if(dynamic)
+			{
+				transition['z-index']  = "1";
+				transition2['z-index']  = "2";
+			}
 			this._slide_animate(reset, transition, transition2);
 		},
 		
@@ -4733,6 +4809,11 @@ Avia Slideshow
 			
 			this.slideshow = new this._timer( function()
 			{
+				/*
+				var videoApi = self.$slides.eq(self.current).data('aviaVideoApi')
+				if(!videoApi){}
+				*/
+				
 				self._navigate( 'next' );
 		
 				if ( self.options.autoplay )

@@ -18,7 +18,7 @@ if( !class_exists( 'avia_wp_export' ) )
 {
 	class avia_wp_export 
 	{
-		function avia_wp_export($avia_superobject)
+		function __construct($avia_superobject)
 		{
 			if(!isset($_GET['avia_export'])) return;
 		
@@ -41,6 +41,9 @@ if( !class_exists( 'avia_wp_export' ) )
 			
 			$widget_settings = $this->export_widgets();
 			$widget_settings = base64_encode(serialize($widget_settings));
+			
+			$fonts = $this->export_option( 'avia_builder_fonts' );
+			
 			
 			//export of options
 			$export = base64_encode(serialize($export));
@@ -78,6 +81,15 @@ if( !class_exists( 'avia_wp_export' ) )
 			echo '$widget_settings = "';
 			print_r($widget_settings);
 			echo '";</pre>';
+			
+			if(!empty($fonts))
+			{
+				echo '<pre>'."\n";
+				echo '$fonts = "';
+				print_r($fonts);
+				echo '";</pre>';
+			}
+			
 
 			exit();
 		}
@@ -99,6 +111,19 @@ if( !class_exists( 'avia_wp_export' ) )
             print $export_data;
             die();
         }
+        
+        function export_option( $option_name )
+        {
+	        $option = get_option( $option_name  );
+	        
+	        if(!empty($option))
+	        {
+				$option = base64_encode( serialize( $option ) );
+	        }
+	        
+	        return $option;
+        }
+        
 		
 		function export_widgets()
 		{

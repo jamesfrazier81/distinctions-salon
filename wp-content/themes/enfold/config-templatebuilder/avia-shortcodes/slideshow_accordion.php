@@ -38,6 +38,17 @@ if ( !class_exists( 'avia_sc_slider_accordion' ) )
 			{
 				$this->elements = array(
 					
+					array(
+							"type" 	=> "tab_container", 'nodescription' => true
+						),
+						
+					array(
+							"type" 	=> "tab",
+							"name"  => __("Slide Content" , 'avia_framework'),
+							'nodescription' => true
+						),
+					
+					
 					array(	
 							"name" 	=> __("Which type of slider is this?",'avia_framework' ),
 							"desc" 	=> __("Slides can either be generated based on images you choose or on recent post entries", 'avia_framework' ),
@@ -161,24 +172,7 @@ if ( !class_exists( 'avia_sc_slider_accordion' ) )
 							"subtype" =>  AviaHelper::get_registered_image_sizes(500, false, true)		
 							),
 					
-					array(	
-						"name" 	=> __("Slide Title",'avia_framework' ),
-						"desc" 	=> __("Display the entry title by default?",'avia_framework' ),
-						"id" 	=> "title",
-						"type" 	=> "select",
-						"std" 	=> "true",
-						"subtype" => array(	__('Yes - display everywhere','avia_framework' ) =>'active',
-											__('Yes - display, but remove title on mobile devices','avia_framework' ) =>'no-mobile',
-											__('Display only on active slides' ) =>'on-hover',
-											__('No, never display title','avia_framework' ) =>'inactive')),	
 					
-					array(	
-							"name" 	=> __("Display Excerpt?", 'avia_framework' ),
-							"desc" 	=> __("Check if excerpt/caption of the slide should also be displayed", 'avia_framework' ) ."</small>" ,
-							"id" 	=> "excerpt",
-							"required"=> array('title','not','inactive'),
-							"std" 	=> "",
-							"type" 	=> "checkbox"),
 					
 							
 					array(	
@@ -198,7 +192,74 @@ if ( !class_exists( 'avia_sc_slider_accordion' ) )
 						"required"=> array('autoplay','contains','true'),
 						"subtype" => 
 						array('3'=>'3','4'=>'4','5'=>'5','6'=>'6','7'=>'7','8'=>'8','9'=>'9','10'=>'10','15'=>'15','20'=>'20','30'=>'30','40'=>'40','60'=>'60','100'=>'100')),
-
+					
+					array(
+							"type" 	=> "close_div",
+							'nodescription' => true
+						),
+					
+					array(
+						"type" 	=> "tab",
+						"name"	=> __("Slide Caption",'avia_framework' ),
+						'nodescription' => true
+					),
+					
+					
+					array(	
+						"name" 	=> __("Slide Title",'avia_framework' ),
+						"desc" 	=> __("Display the entry title by default?",'avia_framework' ),
+						"id" 	=> "title",
+						"type" 	=> "select",
+						"std" 	=> "true",
+						"subtype" => array(	__('Yes - display everywhere','avia_framework' ) =>'active',
+											__('Yes - display, but remove title on mobile devices','avia_framework' ) =>'no-mobile',
+											__('Display only on active slides' ) =>'on-hover',
+											__('No, never display title','avia_framework' ) =>'inactive')),	
+					
+					array(	
+							"name" 	=> __("Display Excerpt?", 'avia_framework' ),
+							"desc" 	=> __("Check if excerpt/caption of the slide should also be displayed", 'avia_framework' ) ."</small>" ,
+							"id" 	=> "excerpt",
+							"required"=> array('title','not','inactive'),
+							"std" 	=> "",
+							"type" 	=> "checkbox"),
+					
+					array(	
+						"name" 	=> __("Alignment",'avia_framework' ),
+						"desc" 	=> __("Change the alignment of title and excerpt here",'avia_framework' ),
+						"id" 	=> "accordion_align",
+						"type" 	=> "select",
+						"std" 	=> "true",
+						"subtype" => array(	__('Default' ) =>'',
+											__('Centered','avia_framework' ) =>'av-accordion-text-center',
+					)),
+					
+					array(	
+							"name" 	=> __("Title Font Size", 'avia_framework' ),
+							"desc" 	=> __("Select a custom font size. Leave empty to use the default", 'avia_framework' ),
+							"id" 	=> "custom_title_size",
+							"type" 	=> "select",
+							"required"=> array('title','not','inactive'),
+							"std" 	=> "",
+							"subtype" => AviaHtmlHelper::number_array(10,40,1, array( __("Default Size", 'avia_framework' )=>''), 'px'),
+						),
+					
+					array(	
+							"name" 	=> __("Excerpt Font Size", 'avia_framework' ),
+							"desc" 	=> __("Select a custom font size. Leave empty to use the default", 'avia_framework' ),
+							"id" 	=> "custom_excerpt_size",
+							"type" 	=> "select",
+							"required"=> array('excerpt','not',''),
+							"std" 	=> "",
+							"subtype" => AviaHtmlHelper::number_array(10,40,1, array( __("Default Size", 'avia_framework' )=>''), 'px'),
+						),
+					
+					array(
+							"type" 	=> "close_div",
+							'nodescription' => true
+						),
+		
+					
 				);
 
 			}
@@ -281,6 +342,9 @@ if ( !class_exists( 'avia_sc_slider_accordion' ) )
 				'excerpt'		=> '',
 				'interval'		=> 5,
 				'offset'		=> 0,
+				'custom_title_size' => '',
+				'custom_excerpt_size' => '',
+				'accordion_align'	=> '',				
 				'handle'		=> $shortcodename,
 				'content'		=> ShortcodeHelper::shortcode2array($content, 1)
 				
@@ -372,7 +436,10 @@ if ( !class_exists( 'aviaccordion' ) )
 				'title'			=> 'active',
 				'excerpt'		=> '',
 				'content'		=> array(),
-				'custom_markup' => ''
+				'custom_title_size' => '',
+				'custom_excerpt_size' => '',
+				'custom_markup' => '',
+				'accordion_align'=> ''
 				), $config);
 
 			$this->config = apply_filters('avf_aviaccordion_config', $this->config);
@@ -548,6 +615,8 @@ if ( !class_exists( 'aviaccordion' ) )
 			if($slideCount == 0) return $output;
 			$left 	  	   = 100 / $slideCount;
 			$overlay_class = "aviaccordion-title-".$this->config['title'];
+			$accordion_align = $this->config['accordion_align'];
+			
 			
 			$data = "data-av-maxheight='".$this->config['max-height']."' data-autoplay='".$this->config['autoplay']."' data-interval='".$this->config['interval']."' ";
 			$markup = avia_markup_helper(array('context' => 'blog','echo'=>false, 'custom_markup'=>$this->config['custom_markup']));
@@ -569,17 +638,22 @@ if ( !class_exists( 'aviaccordion' ) )
 
 				$output .= "<li class='aviaccordion-slide aviaccordion-slide-{$counter}' {$style} {$data} {$markup}>";
 				$output .= "<a class='aviaccordion-slide-link noHover' href='".$slide->av_permalink."' ".$slide->av_target.">";
-				$output .= "<div class='aviaccordion-preview' style='width:".(ceil($left) +0.1)."%'>";
+				$output .= "<div class='aviaccordion-preview  {$accordion_align}' style='width:".(ceil($left) +0.1)."%'>";
 				
-				
+			
 				if($this->config['title'] !== "inactive" && (!empty($slide->post_title) || !empty($slide->post_excerpt)))
 				{
-					$markup_title = avia_markup_helper(array('context' => 'entry_title','echo'=>false, 'id'=>$slide->ID, 'custom_markup'=>$this->config['custom_markup']));
-					$markup_content = avia_markup_helper(array('context' => 'entry_content','echo'=>false, 'id'=>$slide->ID, 'custom_markup'=>$this->config['custom_markup']));
+					$markup_title = avia_markup_helper(array('context' => 'entry_title','echo'=>false, 'id'=>$slide_id, 'custom_markup'=>$this->config['custom_markup']));
+					$markup_content = avia_markup_helper(array('context' => 'entry_content','echo'=>false, 'id'=>$slide_id, 'custom_markup'=>$this->config['custom_markup']));
+					
+					
+					$title_style = !empty( $this->config['custom_title_size'] ) ? "style='font-size:".$this->config['custom_title_size']."px'" : "";
+					$excerpt_style = !empty( $this->config['custom_excerpt_size'] ) ? "style='font-size:".$this->config['custom_excerpt_size']."px'" : "";
+					
 
 					$output .= "<div class='aviaccordion-preview-title-pos'><div class='aviaccordion-preview-title-wrap'><div class='aviaccordion-preview-title'>";
-					$output .= !empty($slide->post_title) ? "<h3 class='aviaccordion-title' {$markup_title}>".$slide->post_title."</h3>" : "";
-					$output .= !empty($slide->post_excerpt) && !empty($this->config['excerpt']) ? "<div class='aviaccordion-excerpt' {$markup_content}>".wpautop($slide->post_excerpt)."</div>" : "";
+					$output .= !empty($slide->post_title) ? "<h3 class='aviaccordion-title' {$markup_title} {$title_style}>".$slide->post_title."</h3>" : "";
+					$output .= !empty($slide->post_excerpt) && !empty($this->config['excerpt']) ? "<div class='aviaccordion-excerpt' {$excerpt_style} {$markup_content}>".wpautop($slide->post_excerpt)."</div>" : "";
 					$output .= "</div></div></div>";
 				}
 				$output .= "</div>";

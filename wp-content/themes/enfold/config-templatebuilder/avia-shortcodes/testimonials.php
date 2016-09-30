@@ -78,14 +78,14 @@ if ( !class_exists( 'avia_sc_testimonial' ) )
 
 									array(
 									"name" 	=> __("Name", 'avia_framework' ),
-									"desc" 	=> "Enter the Name of the Person to quote",
+									"desc" 	=> __("Enter the Name of the Person to quote", 'avia_framework' ),
 									"id" 	=> "name",
 									"std" 	=> "",
 									"type" 	=> "input"),
 
 									array(
 									"name" 	=> __("Subtitle below name", 'avia_framework' ),
-									"desc" 	=> "Can be used for a job description",
+									"desc" 	=> __("Can be used for a job description", 'avia_framework' ),
 									"id" 	=> "subtitle",
 									"std" 	=> "",
 									"type" 	=> "input"),
@@ -100,14 +100,14 @@ if ( !class_exists( 'avia_sc_testimonial' ) )
 
 									array(
 									"name" 	=> __("Website Link", 'avia_framework' ),
-									"desc" 	=> "Link to the Persons website",
+									"desc" 	=> __("Link to the Persons website", 'avia_framework' ),
 									"id" 	=> "link",
 									"std" 	=> "http://",
 									"type" 	=> "input"),
 
 									array(
 									"name" 	=> __("Website Name", 'avia_framework' ),
-									"desc" 	=> "Linktext for the above Link",
+									"desc" 	=> __("Linktext for the above Link", 'avia_framework' ),
 									"id" 	=> "linktext",
 									"std" 	=> "",
 									"type" 	=> "input"),

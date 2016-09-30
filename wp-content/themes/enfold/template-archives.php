@@ -3,7 +3,7 @@
 	Template Name: Archives
 	*/
 
-
+	if ( !defined('ABSPATH') ){ die(); }
 	/*
 	 * get_header is a basic wordpress function, used to retrieve the header.php file in your theme directory.
 	 */

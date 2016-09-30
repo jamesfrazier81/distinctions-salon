@@ -30,22 +30,23 @@ if(!function_exists('avia_woo_dynamic_css'))
 			extract($colors);
 			$constant_font = avia_backend_calc_preceived_brightness($primary, 230) ?  '#ffffff' : $bg;
 			$dark_bg2 = avia_backend_calculate_similar_color($bg2, 'darker', 1);
+			$primary2 = avia_backend_calculate_similar_color($primary, 'darker', 4);
 			
 			$output .= "
 			
-			$key .cart_dropdown .dropdown_widget li a, #top $key  .avia_cart_buttons .button,  #top $key .dropdown_widget .buttons .button, $key .cart_dropdown_first .cart_dropdown_link{
+			$key .cart_dropdown .dropdown_widget li a, #top $key  .avia_cart_buttons .button,  #top $key .dropdown_widget .buttons .button, $key .cart_dropdown_first .cart_dropdown_link, #top $key p.order-info mark{
 			color: $color;
 			}
 			
-			$key .woocommerce-tabs .tabs a, $key .product_meta, $key .quantity input.qty, $key .cart_dropdown .dropdown_widget, $key .avia_select_fake_val, $key address, $key .product>a $key .product_excerpt, $key .term_description, #top $key .price .from, #top #wrap_all $key del, $key .dynamic-title .dynamic-heading, $key .dynamic-title a, $key .entry-summary .woocommerce-product-rating  .woocommerce-review-link, $key .chosen-container-single .chosen-single span, #top $key .select2-container .select2-choice{
+			$key .woocommerce-tabs .tabs a, $key .product_meta, $key .quantity input.qty, $key .cart_dropdown .dropdown_widget, $key .avia_select_fake_val, $key address, $key .product>a $key .product_excerpt, $key .term_description, #top $key .price .from, #top #wrap_all $key del, $key .dynamic-title .dynamic-heading, $key .dynamic-title a, $key .entry-summary .woocommerce-product-rating  .woocommerce-review-link, $key .chosen-container-single .chosen-single span, #top $key .select2-container .select2-choice, $key .woocommerce-MyAccount-navigation-link.is-active a{
 			color: $meta;
 			}
 			
-			$key div.product .woocommerce-tabs ul.tabs li.active a, $key .cart_dropdown .dropdown_widget .widget_shopping_cart_content,  $key .cart_dropdown_link, $key .inner_product_header, $key .avia-arrow, #top $key .variations select, #top $key .variations input, #top $key #reviews input[type='text'], $key #reviews .comment-text, $key #reviews #comment, $key .single-product-main-image .images a, #top $key .shop_table.cart .input-text, #top $key form.login .input-text, #top $key form.register .input-text, $key .chosen-container-single .chosen-search, $key .products .product-category h3:before, #top $key .quantity input.qty{
+			$key div.product .woocommerce-tabs ul.tabs li.active a, $key .cart_dropdown .dropdown_widget .widget_shopping_cart_content,  $key .cart_dropdown_link, $key .inner_product_header, $key .avia-arrow, #top $key .variations select, #top $key .variations input, #top $key #reviews input[type='text'], #top $key #reviews input[type='email'], $key #reviews .comment-text, $key #reviews #comment, $key .single-product-main-image .images a, #top $key .shop_table.cart .input-text, #top $key form.login .input-text, #top $key form.register .input-text, $key .chosen-container-single .chosen-search, $key .products .product-category h3:before, #top $key .quantity input.qty{
 			background-color: $bg;
 			}
 			
-			$key .woocommerce-tabs .tabs .active, $key div.product .woocommerce-tabs .panel, $key .activeslideThumb, $key #payment li, $key .widget_price_filter .ui-slider-horizontal .ui-slider-range,  $key .avia_cart, $key form.login, $key form.register, $key .col-1, $key .col-2, $key .variations_form,  $key .dynamic-title, $key .single-product-main-image .thumbnails a , $key .quantity input.qty, $key .avia_cart_buttons,  #top  $key .dropdown_widget .buttons, div .dropdown_widget .cart_list li:hover, $key .woocommerce-info, #top $key .chosen-container-single .chosen-single, #top $key .chosen-search input[type='text'], $key .chosen-results, $key .chosen-container .chosen-drop, #top $key .select2-container .select2-choice, $key .widget_layered_nav_filters .chosen a:hover,  $key .widget_layered_nav .chosen a:hover {
+			$key .woocommerce-tabs .tabs .active, $key div.product .woocommerce-tabs .panel, $key .activeslideThumb, $key #payment li, $key .widget_price_filter .ui-slider-horizontal .ui-slider-range,  $key .avia_cart, $key form.login, $key form.register, $key .col-1, $key .col-2, $key .variations_form,  $key .dynamic-title, $key .single-product-main-image .thumbnails a , $key .quantity input.qty, $key .avia_cart_buttons,  #top  $key .dropdown_widget .buttons, div .dropdown_widget .cart_list li:hover, $key .woocommerce-info, #top $key .chosen-container-single .chosen-single, #top $key .chosen-search input[type='text'], $key .chosen-results, $key .chosen-container .chosen-drop, #top $key .select2-container .select2-choice, $key .widget_layered_nav_filters .chosen a:hover,  $key .widget_layered_nav .chosen a:hover, $key .woocommerce-MyAccount-navigation-link.is-active, $key .woocommerce-MyAccount-navigation-link:hover{
 			background-color: $bg2;
 			}
 			
@@ -102,6 +103,58 @@ if(!function_exists('avia_woo_dynamic_css'))
 	
 			";
 			
+			//bookings menu
+			$output .= "
+			$key .wc-bookings-booking-form .block-picker li a, #top $key .wc-bookings-date-picker .ui-datepicker td{
+			border-color: $border;	
+			}
+			
+			#top $key .wc-bookings-booking-form .block-picker li a:hover,
+			#top $key .wc-bookings-booking-form .block-picker li a:focus,
+			#top $key .wc-bookings-booking-form .block-picker li a.selected{
+			background-color: $primary !important;
+			color:$constant_font !important;
+			}
+			
+			#top $key .wc-bookings-date-picker legend .wc-bookings-date-picker-choose-date, #top $key .wc-bookings-date-picker .ui-datepicker-header{
+			border-color: $primary;
+			background-color: $primary;
+			color:$constant_font;
+			}
+			
+			$key .wc-bookings-date-picker .ui-datepicker td.bookable a{
+			background-color: $primary !important;
+			color:$constant_font !important;
+			border-color: $border;
+			}
+			
+			#top $key .wc-bookings-date-picker .ui-datepicker th,
+			#top $key .wc-bookings-date-picker .ui-datepicker td .ui-state-default{
+			color:$color;	
+			}
+			
+			#top $key .wc_bookings_field_start_date, #top $key .wc-bookings-date-picker span.label{
+				color: $meta;
+			}
+			
+			#top $key .wc-bookings-booking-form .wc-bookings-booking-cost, #top $key .wc-bookings-date-picker .ui-datepicker td.ui-datepicker-other-month{
+				background-color: $bg2;
+			}
+			
+			#top .wc-bookings-booking-form .blockUI.blockOverlay{
+				background-color: $bg !important;
+			}
+			
+			
+			#top $key .wc-bookings-date-picker .ui-datepicker td.bookable-range .ui-state-default, 
+			#top $key .wc-bookings-date-picker .ui-datepicker td.ui-datepicker-current-day a,
+			#top $key .wc-bookings-date-picker .ui-datepicker td.bookable-range{
+				background: $primary2 !important;
+				color: $constant_font;
+			}
+			
+			
+			";
 			
 			//sort menu
 			$output .= "

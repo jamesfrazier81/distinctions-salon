@@ -7,7 +7,6 @@ function avia_woocommerce_enabled()
 	return false;
 }
 
-
 global $avia_config;
 
 //product thumbnails
@@ -61,7 +60,10 @@ else
 }
 
 
-
+if ( class_exists( 'WC_Bookings' ) )
+{
+	require_once( 'config-woocommerce-bookings/config.php' ); //compatibility with woocommerce plugin
+}
 
 
 
@@ -269,9 +271,13 @@ add_action( 'woocommerce_before_shop_loop_item_title', 'avia_shop_overview_extra
 function avia_shop_overview_extra_header_div()
 {
 	echo "<div class='inner_product_header'><div class='avia-arrow'></div>";
+	echo 	"<div class='inner_product_header_table'>";
+	echo 		"<div class='inner_product_header_cell'>";
 }
 
 add_action( 'woocommerce_after_shop_loop_item_title',  'avia_close_div', 1000);
+add_action( 'woocommerce_after_shop_loop_item_title',  'avia_close_div', 1001);
+add_action( 'woocommerce_after_shop_loop_item_title',  'avia_close_div', 1002);
 
 
 #
