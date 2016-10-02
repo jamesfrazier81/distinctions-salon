@@ -8,3 +8,60 @@
  Version:      1.0.0
  Text Domain:  enfold-child
 */
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,800';
+#top #wrap_all #main {
+  background-color: white; }
+  #top #wrap_all #main .av-special-heading h1 {
+    font-size: 60px;
+    font-weight: 300; }
+  #top #wrap_all #main .av-special-heading h2 {
+    font-size: 38px;
+    font-weight: 300; }
+  #top #wrap_all #main .av_textblock_section .avia_textblock p {
+    font-size: 14px;
+    font-weight: 300; }
+  #top #wrap_all #main .avia-button-wrap a {
+    background-color: #ffb540;
+    border: none;
+    transition: box-shadow 0.35s; }
+    #top #wrap_all #main .avia-button-wrap a:hover {
+      box-shadow: 0 0 30px rgba(255, 239, 188, 0.5); }
+
+#top #wrap_all #header_meta {
+  background-color: #ffb540; }
+  #top #wrap_all #header_meta .container .phone-info a {
+    color: black;
+    font-weight: 400;
+    cursor: pointer; }
+    #top #wrap_all #header_meta .container .phone-info a:first-child {
+      border-right: 1px solid black;
+      padding-right: 15px; }
+
+#top #wrap_all #header_main .logo {
+  padding: 20px; }
+
+#top #wrap_all #header_main .main_menu ul li a {
+  font-size: 14px;
+  font-weight: 300; }
+
+#top #wrap_all #main #home-intro .flex_column {
+  margin: 0; }
+  #top #wrap_all #main #home-intro .flex_column .av-special-heading h1 {
+    color: white;
+    text-shadow: 0 0 5px black; }
+  #top #wrap_all #main #home-intro .flex_column .av_textblock_section .avia_textblock p {
+    color: white;
+    text-shadow: 0 0 5px black; }
+
+#top #wrap_all #main #page-header .av-special-heading h2 {
+  color: white; }
+
+#top.logged-in #header_meta .container .phone-info a:first-child {
+  border: none !important;
+  padding: 0 !important; }
+
+#top .ui-dialog .ui-dialog-titlebar {
+  background-color: #ffb540; }
+  #top .ui-dialog .ui-dialog-titlebar .ui-dialog-title {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400; }

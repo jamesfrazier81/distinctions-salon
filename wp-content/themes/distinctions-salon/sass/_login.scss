@@ -1,0 +1,12 @@
+#top {
+	.ui-dialog {
+		.ui-dialog-titlebar {
+			background-color: $color-gold-med;
+
+			.ui-dialog-title {
+				font-family: $font-main;
+				font-weight: 400;
+			}
+		}
+	}
+}

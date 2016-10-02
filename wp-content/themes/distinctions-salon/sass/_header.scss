@@ -1,0 +1,31 @@
+#top #wrap_all {
+	#header_meta {
+		background-color: $color-gold-med;
+
+		.container .phone-info  {
+			a {
+				color: black;
+				font-weight: 400;
+				cursor: pointer;
+
+				&:first-child {
+					border-right: 1px solid black;
+					padding-right: 15px;
+				}
+			}
+		}
+	}
+
+	#header_main {
+		.logo {
+			padding: 20px;
+		}
+
+		.main_menu {
+			ul li a {
+				font-size: 14px;
+				font-weight: 300;
+			}
+		}
+	}
+}

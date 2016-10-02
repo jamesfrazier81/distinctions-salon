@@ -1,0 +1,37 @@
+#top #wrap_all #main {
+	background-color: white;
+	
+	.av-special-heading {
+		h1 {
+			font-size: 60px;
+			font-weight: 300;
+		}
+
+		h2 {
+			font-size: 38px;
+			font-weight: 300;
+		}
+	}
+
+	.av_textblock_section {
+		.avia_textblock {
+			p {
+				font-size: 14px;
+				font-weight: 300;
+			}
+		}
+	}
+
+	// Buttons
+	.avia-button-wrap {
+		a {
+			background-color: $color-gold-med;
+			border: none;
+			transition: box-shadow 0.35s;
+
+			&:hover {
+				box-shadow: 0 0 30px rgba($color-gold-light, 0.5);
+			}
+		}
+	}
+}

@@ -47,16 +47,16 @@ if ( WP_ENV == 'local' ) {
 } elseif ( WP_ENV == 'staging') {
 	// ** MySQL settings - You can get this info from your web host ** //
 	/** The name of the database for WordPress */
-	define('DB_NAME', ''); // staging_db_name
+	define('DB_NAME', 'dsalon_wp_stg'); // staging_db_name
 
 	/** MySQL database username */
-	define('DB_USER', ''); // staging_db_user
+	define('DB_USER', 'dsalon_stg_admin'); // staging_db_user
 
 	/** MySQL database password */
-	define('DB_PASSWORD', ''); // staging_db_password
+	define('DB_PASSWORD', 'D&dLTfS54uWN'); // staging_db_password
 
 	/** MySQL hostname */
-	define('DB_HOST', ''); // staging_db_host
+	define('DB_HOST', '107.180.48.129'); // staging_db_host
 
 	define('WP_SITEURL', "http://staging.distinctionssalon.com"); // staging_site_url
 
@@ -65,16 +65,16 @@ if ( WP_ENV == 'local' ) {
 } else {
 	// ** MySQL settings - You can get this info from your web host ** //
 	/** The name of the database for WordPress */
-	define('DB_NAME', ''); // production_db_name
+	define('DB_NAME', 'dsalon_wp_prd'); // production_db_name
 
 	/** MySQL database username */
-	define('DB_USER', ''); // production_db_user
+	define('DB_USER', 'dsalon_prd_admin'); // production_db_user
 
 	/** MySQL database password */
-	define('DB_PASSWORD', ''); // production_db_password
+	define('DB_PASSWORD', '6};!*z0n4]2%'); // production_db_password
 
 	/** MySQL hostname */
-	define('DB_HOST', ''); // production_db_host
+	define('DB_HOST', '107.180.48.129'); // production_db_host
 
 	define('WP_SITEURL', "http://distinctionssalon.com"); // production_site_url
 

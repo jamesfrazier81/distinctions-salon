@@ -38,7 +38,7 @@ gulp.task('js', function() {
 		.pipe(jshint())
 		.pipe(jshint.reporter('fail'))
 		.pipe(rename(function (path) {
-		    path.dirname += "/dist";
+		    path.dirname += "/";
 		    path.basename += ".min";
 		 	path.extname = ".js"
 		 }))
