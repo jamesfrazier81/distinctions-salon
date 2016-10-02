@@ -35,3 +35,28 @@
 		}
 	}
 }
+
+@media screen and (max-width: $media-tablet) {
+	#top #wrap_all #main {
+		.av-special-heading {
+			h1 {
+				font-size: 40px;
+				font-weight: 300;
+			}
+
+			h2 {
+				font-size: 30px;
+				font-weight: 300;
+			}
+		}
+
+		.av_textblock_section {
+			.avia_textblock {
+				p {
+					font-size: 13px;
+					font-weight: 300;
+				}
+			}
+		}
+	}
+}

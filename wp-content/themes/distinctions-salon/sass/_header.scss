@@ -1,31 +1,108 @@
 #top #wrap_all {
 	#header_meta {
-		background-color: $color-gold-med;
+		background-color: rgba($color-gray-dark, 0.75);
+		border: none;
 
 		.container .phone-info  {
 			a {
-				color: black;
+				color: white;
+				text-transform: uppercase;
+				font-size: 9px;
 				font-weight: 400;
 				cursor: pointer;
+				padding: 0 10px;
+				border-right: 1px solid white;
 
-				&:first-child {
-					border-right: 1px solid black;
-					padding-right: 15px;
+				&:last-child {
+					padding-right: 0;
+					border: 0;
 				}
 			}
 		}
 	}
 
 	#header_main {
+		border: none;
 		.logo {
-			padding: 20px;
+			padding: 20px 0 0 0;
 		}
 
 		.main_menu {
-			ul li a {
-				font-size: 14px;
-				font-weight: 300;
+			ul li {
+				a {
+					font-size: 14px;
+					font-weight: 300;
+				}
+
+				.sub-menu {
+					border: none;
+
+					li a {
+						border: none;
+						font-size: 13px;
+
+						&:hover {
+							background-color: $color-gray-dark;
+						}
+					}
+				}
 			}
+		}
+	}
+}
+
+@media screen and (max-width: $media-desktop-sm) {
+	#top #wrap_all {
+		#header_main {
+			.container {
+				height: 75px;
+				line-height: 75px;
+				
+				.logo {
+					max-width: 200px;
+				}
+
+				.main_menu {
+					ul li a {
+						line-height: 75px;
+						height: 75px;
+					}
+				}
+			}			
+		}
+	}
+}
+
+@media screen and (max-width: $media-tablet) {
+	#top #wrap_all {
+		#header_main {
+			.container {
+				.logo {
+					padding: 0;
+					max-width: 200px;
+				}
+
+				#advanced_menu_toggle {
+					border: none;
+					width: auto;
+
+					&:before {
+						display: none;
+					}
+
+					&:after {
+						content: '\f0c9';
+						font-family: $font-awesome;
+						font-size: 25px;
+						color: $color-gold-med;
+					}
+
+					&:hover {
+						background-color: transparent;
+						color: inherit;
+					}
+				}
+			}			
 		}
 	}
 }

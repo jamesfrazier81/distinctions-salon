@@ -27,41 +27,88 @@
     #top #wrap_all #main .avia-button-wrap a:hover {
       box-shadow: 0 0 30px rgba(255, 239, 188, 0.5); }
 
+@media screen and (max-width: 767px) {
+  #top #wrap_all #main .av-special-heading h1 {
+    font-size: 40px;
+    font-weight: 300; }
+  #top #wrap_all #main .av-special-heading h2 {
+    font-size: 30px;
+    font-weight: 300; }
+  #top #wrap_all #main .av_textblock_section .avia_textblock p {
+    font-size: 13px;
+    font-weight: 300; } }
+
 #top #wrap_all #header_meta {
-  background-color: #ffb540; }
+  background-color: rgba(97, 97, 97, 0.75);
+  border: none; }
   #top #wrap_all #header_meta .container .phone-info a {
-    color: black;
+    color: white;
+    text-transform: uppercase;
+    font-size: 9px;
     font-weight: 400;
-    cursor: pointer; }
-    #top #wrap_all #header_meta .container .phone-info a:first-child {
-      border-right: 1px solid black;
-      padding-right: 15px; }
+    cursor: pointer;
+    padding: 0 10px;
+    border-right: 1px solid white; }
+    #top #wrap_all #header_meta .container .phone-info a:last-child {
+      padding-right: 0;
+      border: 0; }
 
-#top #wrap_all #header_main .logo {
-  padding: 20px; }
+#top #wrap_all #header_main {
+  border: none; }
+  #top #wrap_all #header_main .logo {
+    padding: 20px 0 0 0; }
+  #top #wrap_all #header_main .main_menu ul li a {
+    font-size: 14px;
+    font-weight: 300; }
+  #top #wrap_all #header_main .main_menu ul li .sub-menu {
+    border: none; }
+    #top #wrap_all #header_main .main_menu ul li .sub-menu li a {
+      border: none;
+      font-size: 13px; }
+      #top #wrap_all #header_main .main_menu ul li .sub-menu li a:hover {
+        background-color: #616161; }
 
-#top #wrap_all #header_main .main_menu ul li a {
-  font-size: 14px;
-  font-weight: 300; }
+@media screen and (max-width: 990px) {
+  #top #wrap_all #header_main .container {
+    height: 75px;
+    line-height: 75px; }
+    #top #wrap_all #header_main .container .logo {
+      max-width: 200px; }
+    #top #wrap_all #header_main .container .main_menu ul li a {
+      line-height: 75px;
+      height: 75px; } }
 
-#top #wrap_all #main #home-intro .flex_column {
-  margin: 0; }
-  #top #wrap_all #main #home-intro .flex_column .av-special-heading h1 {
-    color: white;
-    text-shadow: 0 0 5px black; }
-  #top #wrap_all #main #home-intro .flex_column .av_textblock_section .avia_textblock p {
-    color: white;
-    text-shadow: 0 0 5px black; }
+@media screen and (max-width: 767px) {
+  #top #wrap_all #header_main .container .logo {
+    padding: 0;
+    max-width: 200px; }
+  #top #wrap_all #header_main .container #advanced_menu_toggle {
+    border: none;
+    width: auto; }
+    #top #wrap_all #header_main .container #advanced_menu_toggle:before {
+      display: none; }
+    #top #wrap_all #header_main .container #advanced_menu_toggle:after {
+      content: '\f0c9';
+      font-family: FontAwesome;
+      font-size: 25px;
+      color: #ffb540; }
+    #top #wrap_all #header_main .container #advanced_menu_toggle:hover {
+      background-color: transparent;
+      color: inherit; } }
 
-#top #wrap_all #main #page-header .av-special-heading h2 {
-  color: white; }
+#top #wrap_all #main {
+  padding-top: 118px; }
+  #top #wrap_all #main #home-intro .flex_column {
+    margin: 0; }
+    #top #wrap_all #main #home-intro .flex_column .av-special-heading h1 {
+      color: white;
+      text-shadow: 0 0 5px black; }
+    #top #wrap_all #main #home-intro .flex_column .av_textblock_section .avia_textblock p {
+      color: white;
+      text-shadow: 0 0 5px black; }
+  #top #wrap_all #main #page-header .av-special-heading h2 {
+    color: white; }
 
-#top.logged-in #header_meta .container .phone-info a:first-child {
-  border: none !important;
-  padding: 0 !important; }
-
-#top .ui-dialog .ui-dialog-titlebar {
-  background-color: #ffb540; }
-  #top .ui-dialog .ui-dialog-titlebar .ui-dialog-title {
-    font-family: "Open Sans", sans-serif;
-    font-weight: 400; }
+@media screen and (max-width: 990px) {
+  #top #wrap_all #main {
+    padding-top: 105px; } }

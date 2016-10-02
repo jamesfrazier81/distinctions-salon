@@ -1,10 +1,6 @@
 #top {
 	#wrap_all #main {
-		// Member access
-		.members-access-error {
-			
-		}
-
+		padding-top: 118px;
 		//Home page
 		#home-intro {
 			.flex_column {
@@ -38,10 +34,16 @@
 		}
 	}
 
-	&.logged-in {
-		#header_meta .container .phone-info a:first-child {
-			border: none !important;
-			padding: 0 !important;
-		}
+	// &.logged-in {
+	// 	#header_meta .container .phone-info a:first-child {
+	// 		border: none !important;
+	// 		padding: 0 !important;
+	// 	}
+	// }
+}
+
+@media screen and (max-width: $media-desktop-sm) {
+	#top #wrap_all #main {
+		padding-top: 105px;
 	}
 }
