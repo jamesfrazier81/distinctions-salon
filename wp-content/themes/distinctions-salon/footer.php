@@ -123,13 +123,13 @@
                                     'walker' => new avia_responsive_mega_menu(array('megamenu'=>'disabled'))
                                 );
 
-                            $menu = wp_nav_menu($args);
+                            /* $menu = wp_nav_menu($args);
                             
                             if($menu){ 
                             echo "<nav class='sub_menu_socket' ".avia_markup_helper(array('context' => 'nav', 'echo' => false)).">";
                             echo $menu;
                             echo "</nav>";
-							}
+							} */
                         ?>
 
                     </div>

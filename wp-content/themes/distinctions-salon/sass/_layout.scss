@@ -2,25 +2,41 @@
 	#wrap_all #main {
 		padding-top: 118px;
 		//Home page
-		#home-intro {
-			.flex_column {
+		.avia-fullscreen-slider {
+			.caption_fullwidth {
 				margin: 0;
 				
-				.av-special-heading {
-					h1 {
+				.slideshow_align_caption {
+					.avia-caption-title {
+						font-size: 38px;
+						font-weight: 300;
 						color: white;
-						text-shadow: 0 0 5px black;
+						// text-shadow: 0 0 5px black;
 					}
 				}
 
-				.av_textblock_section {
-					.avia_textblock {
-						p {
-							color: white;
-							text-shadow: 0 0 5px black;
-						}
+				.avia-caption-content  {
+					p {
+						color: white;
+						// text-shadow: 0 0 5px black;
 					}
 				}
+			}
+		}
+		
+		// Featured content CTAs
+		.av-masonry {
+			.av-masonry-container .av-masonry-entry .av-inner-masonry {
+				.av-inner-masonry-content {
+					.av-masonry-entry-content {
+						font-size: 18px;
+						display: inline-block;
+						margin: 0 auto;
+						padding: 10px;
+						background-color: rgba(black, 0.5);
+					}
+				}
+
 			}
 		}
 		

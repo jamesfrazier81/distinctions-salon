@@ -23,26 +23,39 @@
 
 	#header_main {
 		border: none;
-		.logo {
-			padding: 20px 0 0 0;
-		}
 
-		.main_menu {
-			ul li {
-				a {
-					font-size: 14px;
-					font-weight: 300;
-				}
+		.container {
+			height: 100px;
+			line-height: 100px;
 
-				.sub-menu {
-					border: none;
+			.logo {
+				padding: 20px 0;
 
-					li a {
+				// &:after {
+				// 	width: 100px;
+				// 	line-height: 100px;
+				// 	display: inline-block;
+				// 	content: 'Distinctions in Beauty';
+				// }
+			}
+
+			.main_menu {
+				ul li {
+					a {
+						font-size: 14px;
+						font-weight: 300;
+					}
+
+					.sub-menu {
 						border: none;
-						font-size: 13px;
 
-						&:hover {
-							background-color: $color-gray-dark;
+						li a {
+							border: none;
+							font-size: 13px;
+
+							&:hover {
+								background-color: $color-gray-dark;
+							}
 						}
 					}
 				}
