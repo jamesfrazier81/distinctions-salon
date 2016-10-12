@@ -1,0 +1,48 @@
+#top #wrap_all #main {
+	.avia-layerslider {
+		position: relative;
+		height: 85vh !important;
+
+		.ls-wp-fullwidth-container {
+			height: 100% !important;
+			
+			.ls-wp-fullwidth-helper {
+				height: 100% !important;
+			
+				.ls-wp-container  {
+					height: 100% !important;
+				
+					.ls-lt-container {
+						height: 100% !important;
+					}
+				}
+			}		
+		}	
+
+		&:after {
+			content: 'Distinctions in Beauty';
+			color: white;
+			z-index: 9;
+			display: block;
+			text-align: center;
+			text-shadow: 0 0 5px $color-gold-dark;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			font-size: 60px;
+			font-family: $font-script;
+			line-height: 60px;
+			background-color: rgba($color-gold-med, 0.35);
+		}
+	}
+}
+
+@media screen and (max-width: $media-tablet) {
+	#top #wrap_all #main {
+		.avia-layerslider:after {
+			font-size: 35px;
+			line-height: 40px;
+		}
+	}
+}

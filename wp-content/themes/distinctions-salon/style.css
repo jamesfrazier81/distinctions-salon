@@ -9,17 +9,26 @@
  Text Domain:  enfold-child
 */
 @import 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,800';
+@import 'https://fonts.googleapis.com/css?family=Yellowtail';
 #top #wrap_all #main {
   background-color: white; }
   #top #wrap_all #main .av-special-heading h1 {
+    font-family: "Open Sans", sans-serif;
     font-size: 60px;
     font-weight: 300; }
   #top #wrap_all #main .av-special-heading h2 {
+    font-family: "Open Sans", sans-serif;
     font-size: 38px;
     font-weight: 300; }
+  #top #wrap_all #main .av-special-heading h3 {
+    font-family: "Yellowtail", cursive;
+    font-size: 38px;
+    font-weight: 300;
+    text-transform: none; }
   #top #wrap_all #main .av_textblock_section .avia_textblock p {
-    font-size: 14px;
-    font-weight: 300; }
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 28px; }
   #top #wrap_all #main .avia-button-wrap a {
     background-color: #ffb540;
     border: none;
@@ -35,11 +44,11 @@
     font-size: 30px;
     font-weight: 300; }
   #top #wrap_all #main .av_textblock_section .avia_textblock p {
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 300; } }
 
 #top #wrap_all #header_meta {
-  background-color: rgba(97, 97, 97, 0.75);
+  background-color: #616161;
   border: none; }
   #top #wrap_all #header_meta .container .phone-info a {
     color: white;
@@ -54,10 +63,11 @@
       border: 0; }
 
 #top #wrap_all #header_main {
+  background-color: #000001;
   border: none; }
   #top #wrap_all #header_main .container {
-    height: 100px;
-    line-height: 100px; }
+    height: 89px;
+    line-height: 89px; }
     #top #wrap_all #header_main .container .logo {
       padding: 20px 0; }
     #top #wrap_all #header_main .container .main_menu ul li a {
@@ -71,6 +81,9 @@
         #top #wrap_all #header_main .container .main_menu ul li .sub-menu li a:hover {
           background-color: #616161; }
 
+#top #wrap_all .header_bg {
+  display: none; }
+
 @media screen and (max-width: 990px) {
   #top #wrap_all #header_main .container {
     height: 75px;
@@ -82,22 +95,27 @@
       height: 75px; } }
 
 @media screen and (max-width: 767px) {
-  #top #wrap_all #header_main .container .logo {
-    padding: 0;
-    max-width: 200px; }
-  #top #wrap_all #header_main .container #advanced_menu_toggle {
-    border: none;
-    width: auto; }
-    #top #wrap_all #header_main .container #advanced_menu_toggle:before {
-      display: none; }
-    #top #wrap_all #header_main .container #advanced_menu_toggle:after {
-      content: '\f0c9';
-      font-family: FontAwesome;
-      font-size: 25px;
-      color: #ffb540; }
-    #top #wrap_all #header_main .container #advanced_menu_toggle:hover {
-      background-color: transparent;
-      color: inherit; } }
+  #top #wrap_all #header_main .container {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 20px; }
+    #top #wrap_all #header_main .container .logo {
+      padding: 0;
+      max-width: 200px; }
+    #top #wrap_all #header_main .container #advanced_menu_toggle {
+      border: none;
+      width: auto;
+      right: 20px; }
+      #top #wrap_all #header_main .container #advanced_menu_toggle:before {
+        display: none; }
+      #top #wrap_all #header_main .container #advanced_menu_toggle:after {
+        content: '\f0c9';
+        font-family: FontAwesome;
+        font-size: 25px;
+        color: #ffb540; }
+      #top #wrap_all #header_main .container #advanced_menu_toggle:hover {
+        background-color: transparent;
+        color: inherit; } }
 
 #top #wrap_all #main {
   padding-top: 118px; }
@@ -110,17 +128,58 @@
     #top #wrap_all #main .avia-fullscreen-slider .caption_fullwidth .avia-caption-content p {
       color: white; }
   #top #wrap_all #main .av-masonry .av-masonry-container .av-masonry-entry .av-inner-masonry .av-inner-masonry-content .av-masonry-entry-content {
-    font-size: 18px;
+    font-family: "Yellowtail", cursive;
+    font-size: 30px;
     display: inline-block;
     margin: 0 auto;
-    padding: 10px;
-    background-color: rgba(0, 0, 0, 0.5); }
+    padding: 10px; }
   #top #wrap_all #main #page-header .av-special-heading h2 {
     color: white; }
+  #top #wrap_all #main #about-us .av_two_fifth {
+    background-color: #efefef;
+    border: 1px solid #e8e8e8;
+    padding: 20px; }
+    #top #wrap_all #main #about-us .av_two_fifth .av-styling-circle img {
+      border: 5px solid rgba(97, 97, 97, 0.05); }
+    #top #wrap_all #main #about-us .av_two_fifth .av_textblock_section .avia_textblock p {
+      font-size: 14px;
+      line-height: 26px; }
 
 @media screen and (max-width: 990px) {
   #top #wrap_all #main {
     padding-top: 105px; } }
+
+#top #wrap_all #main .avia-layerslider {
+  position: relative;
+  height: 85vh !important; }
+  #top #wrap_all #main .avia-layerslider .ls-wp-fullwidth-container {
+    height: 100% !important; }
+    #top #wrap_all #main .avia-layerslider .ls-wp-fullwidth-container .ls-wp-fullwidth-helper {
+      height: 100% !important; }
+      #top #wrap_all #main .avia-layerslider .ls-wp-fullwidth-container .ls-wp-fullwidth-helper .ls-wp-container {
+        height: 100% !important; }
+        #top #wrap_all #main .avia-layerslider .ls-wp-fullwidth-container .ls-wp-fullwidth-helper .ls-wp-container .ls-lt-container {
+          height: 100% !important; }
+  #top #wrap_all #main .avia-layerslider:after {
+    content: 'Distinctions in Beauty';
+    color: white;
+    z-index: 9;
+    display: block;
+    text-align: center;
+    text-shadow: 0 0 5px #c6922c;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    font-size: 60px;
+    font-family: "Yellowtail", cursive;
+    line-height: 60px;
+    background-color: rgba(255, 181, 64, 0.35); }
+
+@media screen and (max-width: 767px) {
+  #top #wrap_all #main .avia-layerslider:after {
+    font-size: 35px;
+    line-height: 40px; } }
 
 #top #wrap_all #socket .container .social_bookmarks li a {
   font-size: 18px;

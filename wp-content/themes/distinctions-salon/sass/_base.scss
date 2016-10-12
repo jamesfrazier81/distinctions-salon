@@ -3,21 +3,31 @@
 	
 	.av-special-heading {
 		h1 {
+			font-family: $font-main;
 			font-size: 60px;
 			font-weight: 300;
 		}
 
 		h2 {
+			font-family: $font-main;
 			font-size: 38px;
 			font-weight: 300;
+		}
+
+		h3 {
+			font-family: $font-script;
+			font-size: 38px;
+			font-weight: 300;
+			text-transform: none;
 		}
 	}
 
 	.av_textblock_section {
 		.avia_textblock {
 			p {
-				font-size: 14px;
+				font-size: 16px;
 				font-weight: 300;
+				line-height: 28px;
 			}
 		}
 	}
@@ -53,7 +63,7 @@
 		.av_textblock_section {
 			.avia_textblock {
 				p {
-					font-size: 13px;
+					font-size: 14px;
 					font-weight: 300;
 				}
 			}

@@ -29,11 +29,12 @@
 			.av-masonry-container .av-masonry-entry .av-inner-masonry {
 				.av-inner-masonry-content {
 					.av-masonry-entry-content {
-						font-size: 18px;
+						font-family: $font-script;
+						font-size: 30px;
 						display: inline-block;
 						margin: 0 auto;
 						padding: 10px;
-						background-color: rgba(black, 0.5);
+						// background-color: rgba(black, 0.5);
 					}
 				}
 
@@ -45,6 +46,29 @@
 			.av-special-heading {
 				h2 {
 					color: white;
+				}
+			}
+		}
+
+		#about-us {
+			.av_two_fifth {
+				background-color: #efefef;
+				border: 1px solid #e8e8e8;
+				padding: 20px;
+
+				.av-styling-circle {
+					img {
+						border: 5px solid rgba($color-gray-dark, 0.05);
+					}
+				}
+
+				.av_textblock_section {
+					.avia_textblock {
+						p {
+							font-size: 14px;
+							line-height: 26px;
+						}
+					}
 				}
 			}
 		}
