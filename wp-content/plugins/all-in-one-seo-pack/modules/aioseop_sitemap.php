@@ -305,7 +305,9 @@ if ( ! class_exists( 'All_in_One_SEO_Pack_Sitemap' ) ) {
 			add_action( $this->prefix . 'daily_update_cron', array( $this, 'daily_update' ) );
 			add_action( 'init', array( $this, 'make_dynamic_xsl' ) );
 			add_action( 'transition_post_status', array( $this, 'update_sitemap_from_posts' ), 10, 3 );
+			add_action( 'after_doing_aioseop_updates', array( $this, 'scan_sitemaps' ) );
 		}
+
 
 		/**
 		 * Update sitemap from posts.
@@ -793,6 +795,28 @@ if ( ! class_exists( 'All_in_One_SEO_Pack_Sitemap' ) ) {
 		}
 
 		/**
+		 * Whitelists files from static sitemap conflict warning.
+		 *
+		 * For right now, this is just externally produced news sitemaps until we figure out something better.
+		 *
+		 * @param $file
+		 *
+		 * @since 2.3.10.2
+		 *
+		 * @return string
+		 */
+		function whitelist_static_sitemaps( $file ) {
+
+			$whitelist = array( 'sitemap_news.xml', 'sitemap-news.xml' );
+
+			if ( in_array( $file, $whitelist, true ) ) {
+				return '';
+			}
+
+			return $file;
+		}
+
+		/**
 		 * Scan for sitemaps on filesystem.
 		 *
 		 * @return array
@@ -815,6 +839,8 @@ if ( ! class_exists( 'All_in_One_SEO_Pack_Sitemap' ) ) {
 				if ( ! empty( $filescan ) ) {
 					foreach ( $filescan as $f ) {
 						if ( ! empty( $scan1 ) && fnmatch( $scan1, $home_path . $f ) ) {
+
+							$f       = $this->whitelist_static_sitemaps( $f );
 							$files[] = $home_path . $f;
 							continue;
 						}
@@ -959,8 +985,14 @@ if ( ! class_exists( 'All_in_One_SEO_Pack_Sitemap' ) ) {
 							$problem_files[] = $f;
 						}
 					} else {
-						$msg .= '<p>' . sprintf( __( 'Potential conflict with empty file %s.', 'all-in-one-seo-pack' ), $f ) . "</p>\n";
+						$msg .= '<p>' . sprintf( __( 'Removed empty file %s.', 'all-in-one-seo-pack' ), $f ) . "</p>\n";
 						$problem_files[] = $f;
+
+						foreach ( $problem_files as $f => $file ) {
+							$files[ $f ] = realpath( $file );
+							$this->delete_file( realpath( $file ) );
+						}
+						$problem_files = false; // Don't return anything. If it's blank, we'll take care of it here.
 					}
 				}
 			}
