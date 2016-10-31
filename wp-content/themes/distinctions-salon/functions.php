@@ -18,13 +18,6 @@ if( is_user_logged_in() ) {
 }
 add_filter( 'wp_nav_menu_args', 'my_wp_nav_menu_args' );
 
-// Custom admin login logo
-add_action('login_head', 'custom_login_logo');
-function custom_login_logo() {
-	echo '<style type="text/css">
-	h1 a { background-image: url(/wp-content/uploads/2016/10/ds-logo-lg.png) !important; background-size: 100% !important; width: 320px !important; height: 93px !important; }
-	</style>';
-}
 
 // changing the logo link from wordpress.org to your site
 function mb_login_url() {  return home_url(); }
@@ -33,4 +26,95 @@ add_filter( 'login_headerurl', 'mb_login_url' );
 // changing the alt text on the logo to show your site name
 function mb_login_title() { return get_option( 'blogname' ); }
 add_filter( 'login_headertitle', 'mb_login_title' );
+
+// Admin login start
+function my_login_logo() { ?>
+    <style type="text/css">
+    	body {
+    		background-image: url(/wp-content/uploads/2016/10/bg-login.jpg) !important;
+    		background-size: cover !important;
+    	}
+
+    	#login {
+			min-width: 300px !important;
+			max-width: 650px !important;
+			padding: 40px 0 0 0 !important;
+    	}
+
+        #login h1 a, .login h1 a {
+            background-image: url(/wp-content/uploads/2016/10/ds-logo-tag-lg.png);
+            background-size: 300px;
+            width: 100%;
+            height: 52px;
+            margin: 0;
+        }
+
+        #login p.message {
+        	background-color: transparent;
+        	color: white;
+        	border: none;
+        	text-align: center;
+        }
+
+        #loginform, #registerform {
+        	background-color: rgba(0, 0, 0, 0.25);
+        }
+
+    	#loginform p label,
+        #registerform p label {
+    		color: #FFFFFF;
+    	}
+
+    	#loginform p label input,
+        #registerform p label input {
+    		color: #FFFFFF;
+    		background: transparent;
+    		border-color: #FFFFFF;
+    	}
+
+        /* AIOWPS Start */
+        #loginform .aiowps-captcha-equation strong,
+        #registerform .aiowps-captcha-equation strong {
+            color: #f3d482;
+        }
+
+        #loginform .aiowps-captcha-equation strong #aiowps-captcha-answer,
+        #registerform .aiowps-captcha-equation strong #aiowps-captcha-answer {
+            color: #FFFFFF;
+            background: transparent;
+            border-color: #FFFFFF;
+        }
+
+        #reg_passmail {
+            color: white;
+        }
+        
+        /* AIOWPS End */
+
+    	#wp-submit {
+    		background-color: #ffb540;
+    		border: none;
+    		text-shadow: none;
+    		box-shadow: none;
+    		color: #000001;
+    	}
+
+    	#nav a, #backtoblog a {
+			color: #FFFFFF !important;
+    	}
+    </style>
+<?php }
+add_action( 'login_enqueue_scripts', 'my_login_logo' );
+
+function my_login_logo_url() {
+    return home_url();
+}
+add_filter( 'login_headerurl', 'my_login_logo_url' );
+
+function my_login_logo_url_title() {
+    return 'Scottsdazzle';
+}
+add_filter( 'login_headertitle', 'my_login_logo_url_title' );
+// Admin login end
+
 ?>

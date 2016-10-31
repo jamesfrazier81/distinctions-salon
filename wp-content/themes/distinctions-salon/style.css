@@ -12,19 +12,21 @@
 @import 'https://fonts.googleapis.com/css?family=Yellowtail';
 #top #wrap_all #main {
   background-color: white; }
-  #top #wrap_all #main .av-special-heading h1 {
-    font-family: "Open Sans", sans-serif;
-    font-size: 60px;
-    font-weight: 300; }
-  #top #wrap_all #main .av-special-heading h2 {
-    font-family: "Open Sans", sans-serif;
-    font-size: 38px;
-    font-weight: 300; }
-  #top #wrap_all #main .av-special-heading h3 {
-    font-family: "Yellowtail", cursive;
-    font-size: 38px;
-    font-weight: 300;
-    text-transform: none; }
+  #top #wrap_all #main .av-special-heading {
+    margin-top: 0; }
+    #top #wrap_all #main .av-special-heading h1 {
+      font-family: "Open Sans", sans-serif;
+      font-size: 60px;
+      font-weight: 300; }
+    #top #wrap_all #main .av-special-heading h2 {
+      font-family: "Open Sans", sans-serif;
+      font-size: 38px;
+      font-weight: 300; }
+    #top #wrap_all #main .av-special-heading h3 {
+      font-family: "Yellowtail", cursive;
+      font-size: 38px;
+      font-weight: 300;
+      text-transform: none; }
   #top #wrap_all #main .av_textblock_section .avia_textblock p {
     font-size: 16px;
     font-weight: 300;
@@ -35,17 +37,61 @@
     transition: box-shadow 0.35s; }
     #top #wrap_all #main .avia-button-wrap a:hover {
       box-shadow: 0 0 30px rgba(255, 239, 188, 0.5); }
+  #top #wrap_all #main .avia_responsive_table .avia-table {
+    background-color: transparent; }
+    #top #wrap_all #main .avia_responsive_table .avia-table tr {
+      border-bottom: 1px solid #bcbcbc; }
+      #top #wrap_all #main .avia_responsive_table .avia-table tr td {
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 22px;
+        color: #000001;
+        padding-left: 0;
+        border: none; }
+        #top #wrap_all #main .avia_responsive_table .avia-table tr td small, #top #wrap_all #main .avia_responsive_table .avia-table tr td .callout {
+          font-size: 13px;
+          font-weight: 600;
+          color: #ffb540; }
+        #top #wrap_all #main .avia_responsive_table .avia-table tr td:nth-child(odd) {
+          width: 75%;
+          text-align: left; }
+        #top #wrap_all #main .avia_responsive_table .avia-table tr td:nth-child(even) {
+          width: 25%;
+          text-align: right;
+          font-size: 20px;
+          font-weight: 600;
+          color: #ffb540; }
+      #top #wrap_all #main .avia_responsive_table .avia-table tr:last-child {
+        border: none; }
 
 @media screen and (max-width: 767px) {
+  #top #wrap_all #main .main_color .container .template-page {
+    padding: 25px 0; }
   #top #wrap_all #main .av-special-heading h1 {
     font-size: 40px;
     font-weight: 300; }
   #top #wrap_all #main .av-special-heading h2 {
     font-size: 30px;
     font-weight: 300; }
+  #top #wrap_all #main .av-special-heading h3 {
+    text-align: center;
+    font-size: 26px; }
   #top #wrap_all #main .av_textblock_section .avia_textblock p {
     font-size: 14px;
-    font-weight: 300; } }
+    font-weight: 300; }
+  #top #wrap_all #main .avia_responsive_table .avia-table {
+    border: none; }
+    #top #wrap_all #main .avia_responsive_table .avia-table tr td {
+      font-size: 14px; }
+      #top #wrap_all #main .avia_responsive_table .avia-table tr td small, #top #wrap_all #main .avia_responsive_table .avia-table tr td .callout {
+        font-size: 12px; }
+      #top #wrap_all #main .avia_responsive_table .avia-table tr td:nth-child(odd) {
+        width: 100%;
+        text-align: center; }
+      #top #wrap_all #main .avia_responsive_table .avia-table tr td:nth-child(even) {
+        width: 100%;
+        text-align: center;
+        padding-top: 0; } }
 
 #top #wrap_all #header_meta {
   background-color: #616161;
@@ -127,12 +173,14 @@
       color: white; }
     #top #wrap_all #main .avia-fullscreen-slider .caption_fullwidth .avia-caption-content p {
       color: white; }
-  #top #wrap_all #main .av-masonry .av-masonry-container .av-masonry-entry .av-inner-masonry .av-inner-masonry-content .av-masonry-entry-content {
-    font-family: "Yellowtail", cursive;
-    font-size: 30px;
-    display: inline-block;
-    margin: 0 auto;
-    padding: 10px; }
+  #top #wrap_all #main #ctas-home .container .template-page {
+    padding-top: 0; }
+    #top #wrap_all #main #ctas-home .container .template-page .av-masonry .av-masonry-container .av-masonry-entry .av-inner-masonry .av-inner-masonry-content .av-masonry-entry-content {
+      font-family: "Yellowtail", cursive;
+      font-size: 30px;
+      display: inline-block;
+      margin: 0 auto;
+      padding: 10px; }
   #top #wrap_all #main #page-header .av-special-heading h2 {
     color: white; }
   #top #wrap_all #main #about-us .av_two_fifth {
@@ -161,7 +209,7 @@
         #top #wrap_all #main .avia-layerslider .ls-wp-fullwidth-container .ls-wp-fullwidth-helper .ls-wp-container .ls-lt-container {
           height: 100% !important; }
   #top #wrap_all #main .avia-layerslider:after {
-    content: 'Distinctions in Beauty';
+    content: 'Coming in 2017';
     color: white;
     z-index: 9;
     display: block;
@@ -181,6 +229,41 @@
     font-size: 35px;
     line-height: 40px; } }
 
-#top #wrap_all #socket .container .social_bookmarks li a {
-  font-size: 18px;
-  color: white; }
+#top #footer {
+  padding: 20px 0 0 0; }
+  #top #footer .flex_column .widget {
+    margin: 0; }
+    #top #footer .flex_column .widget .widgettitle {
+      font-family: "Open Sans", sans-serif;
+      font-size: 10px;
+      font-weight: 300;
+      text-transform: none;
+      color: #bcbcbc;
+      text-align: left;
+      margin: 0; }
+    #top #footer .flex_column .widget .textwidget {
+      max-width: 150px;
+      margin: 0; }
+
+#top #socket {
+  border-top: none; }
+  #top #socket .container .social_bookmarks li a {
+    font-size: 18px;
+    color: white; }
+
+@media screen and (max-width: 480px) {
+  .responsive #top #wrap_all #main #footer .flex_column .widget .widgettitle, .responsive #top #wrap_all #main #footer .flex_column .widget .textwidget {
+    text-align: center;
+    margin: 0 auto; }
+  .responsive #top #wrap_all #main #socket .container {
+    padding-top: 0; }
+    .responsive #top #wrap_all #main #socket .container .copyright {
+      width: 100%;
+      display: block;
+      float: none;
+      text-align: center;
+      margin: 0 auto; }
+    .responsive #top #wrap_all #main #socket .container .social_bookmarks {
+      width: 96px;
+      margin: 0 auto;
+      float: none; } }

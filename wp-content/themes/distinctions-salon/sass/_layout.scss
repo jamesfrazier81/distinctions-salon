@@ -25,20 +25,22 @@
 		}
 		
 		// Featured content CTAs
-		.av-masonry {
-			.av-masonry-container .av-masonry-entry .av-inner-masonry {
-				.av-inner-masonry-content {
-					.av-masonry-entry-content {
-						font-family: $font-script;
-						font-size: 30px;
-						display: inline-block;
-						margin: 0 auto;
-						padding: 10px;
-						// background-color: rgba(black, 0.5);
+		#ctas-home {
+			.container .template-page {
+				padding-top: 0;
+
+				.av-masonry .av-masonry-container .av-masonry-entry .av-inner-masonry {
+					.av-inner-masonry-content {
+						.av-masonry-entry-content {
+							font-family: $font-script;
+							font-size: 30px;
+							display: inline-block;
+							margin: 0 auto;
+							padding: 10px;
+						}
 					}
 				}
-
-			}
+			}			
 		}
 		
 		// Internal pages
