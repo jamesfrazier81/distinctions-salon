@@ -63,6 +63,8 @@
           color: #ffb540; }
       #top #wrap_all #main .avia_responsive_table .avia-table tr:last-child {
         border: none; }
+  #top #wrap_all #main .avia-image-container .avia-image-container-inner a .image-overlay {
+    display: none !important; }
 
 @media screen and (max-width: 767px) {
   #top #wrap_all #main .main_color .container .template-page {
@@ -192,6 +194,8 @@
     #top #wrap_all #main #about-us .av_two_fifth .av_textblock_section .avia_textblock p {
       font-size: 14px;
       line-height: 26px; }
+  #top #wrap_all #main .av-caption-style-overlay .av-masonry-item-with-image .av-inner-masonry-content .av-masonry-entry-content {
+    color: white; }
 
 @media screen and (max-width: 990px) {
   #top #wrap_all #main {

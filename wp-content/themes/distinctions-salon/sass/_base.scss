@@ -89,6 +89,15 @@
 			}
 		}
 	}
+
+	// Images
+	.avia-image-container {
+		.avia-image-container-inner a {
+			.image-overlay {
+				display: none !important;
+			}
+		}
+	}
 }
 
 @media screen and (max-width: $media-tablet) {

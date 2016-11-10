@@ -74,6 +74,19 @@
 				}
 			}
 		}
+		
+		// Home page services gallery (currently 4)
+		.av-caption-style-overlay {
+			.av-masonry-item-with-image {
+				.av-inner-masonry-content {
+					// background-color: transparent;
+
+					.av-masonry-entry-content {
+						color: white;
+					}
+				}
+			}			
+		}
 	}
 
 	// &.logged-in {
