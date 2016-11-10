@@ -194,8 +194,10 @@
     #top #wrap_all #main #about-us .av_two_fifth .av_textblock_section .avia_textblock p {
       font-size: 14px;
       line-height: 26px; }
-  #top #wrap_all #main .av-caption-style-overlay .av-masonry-item-with-image .av-inner-masonry-content .av-masonry-entry-content {
-    color: white; }
+  #top #wrap_all #main .av-caption-style-overlay .av-masonry-item-with-image .av-inner-masonry-content {
+    background-color: transparent; }
+    #top #wrap_all #main .av-caption-style-overlay .av-masonry-item-with-image .av-inner-masonry-content .av-masonry-entry-content {
+      color: white; }
 
 @media screen and (max-width: 990px) {
   #top #wrap_all #main {
