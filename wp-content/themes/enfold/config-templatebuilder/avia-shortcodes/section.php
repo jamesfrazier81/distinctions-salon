@@ -32,6 +32,7 @@ if ( !class_exists( 'avia_sc_section' ) )
 				$this->config['tooltip'] 	= __('Creates a section with unique background image and colors', 'avia_framework' );
 				$this->config['drag-level'] = 1;
 				$this->config['drop-level'] = 1;
+				$this->config['preview'] = false;
 
 			}
 
@@ -55,8 +56,12 @@ if ( !class_exists( 'avia_sc_section' ) )
     			$data['modal_ajax_hook'] 	= $this->config['shortcode'];
 				$data['dragdrop-level'] 	= $this->config['drag-level'];
 				$data['allowed-shortcodes']	= $this->config['shortcode'];
-
-
+				$data['preview'] 			= !empty($this->config['preview']) ? $this->config['preview'] : 0;
+				
+				$title_id = !empty($args['id']) ? ": ".ucfirst($args['id']) : "";
+				$el_bg = !empty($args['custom_bg']) ? " style='background:".$args['custom_bg'].";'" : ""; 
+				$hidden_el_active = !empty($args['av_element_hidden_in_editor']) ? "av-layout-element-closed" : "";
+				
     			if(!empty($this->config['modal_on_load']))
     			{
     				$data['modal_on_load'] 	= $this->config['modal_on_load'];
@@ -64,12 +69,13 @@ if ( !class_exists( 'avia_sc_section' ) )
 
     			$dataString  = AviaHelper::create_data_string($data);
 
-				$output  = "<div class='avia_layout_section avia_pop_class avia-no-visual-updates ".$name." av_drag' ".$dataString.">";
+				$output  = "<div class='avia_layout_section {$hidden_el_active} avia_pop_class avia-no-visual-updates ".$name." av_drag' ".$dataString.">";
 
 				$output .= "    <div class='avia_sorthandle menu-item-handle'>";
-				$output .= "        <span class='avia-element-title'>".$this->config['name']."</span>";
+				$output .= "        <span class='avia-element-title'><span class='avia-element-bg-color' ".$el_bg."></span>".$this->config['name']."<span class='avia-element-title-id'>".$title_id."</span></span>";
 			    //$output .= "        <a class='avia-new-target'  href='#new-target' title='".__('Move Section','avia_framework' )."'>+</a>";
 				$output .= "        <a class='avia-delete'  href='#delete' title='".__('Delete Section','avia_framework' )."'>x</a>";
+				$output .= "        <a class='avia-toggle-visibility'  href='#toggle' title='".__('Show/Hide Section','avia_framework' )."'></a>";
 
 				if(!empty($this->config['popup_editor']))
     			{
@@ -84,10 +90,61 @@ if ( !class_exists( 'avia_sc_section' ) )
 					$content = $this->builder->do_shortcode_backend($content);
 				}
 				$output .= $content;
-				$output .= "</div></div>";
+				$output .= "</div>";
+				
+				$output .= "<div class='avia-layout-element-bg' ".$this->get_bg_string($args)."></div>";
+				
+				
+				$output .= "<a class='avia-layout-element-hidden' href='#'>".__('Section content hidden. Click here to show it','avia_framework')."</a>";
+				
+				$output .= "</div>";
 
 				return $output;
 			}
+			
+			
+			function get_bg_string($args)
+			{
+				$style = "";
+			
+				if(!empty($args['attachment']))
+				{
+					$image = false;
+					$src = wp_get_attachment_image_src($args['attachment'], $args['attachment_size']);
+					if(!empty($src[0])) $image = $src[0];
+					
+					
+					if($image)
+					{
+						$bg 	= !empty($args['custom_bg']) ? 	$args['custom_bg'] : "transparent"; $bg = "transparent";
+						$pos 	= !empty($args['position'])  ? 	$args['position'] : "center center";
+						$repeat = !empty($args['repeat']) ?		$args['repeat'] : "no-repeat";
+						$extra	= "";
+						
+						if($repeat == "stretch")
+						{
+							$repeat = "no-repeat";
+							$extra = "background-size: cover;";
+						}
+						
+						if($repeat == "contain")
+						{
+							$repeat = "no-repeat";
+							$extra = "background-size: contain;";
+						}
+						
+						
+						
+						$style = "style='background: $bg url($image) $repeat $pos; $extra'";
+					}
+				}
+				
+				return $style;
+			}
+				
+
+			
+			
 
 			/**
 			 * Popup Elements
@@ -435,12 +492,67 @@ array(
 							'nodescription' => true
 						),
 
+					array(
+								"type" 	=> "tab",
+								"name"	=> __("Screen Options",'avia_framework' ),
+								'nodescription' => true
+							),
+							
+							
+							array(
+							"name" 	=> __("Element Visibility",'avia_framework' ),
+							"desc" 	=> __("Set the visibility for this element, based on the device screensize.", 'avia_framework' ),
+							"type" 	=> "heading",
+							"description_class" => "av-builder-note av-neutral",
+							),
+						
+							array(	
+									"desc" 	=> __("Hide on large screens (wider than 990px - eg: Desktop)", 'avia_framework'),
+									"id" 	=> "av-desktop-hide",
+									"std" 	=> "",
+									"container_class" => 'av-multi-checkbox',
+									"type" 	=> "checkbox"),
+							
+							array(	
+								
+									"desc" 	=> __("Hide on medium sized screens (between 768px and 989px - eg: Tablet Landscape)", 'avia_framework'),
+									"id" 	=> "av-medium-hide",
+									"std" 	=> "",
+									"container_class" => 'av-multi-checkbox',
+									"type" 	=> "checkbox"),
+									
+							array(	
+								
+									"desc" 	=> __("Hide on small screens (between 480px and 767px - eg: Tablet Portrait)", 'avia_framework'),
+									"id" 	=> "av-small-hide",
+									"std" 	=> "",
+									"container_class" => 'av-multi-checkbox',
+									"type" 	=> "checkbox"),
+									
+							array(	
+								
+									"desc" 	=> __("Hide on very small screens (smaller than 479px - eg: Smartphone Portrait)", 'avia_framework'),
+									"id" 	=> "av-mini-hide",
+									"std" 	=> "",
+									"container_class" => 'av-multi-checkbox',
+									"type" 	=> "checkbox"),
 
+							
+						array(
+								"type" 	=> "close_div",
+								'nodescription' => true
+							),		
 							
 					array(
 							"type" 	=> "close_div",
 							'nodescription' => true
 						),
+						
+						
+						
+					array(	"id" 	=> "av_element_hidden_in_editor",
+				            "type" 	=> "hidden",
+				            "std" => "0"),
                 );
 			}
 
@@ -455,7 +567,9 @@ array(
 			function shortcode_handler($atts, $content = "", $shortcodename = "", $meta = "")
 			{
 				global $avia_config;
-			
+				
+				extract(AviaHelper::av_mobile_sizes($atts)); //return $av_font_classes, $av_title_font_classes and $av_display_classes 
+
 				avia_sc_section::$section_count ++;
 			    $atts = shortcode_atts(array(	'src' => '', 
 			    								'position' => 'top left', 
@@ -572,7 +686,7 @@ array(
 				}
 				
 				
-				if($custom_bg != "")
+				if($custom_bg != "" && $background == "")
 			    {
 			         $background .= "background-color: {$custom_bg}; ";
 			    }
@@ -626,7 +740,7 @@ array(
 			    
 			    
 				$class .= " avia-bg-style-".$attach;
-			    $params['class'] = $class." ".$meta['el_class'];
+			    $params['class'] = $class." ".$meta['el_class']." ".$av_display_classes;
 			    $params['bg']    = $background;
 				$params['min_height'] = $min_height;
 				$params['min_height_px'] = $min_height_px;
@@ -757,6 +871,7 @@ if(!function_exists('avia_new_section'))
 	    {
 	    	$cm		 = avia_section_close_markup();
 	    	$output .= "</div></div>{$cm}</div>".avia_sc_section::$add_to_closing.avia_sc_section::$close_overlay."</div>";
+	    	avia_sc_section::$close_overlay = "";
 	    	
 		}
 	    //start new

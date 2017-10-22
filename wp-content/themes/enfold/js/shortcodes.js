@@ -26,7 +26,7 @@
     	
     	//calculate the browser height and append a css rule to the head
 		if($.fn.avia_browser_height)
-		$('.av-minimum-height, .avia-fullscreen-slider').avia_browser_height();
+		$('.av-minimum-height, .avia-fullscreen-slider, .av-cell-min-height').avia_browser_height();
 		
 		//calculate the height of each video section
 		if($.fn.avia_video_section)
@@ -59,6 +59,23 @@
 		if($.fn.avia_textrotator)
 		$('.av-rotator-container').avia_textrotator();
 		
+		//activates the tab section shortcode
+		if($.fn.avia_sc_tab_section)
+		{
+			$('.av-tab-section-container').avia_sc_tab_section();
+		}
+		
+		//activates the hor gallery  shortcode
+		if($.fn.avia_hor_gallery)
+		{
+			$('.av-horizontal-gallery').avia_hor_gallery();
+		}
+		
+		
+		if($.fn.avia_delayed_animation_in_container)
+		{
+			$('.av-animation-delay-container').avia_delayed_animation_in_container();
+		}
 		
 		
     });
@@ -117,7 +134,7 @@
 			$('.top_tab', container).avia_sc_tabs();
 			$('.sidebar_tab', container).avia_sc_tabs({sidebar:true});
 		}
-
+		
 		//activates behavior and animation for gallery
 		if($.fn.avia_sc_gallery)
 		{
@@ -193,11 +210,6 @@
         	$('.av-countdown-timer', container).aviaCountdown();
     	}
     	
-    	 //load countdown
-        if($.fn.aviaCountdown)
-        {
-        	$('.av-countdown-timer', container).aviaCountdown();
-    	}
     	
     	
     }
@@ -298,7 +310,7 @@
 			}
 			
 			ticker(_self);
-			_self.countdown 	= setInterval(function(){ ticker(_self); }, _self.data.interval);
+			_self.countdown 	= setInterval(function(){ ticker(_self); }, 1000);
 
 			
 		});
@@ -451,7 +463,7 @@
 	{
 		loading: false, 
 		finished: false, 
-		src: 'https://maps.googleapis.com/maps/api/js?v=3.24&callback=aviaOnGoogleMapsLoaded' 
+		src: 'https://maps.googleapis.com/maps/api/js?v=3.27&callback=aviaOnGoogleMapsLoaded' 
 	}
 	
   	$.AviaMapsAPI.prototype =
@@ -503,22 +515,61 @@
 			var _self = this,
 				mobile_drag = $.avia_utilities.isMobile ? this.$data.mobile_drag_control : true,
 				zoomValue 	= this.$data.zoom == "auto" ? 10 : this.$data.zoom;
+		
+			var mapTypeControl = false;
+			var mapTypeId = google.maps.MapTypeId.ROADMAP;
+			var mapTypeControlOptions = google.maps.MapTypeControlStyle.DROPDOWN_MENU;
+			
+			switch( this.$data.maptype_control )
+			{
+				case 'dropdown':
+					mapTypeControl = true;
+					mapTypeControlOptions = google.maps.MapTypeControlStyle.DROPDOWN_MENU;
+					break;
+				case 'horizontal':
+					mapTypeControl = true;
+					mapTypeControlOptions = google.maps.MapTypeControlStyle.HORIZONTAL_BAR;
+					break;
+				case 'default':
+					mapTypeControl = true;
+					mapTypeControlOptions = google.maps.MapTypeControlStyle.DEFAULT;
+					break;
+				default:
+					mapTypeControl = false;
+					mapTypeControlOptions = google.maps.MapTypeControlStyle.DROPDOWN_MENU;
+					break;
+			}
+			
+			switch( this.$data.maptype_id )
+			{
+				case 'SATELLITE':
+					mapTypeId = google.maps.MapTypeId.SATELLITE;
+					break;
+				case 'HYBRID':
+					mapTypeId = google.maps.MapTypeId.HYBRID;
+					break;
+				case 'TERRAIN':
+					mapTypeId = google.maps.MapTypeId.TERRAIN;
+					break;
+				default:
+					mapTypeId = google.maps.MapTypeId.ROADMAP;
+			}
 			
 			this.mapVars = {
 				mapMaker: false, //mapmaker tiles are user generated content maps. might hold more info but also be inaccurate
-				mapTypeControl: false,
 				backgroundColor:'transparent',
 				streetViewControl: false,
-				panControl: this.$data.pan_control,
 				zoomControl: this.$data.zoom_control,
-				draggable: mobile_drag,
+				//draggable: mobile_drag,
+				gestureHandling: 'cooperative',
 				scrollwheel: false,
 				zoom: zoomValue,
-				mapTypeId:google.maps.MapTypeId.ROADMAP,
+				mapTypeControl: mapTypeControl,
+				mapTypeControlOptions: {style:mapTypeControlOptions},
+				mapTypeId: mapTypeId,
 				center: new google.maps.LatLng(this.$data.marker[0].lat, this.$data.marker[0].long),
 				styles:[{featureType: "poi", elementType: "labels", stylers: [ { visibility: "off" }] }]
 			};
-			
 
 			this.map = new google.maps.Map(this.container, this.mapVars);
 		
@@ -1253,12 +1304,17 @@ $.fn.avia_masonry = function(options)
 		{
 			var filters = selector ? {filter: '.'+selector} : {};
 			
+			filters['layoutMode'] = 'packery';
+			filters['packery'] = {gutter:0};
+			filters['percentPosition'] = true;
+			filters['itemSelector'] = "a.isotope-item, div.isotope-item";
+			
 			container.isotope(filters, function()
 			{
 				the_win.trigger('av-height-change');
 			});
 			
-			if(typeof callback == 'function')
+			if(typeof callback === 'function')
 			{
 				setTimeout(callback, 0);
 			}
@@ -1308,7 +1364,7 @@ $.fn.avia_masonry = function(options)
 		  		items		= masonry.find('.av-masonry-entry'),
 		  		loader		= $.avia_utilities.loading(),
 		  		finished	= function(){ loading = false; loader.hide(); the_body.trigger('av_resize_finished'); };
-		  	
+		  			  	
 		  	//calculate a new offset	
 		  	if(!data.offset){ data.offset = 0; }	
 		  	data.offset += data.items;
@@ -1355,7 +1411,6 @@ $.fn.avia_masonry = function(options)
 								var links = masonry.find('.av-masonry-sort a'),
 									filter_container = masonry.find('.av-sort-by-term'),
 									allowed_filters = filter_container.data("av-allowed-sort");
-									console.log(allowed_filters);
 								
 								filter_container.hide();
 								
@@ -1894,7 +1949,7 @@ $.fn.avia_masonry = function(options)
     	
     	_parallax_scroll: function(e)
     	{
-    		if(this.isMobile) return; //disable parallax scrolling on mobile
+    		if(this.isMobile || ! this.options.parallax_enabled) return; //disable parallax scrolling on mobile
     	
     		var winTop 		= this.$win.scrollTop(),
     			winBottom	=  winTop + this.property.wh,
@@ -2185,16 +2240,25 @@ $.fn.avia_sc_progressbar = function(options)
 {
 	return this.each(function()
 	{
-		var container = $(this), elements = container.find('.progress');
-
-
-		//trigger displaying of thumbnails
+		var container = $(this), elements = container.find('.avia-progress-bar');
+		
+		
+		//trigger displaying of progress bar
 		container.on('avia_start_animation', function()
 		{
 			elements.each(function(i)
 			{
-				var element = $(this);
-				setTimeout(function(){ element.addClass('avia_start_animation') }, (i * 250));
+				var element = $(this)
+				
+				setTimeout(function()
+				{ 
+					element.find('.progress').addClass('avia_start_animation') 
+					element.find('.progressbar-percent').avia_sc_animated_number(
+					{
+						instant_start:true, simple_up:true, start_timer: 10
+					});
+					
+				}, (i * 250));
 			});
 		});
 	});
@@ -2231,8 +2295,10 @@ $.fn.avia_sc_iconlist = function(options)
 $.fn.avia_sc_animation_delayed = function(options)
 {
 	var global_timer = 0,
-		delay = options.delay || 50;
-
+		delay = options.delay || 50,
+		max_timer = 10,
+		new_max = setTimeout(function(){ max_timer = 20; }, 500);
+	
 	return this.each(function()
 	{
 		var elements = $(this);
@@ -2241,11 +2307,46 @@ $.fn.avia_sc_animation_delayed = function(options)
 		elements.on('avia_start_animation', function()
 		{
 			var element = $(this);
-			global_timer ++;
-			setTimeout(function(){ element.addClass('avia_start_delayed_animation'); global_timer --; }, (global_timer * delay));
+			 
+			if(global_timer < max_timer) global_timer ++;
+			
+			setTimeout(function()
+			{ 
+				element.addClass('avia_start_delayed_animation'); 
+				if(global_timer > 0) global_timer --; 
+			
+			}, (global_timer * delay));
+			
 		});
 	});
 }
+
+/*delayd animations when used within tab sections or similar elements. this way they get animated each new time a tab is shown*/
+$.fn.avia_delayed_animation_in_container = function(options)
+{
+	return this.each(function()
+	{
+		var elements = $(this);
+		
+		elements.on('avia_start_animation_if_current_slide_is_active', function()
+		{
+			var current = $(this),
+				animate = current.find('.avia_start_animation_when_active');
+				
+				animate.addClass('avia_start_animation').trigger('avia_start_animation');
+		});
+		
+		elements.on('avia_remove_animation', function()
+		{
+			var current = $(this),
+				animate = current.find('.avia_start_animation_when_active, .avia_start_animation');
+				animate.removeClass('avia_start_animation avia_start_delayed_animation');
+		});
+	});
+}
+
+
+
 
 
 // -------------------------------------------------------------------------------------------
@@ -2285,11 +2386,11 @@ $.fn.avia_browser_height = function()
 			css += ".avia-section.av-minimum-height .container{opacity: 1; }\n";
 			
 			//various section heights (100-25% as well as 100% - header/adminbar in case its the first builder element)
-			css += ".av-minimum-height-100 .container, .avia-fullscreen-slider .avia-slideshow, #top.avia-blank .av-minimum-height-100 .container{height:"+wh100+"px;}\n";
-			css += ".av-minimum-height-75 .container	{height:"+wh75+"px;}\n";
-			css += ".av-minimum-height-50 .container {height:"+wh50+"px;}\n";
-			css += ".av-minimum-height-25 .container {height:"+wh25+"px;}\n";
-			css += ".avia-builder-el-0.av-minimum-height-100 .container, .avia-builder-el-0.avia-fullscreen-slider .avia-slideshow{height:"+wh100_mod+"px;}\n";
+			css += ".av-minimum-height-100 .container, .avia-fullscreen-slider .avia-slideshow, #top.avia-blank .av-minimum-height-100 .container, .av-cell-min-height-100 > .flex_cell{height:"+wh100+"px;}\n";
+			css += ".av-minimum-height-75 .container, .av-cell-min-height-75 > .flex_cell	{height:"+wh75+"px;}\n";
+			css += ".av-minimum-height-50 .container, .av-cell-min-height-50 > .flex_cell	{height:"+wh50+"px;}\n";
+			css += ".av-minimum-height-25 .container, .av-cell-min-height-25 > .flex_cell	{height:"+wh25+"px;}\n";
+			css += ".avia-builder-el-0.av-minimum-height-100 .container, .avia-builder-el-0.avia-fullscreen-slider .avia-slideshow, .avia-builder-el-0.av-cell-min-height-100 > .flex_cell{height:"+wh100_mod+"px;}\n";
 			
 			css += "#top .av-solo-full .avia-slideshow {min-height:"+solo+"px;}\n";
 			
@@ -2643,7 +2744,7 @@ $.fn.avia_sc_tabs= function(options)
 		sidebar: false
 	};
 
-	var win = $(window)
+	var win = $(window),
 		options = $.extend(defaults, options);
 
 	return this.each(function()
@@ -2750,17 +2851,372 @@ $.fn.avia_sc_tabs= function(options)
 
 
 
+
+// -------------------------------------------------------------------------------------------
+// Tab Section
+// -------------------------------------------------------------------------------------------
+
+$.fn.avia_sc_tab_section= function()
+{
+	var win 			= $(window),
+		browserPrefix 	= $.avia_utilities.supports('transition'),
+		cssActive 		= this.browserPrefix !== false ? true : false,
+		isMobile 		= $.avia_utilities.isMobile,
+		transform3d		= document.documentElement.className.indexOf('avia_transform3d') !== -1 ? true : false,
+		transition		= {};
+		
+	return this.each(function()
+	{
+		var container 		= $(this),
+			tabs			= container.find('.av-section-tab-title'),
+			tab_wrap		= container.find('.av-tab-section-tab-title-container'),
+			tab_nav			= container.find('.av_tab_navigation'), 
+			content_wrap	= container.find('.av-tab-section-inner-container'),
+			single_tabs		= container.find('.av-animation-delay-container'), //for elements inside the tab that receive waypoint animation
+			inner_content	= container.find('.av-layout-tab-inner'),
+			sliding_active  = container.is('.av-tab-slide-transition'),
+			flexible    	= container.is('.av-tab-content-auto'),
+			current_content = container.find('.__av_init_open'),
+			min_width		= 0,
+			change_tab 		= function(e, prevent_hash)
+			{
+				e.preventDefault();
+				
+				var current_tab 	= $(e.currentTarget),
+					current_arrow	= current_tab.find('.av-tab-arrow-container span'),
+					tab_nr			= current_tab.data('av-tab-section-title');
+					
+					current_content = container.find('[data-av-tab-section-content="'+tab_nr+'"]');
+				
+				var new_bg			= current_content.data('av-tab-bg-color'),
+					new_font		= current_content.data('av-tab-color'),
+					prev_container 	= container.find('.av-active-tab-content').not('[data-av-tab-section-content="'+tab_nr+'"]');
+
+				tabs.attr('style','').removeClass('av-active-tab-title');
+				current_tab.addClass('av-active-tab-title');
+				current_content.addClass("av-active-tab-content");
+				
+				if(new_bg !== "") current_arrow.css('background-color', new_bg);
+				if(new_font !== "") current_tab.css('color', new_font);
+					
+				var new_pos = ((parseInt(tab_nr,10) - 1) * -100 );
+				    if ($('body').hasClass('rtl')) {
+        				new_pos = ((parseInt(tab_nr,10) - 1) * 100 );
+    					}
+				
+				if(cssActive)
+				{
+					//move the slides
+					new_pos = new_pos / tabs.length;
+					transition['transform']  = transform3d ? "translate3d(" + new_pos  + "%, 0, 0)" : "translate(" + new_pos + "%,0)"; //3d or 2d transform?
+					transition['left'] = "0%";
+					content_wrap.css(transition);
+				}
+				else
+				{
+					content_wrap.css('left',  new_pos + "%");
+				}
+				
+				set_tab_titlte_pos();
+				set_slide_height();
+				
+				if(!prevent_hash) location.hash = current_tab.attr('href');
+				
+				setTimeout(function()
+				{
+					current_content.trigger('avia_start_animation_if_current_slide_is_active');
+					single_tabs.not(current_content).trigger('avia_remove_animation');
+					
+				}, 600);	
+				
+			},
+			set_min_width = function()
+			{
+				min_width = 0;
+				tabs.each(function()
+				{ 
+					min_width += $(this).outerWidth(); 
+				});
+				
+				tab_wrap.css('min-width',min_width);
+			},
+			
+			set_slide_height = function()
+			{				
+				if(current_content.length && flexible)
+				{
+					var old_height = inner_content.height();
+					inner_content.height('auto');
+					
+					var height = current_content.find('.av-layout-tab-inner').height();
+					inner_content.height(old_height);
+					inner_content.height(height);
+					
+					inner_content.css( 'overflow', 'hidden' );
+					
+					setTimeout(function() { win.trigger('av-height-change'); }, 600);
+				}
+			},
+			
+			set_tab_titlte_pos = function()
+			{
+				//scroll the tabs if there is not enough room to display them all
+				var current_tab = container.find('.av-active-tab-title'),
+					viewport	= container.width(),
+					left_pos	= viewport < min_width ? (current_tab.position().left * - 1) - (current_tab.outerWidth() / 2) + (viewport / 2): 0;
+				
+				if(left_pos + min_width < viewport) left_pos = (min_width - viewport) * -1;
+				if(left_pos > 0) left_pos = 0;
+				
+				tab_wrap.css('left',left_pos );
+			},
+			switch_to_next_prev = function(e)
+			{
+				if(!isMobile) return;
+				
+				var clicked 		= $(e.currentTarget),
+					current_tab 	= container.find('.av-active-tab-title');
+					
+					if(clicked.is('.av_prev_tab_section'))
+					{
+						current_tab.prev('.av-section-tab-title').trigger('click');
+					}
+					else
+					{
+						current_tab.next('.av-section-tab-title').trigger('click');
+					}
+			},
+			
+			get_init_open = function()
+			{
+				if(!hash && window.location.hash) var hash = window.location.hash;
+	            		
+				var open = tabs.filter('[href="'+hash+'"]');
+				
+				if(open.length)
+				{
+					if(!open.is('.active_tab')) open.trigger('click');
+				}
+				else
+				{
+					//set correct color
+					container.find('.av-active-tab-title').trigger('click', true);
+				}
+			};
+				
+		$.avia_utilities.preload({
+			
+			container: current_content , 
+			single_callback:  function(){ 
+			
+				tabs.on('click', change_tab);
+				tab_nav.on('click', switch_to_next_prev);
+				win.on('debouncedresize', set_tab_titlte_pos);	
+				win.on('debouncedresize', set_slide_height);	
+				
+				set_min_width();
+				set_slide_height(); 
+				get_init_open();
+			}
+			
+		});	
+		
+		content_wrap.avia_swipe_trigger({prev:'.av_prev_tab_section', next:'.av_next_tab_section'});
+			
+	});
+};
+
+
+
+
+// -------------------------------------------------------------------------------------------
+// Horizontal Gallery
+// -------------------------------------------------------------------------------------------
+
+$.fn.avia_hor_gallery= function(options)
+{
+	var defaults =
+		{
+			slide_container	: '.av-horizontal-gallery-inner', //element with max width
+			slide_element	: '.av-horizontal-gallery-slider', //element that gets moved
+			slide_content	: '.av-horizontal-gallery-wrap',
+			active			: 'av-active-gal-item',				// must be a class string without the . in front
+			prev			: '.av-horizontal-gallery-prev',
+			next			: '.av-horizontal-gallery-next'
+		};
+
+	var options = $.extend(defaults, options);
+	
+	var win 			= $(window),
+		browserPrefix 	= $.avia_utilities.supports('transition'),
+		cssActive 		= this.browserPrefix !== false ? true : false,
+		isMobile 		= $.avia_utilities.isMobile,
+		transform3d		= document.documentElement.className.indexOf('avia_transform3d') !== -1 ? true : false,
+		transition		= {};
+		
+	return this.each(function()
+	{
+		var container 			= $(this),
+			slide_container 	= container.find(options.slide_container),
+			slide_element		= container.find(options.slide_element),
+			slide_content		= container.find(options.slide_content),
+			prev				= container.find(options.prev),
+			next				= container.find(options.next),
+			imgs				= container.find('img'),
+			
+			all_elements_width 	= 0,
+			currentIndex		= false,
+			initial				= container.data('av-initial'),
+			
+			set_up = function( init )
+			{
+				var sl_height = (slide_container.width() / 100 ) * slide_container.data('av-height');
+				
+				slide_container.css({'padding':0}).height(sl_height);
+				
+				//fixes img distortion when resizing browser:
+				imgs.css('display','inline-block');
+				setTimeout(function(){ imgs.css('display','block'); }, 10);
+				
+				//calculate the slidelement width based on the elements inside
+				all_elements_width = 0;
+				
+				slide_content.each(function()
+				{ 
+					all_elements_width += $(this).outerWidth( true ); 
+				});
+				
+				slide_element.css( 'min-width' , all_elements_width );
+				
+				if(currentIndex !== false )
+				{
+					change_active(currentIndex);
+				}
+			},
+			change_active = function(index)
+			{
+				//scroll the tabs if there is not enough room to display them all
+				var current 	= slide_element.find(options.slide_content).eq(index),
+					viewport	= slide_container.width(),
+					modifier	= container.data('av-enlarge') > 1  && currentIndex == index ? container.data('av-enlarge') : 1,
+					outerWidth	= current.outerWidth( true ) * modifier,
+					margin_right= parseInt( current.css('margin-right') , 10 ) / 2,
+					left_pos	= viewport < all_elements_width ? (current.position().left * - 1) - (outerWidth / 2) + (viewport / 2): 0;
+				
+				//center properly
+				left_pos = left_pos + margin_right;
+				
+				//out of bounce right side
+				if(left_pos + all_elements_width < viewport) left_pos = (all_elements_width - viewport - parseInt(current.css('margin-right'),10) ) * -1;
+				
+				//out of bounce left side
+				if(left_pos > 0) left_pos = 0;
+				
+				//set pos
+				slide_element.css('left',left_pos );
+				
+				slide_container.find("." +options.active).removeClass(options.active);
+				current.addClass(options.active);
+				currentIndex = index;
+				
+			};
+
+			
+		 $.avia_utilities.preload({container: container , global_callback:  function()
+		 {
+			 // activate behavior
+			set_up( 'init' );
+			win.on('debouncedresize', set_up);
+			if(initial) change_active(initial - 1);
+			
+			setTimeout(function(){
+				container.addClass('av-horizontal-gallery-animated');
+			},10); 
+		
+		  }});
+			
+		
+		
+		
+		
+		
+		
+		//swipe on mobile
+		slide_element.avia_swipe_trigger({prev:options.prev, next:options.next});
+		
+		//element click
+		slide_content.on('click', function(e)
+		{
+			var current = $(this);
+			var index = slide_content.index(current);
+			
+			if(currentIndex === index)
+			{
+				if(container.data('av-enlarge') > 1 && !$(e.target).is('a') )
+				{
+					//slide_container.find("." +options.active).removeClass(options.active);
+					//currentIndex = false;	
+				}
+				return;
+			}
+			
+			change_active(index);
+		});
+		
+		prev.on('click', function(e)
+		{
+			if(currentIndex === false) currentIndex = 1;
+			var index = currentIndex - 1;
+			if(index < 0) index = 0;
+			
+			change_active(index);
+		});
+		
+		next.on('click', function(e)
+		{
+			if(currentIndex === false) currentIndex = -1;
+			var index = currentIndex + 1;
+			if(index > slide_content.length - 1) index = slide_content.length - 1;
+			
+			change_active(index);
+		});
+		
+		//if its a desktop browser add arrow navigation, otherwise add touch nav
+		if(!isMobile)
+		{
+			container.avia_keyboard_controls({ 37: options.prev, 39: options.next });
+		}
+		else
+		{
+			container.avia_swipe_trigger({next: options.next, prev: options.prev});
+		}
+		
+		
+	
+	});
+};
+
 // -------------------------------------------------------------------------------------------
 // Big Number animation shortcode javascript
 // -------------------------------------------------------------------------------------------
 
 (function($)
 {
-	$.fn.avia_sc_animated_number = function(options)
+	// options.simple_up = dont prepend leading zeros, options.instant_start = trigger counting instantly, options.start_timer = delay when to start counting
+	$.fn.avia_sc_animated_number = function(options) 
 	{
+		if(!this.length) return;
+		if(this.is('.avia_sc_animated_number_active')) return;
+		
+		this.addClass('avia_sc_animated_number_active');
+	
 		var skipStep = false,
+			simple_upcount 	= (options && options.simple_up) ? true : false,
+			start_timer 	= (options && options.start_timer) ? options.start_timer : 300,
 		start_count = function(element, countTo, increment, current, fakeCountTo)
 		{
+			
+			
 			//calculate the new number
 			var newCount = current + increment;
 			
@@ -2768,6 +3224,7 @@ $.fn.avia_sc_tabs= function(options)
 			if(newCount >= fakeCountTo) 
 			{
 				element.text(countTo); //exit
+				
 			}
 			else
 			{
@@ -2776,14 +3233,16 @@ $.fn.avia_sc_tabs= function(options)
 				//if the number has less digits than the final number some zeros where omitted. add them to the front
 				for(var i = addZeros; i > 0; i--){ prepend += "0"; }
 				
+				if(simple_upcount) prepend = 0;
 				element.text(prepend + newCount);
+				
 				window.requestAnimationFrame(function(){ start_count(element, countTo, increment, newCount, fakeCountTo) });
 			}
 		};
 	
 		return this.each(function()
 		{
-			var number_container = $(this), elements = number_container.find('.avia-single-number'), countTimer = number_container.data('timer') || 3000;
+			var number_container = $(this), elements = number_container.find('.__av-single-number'), countTimer = number_container.data('timer') || 3000;
 			
 			//prepare elements
 			elements.each(function(i)
@@ -2808,9 +3267,16 @@ $.fn.avia_sc_tabs= function(options)
 					increment = Math.round( fakeCountTo * 32 / countTimer);
 					if(increment == 0 || increment % 10 == 0) increment += 1;
 					
-					setTimeout(function(){ start_count(element, countTo, increment, current, fakeCountTo);}, 300);
+					setTimeout(function(){ start_count(element, countTo, increment, current, fakeCountTo);}, start_timer);
 				});
 			});
+			
+			if(options && options.instant_start == true)
+			{
+				number_container.trigger('avia_start_animation');
+			}
+			
+			
 		});
 	}
 })(jQuery);
@@ -3433,7 +3899,7 @@ $.fn.aviaccordion = function( options )
     		
     		_self.options = $.extend({}, options, this.$slider.data());
 			_self.$inner.addClass('av-rotation-active');
-			if(_self.options.fixwidth == 1) this.$inner.width(this.$current.width());
+			//if(_self.options.fixwidth == 1) this.$inner.width(this.$current.width());
 			_self._autoplay();
     	},
     	
@@ -3545,7 +4011,20 @@ $.fn.avia_textrotator = function( options )
 				{
 					element.waypoint(function(direction)
 					{
-					 	$(this.element).addClass('avia_start_animation').trigger('avia_start_animation');
+					 	var current 	= $(this.element),
+					 		parent  	= current.parents('.av-animation-delay-container:eq(0)');
+					 	
+					 	if(parent.length)
+					 	{
+						 	current.addClass('avia_start_animation_when_active').trigger('avia_start_animation_when_active');
+					 	}
+					 	
+					 	if(!parent.length || (parent.length && parent.is('.__av_init_open')))
+					 	{
+						 	current.addClass('avia_start_animation').trigger('avia_start_animation');
+					 	}
+					 	
+					 	
 					 	
 					}, options );
 				}
@@ -3712,7 +4191,7 @@ $.extend( $.easing,
 					loader.loading_item.css({display:'block', opacity:0});
 				}
 
-				loader.loading_item.stop().animate({opacity:0.7});
+				loader.loading_item.stop().animate({opacity:1});
 			},
 
 			hide: function()
@@ -3730,7 +4209,7 @@ $.extend( $.easing,
 			{
 				if(typeof attach_to === 'undefined'){ attach_to = 'body';}
 
-				loader.loading_item = $('<div class="avia_loading_icon"></div>').css({display:"none"}).appendTo(attach_to);
+				loader.loading_item = $('<div class="avia_loading_icon"><div class="av-siteloader"></div></div>').css({display:"none"}).appendTo(attach_to);
 			}
 		}
 
@@ -4379,6 +4858,7 @@ Avia Slideshow
 				}
     		}
     		
+    		self._setCenter();
     		first_slide.css({visibility:'visible', opacity:0}).avia_animate({opacity:1}, function()
     		{
     			var current = $(this).addClass('active-slide');
@@ -4488,6 +4968,7 @@ Avia Slideshow
 			
 			var self    		= this,
 				slide 			= this.$slides.eq(this.current),
+				img 			= slide.find('img'),
 				current			= Math.floor(this.$sliderUl.height()),
 				ratio			= slide.data('video-ratio'),
 				setTo   		= ratio ? this.$sliderUl.width() / ratio : Math.floor(slide.height()),
@@ -4512,14 +4993,45 @@ Avia Slideshow
 					}
 				}
 				
+				this._setCenter();
+				
 				if(video_height && video_height!= "set")
 				{
 					slide.find('iframe, embed, video, object, .av_youtube_frame').css({height: video_height + '%', top: video_toppos + '%'});
 					slide.data('video-height','set');
 				}
 		},
-
-
+		
+		_setCenter: function()
+		{
+			//if the image has a min width and is larger than the slider center it
+			//positon img based on caption. right caption->left pos, left caption -> right pos
+			var slide 		= this.$slides.eq(this.current),
+				img 		= slide.find('img'),
+				min_width 	= parseInt(img.css('min-width'),10),
+				slide_width	= slide.width(),
+				caption		= slide.find('.av-slideshow-caption'),
+				css_left 	= ((slide_width - min_width) / 2);
+			
+			if(caption.length)
+			{
+				if(caption.is('.caption_left'))
+				{
+					css_left = ((slide_width - min_width) / 1.5);
+				}
+				else if(caption.is('.caption_right'))
+				{
+					css_left = ((slide_width - min_width) / 2.5);
+				}
+			}
+			
+			if(slide_width >= min_width)
+			{
+				css_left = 0;
+			}
+			
+			img.css({left:css_left});
+		},
 		
 		_slide: function(dir)
 		{

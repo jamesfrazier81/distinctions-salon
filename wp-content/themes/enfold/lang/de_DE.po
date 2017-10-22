@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Enfold v3.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-08 15:56+0100\n"
-"PO-Revision-Date: 2016-06-08 15:57+0100\n"
-"Last-Translator: Adrian Wackernah <info@wackernah.de>\n"
+"POT-Creation-Date: 2016-06-08 16:12+0100\n"
+"PO-Revision-Date: 2016-06-08 16:12+0100\n"
+"Last-Translator: Kriesi <support@kriesi.at>\n"
 "Language-Team: \n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
@@ -15,7 +15,7 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
 "_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
-"X-Poedit-Basepath: ..\n"
+"X-Poedit-Basepath: ../../\n"
 "X-Poedit-Bookmarks: -1,-1,-1,-1,-1,-1,-1,1513,-1,-1\n"
 "X-Textdomain-Support: yes\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -35,13 +35,13 @@ msgstr "Einträge von"
 msgid ""
 "This post is password protected. Enter the password to view any comments."
 msgstr ""
-"Dieser Beitrag ist passwortgeschützt. Bitte geben Sie das Passwort ein, um "
-"Zugang zu diesen Beitrag zu erhalten."
+"Dieser Beitrag ist passwortgeschützt. Bitte gib das Passwort ein, um Zugang "
+"zu diesen Beitrag zu erhalten."
 
 # @ avia_framework
 #: comments.php:53
 msgid "replies"
-msgstr "Antworten"
+msgstr "Kommentare"
 
 # @ avia_framework
 #: comments.php:54
@@ -66,12 +66,12 @@ msgstr "Trackbacks &amp; Pingbacks"
 # @ avia_framework
 #: comments.php:165
 msgid "Leave a Reply"
-msgstr "Hinterlassen Sie einen Kommentar"
+msgstr "Dein Kommentar"
 
 # @ avia_framework
 #: comments.php:166
 msgid "Want to join the discussion?"
-msgstr "Wollen Sie an der Diskussion teilnehmen?"
+msgstr ""
 
 #: comments.php:166
 msgid "Feel free to contribute!"
@@ -90,7 +90,7 @@ msgstr "Profil des Benutzers:"
 # @ avia_framework
 #: config-events-calendar/config.php:122
 msgid "Additional Functionality"
-msgstr "Extra Funktionalität"
+msgstr ""
 
 #: config-events-calendar/config.php:143
 msgid ""
@@ -98,7 +98,7 @@ msgid ""
 "sales, publicly submitted events, new views and more?"
 msgstr ""
 
-# @ LayerSlider
+# @ avia_framework
 #: config-events-calendar/config.php:144
 msgid "Check out the"
 msgstr ""
@@ -135,7 +135,7 @@ msgstr ""
 #: config-layerslider/LayerSlider/classes/class.km.autoupdate.v3.php:280
 #: config-layerslider/LayerSlider_old/classes/class.km.autoupdate.v3.php:280
 msgid "Your settings were successfully saved."
-msgstr "Ihre Einstellungen wurden erfolgreich gespeichert."
+msgstr "Deine Einstellungen wurden erfolgreich gespeichert."
 
 # @ LayerSlider
 #: config-layerslider/LayerSlider/config/defaults.php:14
@@ -161,7 +161,7 @@ msgstr "Slider Höhe"
 #: config-layerslider/LayerSlider/config/defaults.php:30
 #: config-layerslider/LayerSlider_old/config/defaults.php:30
 msgid "The height of the slider in pixels."
-msgstr ""
+msgstr "Sliderhöhe in Pixeln."
 
 # @ LayerSlider
 #: config-layerslider/LayerSlider/config/defaults.php:42
@@ -182,7 +182,7 @@ msgstr ""
 #: config-layerslider/LayerSlider/config/defaults.php:51
 #: config-layerslider/LayerSlider_old/config/defaults.php:51
 msgid "Max-width"
-msgstr ""
+msgstr "Maximale Breite"
 
 # @ LayerSlider
 #: config-layerslider/LayerSlider/config/defaults.php:53
@@ -196,7 +196,7 @@ msgstr ""
 #: config-layerslider/LayerSlider/config/defaults.php:67
 #: config-layerslider/LayerSlider_old/config/defaults.php:67
 msgid "Full-width"
-msgstr ""
+msgstr "Ganze Breite"
 
 # @ LayerSlider
 #: config-layerslider/LayerSlider/config/defaults.php:69
@@ -224,7 +224,7 @@ msgstr ""
 #: config-layerslider/LayerSlider/config/defaults.php:92
 #: config-layerslider/LayerSlider_old/config/defaults.php:92
 msgid "Layers container"
-msgstr ""
+msgstr "Ebenen-Container"
 
 # @ LayerSlider
 #: config-layerslider/LayerSlider/config/defaults.php:94
@@ -234,12 +234,13 @@ msgid ""
 "hold and center your layers."
 msgstr ""
 
+# @ avia_framework
 #: config-layerslider/LayerSlider/config/defaults.php:105
 #: config-layerslider/LayerSlider_old/config/defaults.php:105
 msgid "Hide on mobile"
 msgstr ""
 
-# @ LayerSlider
+# @ avia_framework
 #: config-layerslider/LayerSlider/config/defaults.php:107
 #: config-layerslider/LayerSlider_old/config/defaults.php:107
 msgid "Hides the slider on mobile devices."
@@ -256,8 +257,7 @@ msgstr ""
 msgid "Hides the slider under the given value of browser width in pixels."
 msgstr ""
 
-# @ default
-# @ avia_framework
+# @ LayerSlider
 #: config-layerslider/LayerSlider/config/defaults.php:127
 #: config-layerslider/LayerSlider_old/config/defaults.php:127
 msgid "Hide over"
@@ -272,7 +272,7 @@ msgstr ""
 #: config-layerslider/LayerSlider/config/defaults.php:142
 #: config-layerslider/LayerSlider_old/config/defaults.php:142
 msgid "Start slideshow"
-msgstr ""
+msgstr "Starte Slideshow"
 
 # @ LayerSlider
 #: config-layerslider/LayerSlider/config/defaults.php:144
@@ -323,7 +323,7 @@ msgstr ""
 #: config-layerslider/LayerSlider/config/defaults.php:177
 #: config-layerslider/LayerSlider_old/config/defaults.php:177
 msgid "Animate starting slide"
-msgstr ""
+msgstr "Side Start animieren"
 
 # @ LayerSlider
 #: config-layerslider/LayerSlider/config/defaults.php:179
@@ -376,7 +376,7 @@ msgstr ""
 #: config-layerslider/LayerSlider/config/defaults.php:213
 #: config-layerslider/LayerSlider_old/config/defaults.php:213
 msgid "Force the number of loops"
-msgstr "Legen Sie die Anzahl der Wiederholungen fest."
+msgstr "Lege die Anzahl der Wiederholungen fest."
 
 # @ LayerSlider
 #: config-layerslider/LayerSlider/config/defaults.php:215
@@ -598,14 +598,14 @@ msgstr "Deaktiviert"
 #: config-layerslider/LayerSlider/config/defaults.php:364
 #: config-layerslider/LayerSlider_old/config/defaults.php:364
 msgid "Hover"
-msgstr ""
+msgstr "Hover"
 
 # @ LayerSlider
 #: config-layerslider/LayerSlider/config/defaults.php:365
 #: config-layerslider/LayerSlider_old/config/defaults.php:365
 #: config-templatebuilder/avia-shortcodes/image_hotspots.php:272
 msgid "Always"
-msgstr ""
+msgstr "Immer"
 
 # @ LayerSlider
 #: config-layerslider/LayerSlider/config/defaults.php:372
@@ -647,7 +647,7 @@ msgstr ""
 #: config-layerslider/LayerSlider/config/defaults.php:403
 #: config-layerslider/LayerSlider_old/config/defaults.php:403
 msgid "Active thumbnail opacity"
-msgstr ""
+msgstr "Aktives Miniaturbild Deckkraft"
 
 #: config-layerslider/LayerSlider/config/defaults.php:405
 #: config-layerslider/LayerSlider_old/config/defaults.php:405
@@ -792,7 +792,7 @@ msgstr ""
 #: config-layerslider/LayerSlider_old/config/defaults.php:512
 #: config-layerslider/LayerSlider_old/templates/tmpl-slider-settings.php:24
 msgid "YourLogo"
-msgstr "Ihr Logo"
+msgstr "Dein Logo"
 
 # @ LayerSlider
 #: config-layerslider/LayerSlider/config/defaults.php:514
@@ -875,6 +875,10 @@ msgid ""
 "stay visible for the time specified here. This value is in millisecs, so the "
 "value 1000 means 1 second. Please don't use 0 or very low values."
 msgstr ""
+"Hier kannst Du das Zeitintervall zwischen den Diawechseln festlegen, dieses "
+"Dia bleibt für die hier eingegebene Dauer sichtbar. Der Wert ist in "
+"Millisekunden, so dass ein Wert von 1000 einer Sekunde entspricht. Bitte "
+"verwende keine sehr niedrigen Werte oder 0."
 
 # @ LayerSlider
 #: config-layerslider/LayerSlider/config/defaults.php:728
@@ -899,19 +903,19 @@ msgstr ""
 #: config-layerslider/LayerSlider_old/config/defaults.php:738
 #: config-layerslider/LayerSlider_old/config/defaults.php:1181
 msgid "Enter URL"
-msgstr ""
+msgstr "URL eingeben"
 
 # @ LayerSlider
 #: config-layerslider/LayerSlider/config/defaults.php:740
 #: config-layerslider/LayerSlider_old/config/defaults.php:740
 msgid "If you want to link the whole slide, enter the URL of your link here."
-msgstr "Um den Slide zu verlinken, geben Sie hier die URL ein."
+msgstr "Um den Slide zu verlinken, gib hier die URL ein."
 
 # @ LayerSlider
 #: config-layerslider/LayerSlider/config/defaults.php:749
 #: config-layerslider/LayerSlider_old/config/defaults.php:749
 msgid "Link Target"
-msgstr ""
+msgstr "Linkziel"
 
 # @ LayerSlider
 #: config-layerslider/LayerSlider/config/defaults.php:765
@@ -926,7 +930,7 @@ msgid ""
 "You can apply an ID attribute on the HTML element of this slide to work with "
 "it in your custom CSS or Javascript code."
 msgstr ""
-"Sie können ein ID-Attribut auf dem HTML-Element dieser Folie anwenden, um "
+"Du kannst ein ID-Attribut auf dem HTML-Element dieser Folie anwenden, um "
 "damit in der benutzerdefinierten CSS-oder Javascript-Datei zu arbeiten."
 
 # @ LayerSlider
@@ -942,9 +946,9 @@ msgid ""
 "You can specify a slide alias name which you can use in your URLs with a "
 "hash mark, so LayerSlider will start with the correspondig slide."
 msgstr ""
-"Sie können einen Alias-Namen für den Slide angeben, den Sie in Ihren URLs "
-"mit einem Hash-Zeichen verwenden können. Auf diese Weise können Sie können "
-"Sie festlegen, mit welchen Slide gestartet werden soll."
+"Du kannst einen Alias-Namen für den Slide angeben, den Du in Deinen URLs mit "
+"einem Hash-Zeichen verwenden können. Auf diese Weise kannst Du festlegen, "
+"mit welchen Slide gestartet werden soll."
 
 # @ LayerSlider
 #: config-layerslider/LayerSlider/config/defaults.php:790
@@ -968,7 +972,7 @@ msgstr "Versteckt"
 msgid ""
 "If you don't want to use this slide in your front-page, but you want to keep "
 "it, you can hide it with this switch."
-msgstr "Mit diesem Schalter können Sie den Slide ausblenden. "
+msgstr "Mit diesem Schalter kannst Du den Slide ausblenden. "
 
 # @ LayerSlider
 #: config-layerslider/LayerSlider/config/defaults.php:868
@@ -1507,7 +1511,7 @@ msgstr ""
 #: config-layerslider/LayerSlider/config/defaults.php:1191
 #: config-layerslider/LayerSlider_old/config/defaults.php:1191
 msgid "URL target"
-msgstr ""
+msgstr "URL Ziel"
 
 # @ LayerSlider
 #: config-layerslider/LayerSlider/config/defaults.php:1208
@@ -1692,9 +1696,9 @@ msgid ""
 "List of your chosen fonts separated with a comma. Please use apostrophes if "
 "your font names contains white spaces. Example: Helvetica, Arial, sans-serif"
 msgstr ""
-"Liste der von Ihnen ausgewählten, kommaseparierten Schriftarten. Sollte Ihre "
-"Schriftart Leerzeichen enthalten, verwenden Sie bitte Apostrophe (z.B. "
-"Helvetica, Arial, sans-serif)"
+"Liste der von Dir ausgewählten, kommaseparierten Schriftarten. Sollte Deine "
+"Schriftart Leerzeichen enthalten, verwende bitte Apostrophe (z.B. Helvetica, "
+"Arial, sans-serif)"
 
 # @ LayerSlider
 #: config-layerslider/LayerSlider/config/defaults.php:1338
@@ -1736,8 +1740,8 @@ msgid ""
 "The color of your text. You can use color names, hexadecimal, RGB or RGBA "
 "values. Example: #333"
 msgstr ""
-"Die Farbe Ihres Textes. Sie können Farbnamen, Hexadezimal-, RGB-oder RGBA-"
-"Werte verwenden (z.B. #333)."
+"Die Farbe Deines Textes. Du Farbnamen, Hexadezimal-, RGB-oder RGBA-Werte "
+"verwenden (z.B. #333)."
 
 # @ LayerSlider
 #: config-layerslider/LayerSlider/config/defaults.php:1368
@@ -1752,7 +1756,7 @@ msgid ""
 "The background color of your layer. You can use color names, hexadecimal, "
 "RGB or RGBA values as well as the 'transparent' keyword. Example: #FFF"
 msgstr ""
-"Die Hintergrundfarbe Ihrer Ebene. Sie können Farbnamen, Hexadezimal-, RGB-"
+"Die Hintergrundfarbe Deiner Ebene. Du kannst Farbnamen, Hexadezimal-, RGB-"
 "oder RGBA-Werte als auch das Schlüsselwort 'transparent' verwenden (z.B. # "
 "FFF). "
 
@@ -1875,13 +1879,13 @@ msgstr ""
 #: config-layerslider/LayerSlider/templates/tmpl-add-slider.php:10
 #: config-layerslider/LayerSlider_old/templates/tmpl-add-slider.php:10
 msgid "Add slider"
-msgstr ""
+msgstr "Slider hinzufügen"
 
 # @ LayerSlider
 #: config-layerslider/LayerSlider/templates/tmpl-beta-feedback.php:4
 #: config-layerslider/LayerSlider_old/templates/tmpl-beta-feedback.php:4
 msgid "Using beta version"
-msgstr ""
+msgstr "Verwende Beta-Version"
 
 # @ LayerSlider
 #: config-layerslider/LayerSlider/templates/tmpl-beta-feedback.php:5
@@ -1940,13 +1944,13 @@ msgstr "Bild"
 #: config-layerslider/LayerSlider_old/templates/tmpl-layer.php:9
 #: config-templatebuilder/avia-shortcodes/headline_rotator.php:40
 msgid "Text"
-msgstr ""
+msgstr "Text"
 
 # @ LayerSlider
 #: config-layerslider/LayerSlider/templates/tmpl-layer.php:10
 #: config-layerslider/LayerSlider_old/templates/tmpl-layer.php:10
 msgid "HTML / Video / Audio"
-msgstr ""
+msgstr "HTML / Video / Audio"
 
 # @ LayerSlider
 #: config-layerslider/LayerSlider/templates/tmpl-layer.php:11
@@ -2007,7 +2011,7 @@ msgstr ""
 #: config-layerslider/LayerSlider/templates/tmpl-layer.php:41
 #: config-layerslider/LayerSlider_old/templates/tmpl-layer.php:41
 msgid "insert from URL"
-msgstr ""
+msgstr "von URL einfügen"
 
 # @ avia_framework
 #: config-layerslider/LayerSlider/templates/tmpl-layer.php:42
@@ -2030,7 +2034,7 @@ msgstr ""
 #: config-layerslider/LayerSlider/templates/tmpl-layer.php:52
 #: config-layerslider/LayerSlider_old/templates/tmpl-layer.php:52
 msgid "Add Media"
-msgstr ""
+msgstr "Media Element hinzufügen"
 
 # @ LayerSlider
 #: config-layerslider/LayerSlider/templates/tmpl-layer.php:54
@@ -2064,13 +2068,13 @@ msgstr ""
 #: config-layerslider/LayerSlider/templates/tmpl-layer.php:94
 #: config-layerslider/LayerSlider_old/templates/tmpl-layer.php:94
 msgid "Transition in"
-msgstr ""
+msgstr "Übergang innerhalb"
 
 # @ LayerSlider
 #: config-layerslider/LayerSlider/templates/tmpl-layer.php:133
 #: config-layerslider/LayerSlider_old/templates/tmpl-layer.php:133
 msgid "Transition out"
-msgstr ""
+msgstr "Übergang ausserhalb"
 
 # @ LayerSlider
 #: config-layerslider/LayerSlider/templates/tmpl-layer.php:172
@@ -2113,7 +2117,6 @@ msgid "Font"
 msgstr "Schriften"
 
 # @ LayerSlider
-# @ avia_framework
 #: config-layerslider/LayerSlider/templates/tmpl-layer.php:254
 #: config-layerslider/LayerSlider/templates/tmpl-slider-settings.php:23
 #: config-layerslider/LayerSlider_old/templates/tmpl-layer.php:254
@@ -2141,7 +2144,7 @@ msgid ""
 "text."
 msgstr ""
 
-# @ avia_framework
+# @ LayerSlider
 #: config-layerslider/LayerSlider/templates/tmpl-layer.php:264
 #: config-layerslider/LayerSlider_old/templates/tmpl-layer.php:264
 msgid "Custom CSS"
@@ -2265,15 +2268,14 @@ msgstr "oder"
 #: config-layerslider/LayerSlider_old/templates/tmpl-slide.php:29
 #: config-layerslider/LayerSlider_old/templates/tmpl-slide.php:40
 msgid "enter URL"
-msgstr ""
+msgstr "URL eingeben"
 
 # @ LayerSlider
 #: config-layerslider/LayerSlider/templates/tmpl-slide.php:49
 #: config-layerslider/LayerSlider_old/templates/tmpl-slide.php:49
 msgid ""
 "You can select your desired slide transitions by clicking on this button."
-msgstr ""
-"Klicken Sie auf diesen Button um den gewünschten Slide-Übergang auswählen."
+msgstr "Klicke auf diesen Button, um den gewünschten Slide-Übergang auswählen."
 
 # @ LayerSlider
 #: config-layerslider/LayerSlider/templates/tmpl-slide.php:79
@@ -2388,7 +2390,7 @@ msgstr ""
 #: config-layerslider/LayerSlider/templates/tmpl-slider-settings.php:6
 #: config-layerslider/LayerSlider_old/templates/tmpl-slider-settings.php:6
 msgid "Type your slider name here"
-msgstr "Tragen Sie den Namen des Sliders hier ein"
+msgstr "Trage den Namen des Sliders hier ein"
 
 # @ LayerSlider
 #: config-layerslider/LayerSlider/templates/tmpl-slider-settings.php:8
@@ -2402,7 +2404,7 @@ msgstr ""
 #: config-layerslider/LayerSlider_old/templates/tmpl-slider-settings.php:14
 #: config-layerslider/LayerSlider_old/views/slider_edit.php:147
 msgid "Slider Settings"
-msgstr ""
+msgstr "Slider Einstellungen"
 
 # @ LayerSlider
 # @ avia_framework
@@ -2434,7 +2436,7 @@ msgstr "Erscheinungsbild"
 #: config-layerslider/LayerSlider/templates/tmpl-slider-settings.php:20
 #: config-layerslider/LayerSlider_old/templates/tmpl-slider-settings.php:20
 msgid "Navigation Area"
-msgstr ""
+msgstr "Navigationsbereich"
 
 # @ LayerSlider
 #: config-layerslider/LayerSlider/templates/tmpl-slider-settings.php:21
@@ -2446,7 +2448,7 @@ msgstr ""
 #: config-layerslider/LayerSlider/templates/tmpl-slider-settings.php:22
 #: config-layerslider/LayerSlider_old/templates/tmpl-slider-settings.php:22
 msgid "Videos"
-msgstr ""
+msgstr "Videos"
 
 # @ LayerSlider
 #: config-layerslider/LayerSlider/templates/tmpl-slider-settings.php:31
@@ -2478,7 +2480,7 @@ msgstr ""
 #: config-layerslider/LayerSlider/templates/tmpl-slider-settings.php:89
 #: config-layerslider/LayerSlider_old/templates/tmpl-slider-settings.php:89
 msgid "Slideshow behavior"
-msgstr ""
+msgstr "Slideshow Verhalten"
 
 # @ LayerSlider
 #: config-layerslider/LayerSlider/templates/tmpl-slider-settings.php:105
@@ -2490,7 +2492,7 @@ msgstr ""
 #: config-layerslider/LayerSlider/templates/tmpl-slider-settings.php:116
 #: config-layerslider/LayerSlider_old/templates/tmpl-slider-settings.php:116
 msgid "Slideshow navigation"
-msgstr ""
+msgstr "Slideshow Navigation"
 
 # @ LayerSlider
 #: config-layerslider/LayerSlider/templates/tmpl-slider-settings.php:127
@@ -2617,7 +2619,7 @@ msgstr "Zurück zur Liste"
 #: config-layerslider/LayerSlider_old/views/style_editor.php:50
 #: config-layerslider/LayerSlider_old/views/transition_builder.php:512
 msgid "Your changes has been saved!"
-msgstr "Ihre Änderungen wurden erfolgreich gespeichert!"
+msgstr "Deine Änderungen wurden erfolgreich gespeichert!"
 
 # @ LayerSlider
 #: config-layerslider/LayerSlider/views/skin_editor.php:65
@@ -2639,7 +2641,7 @@ msgstr ""
 #: config-layerslider/LayerSlider/views/skin_editor.php:68
 #: config-layerslider/LayerSlider_old/views/skin_editor.php:68
 msgid "Choose a skin:"
-msgstr "Wählen Sie einen Skin"
+msgstr "Wähle einen Skin"
 
 # @ LayerSlider
 #: config-layerslider/LayerSlider/views/skin_editor.php:80
@@ -2809,7 +2811,7 @@ msgstr ""
 msgid "The selected items were merged together as a new slider."
 msgstr ""
 
-# @ LayerSlider
+# @ woothemes
 #: config-layerslider/LayerSlider/views/slider_list.php:72
 #: config-layerslider/LayerSlider_old/views/slider_list.php:72
 msgid "The selected sliders were restored."
@@ -2926,7 +2928,7 @@ msgstr ""
 #: config-layerslider/LayerSlider/views/slider_list.php:160
 #: config-layerslider/LayerSlider_old/views/slider_list.php:160
 msgid "Slider preview"
-msgstr ""
+msgstr "Slider Vorschau"
 
 # @ LayerSlider
 # @ avia_framework
@@ -2997,7 +2999,7 @@ msgstr ""
 #: config-layerslider/LayerSlider/views/slider_list.php:213
 #: config-layerslider/LayerSlider_old/views/slider_list.php:213
 msgid "Delete permanently"
-msgstr ""
+msgstr "Permanent löschen"
 
 # @ LayerSlider
 #: config-layerslider/LayerSlider/views/slider_list.php:215
@@ -3015,7 +3017,7 @@ msgstr ""
 #: config-layerslider/LayerSlider/views/slider_list.php:223
 #: config-layerslider/LayerSlider_old/views/slider_list.php:223
 msgid "items"
-msgstr ""
+msgstr "Einträge"
 
 #: config-layerslider/LayerSlider/views/slider_list.php:241
 #: config-layerslider/LayerSlider_old/views/slider_list.php:241
@@ -3234,7 +3236,7 @@ msgstr ""
 #: config-layerslider/LayerSlider/views/slider_list.php:360
 #: config-layerslider/LayerSlider_old/views/slider_list.php:360
 msgid "Super Admin"
-msgstr ""
+msgstr "Super Admin"
 
 # @ LayerSlider
 #: config-layerslider/LayerSlider/views/slider_list.php:362
@@ -3242,7 +3244,7 @@ msgstr ""
 msgid "Admin"
 msgstr ""
 
-# @ LayerSlider
+# @ avia_framework
 #: config-layerslider/LayerSlider/views/slider_list.php:363
 #: config-layerslider/LayerSlider_old/views/slider_list.php:363
 msgid "Editor, Admin"
@@ -3252,7 +3254,7 @@ msgstr ""
 #: config-layerslider/LayerSlider/views/slider_list.php:364
 #: config-layerslider/LayerSlider_old/views/slider_list.php:364
 msgid "Author, Editor, Admin"
-msgstr ""
+msgstr "Autor, Editor, Admin"
 
 # @ LayerSlider
 #: config-layerslider/LayerSlider/views/slider_list.php:365
@@ -3261,14 +3263,13 @@ msgid "Contributor, Author, Editor, Admin"
 msgstr ""
 
 # @ LayerSlider
-# @ avia_framework
 #: config-layerslider/LayerSlider/views/slider_list.php:366
 #: config-layerslider/LayerSlider_old/views/slider_list.php:366
 #: config-templatebuilder/avia-shortcodes/hr.php:60
 #: config-templatebuilder/avia-shortcodes/image_hotspots.php:184
 #: config-templatebuilder/avia-shortcodes/numbers.php:148
 msgid "Custom"
-msgstr ""
+msgstr "Benutzerdefiniert"
 
 #: config-layerslider/LayerSlider/views/slider_list.php:369
 #: config-layerslider/LayerSlider_old/views/slider_list.php:369
@@ -3326,19 +3327,19 @@ msgstr "Suche"
 #: config-layerslider/LayerSlider/views/slider_list.php:418
 #: config-layerslider/LayerSlider_old/views/slider_list.php:418
 msgid "Choose a font family"
-msgstr ""
+msgstr "Wähle eine Schriftart aus"
 
 # @ LayerSlider
 #: config-layerslider/LayerSlider/views/slider_list.php:425
 #: config-layerslider/LayerSlider_old/views/slider_list.php:425
 msgid "Add font"
-msgstr ""
+msgstr "Schriftart hinzufügen"
 
 # @ LayerSlider
 #: config-layerslider/LayerSlider/views/slider_list.php:426
 #: config-layerslider/LayerSlider_old/views/slider_list.php:426
 msgid "Back to results"
-msgstr ""
+msgstr "Zurück zu den Ergebnissen"
 
 #: config-layerslider/LayerSlider/views/slider_list.php:437
 #: config-layerslider/LayerSlider_old/views/slider_list.php:437
@@ -3371,6 +3372,7 @@ msgstr ""
 msgid "Khmer"
 msgstr ""
 
+# @ avia_framework
 #: config-layerslider/LayerSlider/views/slider_list.php:443
 #: config-layerslider/LayerSlider_old/views/slider_list.php:443
 msgid "Latin"
@@ -3508,7 +3510,7 @@ msgstr ""
 #: config-layerslider/LayerSlider/views/slider_list.php:540
 #: config-layerslider/LayerSlider_old/views/slider_list.php:540
 msgid "Filter:"
-msgstr ""
+msgstr "Filter:"
 
 # @ LayerSlider
 # @ avia_framework
@@ -3563,25 +3565,25 @@ msgstr ""
 #: config-layerslider/LayerSlider/views/slider_list.php:545
 #: config-layerslider/LayerSlider_old/views/slider_list.php:545
 msgid "Beta versions"
-msgstr ""
+msgstr "Beta Versionen"
 
 # @ LayerSlider
 #: config-layerslider/LayerSlider/views/slider_list.php:548
 #: config-layerslider/LayerSlider_old/views/slider_list.php:548
 msgid ">You have version"
-msgstr ""
+msgstr "> Du hast Version"
 
 # @ LayerSlider
 #: config-layerslider/LayerSlider/views/slider_list.php:548
 #: config-layerslider/LayerSlider_old/views/slider_list.php:548
 msgid "installed"
-msgstr ""
+msgstr "installiert"
 
 # @ LayerSlider
 #: config-layerslider/LayerSlider/views/slider_list.php:567
 #: config-layerslider/LayerSlider_old/views/slider_list.php:567
 msgid "The documentation is here"
-msgstr "Die Dokumentation finden Sie hier"
+msgstr "Die Dokumentation findest Du hier"
 
 #: config-layerslider/LayerSlider/views/slider_list.php:567
 #: config-layerslider/LayerSlider_old/views/slider_list.php:567
@@ -3770,7 +3772,7 @@ msgstr "Sequenz"
 #: config-layerslider/LayerSlider_old/views/transition_builder.php:614
 #: config-layerslider/LayerSlider_old/views/transition_builder.php:946
 msgid "You can control the animation order of the tiles here."
-msgstr "Hier können Sie die Animationrs-Reihenfolge der Kacheln steuern."
+msgstr "Hier kannst Du die Animationrs-Reihenfolge der Kacheln steuern."
 
 # @ LayerSlider
 #: config-layerslider/LayerSlider/views/transition_builder.php:111
@@ -3883,7 +3885,7 @@ msgstr "Vor Animation"
 #: config-layerslider/LayerSlider_old/views/transition_builder.php:802
 #: config-templatebuilder/avia-shortcodes/progressbar.php:130
 msgid "Enabled"
-msgstr ""
+msgstr "Aktiviert"
 
 # @ LayerSlider
 #: config-layerslider/LayerSlider/views/transition_builder.php:144
@@ -4136,7 +4138,7 @@ msgstr "Wählen:"
 #: config-layerslider/LayerSlider/views/transition_builder.php:532
 #: config-layerslider/LayerSlider_old/views/transition_builder.php:532
 msgid "No 3D transitions yet"
-msgstr ""
+msgstr "Noch kein 3D-Übergänge"
 
 # @ LayerSlider
 #: config-layerslider/LayerSlider/views/transition_builder.php:542
@@ -4148,7 +4150,7 @@ msgstr "2D-Übergänge"
 #: config-layerslider/LayerSlider/views/transition_builder.php:551
 #: config-layerslider/LayerSlider_old/views/transition_builder.php:551
 msgid "No 2D transitions yet"
-msgstr ""
+msgstr "Noch kein 2D-Übergänge"
 
 # @ LayerSlider
 #: config-layerslider/LayerSlider/views/transition_builder.php:887
@@ -4247,7 +4249,7 @@ msgstr ""
 #: config-layerslider/LayerSlider_old/wp/notices.php:43
 #, php-format
 msgid "You have version %1$s. Update to version %2$s."
-msgstr "Sie verwenden Version %1$s. Aktualisieren Sie auf Version %2$s."
+msgstr "Du verwendest Version %1$s. Aktualisiere auf Version %2$s."
 
 #: config-layerslider/LayerSlider/wp/notices.php:45
 #: config-layerslider/LayerSlider/wp/notices.php:46
@@ -4397,7 +4399,7 @@ msgstr "Solider wählen:"
 #: config-layerslider/LayerSlider/wp/widgets.php:52
 #: config-layerslider/LayerSlider_old/wp/widgets.php:52
 msgid "You didn't create any slider yet."
-msgstr "Sie haben bisher keine Slider erstellt!"
+msgstr "Du hast bisher keine Slider erstellt!"
 
 # @ LayerSlider
 # @ avia_framework
@@ -4572,13 +4574,13 @@ msgstr "Zeigt Beiträge aus Ihrem Blog"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/blog.php:37
 msgid "Do you want to display blog posts?"
-msgstr "Möchten Sie Blog-Beiträge anzeigen?"
+msgstr "Möchtest Du Blog-Beiträge anzeigen?"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/blog.php:38
 msgid "Do you want to display blog posts or entries from a custom taxonomy?"
 msgstr ""
-"Möchten Sie Blog-Beiträge oder Einträge aus einer benutzerdefinierten "
+"Möchtest Du Blog-Beiträge oder Einträge aus einer benutzerdefinierten "
 "Taxonomie anzeigen?"
 
 # @ avia_framework
@@ -4603,7 +4605,7 @@ msgid ""
 "You can select multiple categories here. The Page will then show posts from "
 "only those categories."
 msgstr ""
-"Sie können mehrere Kategorien auswählen. Die Seite zeigt dann lediglich die "
+"Du kannst mehrere Kategorien auswählen. Die Seite zeigt dann lediglich die "
 "Beiträge der gewählten Kategorien."
 
 # @ avia_framework
@@ -4634,8 +4636,7 @@ msgstr "Welche Einträge?"
 #: config-templatebuilder/avia-shortcodes/slideshow_accordion.php:65
 #: config-templatebuilder/avia-shortcodes/slideshow_feature_image.php:49
 msgid "Select which entries should be displayed by selecting a taxonomy"
-msgstr ""
-"Definieren Sie die Taxonomie, aus der Einträge dargestellt werden sollen."
+msgstr "Definiere die Taxonomie, aus der Einträge dargestellt werden sollen."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/blog.php:61
@@ -4657,7 +4658,7 @@ msgstr "Blog-Stil"
 #: config-templatebuilder/avia-shortcodes/blog.php:69
 #: includes/admin/register-admin-options.php:2039
 msgid "Choose the default blog layout here."
-msgstr "Wählen Sie die Standard Blog-Gestaltung aus"
+msgstr "Wähle die Standard Blog-Gestaltung aus"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/blog.php:74
@@ -4706,17 +4707,17 @@ msgstr "Blog Raster Spalten"
 #: config-templatebuilder/avia-shortcodes/masonry_entries.php:91
 #: config-templatebuilder/avia-shortcodes/masonry_gallery.php:76
 msgid "How many columns do you want to display?"
-msgstr "Wie viele Spalten möchten Sie anzeigen?"
+msgstr "Wie viele Spalten möchtest Du anzeigen?"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/blog.php:91
 msgid "Define Blog Grid layout"
-msgstr "Definieren Sie das Blog Raster-Layout"
+msgstr "Definiere das Blog Raster-Layout"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/blog.php:92
 msgid "Do you want to display a read more link?"
-msgstr "Möchten Sie einen \"Weiterlesen-Link:\" anzeigen?"
+msgstr "Möchtest Du einen \"Weiterlesen-Link:\" anzeigen?"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/blog.php:98
@@ -4805,7 +4806,7 @@ msgstr "Voransicht Bildgröße"
 #: config-templatebuilder/avia-shortcodes/postslider.php:96
 #: config-templatebuilder/avia-shortcodes/slideshow_feature_image.php:108
 msgid "Set the image size of the preview images"
-msgstr "Legen Sie die Bildgröße der Miniaturbilder fest."
+msgstr "Lege die Bildgröße der Miniaturbilder fest."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/blog.php:126
@@ -4820,7 +4821,7 @@ msgstr ""
 #: config-templatebuilder/avia-shortcodes/postslider.php:100
 #: config-templatebuilder/avia-shortcodes/slideshow_feature_image.php:115
 msgid "Choose the preview image size manually (select thumbnail size)"
-msgstr "Wählen Sie die Miniaturbildgröße manuell (Thumbnail-Größe wählen)"
+msgstr "Wähle die Miniaturbildgröße manuell (Thumbnail-Größe wählen)"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/blog.php:129
@@ -4834,7 +4835,7 @@ msgstr "Benutzerdefinierte Bildgröße für Vorschau auswählen"
 #: config-templatebuilder/avia-shortcodes/postslider.php:104
 #: config-templatebuilder/avia-shortcodes/slideshow_feature_image.php:119
 msgid "Choose image size for Preview Image"
-msgstr "Wählen Sie die Bildgröße für die Bildvorschau"
+msgstr "Wähle die Bildgröße für die Bildvorschau"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/blog.php:140
@@ -5003,7 +5004,7 @@ msgstr "Button-Beschriftung"
 #: config-templatebuilder/avia-shortcodes/slideshow_fullscreen.php:293
 #: config-templatebuilder/avia-shortcodes/slideshow_fullsize.php:285
 msgid "This is the text that appears on your button."
-msgstr "Geben Sie den Text ein,  der auf dem Button erscheinen soll."
+msgstr "Gib den Text ein,  der auf dem Button erscheinen soll."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/buttons.php:52
@@ -5143,7 +5144,7 @@ msgstr "Link in neuem Fenster öffnen"
 #: config-templatebuilder/avia-shortcodes/team.php:120
 msgid "Select here if you want to open the linked page in a new window"
 msgstr ""
-"Wählen Sie diese Option, wenn die verknüpfte Seite in einem neuen Fenster "
+"Wähle diese Option, wenn die verknüpfte Seite in einem neuen Fenster "
 "geöffnet werden soll."
 
 # @ avia_framework
@@ -5156,7 +5157,7 @@ msgstr "Button Größe"
 #: config-templatebuilder/avia-shortcodes/buttons.php:77
 #: config-templatebuilder/avia-shortcodes/promobox.php:142
 msgid "Choose the size of your button here"
-msgstr "Wählen Sie hier die Größe des Buttons"
+msgstr "Wähle hier die Größe des Buttons"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/buttons.php:82
@@ -5193,7 +5194,7 @@ msgstr "Position Button"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/buttons.php:90
 msgid "Choose the alignment of your button here"
-msgstr "Wählen Sie hier die Ausrichtung des Buttons."
+msgstr "Wähle hier die Ausrichtung des Buttons."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/buttons.php:95
@@ -5272,7 +5273,7 @@ msgstr ""
 #: config-templatebuilder/avia-shortcodes/notification.php:120
 #: config-templatebuilder/avia-shortcodes/promobox.php:166
 msgid "Select an icon for your Button below"
-msgstr "Wählen Sie ein Icon für den Button aus."
+msgstr "Wähle ein Icon für den Button aus."
 
 # @ LayerSlider
 #: config-templatebuilder/avia-shortcodes/buttons.php:133
@@ -5311,9 +5312,9 @@ msgstr "Button Farbe"
 #: config-templatebuilder/avia-shortcodes/slideshow_fullscreen.php:302
 #: config-templatebuilder/avia-shortcodes/slideshow_fullsize.php:294
 msgid "Choose a color for your button here"
-msgstr "Wählen Sie hier die Farbe für den Button."
+msgstr "Wähle hier die Farbe für den Button."
 
-# @ avia_framework
+# @ LayerSlider
 #: config-templatebuilder/avia-shortcodes/buttons.php:144
 #: config-templatebuilder/avia-shortcodes/slideshow_fullscreen.php:309
 #: config-templatebuilder/avia-shortcodes/slideshow_fullscreen.php:376
@@ -5347,7 +5348,7 @@ msgstr "Dunkel Transparent"
 #: config-templatebuilder/avia-shortcodes/slideshow_fullsize.php:306
 #: config-templatebuilder/avia-shortcodes/slideshow_fullsize.php:370
 msgid "Colored Buttons"
-msgstr ""
+msgstr "Farbiger Button"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/buttons.php:150
@@ -5578,8 +5579,7 @@ msgstr "Benutzerdefinierte Hintergrundfarbe"
 #: config-templatebuilder/avia-shortcodes/buttons_fullwidth.php:203
 #: config-templatebuilder/avia-shortcodes/promobox.php:123
 msgid "Select a custom background color for your Button here"
-msgstr ""
-"Wählen Sie hier eine benutzerdefinierte Hintergrundfarbe für den Button."
+msgstr "Wähle hier eine benutzerdefinierte Hintergrundfarbe für den Button."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/buttons.php:178
@@ -5603,9 +5603,9 @@ msgstr "Benutzerdefinierte Schriftfarbe"
 #: config-templatebuilder/avia-shortcodes/buttons_fullwidth.php:139
 #: config-templatebuilder/avia-shortcodes/promobox.php:132
 msgid "Select a custom font color for your Button here"
-msgstr "Wählen Sie hier eine benutzerdefinierte Schriftfarbe für Ihren Button."
+msgstr "Wähle hier eine benutzerdefinierte Schriftfarbe für Ihren Button."
 
-# @ avia_framework
+# @ LayerSlider
 #: config-templatebuilder/avia-shortcodes/buttons_fullwidth.php:18
 msgid "Fullwidth Button"
 msgstr ""
@@ -5619,7 +5619,6 @@ msgstr ""
 msgid "Button Title"
 msgstr ""
 
-# @ avia_framework
 # @ default
 #: config-templatebuilder/avia-shortcodes/buttons_fullwidth.php:58
 msgid "Additional Description"
@@ -5635,6 +5634,7 @@ msgstr ""
 msgid "Description position"
 msgstr ""
 
+# @ avia_framework
 #: config-templatebuilder/avia-shortcodes/buttons_fullwidth.php:67
 msgid "Show the description above or below the title?"
 msgstr ""
@@ -5676,9 +5676,9 @@ msgstr ""
 #: includes/admin/register-backend-advanced-styles.php:272
 #: includes/admin/register-backend-advanced-styles.php:341
 msgid "Font Color"
-msgstr ""
+msgstr "Schriftfarbe"
 
-# @ avia_framework
+# @ LayerSlider
 #: config-templatebuilder/avia-shortcodes/buttons_fullwidth.php:146
 #: includes/admin/register-backend-advanced-styles.php:20
 #: includes/admin/register-backend-advanced-styles.php:50
@@ -5695,7 +5695,7 @@ msgstr ""
 #: includes/admin/register-backend-advanced-styles.php:273
 #: includes/admin/register-backend-advanced-styles.php:340
 msgid "Background Color"
-msgstr ""
+msgstr "Hintergrundfarbe"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/buttons_fullwidth.php:147
@@ -5737,7 +5737,7 @@ msgstr "Hinzufügen/bearbeiten von Listeneinträgen"
 #: config-templatebuilder/avia-shortcodes/iconlist.php:45
 msgid "Here you can add, remove and edit the items of your item list."
 msgstr ""
-"Hier können Sie Elemente Ihrer Artikelliste hinzufügen, bearbeiten und "
+"Hier kannst Du Elemente Ihrer Artikelliste hinzufügen, bearbeiten und "
 "entfernen."
 
 # @ avia_framework
@@ -5772,6 +5772,7 @@ msgstr ""
 msgid "Pricing"
 msgstr ""
 
+# @ avia_framework
 #: config-templatebuilder/avia-shortcodes/catalogue.php:61
 msgid "Enter the price for the item here. Eg:"
 msgstr ""
@@ -5797,8 +5798,8 @@ msgstr ""
 msgid ""
 "Either upload a new, or choose an existing image from your media library"
 msgstr ""
-"Laden Sie ein neues Bild hoch oder verwenden Sie ein bereits vorhandenes aus "
-"der Medien-Bibliothek."
+"Lade ein neues Bild hoch oder verwende ein bereits vorhandenes aus der "
+"Medien-Bibliothek."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/catalogue.php:72
@@ -5855,7 +5856,7 @@ msgstr "Neues Tab/Fenster öffnen"
 #: config-templatebuilder/avia-shortcodes/catalogue.php:93
 #: config-templatebuilder/avia-shortcodes/image.php:126
 msgid "Do you want to open the link url in a new tab/window?"
-msgstr "Möchten Sie einen Link in einem neuem Fenster/Tab öffnen?"
+msgstr "Möchtest Du einen Link in einem neuem Fenster/Tab öffnen?"
 
 # @ LayerSlider
 # @ avia_framework
@@ -6317,7 +6318,7 @@ msgstr ""
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/codeblock.php:19
 msgid "Code Block"
-msgstr ""
+msgstr "Code-Block"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/codeblock.php:26
@@ -6569,7 +6570,7 @@ msgstr "Ohne"
 #: includes/admin/register-backend-advanced-styles.php:274
 #: includes/admin/register-backend-advanced-styles.php:339
 msgid "Border Color"
-msgstr ""
+msgstr "Rahmen Farbe"
 
 #: config-templatebuilder/avia-shortcodes/columns.php:287
 msgid "Set a border color for this column"
@@ -6622,7 +6623,7 @@ msgstr ""
 #: config-templatebuilder/avia-shortcodes/image.php:258
 #: config-templatebuilder/avia-shortcodes/image_hotspots.php:244
 msgid "Pop up"
-msgstr ""
+msgstr "Pop up"
 
 #: config-templatebuilder/avia-shortcodes/columns.php:415
 #: config-templatebuilder/avia-shortcodes/image.php:260
@@ -6705,7 +6706,7 @@ msgstr ""
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/contact.php:49
 msgid "Your email address"
-msgstr "Ihre E-Mail Adresse"
+msgstr "Deine E-Mail Adresse"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/contact.php:50
@@ -6727,13 +6728,13 @@ msgstr "Formular Titel"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/contact.php:58
 msgid "Enter a form title that is displayed above the form"
-msgstr "Geben Sie einen Titel an, der über dem Formular angezeigt wird."
+msgstr "Gib einen Titel an, der über dem Formular angezeigt wird."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/contact.php:60
 #: config-templatebuilder/avia-shortcodes/contact.php:334
 msgid "Send us mail"
-msgstr "Senden Sie uns eine E-Mail"
+msgstr "Sende uns eine E-Mail"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/contact.php:64
@@ -6745,8 +6746,8 @@ msgstr "Hinzufügen/bearbeiten von Kontaktformular-Elementen"
 msgid ""
 "Here you can add, remove and edit the form Elements of your contact form."
 msgstr ""
-"In diesem Bereich können Sie Elemente zum Formular hinzufügen, entfernen "
-"oder bearbeiten."
+"In diesem Bereich kannst Du Elemente zum Formular hinzufügen, entfernen oder "
+"bearbeiten."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/contact.php:66
@@ -6763,8 +6764,8 @@ msgid ""
 "It is recommended to not delete the 'E-Mail' field if you want to use an "
 "auto responder."
 msgstr ""
-"Wenn Sie einen Auto-Responder verwenden möchten wird empfohlen, das Feld \"E-"
-"Mail\" nicht zu löschen."
+"Wenn Du einen Auto-Responder verwenden möchtest, wird empfohlen, das Feld "
+"\"E-Mail\" nicht zu löschen."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/contact.php:71
@@ -6832,7 +6833,7 @@ msgstr ""
 msgid "Form Element: Datepicker"
 msgstr ""
 
-# @ avia_framework
+# @ LayerSlider
 #: config-templatebuilder/avia-shortcodes/contact.php:104
 msgid "Custom HTML: Add a Description"
 msgstr ""
@@ -6848,8 +6849,8 @@ msgid ""
 "Enter any number of options that the visitor can choose from. Separate these "
 "Options with a comma."
 msgstr ""
-"Geben Sie eine beliebige Anzahl von Optionen an, die Ihre Besucher wählen "
-"können. Trennen Sie diese Optionen mit einem Komma."
+"Gib eine beliebige Anzahl von Optionen an, die Deine Besucher wählen können. "
+"Trenne diese Optionen mit einem Komma."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/contact.php:110
@@ -6869,10 +6870,10 @@ msgstr ""
 msgid "Check if you want to enable multiple answers"
 msgstr ""
 
-# @ avia_framework
+# @ default
 #: config-templatebuilder/avia-shortcodes/contact.php:129
 msgid "Add Description"
-msgstr ""
+msgstr "Beschreibung hinzufügen"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/contact.php:137
@@ -6927,7 +6928,7 @@ msgstr "Senden-Button Beschriftung"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/contact.php:165
 msgid "Enter the submit buttons label text here"
-msgstr "Geben Sie die Button-Beschriftung hier ein"
+msgstr "Gib die Button-Beschriftung hier ein"
 
 # @ avia_framework
 # @ wordpress-importer
@@ -6971,7 +6972,7 @@ msgstr "Was soll dargestellt werden, nachdem die Nachricht gesendet wurde?"
 #: config-templatebuilder/avia-shortcodes/contact.php:188
 #: config-templatebuilder/avia-shortcodes/contact.php:333
 msgid "Your message has been sent!"
-msgstr "Ihre Nachricht wurde versendet!"
+msgstr "Deine Nachricht wurde versendet!"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/contact.php:193
@@ -6996,7 +6997,7 @@ msgid ""
 "You can define a custom Email Subject for your form here. If left empty the "
 "subject will be"
 msgstr ""
-"Hier können Sie einen eigenen E-Mail Betreff für das Formular definieren. "
+"Hier kannst Du einen eigenen E-Mail Betreff für das Formular definieren. "
 "Bleibt das Feld leer wird folgendes verwendet "
 
 # @ avia_framework
@@ -7022,8 +7023,8 @@ msgid ""
 "Enter a message that will be sent to the users email address once he has "
 "submitted the form."
 msgstr ""
-"Geben Sie eine Nachricht ein, welche an die Benutzer E-Mail-Adresse gesendet "
-"wird, wenn das Formular abgesendet wurde."
+"Gib eine Nachricht ein, welche an die Benutzer E-Mail-Adresse gesendet wird, "
+"wenn das Formular abgesendet wurde."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/contact.php:218
@@ -7052,8 +7053,8 @@ msgid ""
 "should filter most spam messages by robots anyways)"
 msgstr ""
 "(Es ist bereits ein unsichtbarer Spam-Schutz implementiert, welches die "
-"meisten Spam-Mails von Robotern filtert. Empfehlung: Aktivieren Sie das "
-"Captcha nur dann, wenn Sie von Ihrem Kontaktformular Spam erhalten.)"
+"meisten Spam-Mails von Robotern filtert. Empfehlung: Aktiviere das Captcha "
+"nur dann, wenn Du von Deinem Kontaktformular Spam erhälst.)"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/contact.php:230
@@ -7171,14 +7172,13 @@ msgstr "Element"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/contact.php:355
 msgid "Thank you for your Message!"
-msgstr "Vielen Dank für Ihre Nachricht!"
+msgstr "Vielen Dank für Deine Nachricht!"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/contact.php:379
 #: config-templatebuilder/avia-shortcodes/mailchimp.php:430
 msgid "Please prove that you are human by solving the equation"
-msgstr ""
-"Bitte lösen Sie die Gleichung. Diese Maßnahme dient der Abwehr von Spam."
+msgstr "Bitte löse die Gleichung. Diese Maßnahme dient der Abwehr von Spam."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/contentslider.php:16
@@ -7198,7 +7198,7 @@ msgstr "Slides hinzufügen/bearbeiten"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/contentslider.php:50
 msgid "Here you can add, remove and edit the slides you want to display."
-msgstr "Hier können Sie Slides hinzufügen, bearbeiten und entfernen."
+msgstr "Hier kannst Du Slides hinzufügen, bearbeiten und entfernen."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/contentslider.php:55
@@ -7259,7 +7259,7 @@ msgstr "In neuem Fenster öffnen"
 #: config-templatebuilder/avia-shortcodes/numbers.php:116
 msgid "Do you want to open the link in a new window"
 msgstr ""
-"Wählen Sie diese Option, wenn die verknüpfte Seite in einem neuen Fenster "
+"Wähle diese Option, wenn die verknüpfte Seite in einem neuen Fenster "
 "geöffnet werden soll."
 
 # @ avia_framework
@@ -7274,7 +7274,7 @@ msgstr "Inhalt sliden"
 #: config-templatebuilder/avia-shortcodes/tabs.php:127
 #: config-templatebuilder/avia-shortcodes/toggles.php:80
 msgid "Enter some content here"
-msgstr "Geben Sie hier Ihren Inhalt ein"
+msgstr "Gib hier Deinen Inhalt ein"
 
 #: config-templatebuilder/avia-shortcodes/contentslider.php:102
 msgid "Slide Content goes here"
@@ -7290,7 +7290,7 @@ msgstr "Überschrift"
 #: config-templatebuilder/avia-shortcodes/contentslider.php:110
 #: config-templatebuilder/avia-shortcodes/logoslider.php:132
 msgid "Do you want to display a heading above the images?"
-msgstr "Möchten Sie eine Überschrift über den Bildern anzeigen?"
+msgstr "Möchtest Du eine Überschrift über den Bildern anzeigen?"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/contentslider.php:117
@@ -7380,7 +7380,7 @@ msgstr "6 Spalten"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/contentslider.php:133
 msgid "Choose the transition for your content slider."
-msgstr "Wählen Sie den Übergang für den Inhalts-Slider"
+msgstr "Wähle den Übergang für den Inhalts-Slider"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/contentslider.php:141
@@ -7478,7 +7478,7 @@ msgstr "Dauer der Slider-Auto-Rotation"
 #: config-templatebuilder/avia-shortcodes/slideshow_fullscreen.php:593
 #: config-templatebuilder/avia-shortcodes/slideshow_fullsize.php:590
 msgid "Images will be shown the selected amount of seconds."
-msgstr "Wählen Sie, wieviele Sekunden jedes Bild angezeigt werden soll."
+msgstr "Wähle, wieviele Sekunden jedes Bild angezeigt werden soll."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/contentslider.php:184
@@ -7559,7 +7559,7 @@ msgstr ""
 #: config-templatebuilder/avia-shortcodes/countdown.php:189
 #: config-templatebuilder/avia-shortcodes/events_countdown.php:37
 msgid "Second"
-msgstr "Sekunde"
+msgstr ""
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/countdown.php:26
@@ -7567,28 +7567,28 @@ msgstr "Sekunde"
 #: config-templatebuilder/avia-shortcodes/countdown.php:190
 #: config-templatebuilder/avia-shortcodes/events_countdown.php:38
 msgid "Minute"
-msgstr "Minute"
+msgstr ""
 
 #: config-templatebuilder/avia-shortcodes/countdown.php:27
 #: config-templatebuilder/avia-shortcodes/countdown.php:69
 #: config-templatebuilder/avia-shortcodes/countdown.php:191
 #: config-templatebuilder/avia-shortcodes/events_countdown.php:39
 msgid "Hour"
-msgstr "Stunde"
+msgstr ""
 
 # @ LayerSlider
 #: config-templatebuilder/avia-shortcodes/countdown.php:28
 #: config-templatebuilder/avia-shortcodes/countdown.php:192
 #: config-templatebuilder/avia-shortcodes/events_countdown.php:40
 msgid "Day"
-msgstr "Tag"
+msgstr ""
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/countdown.php:29
 #: config-templatebuilder/avia-shortcodes/countdown.php:193
 #: config-templatebuilder/avia-shortcodes/events_countdown.php:41
 msgid "Week"
-msgstr "Woche"
+msgstr ""
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/countdown.php:61
@@ -7711,43 +7711,43 @@ msgstr ""
 
 #: config-templatebuilder/avia-shortcodes/countdown.php:189
 msgid "Seconds"
-msgstr "Sekunden"
+msgstr ""
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/countdown.php:190
 msgid "Minutes"
-msgstr "Minuten"
+msgstr ""
 
 #: config-templatebuilder/avia-shortcodes/countdown.php:191
 msgid "Hours"
-msgstr "Stunden"
+msgstr ""
 
 #: config-templatebuilder/avia-shortcodes/countdown.php:192
 msgid "Days"
-msgstr "Tage"
+msgstr ""
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/countdown.php:193
 msgid "Weeks"
-msgstr "Wochen"
+msgstr ""
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/countdown.php:194
 msgid "Month"
-msgstr "Monat"
+msgstr ""
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/countdown.php:194
 msgid "Months"
-msgstr "Monate"
+msgstr ""
 
 #: config-templatebuilder/avia-shortcodes/countdown.php:195
 msgid "Year"
-msgstr "Jahr"
+msgstr ""
 
 #: config-templatebuilder/avia-shortcodes/countdown.php:195
 msgid "Years"
-msgstr "Jahre"
+msgstr ""
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/dropcaps.php:103
@@ -7757,7 +7757,7 @@ msgstr "Initial-Gestaltung"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/dropcaps.php:104
 msgid "Here you can set the background color of your Dropcap"
-msgstr "Legen Sie die Hintergrundfarbe für das Initial (Dropcap) fest"
+msgstr "Lege die Hintergrundfarbe für das Initial (Dropcap) fest"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/dropcaps.php:125
@@ -7880,8 +7880,8 @@ msgstr "Galerie bearbeiten"
 #: config-templatebuilder/avia-shortcodes/masonry_gallery.php:58
 msgid "Create a new Gallery by selecting existing or uploading new images"
 msgstr ""
-"Erstellen Sie eine neue Galerie, indem Sie bestehende Bilder aus der Medien-"
-"Bibliothek verwenden oder neue hochladen."
+"Erstelle eine neue Galerie, indem Du bestehende Bilder aus der Medien-"
+"Bibliothek verwendest oder neue hochlädst."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/gallery.php:47
@@ -7909,7 +7909,7 @@ msgstr "Galerie Stil"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/gallery.php:53
 msgid "Choose the layout of your Gallery"
-msgstr "Wählen Sie das Layout der Galerie aus"
+msgstr "Wähle das Layout der Galerie aus"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/gallery.php:58
@@ -7967,7 +7967,7 @@ msgstr "Galerie Miniaturbild-Größe"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/gallery.php:85
 msgid "Choose image size for the small preview thumbnails"
-msgstr "Wählen Sie die Bildgröße der Miniaturbilder"
+msgstr "Wähle die Bildgröße der Miniaturbilder"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/gallery.php:94
@@ -7977,7 +7977,7 @@ msgstr "Galerie Spalten"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/gallery.php:95
 msgid "Choose the column count of your Gallery"
-msgstr "Wählen Sie die Spaltenanzahl der Galerie aus"
+msgstr "Wähle die Spaltenanzahl der Galerie aus"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/gallery.php:104
@@ -7987,7 +7987,7 @@ msgstr "Lightbox verwenden"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/gallery.php:105
 msgid "Do you want to activate the lightbox"
-msgstr "Möchten Sie die Lightbox aktivieren?"
+msgstr "Möchtest Du die Lightbox aktivieren?"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/gallery.php:112
@@ -8012,8 +8012,7 @@ msgstr "Miniaturbild Fade-In-Effekt"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/gallery.php:119
 msgid "You can set when the gallery thumbnail animation starts"
-msgstr ""
-"Legen Sie fest, wann die Animation der Galerie-Miniaturbilder starten soll."
+msgstr "Lege fest, wann die Animation der Galerie-Miniaturbilder starten soll."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/gallery.php:125
@@ -8030,7 +8029,7 @@ msgstr ""
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/google_maps.php:19
 msgid "Google Map"
-msgstr ""
+msgstr "Google Map"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/google_maps.php:26
@@ -8048,17 +8047,18 @@ msgstr ""
 #: config-templatebuilder/avia-shortcodes/google_maps.php:45
 msgid "Address couldn't be found by Google, please add it manually"
 msgstr ""
+"Adresse konnte von Google nicht gefunden werden, bitte manuell eingeben."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/google_maps.php:46
 #: framework/php/class-framework-widgets.php:1320
 msgid "Please insert a valid address in the fields above"
-msgstr "Geben Sie bitte eine gültige Adresse in das obere Feld ein!"
+msgstr "Gib bitte eine gültige Adresse in das obere Feld ein!"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/google_maps.php:68
 msgid "Add/Edit Map Locations"
-msgstr ""
+msgstr "Hinzufügen/bearbeiten Karten Standorte"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/google_maps.php:69
@@ -8066,6 +8066,8 @@ msgstr ""
 msgid ""
 "Here you can add, remove and edit the map locations for your Google Map."
 msgstr ""
+"Hier kannst Du Karten Standorte für Deine Google Map hinzufügen, bearbeiten "
+"und entfernen."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/google_maps.php:72
@@ -8075,7 +8077,7 @@ msgstr ""
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/google_maps.php:77
 msgid "Full Adress"
-msgstr ""
+msgstr "Vollständige Adresse"
 
 #: config-templatebuilder/avia-shortcodes/google_maps.php:78
 msgid ""
@@ -8177,7 +8179,7 @@ msgstr ""
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/google_maps.php:134
 msgid "Map height"
-msgstr ""
+msgstr "Karten-Höhe"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/google_maps.php:135
@@ -8189,7 +8191,7 @@ msgstr ""
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/google_maps.php:142
 msgid "Zoom Level"
-msgstr ""
+msgstr "Zoom-Stufe"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/google_maps.php:143
@@ -8205,7 +8207,7 @@ msgstr ""
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/google_maps.php:151
 msgid "Color Saturation"
-msgstr ""
+msgstr "Farbsättigung"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/google_maps.php:152
@@ -8239,7 +8241,7 @@ msgstr ""
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/google_maps.php:163
 msgid "Greyscale"
-msgstr ""
+msgstr "Graustufen"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/google_maps.php:168
@@ -8341,13 +8343,13 @@ msgstr ""
 #: config-templatebuilder/avia-shortcodes/slideshow_accordion.php:286
 #: config-templatebuilder/avia-shortcodes/slideshow_feature_image.php:308
 msgid "Adjust to content width"
-msgstr ""
+msgstr "Content Breite einstellen"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/google_maps.php:232
 #: config-templatebuilder/avia-shortcodes/google_maps.php:235
 msgid "Address"
-msgstr ""
+msgstr "Adresse"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/grid_row.php:23
@@ -8420,6 +8422,7 @@ msgstr ""
 msgid "Minimum height"
 msgstr ""
 
+# @ LayerSlider
 #: config-templatebuilder/avia-shortcodes/grid_row.php:141
 msgid "Set the minimum height of all the cells in pixel. eg:400px"
 msgstr ""
@@ -8437,8 +8440,8 @@ msgid ""
 "The section will use the color scheme you select. Color schemes are defined "
 "on your styling page"
 msgstr ""
-"Die Sektion verwendet das Farbschema, welches Sie auf der Styling-Seite "
-"festgelegt haben. "
+"Die Sektion verwendet das Farbschema, welches Du auf der Styling-Seite "
+"festgelegt hast. "
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/grid_row.php:152
@@ -8484,9 +8487,9 @@ msgid ""
 "via CSS. This option is also helpful if you want to use anchor links to "
 "scroll to a sections when a link is clicked"
 msgstr ""
-"Vergeben Sie ein individuelles ID-Attribut für diesen Abschnitt. Damit "
-"können Sie z.B. über CSS einen Stil anwenden, oder auch einen Anker-Link "
-"verwenden um so den Abschnitt direkt per Link anzusteuern."
+"Vergib ein individuelles ID-Attribut für diesen Abschnitt. Damit kannst Du z."
+"B. über CSS einen Stil anwenden, oder auch einen Anker-Link verwenden um so "
+"den Abschnitt direkt per Link anzusteuern."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/grid_row.php:172
@@ -8497,8 +8500,8 @@ msgid ""
 "Use with caution and make sure to only use allowed characters. No special "
 "characters can be used."
 msgstr ""
-"<strong>Achtung:<br />Verwenden Sie nur zulässige Zeichen. Sonderzeichen "
-"oder Umlaute dürfen nicht genutzt werden!</strong>"
+"<strong>Achtung:<br />Verwende nur zulässige Zeichen. Sonderzeichen oder "
+"Umlaute dürfen nicht genutzt werden!</strong>"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/heading.php:21
@@ -8529,7 +8532,7 @@ msgstr "Überschriften-Typ"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/heading.php:63
 msgid "Select which kind of heading you want to display."
-msgstr "Wählen Sie das gewünschte Überschriften-Format."
+msgstr "Wähle das gewünschte Überschriften-Format."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/heading.php:72
@@ -8539,7 +8542,7 @@ msgstr "Überschriften-Stil"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/heading.php:73
 msgid "Select a heading style"
-msgstr "Wählen Sie einen Überschriften-Stil"
+msgstr "Wähle einen Überschriften-Stil"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/heading.php:77
@@ -8582,6 +8585,7 @@ msgstr "Untertitel"
 #: config-templatebuilder/avia-shortcodes/heading.php:91
 msgid "Add an extra descriptive subheading above or below the actual heading"
 msgstr ""
+"Zusätzlicher Untertitel über oder unterhalb der eigentlichen Überschrift"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/heading.php:96
@@ -8606,7 +8610,7 @@ msgstr "Text für Untertitel"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/heading.php:101
 msgid "Add your subheading here"
-msgstr "Geben Sie hier Text für den Untertitel ein."
+msgstr "Gib hier Text für den Untertitel ein."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/heading.php:107
@@ -8616,7 +8620,7 @@ msgstr "Textgröße des Untertitels"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/heading.php:108
 msgid "Size of your subeading in Pixel"
-msgstr "Geben Sie einen Wert in Pixel ein (z.B. 14px)"
+msgstr "Gib einen Wert in Pixel ein (z.B. 14px)"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/heading.php:115
@@ -8631,12 +8635,12 @@ msgstr "Innenabstand unten in Pixel"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/heading.php:134
 msgid "Heading Color"
-msgstr "Farbe der Überschrift"
+msgstr "Überschrift Farbe"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/heading.php:135
 msgid "Select a heading color"
-msgstr "Wählen Sie eine Farbe für die Schrift"
+msgstr "Wähle eine Farbe für die Schrift"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/heading.php:139
@@ -8651,7 +8655,7 @@ msgstr "Meta Farbe"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/heading.php:144
 msgid "Select a custom font color for your Heading here"
-msgstr "Wählen Sie eine benutzerdefienierte Farbe für die Überschrift aus."
+msgstr "Wähle eine benutzerdefienierte Farbe für die Überschrift aus."
 
 #: config-templatebuilder/avia-shortcodes/headline_rotator.php:13
 msgid "Headline Rotator"
@@ -8738,9 +8742,10 @@ msgid ""
 "its own line"
 msgstr ""
 
+# @ LayerSlider
 #: config-templatebuilder/avia-shortcodes/headline_rotator.php:137
 msgid "Rotation"
-msgstr ""
+msgstr "Rotation"
 
 #: config-templatebuilder/avia-shortcodes/headline_rotator.php:142
 msgid "Autorotation duration"
@@ -8758,11 +8763,12 @@ msgstr ""
 msgid "Select the rotation animation"
 msgstr ""
 
+# @ LayerSlider
 #: config-templatebuilder/avia-shortcodes/headline_rotator.php:171
 #: config-templatebuilder/avia-shortcodes/menu.php:122
 #: config-templatebuilder/avia-shortcodes/social_share.php:47
 msgid "Style"
-msgstr ""
+msgstr "Stil"
 
 #: config-templatebuilder/avia-shortcodes/headline_rotator.php:176
 msgid "HTML Markup"
@@ -8808,7 +8814,7 @@ msgstr "Stil für horizontale Linie"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/hr.php:47
 msgid "Here you can set the styling and size of the HR element"
-msgstr "Hier können Sie Art und Größe der horizontalen Linie festlegen."
+msgstr "Hier kannst Du Art und Größe der horizontalen Linie festlegen."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/hr.php:54
@@ -8867,7 +8873,7 @@ msgstr "Position"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/hr.php:89
 msgid "Set the position of the short ruler"
-msgstr "Legen Sie die Position der horizontalen Linie fest."
+msgstr "Lege die Position der horizontalen Linie fest."
 
 #: config-templatebuilder/avia-shortcodes/hr.php:108
 msgid "none"
@@ -8955,7 +8961,7 @@ msgstr "Schrift-Icon"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/icon.php:53
 msgid "Select an Icon below"
-msgstr "Wählen Sie ein Icon aus:"
+msgstr "Wähle ein Icon aus:"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/icon.php:59
@@ -8968,7 +8974,7 @@ msgid ""
 "Here you can set the  style of the icon. Either display it inline as part of "
 "some text or let it stand alone with border and optional caption"
 msgstr ""
-"Sie können das Icon als Inline-Element (umgeben von Text) oder alleinstehend "
+"Du kannst das Icon als Inline-Element (umgeben von Text) oder alleinstehend "
 "mit Rahmen und optionaler Bildunterschrift darstellen."
 
 # @ avia_framework
@@ -8989,7 +8995,7 @@ msgstr "Icon-Bildunterschrift"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/icon.php:73
 msgid "A small caption below the icon"
-msgstr ""
+msgstr "Eine kleine Beschriftung unterhalb des Icons."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/icon.php:110
@@ -9010,7 +9016,7 @@ msgstr "Position Icon"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/icon.php:119
 msgid "Choose the alignment of your icon here"
-msgstr "Legen Sie die Aussrichtung des Icons fest"
+msgstr "Lege die Aussrichtung des Icons fest"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/icon.php:131
@@ -9020,8 +9026,7 @@ msgstr "Optionaler Tool-Tipp."
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/icon.php:132
 msgid "Add a tooltip for this Icon. The tooltip will appear on mouse over"
-msgstr ""
-"Ergänzen Sie das Icon um einen Tool-Tipp. Dieser erscheint bei Mouse-Over."
+msgstr "Ergänze das Icon um einen Tool-Tipp. Dieser erscheint bei Mouse-Over."
 
 #: config-templatebuilder/avia-shortcodes/icon.php:133
 msgid "Please note: Images within the tooltip are currently not supported"
@@ -9039,8 +9044,8 @@ msgid ""
 "Here you can set the  color of the icon. Enter no value if you want to use "
 "the standard font color."
 msgstr ""
-"Hier können Sie einen Farbwert für das Icon festlegen. Lassen Sie das Feld "
-"leer um den Standardwert zu verwenden."
+"Hier kannst Du einen Farbwert für das Icon festlegen. Lasse das Feld leer um "
+"den Standardwert zu verwenden."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/iconbox.php:16
@@ -9105,12 +9110,12 @@ msgstr "IconBox-Icon"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/iconbox.php:76
 msgid "Select an IconBox Icon below"
-msgstr "Wählen Sie eines der unten abgebildeten Icons aus"
+msgstr "Wähle eines der unten abgebildeten Icons aus"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/iconbox.php:86
 msgid "Add an IconBox title here"
-msgstr "Geben Sie einen Titel für die IconBox ein."
+msgstr "Gib einen Titel für die IconBox ein."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/iconbox.php:89
@@ -9121,7 +9126,7 @@ msgstr "IconBox Titel"
 #: config-templatebuilder/avia-shortcodes/iconbox.php:116
 #: config-templatebuilder/avia-shortcodes/iconlist.php:94
 msgid "Apply link to icon"
-msgstr ""
+msgstr "Link zu Icon hinzufügen"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/iconbox.php:117
@@ -9153,12 +9158,11 @@ msgid "Add some content for this IconBox"
 msgstr "Inhalt für IconBox eingeben"
 
 # @ avia_framework
-# @ avia_builder
 #: config-templatebuilder/avia-shortcodes/iconbox.php:135
 #: config-templatebuilder/avia-shortcodes/numbers.php:61
 #: config-templatebuilder/avia-shortcodes/textblock.php:54
 msgid "Click here to add your own text"
-msgstr "Klicken Sie hier um Ihren eigenen Text einzufügen"
+msgstr "Klicke hier, um Ihren eigenen Text einzufügen"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/iconbox.php:160
@@ -9223,7 +9227,7 @@ msgstr "Listen Titel 3"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/iconlist.php:62
 msgid "Enter the list item title here (Better keep it short)"
-msgstr "Geben Sie hier den Titel ein (Möglichst kurz)"
+msgstr "Gib hier den Titel ein (Möglichst kurz)"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/iconlist.php:109
@@ -9235,7 +9239,7 @@ msgstr "Icon für Listeneintrag"
 #: config-templatebuilder/avia-shortcodes/iconlist.php:110
 #: config-templatebuilder/avia-shortcodes/progressbar.php:102
 msgid "Select an icon for your list item below"
-msgstr "Wählen Sie ein Icon für Ihren Listen-Eintrag aus."
+msgstr "Wähle ein Icon für Ihren Listen-Eintrag aus."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/iconlist.php:118
@@ -9245,12 +9249,12 @@ msgstr "Listeneintrag Inhalt"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/iconlist.php:122
 msgid "List Content goes here"
-msgstr "Geben Sie hier Ihren gewünschten Textinhalt ein."
+msgstr "Gib hier Deinen gewünschten Textinhalt ein."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/iconlist.php:130
 msgid "Set the position of the icons"
-msgstr "Legen Sie die Position der Icons fest"
+msgstr "Lege die Position der Icons fest"
 
 #: config-templatebuilder/avia-shortcodes/iconlist.php:140
 msgid "Icon List Styling"
@@ -9317,7 +9321,7 @@ msgstr "Bildausrichtung"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/image.php:61
 msgid "Choose here, how to align your image"
-msgstr "Wählen Sie hier Ihre Bildausrichtung"
+msgstr "Wähle hier Deine Bildausrichtung"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/image.php:69
@@ -9327,9 +9331,9 @@ msgstr "Keine spezielle Ausrichtung"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/image.php:74
 msgid "Image Styling"
-msgstr ""
+msgstr "Bild-Gestaltung"
 
-# @ avia_framework
+# @ LayerSlider
 #: config-templatebuilder/avia-shortcodes/image.php:75
 msgid "Chose a styling variaton"
 msgstr ""
@@ -9387,7 +9391,7 @@ msgstr "Lightbox"
 #: config-templatebuilder/avia-shortcodes/slideshow_fullscreen.php:194
 #: config-templatebuilder/avia-shortcodes/slideshow_fullsize.php:185
 msgid "Caption"
-msgstr ""
+msgstr "Beschriftung"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/image.php:149
@@ -9410,7 +9414,7 @@ msgstr ""
 msgid "Size of your caption in pixel"
 msgstr ""
 
-# @ avia_framework
+# @ LayerSlider
 #: config-templatebuilder/avia-shortcodes/image.php:178
 msgid "Caption Appearance"
 msgstr ""
@@ -9423,7 +9427,7 @@ msgstr ""
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/image.php:186
 msgid "Always display caption"
-msgstr ""
+msgstr "Beschriftung immer zeigen"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/image.php:187
@@ -9552,10 +9556,10 @@ msgid ""
 "position. This is only to add some 'spice' to the site and only works in "
 "modern browsers"
 msgstr ""
-"Ergänzen Sie das Bild um eine kleine Animation, die erst dann aktiv wird, "
-"wenn der Benutzer durch Scrollen die Bildposition erreicht. Dieser Effekt "
-"dient nur dazu, der Seite ein wenig \"Pep\" zu verleihen und funktioniert "
-"leider nur in modernen Browsern."
+"Ergänze das Bild um eine kleine Animation, die erst dann aktiv wird, wenn "
+"der Benutzer durch Scrollen die Bildposition erreicht. Dieser Effekt dient "
+"nur dazu, der Seite ein wenig \"Pep\" zu verleihen und funktioniert leider "
+"nur in modernen Browsern."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/image_hotspots.php:16
@@ -9573,6 +9577,7 @@ msgid ""
 "Once an Image has been selected you can add your Hotspots"
 msgstr ""
 
+# @ avia_framework
 #: config-templatebuilder/avia-shortcodes/image_hotspots.php:50
 msgid "Add/Edit your hotspots."
 msgstr ""
@@ -9802,7 +9807,7 @@ msgstr "Bilder hinzufügen"
 #: config-templatebuilder/avia-shortcodes/logoslider.php:49
 msgid "Here you can add new Images to the partner/logo element."
 msgstr ""
-"In diesem Bereich können Sie weitere Bilder dem Partner/Logo Element "
+"In diesem Bereich kannst Du weitere Bilder dem Partner/Logo Element "
 "hinzufügen."
 
 # @ avia_framework
@@ -9846,7 +9851,7 @@ msgstr "Link-Titel"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/logoslider.php:95
 msgid "Enter a link title"
-msgstr "Geben Sie einen Link-Titel ein"
+msgstr "Gib einen Link-Titel ein"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/logoslider.php:116
@@ -9877,7 +9882,7 @@ msgstr "Bildgröße für Logo"
 #: config-templatebuilder/avia-shortcodes/logoslider.php:140
 #: config-templatebuilder/avia-shortcodes/slideshow_fullscreen.php:559
 msgid "Choose image size for your slideshow."
-msgstr "Wählen Sie die Bildgröße für die Slideshow."
+msgstr "Wähle die Bildgröße für die Slideshow."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/logoslider.php:148
@@ -9908,7 +9913,7 @@ msgstr "Logo-Slider oder Logo-Raster Layout"
 #: config-templatebuilder/avia-shortcodes/logoslider.php:158
 msgid "Do you want to use a grid or a slider to display the logos?"
 msgstr ""
-"Möchten Sie ein Raster oder Slider zur Darstellung der Logos verwenden?"
+"Möchtest Du ein Raster oder Slider zur Darstellung der Logos verwenden?"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/logoslider.php:162
@@ -9923,7 +9928,7 @@ msgstr "Raster"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/logoslider.php:167
 msgid "Choose the transition for your logo slider."
-msgstr "Wählen Sie einen Übergang für den Logo-Slider"
+msgstr "Wähle einen Übergang für den Logo-Slider"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/logoslider.php:191
@@ -9950,7 +9955,7 @@ msgstr ""
 #: config-templatebuilder/avia-shortcodes/magazine.php:53
 #: config-templatebuilder/avia-shortcodes/slideshow_accordion.php:77
 msgid "How many entries should be displayed?"
-msgstr ""
+msgstr "Wie viele Einträge sollen dargestellt werden?"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/magazine.php:70
@@ -9987,7 +9992,7 @@ msgstr ""
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/magazine.php:99
 msgid "Heading Link?"
-msgstr ""
+msgstr "Überschrift Link?"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/magazine.php:100
@@ -10002,7 +10007,7 @@ msgstr ""
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/magazine.php:114
 msgid "Choose a color for your heading area here"
-msgstr ""
+msgstr "Wähle die Farbe für den Überschrift Bereich aus."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/magazine.php:137
@@ -10165,7 +10170,7 @@ msgstr ""
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/masonry_entries.php:16
 msgid "Masonry"
-msgstr ""
+msgstr "Masonry"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/masonry_entries.php:22
@@ -10313,7 +10318,7 @@ msgid ""
 "Here you can select how the masonry should behave and handle all entries and "
 "the feature images of those entries"
 msgstr ""
-"Wählen Sie, wie das Masonry sich verhalten und mit den Einträgen, sowie den "
+"Wähle, wie das Masonry sich verhalten und mit den Einträgen, sowie den "
 "Feature-Bildern dieser Einträge umgehen soll."
 
 # @ avia_framework
@@ -10357,9 +10362,9 @@ msgid ""
 "Elements with no such tag use a fixed default size, elements with both tags "
 "will display extra large"
 msgstr ""
-"Perfektes manuelles Masonry: Sie können die Höhe und Breite der Einträge "
-"manuell steuern, indem Sie Tags wie \"landscape \" oder \"Portrait \" bei "
-"der Erstellung eines Eintrages hinzufügen. Elemente ohne Verwendung solcher "
+"Perfektes manuelles Masonry: Du kannst die Höhe und Breite der Einträge "
+"manuell steuern, indem Du Tags wie \"landscape \" oder \"Portrait \" bei der "
+"Erstellung eines Eintrages hinzufügst. Elemente ohne Verwendung solcher "
 "Tag's erhalten eine feste Standardgröße, Elemente mit beiden Tag's werden "
 "extra groß dargestellt."
 
@@ -10373,7 +10378,7 @@ msgstr "Abstand zwischen Elementen"
 #: config-templatebuilder/avia-shortcodes/masonry_entries.php:164
 #: config-templatebuilder/avia-shortcodes/masonry_gallery.php:118
 msgid "Select the gap between the elements"
-msgstr "Wählen Sie den Abstand zwischen den Elementen."
+msgstr "Wähle den Abstand zwischen den Elementen."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/masonry_entries.php:169
@@ -10429,7 +10434,7 @@ msgstr "Element für Titel und Textauszug"
 #: config-templatebuilder/avia-shortcodes/masonry_entries.php:207
 #: config-templatebuilder/avia-shortcodes/masonry_gallery.php:173
 msgid "You can choose if you want to display title and/or excerpt"
-msgstr "Wählen Sie, ob Titel und/oder Textauszug angezeigt werden sollen."
+msgstr "Wähle, ob Titel und/oder Textauszug angezeigt werden sollen."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/masonry_entries.php:212
@@ -10486,7 +10491,7 @@ msgstr ""
 msgid ""
 "You can choose whether to always display Title and Excerpt or only on hover"
 msgstr ""
-"Wählen Sie, ob Titel und/oder Textauszug immer, oder nur bei Hover angezeigt "
+"Wähle, ob Titel und/oder Textauszug immer, oder nur bei Hover angezeigt "
 "werden sollen."
 
 # @ avia_framework
@@ -10519,7 +10524,7 @@ msgstr ""
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/masonry_gallery.php:16
 msgid "Masonry Gallery"
-msgstr ""
+msgstr "Masonry Galerie"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/masonry_gallery.php:22
@@ -10554,7 +10559,7 @@ msgstr "Keine Option vorhanden um weitere Bilder zu betrachten!"
 #: config-templatebuilder/avia-shortcodes/masonry_gallery.php:105
 msgid "Here you can select how the masonry should behave and handle the images"
 msgstr ""
-"Wählen Sie, wie das Masonry sich verhalten und mit den Bildern umgehen soll."
+"Wähle, wie das Masonry sich verhalten und mit den Bildern umgehen soll."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/masonry_gallery.php:110
@@ -10615,8 +10620,8 @@ msgid ""
 "in the gallery"
 msgstr ""
 "Standardgemäß verlinken Bilder auf eine größere Bildansicht, die in einer "
-"Lightbox angezeigt werden. Sie können den Link deaktivieren oder auch einen "
-"benutzerdefinierten Link verwenden, wenn Sie die Galerie-Bilder bearbeiten."
+"Lightbox angezeigt werden. Du kannst den Link deaktivieren oder auch einen "
+"benutzerdefinierten Link verwenden, wenn Du die Galerie-Bilder bearbeitest."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/masonry_gallery.php:146
@@ -10775,6 +10780,7 @@ msgid ""
 "item to display the submenus"
 msgstr ""
 
+# @ default
 #: config-templatebuilder/avia-shortcodes/menu.php:309
 msgid "Menu"
 msgstr ""
@@ -10793,7 +10799,7 @@ msgstr "Erzeugt eine Info-Box für Mitteilungen"
 #: config-templatebuilder/avia-shortcodes/notification.php:39
 msgid "This is the small title at the top of your Notification."
 msgstr ""
-"Optional können Sie einen Titel angeben. Dieser erscheint hervorgehoben im "
+"Optional kannst Du einen Titel angeben. Dieser erscheint hervorgehoben im "
 "oberen Bereich der  Mitteilung."
 
 # @ avia_framework
@@ -10804,7 +10810,7 @@ msgstr "Hinweis"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/notification.php:45
 msgid "This is the text that appears in your Notification."
-msgstr "Dies ist der Text, der in Ihrer  Mitteilung angezeigt wird."
+msgstr "Dies ist der Text, der in Deiner  Mitteilung angezeigt wird."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/notification.php:48
@@ -10819,7 +10825,7 @@ msgstr "Farbe der Nachricht"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/notification.php:52
 msgid "Choose the color for your Box here"
-msgstr "Wählen Sie die Farbe der Box aus."
+msgstr "Wähle die Farbe der Box aus."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/notification.php:57
@@ -10859,7 +10865,7 @@ msgstr "Rahmen der Benachrichtigungsbox"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/notification.php:68
 msgid "Choose the border for your Box here"
-msgstr "Wählen Sie den Rahmentyp der Box aus."
+msgstr "Wähle den Rahmentyp der Box aus."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/notification.php:74
@@ -10874,12 +10880,12 @@ msgstr "Gestrichelt"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/notification.php:80
 msgid "Select a custom background color for your Notification here"
-msgstr "Wählen Sie eine Hintergrundfarbe für Ihre Benachrichtigung aus."
+msgstr "Wähle eine Hintergrundfarbe für Deine Benachrichtigung aus."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/notification.php:89
 msgid "Select a custom font color for your Notification here"
-msgstr "Wählen Sie eine eigene Farbe für Benachrichtigungen hier aus."
+msgstr "Wähle eine eigene Farbe für Benachrichtigungen hier aus."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/notification.php:98
@@ -10889,7 +10895,7 @@ msgstr "Box-Größe"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/notification.php:99
 msgid "Choose the size of your Box here"
-msgstr "Wählen Sie die Größe der Box aus."
+msgstr "Wähle die Größe der Box aus."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/notification.php:104
@@ -10900,7 +10906,7 @@ msgstr "Normal"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/numbers.php:16
 msgid "Animated Numbers"
-msgstr ""
+msgstr "Animierte Ziffern"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/numbers.php:22
@@ -10923,7 +10929,6 @@ msgstr ""
 msgid "100"
 msgstr ""
 
-# @ avia_framework
 # @ default
 #: config-templatebuilder/avia-shortcodes/numbers.php:57
 #: framework/php/class-megamenu.php:507
@@ -10938,7 +10943,7 @@ msgstr ""
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/numbers.php:65
 msgid "Add an icon to the element?"
-msgstr ""
+msgstr "Ein Icon zu dem Element hinzufügen?"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/numbers.php:71
@@ -10978,7 +10983,7 @@ msgstr ""
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/numbers.php:100
 msgid "Apply link?"
-msgstr ""
+msgstr "Link hinzufügen?"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/numbers.php:101
@@ -10997,16 +11002,16 @@ msgid ""
 "for the element (in case you use a background image for example)"
 msgstr ""
 
-# @ avia_framework
+# @ LayerSlider
 #: config-templatebuilder/avia-shortcodes/numbers.php:146
 #: includes/admin/register-backend-advanced-styles.php:2
 msgid "Light"
-msgstr ""
+msgstr "Hell"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/numbers.php:147
 msgid "Dark"
-msgstr ""
+msgstr "Dunkel"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/numbers.php:154
@@ -11080,7 +11085,7 @@ msgstr "Portfolio Bild-Rastergröße"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/portfolio.php:107
 msgid "Set the image size of the Portfolio Grid images"
-msgstr "Legen Sie die Bildgröße für das Portfolio-Bildraster fest."
+msgstr "Lege die Bildgröße für das Portfolio-Bildraster fest."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/portfolio.php:111
@@ -11095,8 +11100,7 @@ msgstr ""
 #: config-templatebuilder/avia-shortcodes/portfolio.php:111
 msgid "Choose the Portfolio Grid image size manually (select thumbnail size)"
 msgstr ""
-"Wählen Sie für das Portfolio-Raster die Bildgröße manuell (Thumbnail-Größe "
-"wählen)"
+"Wähle für das Portfolio-Raster die Bildgröße manuell (Thumbnail-Größe wählen)"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/portfolio.php:114
@@ -11106,7 +11110,7 @@ msgstr "Benutzerdefinierte Bildgröße wählen"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/portfolio.php:115
 msgid "Choose image size for Portfolio Grid Images"
-msgstr "Wählen Sie die Bildgröße für das Portfolio-Raster"
+msgstr "Wähle die Bildgröße für das Portfolio-Raster"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/portfolio.php:115
@@ -11128,9 +11132,9 @@ msgid ""
 "single entry, open a preview (aka AJAX Portfolio) or show a bigger version "
 "of the image in a lightbox overlay"
 msgstr ""
-"Ihnen stehen mehrere Optionen zur Auswahl: Ein Link zum einzelnen Eintrag, "
-"das Öffnen einer Vorschau (auch bekannt als AJAX Portfolio) oder die "
-"Darstellung einer größeren Bildversion innerhalb einer Lightbox."
+"Dir stehen mehrere Optionen zur Auswahl: Ein Link zum einzelnen Eintrag, das "
+"Öffnen einer Vorschau (auch bekannt als AJAX Portfolio) oder die Darstellung "
+"einer größeren Bildversion innerhalb einer Lightbox."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/portfolio.php:130
@@ -11174,7 +11178,7 @@ msgstr "Seiteninhalt"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/postcontent.php:24
 msgid "Display the content of another entry"
-msgstr "Zeigen Sie die Inhalte eines anderen Eintrags"
+msgstr "Zeige die Inhalte eines anderen Eintrags"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/postcontent.php:44
@@ -11184,7 +11188,7 @@ msgstr "Welcher Eintrag?"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/postcontent.php:45
 msgid "Select the Entry that should be displayed"
-msgstr "Wählen Sie den Eintrag, der angezeigt werden soll"
+msgstr "Wähle den Eintrag, der angezeigt werden soll"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/postslider.php:18
@@ -11204,8 +11208,8 @@ msgid ""
 "another post slider element."
 msgstr ""
 "Der Offset bestimmt, ab wo die Abfrage damit beginnt Beiträge zu ziehen. "
-"Dies ist dann besonders nützlich, wenn Sie z.B. eine bestimmte Anzahl von "
-"Einträgen entfernen möchten, die bereits von einem anderen Blog-Element "
+"Dies ist dann besonders nützlich, wenn Du z.B. eine bestimmte Anzahl von "
+"Einträgen entfernen möchtest, die bereits von einem anderen Blog-Element "
 "abgefragt werden."
 
 # @ avia_framework
@@ -11280,9 +11284,9 @@ msgid ""
 "sort order!"
 msgstr ""
 "Der Offset bestimmt, ab wo die Abfrage damit beginnt Beiträge zu ziehen. "
-"Dies ist dann besonders nützlich, wenn Sie z.B. eine bestimmte Anzahl von "
-"Einträgen entfernen möchten, die bereits von einem anderen Blog-Element "
-"abgefragt werden.  Achtung: Verwenden Sie diese Option nur, wenn die Produkt-"
+"Dies ist dann besonders nützlich, wenn Du z.B. eine bestimmte Anzahl von "
+"Einträgen entfernen möchtest, die bereits von einem anderen Blog-Element "
+"abgefragt werden.  Achtung: Verwende diese Option nur, wenn die Produkt-"
 "Sortierung der Produkt-Raster auch zutreffen und Benutzer nicht die "
 "Möglichkeit haben, die Sortierreihenfolge auszuwählen!"
 
@@ -11298,7 +11302,7 @@ msgstr "Sortierungseinstellungen"
 #: config-templatebuilder/avia-shortcodes/product_list.php:84
 #: config-templatebuilder/avia-shortcodes/productslider.php:87
 msgid "Here you can choose how to sort the products"
-msgstr "Wählen Sie wie die Produkte sortiert werden sollen."
+msgstr "Wähle, wie die Produkte sortiert werden sollen."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/product_grid.php:89
@@ -11477,15 +11481,15 @@ msgid ""
 "sorting of the product sliders match!"
 msgstr ""
 "Der Offset bestimmt, ab wo die Abfrage damit beginnt Beiträge zu ziehen. "
-"Dies ist dann besonders nützlich, wenn Sie z.B. eine bestimmte Anzahl von "
-"Einträgen entfernen möchten, die bereits von einem anderen Blog-Element "
-"abgefragt werden. Achtung: Verwenden Sie diese Option nur, wenn die Produkt-"
+"Dies ist dann besonders nützlich, wenn Du z.B. eine bestimmte Anzahl von "
+"Einträgen entfernen möchtest, die bereits von einem anderen Blog-Element "
+"abgefragt werden. Achtung: Verwende diese Option nur, wenn die Produkt-"
 "Sortierung der Produkt-Slider zutrifft!"
 
 # @ woocommerce
 #: config-templatebuilder/avia-shortcodes/productslider.php:278
 msgid "No products found which match your selection."
-msgstr "Keine Produkte gefunden, die Ihrer Auswahl entsprechen."
+msgstr "Keine Produkte gefunden, die Deiner Auswahl entsprechen."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/progressbar.php:16
@@ -11506,7 +11510,7 @@ msgstr "Prozessbalken hinzufügen/ bearbeiten"
 #: config-templatebuilder/avia-shortcodes/progressbar.php:41
 msgid "Here you can add, remove and edit the various progress bars."
 msgstr ""
-"In diesem Bereich können Sie unterschiedlichen Prozessbalken hinzufügen, "
+"In diesem Bereich kannst Du unterschiedlichen Prozessbalken hinzufügen, "
 "löschen und bearbeiten."
 
 # @ avia_framework
@@ -11527,7 +11531,7 @@ msgstr "Prozessbalken-Titel"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/progressbar.php:55
 msgid "Enter the Progress Bars title here"
-msgstr "Geben Sie einen Titel für den Prozessbalken ein."
+msgstr "Gib einen Titel für den Prozessbalken ein."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/progressbar.php:61
@@ -11547,7 +11551,7 @@ msgstr "Balkenfarbe"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/progressbar.php:71
 msgid "Choose a color for your progress bar here"
-msgstr "Wählen Sie hier die Farbe für den Prozessbalken"
+msgstr "Wähle hier die Farbe für den Prozessbalken"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/progressbar.php:92
@@ -11597,7 +11601,7 @@ msgstr "Erzeugt eine Informations-Box mit einem Call-to-Action Button"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/promobox.php:49
 msgid "Enter some content for Promo Box"
-msgstr "Geben Sie den Text für die Promo-Box ein"
+msgstr "Gib den Text für die Promo-Box ein"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/promobox.php:52
@@ -11605,8 +11609,8 @@ msgid ""
 "Welcome Stranger! This is an example Text for your fantastic Promo Box! Feel "
 "Free to delete it and replace it with your own fancy Message!"
 msgstr ""
-"Hallo Fremder! Dies ist ein Beispieltext für Ihre fantastische Promo-Box. Es "
-"steht Ihnen frei, diesen Text zu löschen oder durch Ihrem eigenen Text zu "
+"Hallo Fremder! Dies ist ein Beispieltext für Deine fantastische Promo-Box. "
+"Es steht Dir frei, diesen Text zu löschen oder durch Deinen eigenen Text zu "
 "ersetzen."
 
 # @ avia_framework
@@ -11667,7 +11671,7 @@ msgid ""
 "Define a minimum height for the section. Content within the section will be "
 "centered vertically within the section"
 msgstr ""
-"Definieren Sie eine Mindesthöhe für den Abschnitt. Der Inhalt wird vertikal "
+"Definiere eine Mindesthöhe für den Abschnitt. Der Inhalt wird vertikal "
 "innerhalb des Abschnitts zentriert."
 
 # @ avia_framework
@@ -11719,7 +11723,7 @@ msgstr " Innenabstand Sektion"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/section.php:144
 msgid "Define the sections top and bottom padding"
-msgstr "Definieren Sie für die Sektion den oberen und unteren Innenabstand."
+msgstr "Definiere für die Sektion den oberen und unteren Innenabstand."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/section.php:147
@@ -11792,7 +11796,7 @@ msgid ""
 "the user to the next section by scrolling down"
 msgstr ""
 
-# @ avia_framework
+# @ LayerSlider
 #: config-templatebuilder/avia-shortcodes/section.php:203
 msgid "Section Background"
 msgstr ""
@@ -11803,7 +11807,7 @@ msgid ""
 "Select a custom background color for your Section here. Leave empty if you "
 "want to use the background color of the color scheme defined above"
 msgstr ""
-"Optional können Sie eine benutzerdefinierte Hintergrundfarbe für die Sektion "
+"Optional kannst Du eine benutzerdefinierte Hintergrundfarbe für die Sektion "
 "festlegen. Bleibt das Feld leer, wird das vordefinierte Farbschema der "
 "Styling-Seite verwendet."
 
@@ -11814,8 +11818,8 @@ msgid ""
 "Leave empty if you want to use the background image of the color scheme "
 "defined above"
 msgstr ""
-"Laden Sie ein neues Bild hoch oder verwenden Sie ein bereits vorhandenes aus "
-"der Medien-Bibliothek. Bleibt das Feld leer, wird das vordefinierte "
+"Lade ein neues Bild hoch oder verwende ein bereits vorhandenes aus der "
+"Medien-Bibliothek. Bleibt das Feld leer, wird das vordefinierte "
 "Hintergrundbild aus Styling-Seite übernommen"
 
 # @ avia_framework
@@ -11830,10 +11834,10 @@ msgstr ""
 msgid "Parallax"
 msgstr ""
 
-# @ avia_framework
+# @ LayerSlider
 #: config-templatebuilder/avia-shortcodes/section.php:287
 msgid "Background Video"
-msgstr ""
+msgstr "Hintergrund Video"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/section.php:288
@@ -11877,7 +11881,7 @@ msgstr ""
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/section.php:305
 msgid "Hide video on Mobile Devices?"
-msgstr ""
+msgstr "Video auf Mobilen Geräten verbergen?"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/section.php:306
@@ -11936,7 +11940,7 @@ msgid ""
 "color overlay"
 msgstr ""
 
-# @ avia_framework
+# @ LayerSlider
 #: config-templatebuilder/avia-shortcodes/section.php:365
 #: config-templatebuilder/avia-shortcodes/slideshow_feature_image.php:231
 #: config-templatebuilder/avia-shortcodes/slideshow_fullscreen.php:518
@@ -11944,7 +11948,7 @@ msgstr ""
 #: includes/admin/register-admin-options.php:1025
 #: includes/admin/register-admin-options.php:1144
 msgid "Background Image"
-msgstr ""
+msgstr "Hintergrundbild"
 
 #: config-templatebuilder/avia-shortcodes/section.php:366
 #: config-templatebuilder/avia-shortcodes/slideshow_feature_image.php:232
@@ -11961,7 +11965,7 @@ msgstr ""
 #: includes/admin/register-admin-options.php:1028
 #: includes/admin/register-admin-options.php:1147
 msgid "No Background Image"
-msgstr ""
+msgstr "Kein Hintergrundbild"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/section.php:368
@@ -11971,7 +11975,7 @@ msgstr ""
 #: includes/admin/register-admin-options.php:1028
 #: includes/admin/register-admin-options.php:1147
 msgid "Upload custom image"
-msgstr ""
+msgstr "Benutzerdefiniertes Bild uploaden"
 
 #: config-templatebuilder/avia-shortcodes/section.php:378
 #: config-templatebuilder/avia-shortcodes/slideshow_feature_image.php:244
@@ -12009,7 +12013,7 @@ msgstr "Zeigt eine einfache Slideshow an"
 #: config-templatebuilder/avia-shortcodes/slideshow_fullscreen.php:47
 #: config-templatebuilder/avia-shortcodes/slideshow_fullsize.php:48
 msgid "Add single image or video"
-msgstr ""
+msgstr "Einzelnes Bild oder Video hinzufügen"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/slideshow.php:50
@@ -12017,7 +12021,7 @@ msgstr ""
 #: config-templatebuilder/avia-shortcodes/slideshow_fullscreen.php:53
 #: config-templatebuilder/avia-shortcodes/slideshow_fullsize.php:54
 msgid "Here you can add new Images to the slideshow."
-msgstr "In diesem Bereich können Sie weitere Bilder zur Slideshow hinzufügen."
+msgstr "In diesem Bereich kannst Du weitere Bilder zur Slideshow hinzufügen."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/slideshow.php:59
@@ -12045,7 +12049,7 @@ msgstr ""
 #: config-templatebuilder/avia-shortcodes/slideshow_fullscreen.php:115
 #: config-templatebuilder/avia-shortcodes/slideshow_fullsize.php:96
 msgid "Video URL"
-msgstr ""
+msgstr "Video URL"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/slideshow.php:81
@@ -12068,7 +12072,7 @@ msgstr ""
 #: config-templatebuilder/avia-shortcodes/slideshow_fullscreen.php:125
 #: config-templatebuilder/avia-shortcodes/slideshow_fullsize.php:106
 msgid "Use Video"
-msgstr ""
+msgstr "Video verwenden"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/slideshow.php:94
@@ -12138,7 +12142,7 @@ msgstr ""
 #: config-templatebuilder/avia-shortcodes/slideshow_fullscreen.php:180
 #: config-templatebuilder/avia-shortcodes/slideshow_fullsize.php:168
 msgid "Disable Autoplay"
-msgstr ""
+msgstr "Autoplay deaktivieren"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/slideshow.php:154
@@ -12161,7 +12165,7 @@ msgstr "Bildüberschrift"
 #: config-templatebuilder/avia-shortcodes/slideshow_fullscreen.php:200
 #: config-templatebuilder/avia-shortcodes/slideshow_fullsize.php:192
 msgid "Enter a caption title for the slide here"
-msgstr "Geben Sie einen Titel für den Slide ein."
+msgstr "Gib einen Titel für den Slide ein."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/slideshow.php:168
@@ -12177,7 +12181,7 @@ msgstr "Bildtext"
 #: config-templatebuilder/avia-shortcodes/slideshow_fullscreen.php:218
 #: config-templatebuilder/avia-shortcodes/slideshow_fullsize.php:210
 msgid "Enter some additional caption text"
-msgstr "Hier können Sie zusätzlichen Text eingeben."
+msgstr "Hier kannst Du zusätzlichen Text eingeben."
 
 #: config-templatebuilder/avia-shortcodes/slideshow.php:176
 msgid "Apply a link to the slide?"
@@ -12187,7 +12191,7 @@ msgstr ""
 msgid "You can choose to apply the link to the whole image"
 msgstr ""
 
-# @ avia_framework
+# @ LayerSlider
 #: config-templatebuilder/avia-shortcodes/slideshow.php:182
 #: config-templatebuilder/avia-shortcodes/slideshow_fullscreen.php:260
 #: config-templatebuilder/avia-shortcodes/slideshow_fullsize.php:252
@@ -12215,7 +12219,7 @@ msgstr ""
 #: config-templatebuilder/avia-shortcodes/slideshow_fullscreen.php:274
 #: config-templatebuilder/avia-shortcodes/slideshow_fullsize.php:266
 msgid "Open Image in Lightbox"
-msgstr ""
+msgstr "Öffne Bild in einer Lightbox"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/slideshow.php:216
@@ -12240,21 +12244,21 @@ msgstr "Slideshow Übergang"
 #: config-templatebuilder/avia-shortcodes/slideshow_fullscreen.php:568
 #: config-templatebuilder/avia-shortcodes/slideshow_fullsize.php:565
 msgid "Choose the transition for your Slideshow."
-msgstr "Wählen Sie eine Übergangsform für die Slideshow aus."
+msgstr "Wähle eine Übergangsform für die Slideshow aus."
 
-# @ avia_framework
+# @ LayerSlider
 #: config-templatebuilder/avia-shortcodes/slideshow.php:230
 #: config-templatebuilder/avia-shortcodes/slideshow_fullscreen.php:572
 #: config-templatebuilder/avia-shortcodes/slideshow_fullsize.php:569
 msgid "Slide sidewards"
 msgstr ""
 
-# @ avia_framework
+# @ LayerSlider
 #: config-templatebuilder/avia-shortcodes/slideshow.php:230
 #: config-templatebuilder/avia-shortcodes/slideshow_fullscreen.php:572
 #: config-templatebuilder/avia-shortcodes/slideshow_fullsize.php:569
 msgid "Slide up/down"
-msgstr ""
+msgstr "Nach oben/unten bewegen"
 
 #: config-templatebuilder/avia-shortcodes/slideshow.php:242
 #: config-templatebuilder/avia-shortcodes/slideshow_fullscreen.php:584
@@ -12311,7 +12315,7 @@ msgstr ""
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/slideshow_accordion.php:18
 msgid "Accordion Slider"
-msgstr ""
+msgstr "Akkordeon Slider"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/slideshow_accordion.php:25
@@ -12351,18 +12355,18 @@ msgstr ""
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/slideshow_accordion.php:99
 msgid "Add single image"
-msgstr ""
+msgstr "Einzelnes Bild hinzufügen"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/slideshow_accordion.php:167
 msgid "Accordion Image Size"
-msgstr ""
+msgstr "Akkordeon Bildgröße"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/slideshow_accordion.php:168
 #: config-templatebuilder/avia-shortcodes/slideshow_fullsize.php:548
 msgid "Choose image and Video size for your slideshow."
-msgstr ""
+msgstr "Wähle die Bild- und Videogröße für die Slideshow."
 
 #: config-templatebuilder/avia-shortcodes/slideshow_accordion.php:203
 msgid "Slide Caption"
@@ -12383,10 +12387,10 @@ msgstr ""
 msgid "Yes - display, but remove title on mobile devices"
 msgstr ""
 
-# @ default
+# @ avia_framework
 #: config-templatebuilder/avia-shortcodes/slideshow_accordion.php:216
 msgid "Display only on active slides"
-msgstr ""
+msgstr "Nur auf aktiven Slides anzeigen"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/slideshow_accordion.php:217
@@ -12597,7 +12601,7 @@ msgstr ""
 #: config-templatebuilder/avia-shortcodes/slideshow_fullscreen.php:254
 #: config-templatebuilder/avia-shortcodes/slideshow_fullsize.php:246
 msgid "Apply a link or buttons to the slide?"
-msgstr ""
+msgstr "Link oder Button zum Slide hinzufügen?"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/slideshow_fullscreen.php:255
@@ -12607,35 +12611,35 @@ msgid ""
 "Action Buttons' that get appended to the caption"
 msgstr ""
 
-# @ avia_framework
+# @ LayerSlider
 #: config-templatebuilder/avia-shortcodes/slideshow_fullscreen.php:262
 #: config-templatebuilder/avia-shortcodes/slideshow_fullsize.php:254
 msgid "Attach one button"
-msgstr ""
+msgstr "Einen Button einfügen"
 
-# @ avia_framework
+# @ LayerSlider
 #: config-templatebuilder/avia-shortcodes/slideshow_fullscreen.php:263
 #: config-templatebuilder/avia-shortcodes/slideshow_fullsize.php:255
 msgid "Attach two buttons"
-msgstr ""
+msgstr "Zwei Button einfügen"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/slideshow_fullscreen.php:292
 #: config-templatebuilder/avia-shortcodes/slideshow_fullsize.php:284
 msgid "Button 1 Label"
-msgstr ""
+msgstr "Button 1 Beschriftung"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/slideshow_fullscreen.php:301
 #: config-templatebuilder/avia-shortcodes/slideshow_fullsize.php:293
 msgid "Button 1 Color"
-msgstr ""
+msgstr "Button 1 Farbe"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/slideshow_fullscreen.php:333
 #: config-templatebuilder/avia-shortcodes/slideshow_fullsize.php:324
 msgid "Button 1 Link?"
-msgstr ""
+msgstr "Button 1 Link"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/slideshow_fullscreen.php:334
@@ -12649,13 +12653,13 @@ msgstr ""
 #: config-templatebuilder/avia-shortcodes/slideshow_fullscreen.php:350
 #: config-templatebuilder/avia-shortcodes/slideshow_fullsize.php:339
 msgid "Button 1 Link Target?"
-msgstr ""
+msgstr "Button 1 Linkziel"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/slideshow_fullscreen.php:359
 #: config-templatebuilder/avia-shortcodes/slideshow_fullsize.php:348
 msgid "Button 2 Label"
-msgstr ""
+msgstr "Button 2 Beschriftung"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/slideshow_fullscreen.php:360
@@ -12667,25 +12671,25 @@ msgstr ""
 #: config-templatebuilder/avia-shortcodes/slideshow_fullscreen.php:368
 #: config-templatebuilder/avia-shortcodes/slideshow_fullsize.php:357
 msgid "Button 2 Color"
-msgstr ""
+msgstr "Button 2 Farbe"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/slideshow_fullscreen.php:369
 #: config-templatebuilder/avia-shortcodes/slideshow_fullsize.php:358
 msgid "Choose a color for your second button here"
-msgstr ""
+msgstr "Wähle hier die Farbe für den zweiten Button aus."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/slideshow_fullscreen.php:400
 #: config-templatebuilder/avia-shortcodes/slideshow_fullsize.php:388
 msgid "Button 2 Link?"
-msgstr ""
+msgstr "Button 2 Link"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/slideshow_fullscreen.php:416
 #: config-templatebuilder/avia-shortcodes/slideshow_fullsize.php:403
 msgid "Button 2 Link Target?"
-msgstr ""
+msgstr "Button 2 Linkziel"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/slideshow_fullscreen.php:447
@@ -12750,7 +12754,7 @@ msgstr ""
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/slideshow_fullsize.php:547
 msgid "Slideshow Image and Video Size"
-msgstr ""
+msgstr "Slideshow Bild- und Videogröße"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/slideshow_fullsize.php:556
@@ -12765,7 +12769,7 @@ msgid ""
 "deactivate this behavior and simply align it in the center of the slider"
 msgstr ""
 "Standardgemäß wird das Bild über die gesamte Breite des Bildschirms "
-"gestreckt. Sie können diese Option deaktivieren und das Bild wird bei "
+"gestreckt. Du kannst diese Option deaktivieren und das Bild wird bei "
 "größeren Browserfenstern zentriert dargestellt. Das Bild bleibt dabei in der "
 "Originalgröße bestehen."
 
@@ -12792,9 +12796,9 @@ msgid ""
 "If you are displaying transparent images like pngs you can set a static "
 "background image or pattern that will appear behind those pngs."
 msgstr ""
-"Wenn Sie transparente Bilder im PNG-Format nutzen, können Sie einen "
-"statisches Hintergrundbild oder ein Kachelmuster verwenden, welches hinter "
-"den Bild dargestellt wird."
+"Wenn Du transparente Bilder im PNG-Format nutzt, kannst Du einen statisches "
+"Hintergrundbild oder ein Kachelmuster verwenden, welches hinter den Bild "
+"dargestellt wird."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/slideshow_fullsize.php:650
@@ -12815,7 +12819,7 @@ msgstr "Zeigt eine Ebenenbasierte Slideshow an"
 #: config-templatebuilder/avia-shortcodes/slideshow_layerslider.php:57
 msgid "No Layer Slider Found. Click here to create one"
 msgstr ""
-"Kein Ebenenbasierter Slider gefunden! Klicken Sie hier um eines zu erstellen."
+"Kein Ebenenbasierter Slider gefunden! Klicke hier um eines zu erstellen."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/slideshow_layerslider.php:63
@@ -12862,7 +12866,7 @@ msgstr ""
 #: config-templatebuilder/avia-shortcodes/social_share.php:43
 #: includes/helper-social-media.php:162
 msgid "Share this entry"
-msgstr "Teile diesen Eintrag"
+msgstr "Eintrag teilen"
 
 #: config-templatebuilder/avia-shortcodes/social_share.php:48
 msgid "How to display the social sharing bar?"
@@ -12880,12 +12884,13 @@ msgstr ""
 msgid "Which Social Buttons do you want to display? Defaults are set in "
 msgstr ""
 
+# @ LayerSlider
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/social_share.php:60
 #: includes/admin/register-admin-options.php:14
 #: includes/admin/register-admin-options.php:2038
 msgid "Blog Layout"
-msgstr "Blog Gestaltung"
+msgstr ""
 
 #: config-templatebuilder/avia-shortcodes/social_share.php:65
 msgid "Use Defaults that are also used for your blog"
@@ -12934,7 +12939,7 @@ msgstr ""
 #: config-templatebuilder/avia-shortcodes/social_share.php:80
 #: includes/admin/register-admin-options.php:2188
 msgid "Twitter link"
-msgstr ""
+msgstr "Twitter Link"
 
 #: config-templatebuilder/avia-shortcodes/social_share.php:89
 msgid "Pinterest link"
@@ -12960,7 +12965,7 @@ msgstr ""
 #: config-templatebuilder/avia-shortcodes/social_share.php:125
 #: includes/admin/register-admin-options.php:2238
 msgid "Tumblr link"
-msgstr ""
+msgstr "Tumblr Link"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/social_share.php:134
@@ -12997,8 +13002,8 @@ msgstr "Tabellen-Architekt"
 #: config-templatebuilder/avia-shortcodes/table.php:68
 msgid "Start by adding columns and rows, then add content and styling to each."
 msgstr ""
-"Legen Sie zunächst Spalten und Zeilen an, wählen Sie den Verwendungszweck "
-"und fügen Sie anschließend Inhalte ein."
+"Lege zunächst Spalten und Zeilen an, wähle den Verwendungszweck und füge "
+"anschließend Inhalte ein."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/table.php:72
@@ -13056,8 +13061,8 @@ msgid ""
 "pricing options. (Difference: Pricing tables are flashier and try to stand "
 "out)"
 msgstr ""
-"Nutzen Sie die Tabelle um tabellarische Daten- oder Preisoptionen "
-"anzuzeigen. (Preistabellen sind lediglich auffälliger gestaltet)"
+"Nutze die Tabelle um tabellarische Daten- oder Preisoptionen anzuzeigen. "
+"(Preistabellen sind lediglich auffälliger gestaltet)"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/table.php:104
@@ -13105,10 +13110,10 @@ msgstr "Tabellen Zusatzbeschriftung"
 msgid ""
 "Add a short caption to the table so visitors know what the data is about"
 msgstr ""
-"Ergänzen Sie die Tabelle um eine Beschriftung und geben Sie so Ihren "
-"Besuchern einen informativen Überblick des Inhalts."
+"Ergänze die Tabelle um eine Beschriftung und gib so Deinen Besuchern einen "
+"informativen Überblick des Inhalts."
 
-# @ avia_framework
+# @ LayerSlider
 #: config-templatebuilder/avia-shortcodes/table.php:140
 msgid "Responsive Styling"
 msgstr ""
@@ -13174,7 +13179,7 @@ msgstr "Umschlossene Reiter"
 #: config-templatebuilder/avia-shortcodes/tabs.php:69
 msgid "Do you want to display a border around your tabs or without border"
 msgstr ""
-"In diesem Bereich können Sie festlegen, ob die Reiter mit oder ohne Rahmen "
+"In diesem Bereich kannst Du festlegen, ob die Reiter mit oder ohne Rahmen "
 "dargestellt werden sollen."
 
 # @ avia_framework
@@ -13195,7 +13200,7 @@ msgstr "Reiter hinzufügen/bearbeiten"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/tabs.php:81
 msgid "Here you can add, remove and edit the Tabs you want to display."
-msgstr "Hier können Sie Reiter hinzufügen, entfernen und bearbeiten."
+msgstr "Hier kannst Du Reiter hinzufügen, entfernen und bearbeiten."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/tabs.php:88
@@ -13215,7 +13220,7 @@ msgstr "Reiter Titel"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/tabs.php:98
 msgid "Enter the tab title here (Better keep it short)"
-msgstr "Geben Sie hier Ihren Titel ein (Möglichst kurz)"
+msgstr "Gib hier Deinen Titel ein (Möglichst kurz)"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/tabs.php:106
@@ -13233,7 +13238,7 @@ msgstr "Soll ein Icon im Reiter-Titel linksbündig angezeigt werden?"
 #: config-templatebuilder/avia-shortcodes/tabs.php:117
 #: config-templatebuilder/avia-shortcodes/team.php:131
 msgid "Select an icon for your tab title below"
-msgstr "Wählen Sie ein Icon für den Reiter-Titel aus"
+msgstr "Wähle ein Icon für den Reiter-Titel aus"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/tabs.php:126
@@ -13253,7 +13258,7 @@ msgstr "Initialisierung"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/tabs.php:138
 msgid "Enter the Number of the Tab that should be open initially."
-msgstr "Geben Sie die Nummer des  Reiters an, der zu Beginn geöffnet sein soll"
+msgstr "Gib die Nummer des  Reiters an, der zu Beginn geöffnet sein soll"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/tabs.php:149
@@ -13266,7 +13271,7 @@ msgid ""
 "Insert a custom ID for the element here. Make sure to only use allowed "
 "characters."
 msgstr ""
-"Legen Sie eine individuelle ID für das Element fest. Achten Sie darauf, nur "
+"Lege eine individuelle ID für das Element fest. Achte darauf, nur "
 "zugelassene Zeichen zu verwenden."
 
 # @ avia_framework
@@ -13287,7 +13292,7 @@ msgstr "Name des Team-Mitglieds"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/team.php:61
 msgid "Name of the person"
-msgstr "Geben Sie hier den vollen Namen Ihres Teammitglieds ein."
+msgstr "Gib hier den vollen Namen Deines Teammitglieds ein."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/team.php:67
@@ -13312,7 +13317,7 @@ msgstr "Beschreibung Team-Mitglied"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/team.php:85
 msgid "Enter a few words that describe the person"
-msgstr "Geben Sie hier den gewünschten Text ein um die Person vorzustellen."
+msgstr "Gib hier den gewünschten Text ein, um die Person vorzustellen."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/team.php:92
@@ -13325,7 +13330,7 @@ msgid ""
 "Below each Team Member you can add Icons that link to destinations like "
 "facebook page, twitter account etc."
 msgstr ""
-"Zu jedem Team-Mitglied können Sie Icons und Verlinkungen zu sozialen "
+"Zu jedem Team-Mitglied kannst Du Icons und Verlinkungen zu sozialen "
 "Netzwerken wie z.B. Facebook, Twitter etc. hinzufügen."
 
 # @ avia_framework
@@ -13341,7 +13346,7 @@ msgstr "Hover-Text"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/team.php:106
 msgid "Text that appears if you place your mouse above the Icon"
-msgstr "Text der erscheint, wenn Sie den Mauszeiger über das Icon bewegen."
+msgstr "Text der erscheint, wenn Du den Mauszeiger über das Icon bewegst."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/team.php:112
@@ -13351,7 +13356,7 @@ msgstr "Icon-Link"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/team.php:113
 msgid "Enter the URL of the Page you want to link to"
-msgstr "Geben hier die URL der Seite ein, zu der Sie verlinken möchten."
+msgstr "Gib hier die URL der Seite ein, zu der Du verlinken möchtest."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/team.php:125
@@ -13379,7 +13384,7 @@ msgstr "Kunden-Empfehlung hinzufügen/bearbeiten"
 #: config-templatebuilder/avia-shortcodes/testimonials.php:56
 msgid "Here you can add, remove and edit your Testimonials."
 msgstr ""
-"Hier können Sie Kunden-Empfehlungen hinzufügen, bearbeiten und entfernen."
+"Hier kannst Du Kunden-Empfehlungen hinzufügen, bearbeiten und entfernen."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/testimonials.php:59
@@ -13407,7 +13412,7 @@ msgstr "Zitat"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/testimonials.php:95
 msgid "Enter the testimonial here"
-msgstr "Geben Sie hier den Text für Ihre Kunden-Empfehlung ein"
+msgstr "Gib hier den Text für Deine Kunden-Empfehlung ein"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/testimonials.php:102
@@ -13438,8 +13443,8 @@ msgid ""
 "Here you can select how to display the testimonials. You can either create a "
 "testimonial slider or a testimonial grid with multiple columns"
 msgstr ""
-"Legen Sie fest wie die Kunden-Empfehlungen dargestellt werden sollen. Sie "
-"können entweder einen Slider oder ein Raster mit mehreren Spalten verwenden."
+"Lege fest wie die Kunden-Empfehlungen dargestellt werden sollen. Du kannst "
+"entweder einen Slider oder ein Raster mit mehreren Spalten verwenden."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/testimonials.php:125
@@ -13490,7 +13495,7 @@ msgstr "Erzeugt einen einfachen Text-Block"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/textblock.php:51
 msgid "Enter some content for this textblock"
-msgstr "Geben Sie Inhalte für den Textblock ein"
+msgstr "Gib Inhalte für den Textblock ein"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/textblock.php:57
@@ -13530,7 +13535,7 @@ msgstr "Toggles hinzufügen/ bearbeiten"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/toggles.php:56
 msgid "Here you can add, remove and edit the toggles you want to display."
-msgstr "Hier können Sie Toggles hinzufügen, bearbeiten und entfernen."
+msgstr "Hier kannst Du Toggles hinzufügen, bearbeiten und entfernen."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/toggles.php:62
@@ -13550,7 +13555,7 @@ msgstr "Toggle-Titel"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/toggles.php:72
 msgid "Enter the toggle title here (Better keep it short)"
-msgstr "Geben Sie hier Ihren Titel ein (Möglichst kurz)"
+msgstr "Gib hier Deinen Titel ein (Möglichst kurz)"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/toggles.php:79
@@ -13572,7 +13577,7 @@ msgid ""
 "Enter any number of comma separated tags here. If sorting is active the user "
 "can filter the visible toggles with the help of these tags"
 msgstr ""
-"Geben Sie hier eine beliebige Anzahl von kommaseparierten Tags ein. Ist die "
+"Gib hier eine beliebige Anzahl von kommaseparierten Tags ein. Ist die "
 "Sortierung aktiviert,  können Benutzer die sichtbaren Toggles mit Hilfe "
 "dieser Tags filtern."
 
@@ -13582,9 +13587,9 @@ msgid ""
 "Enter the Number of the Accordion Item that should be open initially. Set to "
 "Zero if all should be close on page load "
 msgstr ""
-"Geben Sie die Nummer des Akkorderon-Elements  ein, welches beim Seitenaufruf "
-"geöffnet sein soll. Setzen Sie den Wert auf 0, wenn alle Elemente "
-"geschlossen sein sollen."
+"Gib die Nummer des Akkorderon-Elements  ein, welches beim Seitenaufruf "
+"geöffnet sein soll. Setze den Wert auf 0, wenn alle Elemente geschlossen "
+"sein sollen."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/toggles.php:105
@@ -13645,8 +13650,8 @@ msgid ""
 "Insert a custom ID for the element here. Make sure to only use allowed "
 "characters"
 msgstr ""
-"Geben Sie eine benutzerdefienierte ID für das Element an. Achten Sie darauf, "
-"nur zugelassene Zeichen zu verwenden."
+"Gib eine benutzerdefienierte ID für das Element an. Achte darauf, nur "
+"zugelassene Zeichen zu verwenden."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/video.php:16
@@ -13669,18 +13674,18 @@ msgid ""
 "Either upload a new video, choose an existing video from your media library "
 "or link to a video by URL"
 msgstr ""
-"Laden Sie ein neues Video hoch, verwenden Sie ein bereits vorhandenes aus "
-"der Medien-Bibliothek oder verlinken Sie zu einem Video via URL."
+"Lade ein neues Video hoch, verwende ein bereits vorhandenes aus der Medien-"
+"Bibliothek oder verlinke zu einem Video via URL."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/video.php:41
 msgid "A list of all supported Video Services can be found on"
-msgstr "Eine Liste aller unterstützten Video-Dienste finden Sie auf"
+msgstr "Eine Liste aller unterstützten Video-Dienste findest Du auf"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/video.php:43
 msgid "Working examples, in case you want to use an external service:"
-msgstr "Einige Beispiele, falls Sie einen externen Service nutzen möchten:"
+msgstr "Einige Beispiele, falls Du einen externen Service nutzen möchtest:"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/video.php:46
@@ -13696,7 +13701,7 @@ msgid ""
 "in case its possible and necessary"
 msgstr ""
 "Verschiedene Browser unterstützen unterschiedliche Dateiformate (MP4, OGV, "
-"WebM). Wenn Sie z.B. ein Video im MP4-Format einbetten, überprüft der Video-"
+"WebM). Wenn Du z.B. ein Video im MP4-Format einbettest, überprüft der Video-"
 "Player automatisch, ob Dateien auch im OGV- und WEBM-Format verfügbar sind "
 "und zeigt diese den Erfordernissen entsprechend an."
 
@@ -13717,8 +13722,8 @@ msgid ""
 "Choose if you want to display a modern 16:9 or classic 4:3 Video, or use a "
 "custom ratio"
 msgstr ""
-"Wählen Sie, ob das Video im modernen 16:9, dem klassischen 4:3, oder in "
-"einem benutzerdefinierten Seitenverhältnis dargestellt werden soll."
+"Wähle, ob das Video im modernen 16:9, dem klassischen 4:3, oder in einem "
+"benutzerdefinierten Seitenverhältnis dargestellt werden soll."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/video.php:61
@@ -13743,7 +13748,7 @@ msgstr "Breite des Videos"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/video.php:69
 msgid "Enter a value for the width"
-msgstr "Geben Sie einen Wert für die Breite an."
+msgstr "Gib einen Wert für die Breite an."
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/video.php:77
@@ -13753,12 +13758,12 @@ msgstr "Höhe des Videos"
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/video.php:78
 msgid "Enter a value for the height"
-msgstr "Geben Sie einen Wert für die Höhe ein"
+msgstr "Gib einen Wert für die Höhe ein"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/video.php:92
 msgid "Choose Another Video (HTML5 Only)"
-msgstr "Wählen Sie ein anderes Video (nur HTML 5)"
+msgstr "Wähle ein anderes Video (nur HTML 5)"
 
 # @ avia_framework
 #: config-templatebuilder/avia-shortcodes/video.php:93
@@ -13769,8 +13774,8 @@ msgid ""
 "that all browser can display your video upload a mp4, an ogv and a webm "
 "version of your video."
 msgstr ""
-"Laden Sie ein neues Video hoch oder verwenden Sie ein bereits vorhandenes "
-"aus der Medien-Bibliothek. \n"
+"Lade ein neues Video hoch oder verwende ein bereits vorhandenes aus der "
+"Medien-Bibliothek. \n"
 "Um sicherzustellen, dass alle Browser das Video darstellen können, wird "
 "empfohlen zusätzlich folgende Video-Formate hochzuladen: MP4,  OGV und WebM."
 
@@ -13788,23 +13793,22 @@ msgstr "Anzeige eines der Themes-Widget-Bereiche"
 #: config-templatebuilder/avia-template-builder/config/javascript_strings.php:5
 msgid "Error fetching content - please reload the page and try again"
 msgstr ""
-"Fehler beim Abrufen der Inhalte - bitte laden Sie die Seite neu und "
-"versuchen Sie es erneut"
+"Fehler beim Abrufen der Inhalte - bitte lade die Seite neu und versuche es "
+"erneut"
 
 # @ avia_framework
 #: config-templatebuilder/avia-template-builder/config/javascript_strings.php:6
 msgid ""
 "It seems your are no longer logged in. Please reload the page and try again"
 msgstr ""
-"Allem Anschein sind Sie nicht mehr eingeloggt. Bitte laden Sie die Seite neu "
-"und versuchen Sie es erneut."
+"Allem Anschein bist Du nicht mehr eingeloggt. Bitte lade die Seite neu und "
+"versuche es erneut."
 
 # @ avia_framework
 #: config-templatebuilder/avia-template-builder/config/javascript_strings.php:7
 msgid "Your session timed out. Simply reload the page and try again"
 msgstr ""
-"Ihre Session ist abgelaufen! Laden Sie die Seite neu und versuchen Sie es "
-"erneut."
+"Deine Session ist abgelaufen! Lade die Seite neu und versuche es erneut."
 
 # @ avia_framework
 #: config-templatebuilder/avia-template-builder/config/javascript_strings.php:8
@@ -13866,13 +13870,13 @@ msgid ""
 "You need to add at least one element to the canvas to save this entry as a "
 "template"
 msgstr ""
-"Sie müssen mindestens ein Element auf der Arbeitsfläche platzieren, um "
-"diesen Eintrag als Vorlage speichern zu können."
+"Du musst mindestens ein Element auf der Arbeitsfläche platzieren, um diesen "
+"Eintrag als Vorlage speichern zu können."
 
 # @ avia_framework
 #: config-templatebuilder/avia-template-builder/config/javascript_strings.php:30
 msgid "Choose Template Name"
-msgstr "Wählen Sie einen Namen für die Vorlage"
+msgstr "Wähle einen Namen für die Vorlage"
 
 #: config-templatebuilder/avia-template-builder/config/javascript_strings.php:31
 msgid "Save Element as Template: Choose a Name"
@@ -13892,8 +13896,8 @@ msgstr "Der Vorlagen-Name muss aus mindestens 3 Buchstaben bestehen!"
 #: config-templatebuilder/avia-template-builder/config/javascript_strings.php:34
 msgid "Could not load the template. You might want to try and reload the page"
 msgstr ""
-"Die Vorlage konnte nicht geladen werden. Bitte laden Sie die Seite neu und "
-"versuchen Sie es erneut."
+"Die Vorlage konnte nicht geladen werden. Bitte lade die Seite neu und "
+"versuche es erneut."
 
 # @ avia_framework
 #: config-templatebuilder/avia-template-builder/config/meta.php:4
@@ -13935,8 +13939,8 @@ msgid ""
 "To insert an Element either click the insert button for that element or drag "
 "the button onto the canvas"
 msgstr ""
-"Um ein Element einzufügen klicken Sie es einfach an, oder Sie  ziehen es mit "
-"gedrückter Maustaste auf die Arbeitsfläche."
+"Um ein Element einzufügen klicke es einfach an, oder ziehe es mit gedrückter "
+"Maustaste auf die Arbeitsfläche."
 
 # @ avia_framework
 #: config-templatebuilder/avia-template-builder/config/meta.php:31
@@ -13944,7 +13948,7 @@ msgid ""
 "If you place your mouse above the insert button a short info tooltip will "
 "appear"
 msgstr ""
-"Platzieren Sie die Maus über die Button-Elemente und Ihnen werden weitere "
+"Platziere die Maus über die Button-Elemente und Dir werden weitere "
 "Informationen in einem Info-Tooltip angezeigt."
 
 # @ avia_framework
@@ -13953,9 +13957,9 @@ msgid ""
 "To sort and arrange your elements just drag them to a position of your "
 "choice and release them"
 msgstr ""
-"Zum Sortieren und Ordnen ziehen Sie Ihre Elemente mit gedrückter Maustaste "
-"einfach auf eine Stelle ihrer Wahl und lassen Sie  anschließend die "
-"Maustaste los. "
+"Zum Sortieren und Ordnen ziehe Deine Elemente mit gedrückter Maustaste "
+"einfach auf eine Stelle ihrer Wahl und lasse  anschließend die Maustaste "
+"los. "
 
 # @ avia_framework
 #: config-templatebuilder/avia-template-builder/config/meta.php:33
@@ -13981,15 +13985,15 @@ msgstr "Die meisten Elemente öffnen bei Klick ein  Popup-Fenster."
 #: config-templatebuilder/avia-template-builder/config/meta.php:38
 msgid "Press TAB to navigate trough the various form fields of a popup window."
 msgstr ""
-"Drücken Sie die Tab-Taste auf Ihrer Tastatur um durch die einzelnen "
-"Formfelder eines Popup-Fensters zu navigieren."
+"Drücke die Tab-Taste auf Deiner Tastatur um durch die einzelnen Formfelder "
+"eines Popup-Fensters zu navigieren."
 
 # @ avia_framework
 #: config-templatebuilder/avia-template-builder/config/meta.php:39
 msgid "Press ESC on your keyboard or the Close Button to close popup window."
 msgstr ""
-"Drücken Sie die Esc-Taste auf Ihrer Tastatur oder klicken Sie auf den "
-"Schließen-Button, um das Popup-Fensters  zu schließen."
+"Drücke die Esc-Taste auf Ihrer Tastatur oder klicke auf den Schließen-"
+"Button, um das Popup-Fensters  zu schließen."
 
 # @ avia_framework
 #: config-templatebuilder/avia-template-builder/config/meta.php:40
@@ -13997,8 +14001,8 @@ msgid ""
 "Press ENTER on your keyboard or the Save Button to save current state of a "
 "popup window"
 msgstr ""
-"Drücken Sie die Enter-Taste auf Ihrer Tastatur oder klicken Sie auf den "
-"Speichern-Button, um den aktuellen Status eines Popup-Fensters  zu speichern."
+"Drücke die Enter-Taste auf Ihrer Tastatur oder klicke auf den Speichern-"
+"Button, um den aktuellen Status eines Popup-Fensters  zu speichern."
 
 # @ avia_framework
 #: config-templatebuilder/avia-template-builder/config/meta.php:47
@@ -14014,7 +14018,7 @@ msgid ""
 msgstr ""
 "Wird dieser Eintrag innerhalb eines Portfolio-Raster angezeigt, werden die "
 "Link-Einstellungen des Rasters verwendet (öffnen in Lightbox oder öffnen der "
-"Link-URL). Sie können diese Einstellung hier überschreiben."
+"Link-URL). Du kannst diese Einstellung hier überschreiben."
 
 # @ avia_framework
 #: config-templatebuilder/avia-template-builder/config/meta.php:59
@@ -14043,9 +14047,9 @@ msgid ""
 "clicks on the portfolio item a preview element with those images and info "
 "will open."
 msgstr ""
-"Wenn Sie Ihr Portfolio als \"Ajax-Portfolio\" darstellen möchten, wählen Sie "
-"hier Miniaturbilder aus und schreiben Sie dazu einige Textzeilen. Sobald ein "
-"User auf einen Portfolio-Eintrag klickt, wird ein Vorschau-Element mit den "
+"Wenn Du Dein Portfolio als \"Ajax-Portfolio\" darstellen möchtest, wähle "
+"hier Miniaturbilder aus und schreibe dazu einige Textzeilen. Sobald ein User "
+"auf einen Portfolio-Eintrag klickt, wird ein Vorschau-Element mit den "
 "Bildern und Informationen geöffnet."
 
 # @ avia_framework
@@ -14060,8 +14064,8 @@ msgid ""
 "Create a new Preview Gallery or Slideshow by selecting existing or uploading "
 "new images"
 msgstr ""
-"Erstellen Sie eine neue Vorschau-Galerie oder Slideshow, indem Sie "
-"bestehende Bilder auswählen oder neue Bilder hochladen."
+"Erstelle eine neue Vorschau-Galerie oder Slideshow, indem Du bestehende "
+"Bilder auswählest oder neue Bilder hochlädst."
 
 # @ avia_framework
 #: config-templatebuilder/avia-template-builder/config/meta.php:92
@@ -14124,12 +14128,12 @@ msgstr "Der Text wird neben der Galerie/Slideshow angezeigt."
 #: includes/admin/register-admin-options.php:12
 #: includes/admin/register-admin-options.php:465
 msgid "Sidebar Settings"
-msgstr "Sidebar Einstellungen"
+msgstr ""
 
 # @ avia_framework
 #: config-templatebuilder/avia-template-builder/config/meta.php:181
 msgid "Select the desired Page layout"
-msgstr "Wählen Sie das gewünschte Seiten-Layout"
+msgstr "Wähle das gewünschte Seiten-Layout"
 
 # @ avia_framework
 #: config-templatebuilder/avia-template-builder/config/meta.php:186
@@ -14141,7 +14145,7 @@ msgstr "Standard-Layout - aktiviert"
 # @ avia_framework
 #: config-templatebuilder/avia-template-builder/config/meta.php:186
 msgid "Sidebar"
-msgstr ""
+msgstr "Sidebar"
 
 # @ avia_framework
 #: config-templatebuilder/avia-template-builder/config/meta.php:187
@@ -14168,7 +14172,7 @@ msgstr "Sidebar Einstellungen"
 # @ avia_framework
 #: config-templatebuilder/avia-template-builder/config/meta.php:199
 msgid "Choose a custom sidebar for this entry"
-msgstr "Wählen Sie eine Benutzerdefinierte Sidebar für diesen Eintrag."
+msgstr "Wähle eine Benutzerdefinierte Sidebar für diesen Eintrag."
 
 # @ avia_framework
 #: config-templatebuilder/avia-template-builder/config/meta.php:212
@@ -14237,7 +14241,7 @@ msgstr ""
 #: includes/admin/register-admin-options.php:11
 #: includes/admin/register-admin-options.php:1889
 msgid "Header"
-msgstr ""
+msgstr "Header"
 
 # @ avia_framework
 #: config-templatebuilder/avia-template-builder/config/meta.php:250
@@ -14249,18 +14253,18 @@ msgstr ""
 #: config-templatebuilder/avia-template-builder/config/meta.php:251
 #: includes/admin/register-admin-options.php:1685
 msgid "Display only title"
-msgstr ""
+msgstr "Nur Titel anzeigen"
 
 #: config-templatebuilder/avia-template-builder/config/meta.php:252
 #: includes/admin/register-admin-options.php:1686
 msgid "Display only breadcrumbs"
 msgstr ""
 
-# @ avia_framework
+# @ LayerSlider
 #: config-templatebuilder/avia-template-builder/config/meta.php:253
 #: includes/admin/register-admin-options.php:1687
 msgid "Hide both"
-msgstr ""
+msgstr "Beide Ausblenden"
 
 #: config-templatebuilder/avia-template-builder/config/meta.php:262
 msgid "Only available if the logo is not"
@@ -14270,6 +14274,7 @@ msgstr ""
 msgid "below the menu"
 msgstr ""
 
+# @ avia_framework
 #: config-templatebuilder/avia-template-builder/config/meta.php:273
 msgid "Header visibility and transparency"
 msgstr ""
@@ -14283,7 +14288,7 @@ msgstr ""
 # @ avia_framework
 #: config-templatebuilder/avia-template-builder/config/meta.php:279
 msgid "No transparency"
-msgstr ""
+msgstr "Keine Transparenz"
 
 # @ avia_framework
 #: config-templatebuilder/avia-template-builder/config/meta.php:280
@@ -14356,7 +14361,7 @@ msgstr "Auswählen"
 # @ avia_framework
 #: config-templatebuilder/avia-template-builder/php/html-helper.class.php:1235
 msgid "Street address"
-msgstr "Straße, Anschrift"
+msgstr "Straße, Anschrift:"
 
 # @ avia_framework
 #: config-templatebuilder/avia-template-builder/php/html-helper.class.php:1237
@@ -14371,7 +14376,7 @@ msgstr "Land"
 # @ avia_framework
 #: config-templatebuilder/avia-template-builder/php/html-helper.class.php:1242
 msgid "Enter Address, then fetch coordinates"
-msgstr "Adresse eingeben, dann Koordinaten abrrufen"
+msgstr "Adresse eingeben, dann Koordinaten abrufen!"
 
 # @ avia_framework
 #: config-templatebuilder/avia-template-builder/php/html-helper.class.php:1245
@@ -14399,22 +14404,22 @@ msgstr "Tabellen-Zeile hinzufügen"
 msgid "Add Table Column"
 msgstr "Tabellen-Spalte hinzufügen"
 
-# @ avia_framework
+# @ default
 #: config-templatebuilder/avia-template-builder/php/html-helper.class.php:1413
 msgid "move up"
-msgstr ""
+msgstr "nach oben bewegen"
 
-# @ avia_framework
+# @ default
 #: config-templatebuilder/avia-template-builder/php/html-helper.class.php:1414
 msgid "move down"
-msgstr ""
+msgstr "nach unten bewegen"
 
-# @ avia_framework
+# @ LayerSlider
 #: config-templatebuilder/avia-template-builder/php/html-helper.class.php:1415
 msgid "move left"
 msgstr ""
 
-# @ avia_framework
+# @ LayerSlider
 #: config-templatebuilder/avia-template-builder/php/html-helper.class.php:1416
 msgid "move right"
 msgstr ""
@@ -14470,8 +14475,8 @@ msgid ""
 "Template name already in use. Please delete the template with this name "
 "first or choose a different name"
 msgstr ""
-"Vorlagen-Name wird bereits verwendet! Bitte löschen Sie zuerst die "
-"bestehende Vorlage oder wählen Sie einen anderen Namen."
+"Vorlagen-Name wird bereits verwendet! Bitte lösche zuerst die bestehende "
+"Vorlage oder wähle einen anderen Namen."
 
 # @ avia_framework
 #: config-templatebuilder/avia-template-builder/php/shortcode-template.class.php:459
@@ -14484,8 +14489,8 @@ msgid ""
 "Add a custom css class for the element here. Make sure to only use allowed "
 "characters (latin characters, underscores, dashes and numbers)"
 msgstr ""
-"Fügen Sie eine benutzerdefinierte CSS-Klasse für das Element ein. Achten Sie "
-"bitte darauf, nur erlaubten Zeichen (lateinische Zeichen, Unterstriche, "
+"Füge eine benutzerdefinierte CSS-Klasse für das Element ein. Achte bitte "
+"darauf, nur erlaubten Zeichen (lateinische Zeichen, Unterstriche, "
 "Bindestriche und Zahlen) zu verwenden."
 
 # @ avia_framework
@@ -14507,7 +14512,7 @@ msgstr "Element duplizieren"
 # @ avia_framework
 #: config-templatebuilder/avia-template-builder/php/template-builder.class.php:286
 msgid "Insert Theme Shortcode"
-msgstr ""
+msgstr "Theme shortcode einfügen"
 
 # @ avia_framework
 #: config-templatebuilder/avia-template-builder/php/template-builder.class.php:533
@@ -14732,7 +14737,7 @@ msgstr "Übergeordnete Produkte"
 # @ woothemes
 #: config-woocommerce/admin-import.php:174
 msgid "This is where you can add new products to your store."
-msgstr "Hier können Sie zu Ihrem Shop neue Produkte hinzufügen."
+msgstr "Hier kannst Du zu Ihrem Shop neue Produkte hinzufügen."
 
 # @ woothemes
 #: config-woocommerce/admin-import.php:192
@@ -14850,7 +14855,7 @@ msgstr "Ursprung Bestellungen"
 # @ woothemes
 #: config-woocommerce/admin-import.php:247
 msgid "This is where store orders are stored."
-msgstr "In diesem Bereich werden Bestellungen aus Ihrem Shop gespeichert."
+msgstr "In diesem Bereich werden Bestellungen aus Deinem Shop gespeichert."
 
 # @ woothemes
 #: config-woocommerce/admin-import.php:269
@@ -14967,7 +14972,7 @@ msgstr "Ursprung Gutschein"
 msgid ""
 "This is where you can add new coupons that customers can use in your store."
 msgstr ""
-"In diesem Bereich können Sie neue Gutscheine hinzufügen, die Kunden in Ihrem "
+"In diesem Bereich kannst Du neue Gutscheine hinzufügen, die Kunden in Ihrem "
 "Shop nutzen."
 
 # @ avia_framework
@@ -15077,12 +15082,12 @@ msgstr "Beliebtheit"
 # @ avia_framework
 #: config-woocommerce/config.php:1114
 msgid "Click to order products ascending"
-msgstr "Klicken Sie um die Produkte in aufsteigender Reihenfolge zu sortieren"
+msgstr "Klicke, um die Produkte in aufsteigender Reihenfolge zu sortieren"
 
 # @ avia_framework
 #: config-woocommerce/config.php:1115
 msgid "Click to order products descending"
-msgstr "Klicken Sie um die Produkte in absteigender Reihenfolge zu sortieren"
+msgstr "Klicke, um die Produkte in absteigender Reihenfolge zu sortieren"
 
 # @ avia_framework
 #: config-woocommerce/config.php:1117
@@ -15102,7 +15107,6 @@ msgid "Display"
 msgstr "Zeige"
 
 # @ LayerSlider
-# @ avia_framework
 #: config-woocommerce/config.php:1456
 msgid "(disabled)"
 msgstr ""
@@ -15167,12 +15171,12 @@ msgstr "Bearbeite das Profil des Benutzers:"
 # @ envato
 #: framework/php/auto-updates/class-envato-protected-api.php:67
 msgid "Please enter your Envato Marketplace Username."
-msgstr "Biete gebenSie Ihren Envato Marktplatz Benutzernamen ein."
+msgstr "Bitte gib Deinen Envato Marktplatz Benutzernamen ein."
 
 # @ envato
 #: framework/php/auto-updates/class-envato-protected-api.php:71
 msgid "Please enter your Envato Marketplace API Key."
-msgstr "Bitte geben Sie Ihren Envato Marktplatz API Schlüssel ein."
+msgstr "Bitte gib Deinen Envato Marktplatz API Schlüssel ein."
 
 # @ envato
 #: framework/php/auto-updates/class-envato-protected-api.php:96
@@ -15188,7 +15192,7 @@ msgstr "Die Envato Marktplatz \"item ID\" ist ein erforderlicher Parameter."
 #: framework/php/class-breadcrumb.php:26
 #: framework/php/class-breadcrumb.php:186
 msgid "You are here:"
-msgstr "Sie befinden sich hier:"
+msgstr "Du bist hier:"
 
 # @ avia_framework
 #: framework/php/class-breadcrumb.php:121
@@ -15280,12 +15284,12 @@ msgstr "Heute"
 # @ avia_framework
 #: framework/php/class-form-generator.php:470
 msgid "Prev"
-msgstr "Zurück"
+msgstr "Vorangegangen"
 
 # @ avia_framework
 #: framework/php/class-form-generator.php:930
 msgid "Your Message:"
-msgstr "Ihre Nachricht:"
+msgstr "Deine Nachricht:"
 
 #: framework/php/class-framework-widgets.php:31
 msgid ""
@@ -15366,7 +15370,7 @@ msgstr ""
 #: framework/php/class-framework-widgets.php:843
 #: framework/php/class-framework-widgets.php:845
 msgid "Advertise here"
-msgstr "Werben Sie hier"
+msgstr "Werbe hier"
 
 #: framework/php/class-framework-widgets.php:885
 msgid "Image URL:"
@@ -15402,7 +15406,7 @@ msgstr "Beliebt"
 # @ avia_framework
 #: framework/php/class-framework-widgets.php:961
 msgid "Recent"
-msgstr "Kürzlich"
+msgstr "Neu"
 
 #: framework/php/class-framework-widgets.php:1000
 msgid "Number of posts you want to display:"
@@ -15519,7 +15523,7 @@ msgstr ""
 msgid ""
 "Too many requests at once, please refresh the page to complete geocoding"
 msgstr ""
-"Zu viele Anfragen auf einmal. Bitte aktualisieren Sie die Seite um die "
+"Zu viele Anfragen auf einmal. Bitte aktualisiere die Seite um die "
 "Geokodierung zu vervollständigen."
 
 # @ avia_framework
@@ -15530,8 +15534,7 @@ msgstr "Höhen- und Breitengrad für:"
 # @ avia_framework
 #: framework/php/class-framework-widgets.php:1319
 msgid "couldn't be found by Google, please add them manually"
-msgstr ""
-"konnte von Google nicht gefunden werden. Bitte geben Sie es manuell ein."
+msgstr "konnte von Google nicht gefunden werden. Bitte gib es manuell ein."
 
 #: framework/php/class-framework-widgets.php:1467
 #: framework/php/class-framework-widgets.php:1563
@@ -15650,7 +15653,7 @@ msgstr ""
 # @ avia_framework
 #: framework/php/class-htmlhelper.php:1723
 msgid "Apply only to mouse hover state"
-msgstr ""
+msgstr "Nur zum Mouse-Hover-Zustand zufügen"
 
 # @ avia_framework
 #: framework/php/class-media.php:195
@@ -15700,8 +15703,8 @@ msgid ""
 "Mega Menu Column Title <span class=\"avia_supersmall\">(if you dont want to "
 "display a title just enter a single dash: \"-\" )</span>"
 msgstr ""
-"Mega Menu Spalten-Titel <span class=\"avia_supersmall\">(Wenn Sie keinen "
-"Titel nutzen möchten, setzen Sie einfach einen Bindestrich: \"-\" )</span>"
+"Mega Menu Spalten-Titel <span class=\"avia_supersmall\">(Wenn Du keinen "
+"Titel nutzen möchtest, setze einfach einen Bindestrich: \"-\" )</span>"
 
 # @ default
 #: framework/php/class-megamenu.php:480
@@ -15753,7 +15756,7 @@ msgstr "Benutzerdefinierte Widget Area"
 # @ default
 #: framework/php/class-sidebar-generator.php:64
 msgid "Enter Name of the new Widget Area here"
-msgstr "Geben Sie den Namen der Widget-Fläche hier ein"
+msgstr "Gib den Namen der Widget-Fläche hier ein"
 
 # @ default
 #: framework/php/class-sidebar-generator.php:65
@@ -15809,11 +15812,11 @@ msgid_plural ""
 "plugins. Contact the administrator of this site for help on getting the "
 "plugins installed."
 msgstr[0] ""
-"Sorry, aber Sie verfügen nicht über die erforderlichen Rechte um dieses "
-"Plugin %s zu installieren. Kontaktieren Sie bitte den Administrator!"
+"Sorry, aber Du verfügst nicht über die erforderlichen Rechte um dieses "
+"Plugin %s zu installieren. Kontaktiere bitte den Administrator!"
 msgstr[1] ""
-"Sorry, aber Sie verfügen nicht über die erforderlichen Rechte um die Plugins "
-"%s zu installieren. Kontaktieren Sie bitte den Administrator!"
+"Sorry, aber Du verfügst nicht über die erforderlichen Rechte um die Plugins "
+"%s zu installieren. Kontaktiere bitte den Administrator!"
 
 # @ avia_framework
 #: framework/php/class-tgm-plugin-activation.php:168
@@ -15846,11 +15849,11 @@ msgid_plural ""
 "plugins. Contact the administrator of this site for help on getting the "
 "plugins activated."
 msgstr[0] ""
-"Sorry, aber Sie verfügen nicht über die erforderlichen Rechte um dieses "
-"Plugin %s zu aktivieren. Kontaktieren Sie bitte den Administrator!"
+"Sorry, aber Du verfügstnicht über die erforderlichen Rechte um dieses Plugin "
+"%s zu aktivieren. Kontaktiere bitte den Administrator!"
 msgstr[1] ""
-"Sorry, aber Sie verfügen nicht über die erforderlichen Rechte um die Plugins "
-"%s zu aktivieren. Kontaktieren Sie bitte den Administrator!"
+"Sorry, aber Du verfügst nicht über die erforderlichen Rechte um die Plugins "
+"%s zu aktivieren. Kontaktiere bitte den Administrator!"
 
 # @ avia_framework
 #: framework/php/class-tgm-plugin-activation.php:171
@@ -15880,11 +15883,11 @@ msgid_plural ""
 "Contact the administrator of this site for help on getting the plugins "
 "updated."
 msgstr[0] ""
-"Sorry, aber Sie verfügen nicht über die erforderlichen Rechte um das  Plugin "
-"%s  zu aktualisieren. Kontaktieren Sie den Administrator!"
+"Sorry, aber Du verfügst nicht über die erforderlichen Rechte um das  Plugin "
+"%s  zu aktualisieren. Kontaktiere den Administrator!"
 msgstr[1] ""
-"Sorry, aber Sie verfügen nicht über die erforderlichen Rechte um die Plugins "
-"%s  zu aktualisieren. Kontaktieren Sie den Administrator!"
+"Sorry, aber Du verfügst nicht über die erforderlichen Rechte um die Plugins "
+"%s  zu aktualisieren. Kontaktiere den Administrator!"
 
 # @ avia_framework
 #: framework/php/class-tgm-plugin-activation.php:173
@@ -16056,7 +16059,7 @@ msgid ""
 "while on some hosts, so please be patient."
 msgstr ""
 "Die Installation und der Aktivierungsprozess wird gestartet. Dies kann auf "
-"einigen Hosts ein wenig Zeit in Anspruch nehmen. Bitte gedulden Sie sich."
+"einigen Hosts ein wenig Zeit in Anspruch nehmen. Bitte gedulde Dich."
 
 # @ avia_framework
 #: framework/php/class-tgm-plugin-activation.php:2070
@@ -16089,7 +16092,7 @@ msgid ""
 "hosts, so please be patient."
 msgstr ""
 "Die Installation wird gestartet. Dies kann auf einigen Hosts ein wenig Zeit "
-"in Anspruch nehmen. Bitte gedulden Sie sich."
+"in Anspruch nehmen. Bitte um etwas Geduld."
 
 # @ avia_framework
 #: framework/php/class-tgm-plugin-activation.php:2077
@@ -16124,7 +16127,7 @@ msgstr "Installiere Plugin %1$s (%2$d/%3$d)"
 # @ avia_framework
 #: framework/php/class-update-notifier.php:158
 msgid "A new update for your theme"
-msgstr "Ein neues Update für Ihr Theme"
+msgstr "Ein neues Update für Dein Theme"
 
 # @ avia_framework
 #: framework/php/class-update-notifier.php:158
@@ -16146,7 +16149,7 @@ msgstr "."
 # @ avia_framework
 #: framework/php/class-update-notifier.php:160
 msgid "You're using version"
-msgstr "Sie nutzen folgende Version:"
+msgstr "Du nutzt folgende Version:"
 
 # @ avia_framework
 #: framework/php/class-update-notifier.php:164
@@ -16242,8 +16245,7 @@ msgstr "Suchergebnis für:"
 # @ avia_framework
 #: framework/php/function-set-avia-frontend.php:1013
 msgid "To search the site please enter a valid term"
-msgstr ""
-"Bitte geben Sie einen gültigen Suchbegriff ein um eine Suche zu starten"
+msgstr "Bitte gib einen gültigen Suchbegriff ein um eine Suche zu starten"
 
 # @ avia_framework
 #: framework/php/function-set-avia-frontend.php:1021
@@ -16331,7 +16333,7 @@ msgstr "Entschuldigung. Es ist ein Fehler aufgetreten."
 # @ wordpress-importer
 #: framework/php/wordpress-importer/wordpress-importer.php:135
 msgid "The file does not exist, please try again."
-msgstr "Die Datei existiert nicht. Bitte versuchen Sie es erneut."
+msgstr "Die Datei existiert nicht. Bitte versuche es erneut."
 
 # @ wordpress-importer
 #: framework/php/wordpress-importer/wordpress-importer.php:178
@@ -16347,7 +16349,7 @@ msgstr "Viel Spaß!"
 #: framework/php/wordpress-importer/wordpress-importer.php:179
 msgid "Remember to update the passwords and roles of imported users."
 msgstr ""
-"Denken Sie daran, die Kennwörter und Rollen der importierten Benutzer zu "
+"Denke daran, die Kennwörter und Rollen der importierten Benutzer zu "
 "aktualisieren."
 
 # @ wordpress-importer
@@ -16393,6 +16395,10 @@ msgid ""
 "site. For example, you may want to import all the entries as <code>admin</"
 "code>s entries."
 msgstr ""
+"Um die Bearbeitung und das Speichern der importierten Inhalte zu "
+"erleichtern, kannst Du die zu importierenden Einträge einem bestehenden "
+"Benutzer neu zuweisen. Zum Beispiel könntest Du alle Einträge als "
+"<code>admin</code>s entries importieren."
 
 # @ wordpress-importer
 #: framework/php/wordpress-importer/wordpress-importer.php:269
@@ -16439,7 +16445,7 @@ msgstr "Beiträge einem bestehenden Benutzer zuweisen:"
 # @ wordpress-importer
 #: framework/php/wordpress-importer/wordpress-importer.php:323
 msgid "or assign posts to an existing user:"
-msgstr "oder weisen Sie Beiträge einem bestehenden Benutzer zu:"
+msgstr "oder weise Beiträge einem bestehenden Benutzer zu:"
 
 # @ wordpress-importer
 #: framework/php/wordpress-importer/wordpress-importer.php:324
@@ -16540,8 +16546,8 @@ msgid ""
 "A new version of this importer is available. Please update to version %s to "
 "ensure compatibility with newer export files."
 msgstr ""
-"Es ist eine neue Version des Importers erhältlich! Bitte aktualisieren Sie "
-"auf Version %s, um die Kompatibilität mit neueren Export-Dateien zu "
+"Es ist eine neue Version des Importers erhältlich! Bitte aktualisiere auf "
+"Version %s, um die Kompatibilität mit neueren Export-Dateien zu "
 "gewährleisten."
 
 # @ wordpress-importer
@@ -16551,16 +16557,16 @@ msgid ""
 "the posts, pages, comments, custom fields, categories, and tags into this "
 "site."
 msgstr ""
-"Servus! Laden Sie Ihre Wordpress eXtended RSS-Datei (WXR) hoch und die "
-"Beiträge, Seiten, Kommentare, benutzerdefinierte Felder, Kategorien und Tags "
-"werden in diese Website importiert."
+"Servus! Lade Deine Wordpress eXtended RSS-Datei (WXR) hoch und die Beiträge, "
+"Seiten, Kommentare, benutzerdefinierte Felder, Kategorien und Tags werden in "
+"diese Website importiert."
 
 # @ wordpress-importer
 #: framework/php/wordpress-importer/wordpress-importer.php:1056
 msgid "Choose a WXR (.xml) file to upload, then click Upload file and import."
 msgstr ""
-"Wählen Sie eine WXR (. Xml-Datei). Klicken Sie anschließend auf Datei "
-"hochladen und Importieren."
+"Wähle eine WXR (. Xml-Datei). Klicke anschließend auf Datei hochladen und "
+"Importieren."
 
 #: functions-enfold.php:15
 msgid "Loading"
@@ -16570,12 +16576,12 @@ msgstr ""
 #: functions-enfold.php:133 includes/loop-author.php:179
 #: includes/loop-index.php:301
 msgid "Sorry, no posts matched your criteria"
-msgstr "Entschuldigung, aber kein Eintrag erfüllt ihre Suchkriterien"
+msgstr "Entschuldigung, aber kein Eintrag erfüllt Deine Suchkriterien"
 
 # @ avia_framework
 #: functions-enfold.php:134
 msgid "Please try another search term"
-msgstr "Bitte verwenden Sie einen anderen Suchbegriff"
+msgstr "Bitte verwende einen anderen Suchbegriff"
 
 # @ avia_framework
 #: functions-enfold.php:138
@@ -16657,13 +16663,13 @@ msgstr "Eintrag ohne Sidebar"
 msgid "Fullscreen Sections/Sliders"
 msgstr ""
 
-# @ avia_framework
+# @ default
 #: functions.php:371 includes/admin/register-admin-options.php:782
 #: includes/admin/register-backend-advanced-styles.php:219
 #: includes/admin/register-backend-advanced-styles.php:246
 #: includes/admin/register-backend-advanced-styles.php:262
 msgid "Main Menu"
-msgstr ""
+msgstr "Hauptmenü"
 
 #: functions.php:373
 msgid "Secondary Menu"
@@ -16692,28 +16698,29 @@ msgstr ""
 msgid "Footer Menu (no dropdowns)"
 msgstr ""
 
-# @ avia_framework
+# @ LayerSlider
 #: includes/admin/register-admin-options.php:7
 msgid "Theme Options"
-msgstr "Optionen"
+msgstr "Theme Optionen"
 
 # @ avia_framework
 #: includes/admin/register-admin-options.php:8
 #: includes/admin/register-admin-options.php:1889
 msgid "General Layout"
-msgstr "Allgemeines Layout"
+msgstr ""
 
 # @ avia_framework
 #: includes/admin/register-admin-options.php:9
 #: includes/admin/register-admin-options.php:332
 msgid "General Styling"
-msgstr "Allgemeines Styling"
+msgstr ""
 
 # @ avia_framework
 #: includes/admin/register-admin-options.php:10
 msgid "Advanced Styling"
-msgstr "Erweiterteres Styling"
+msgstr "Erweitertes Styling"
 
+# @ avia_framework
 #: includes/admin/register-admin-options.php:15
 #: includes/admin/register-admin-options.php:418
 #: includes/admin/register-admin-options.php:1757
@@ -16728,12 +16735,12 @@ msgstr ""
 # @ LayerSlider
 #: includes/admin/register-admin-options.php:26
 msgid "Demo Import"
-msgstr "Demos Importieren"
+msgstr ""
 
-# @ avia_framework
+# @ LayerSlider
 #: includes/admin/register-admin-options.php:27
 msgid "Import/Export"
-msgstr "Daten Import/Export"
+msgstr "Import/Export"
 
 #: includes/admin/register-admin-options.php:46
 msgid "Newsletter via Mailchimp"
@@ -16910,6 +16917,7 @@ msgstr ""
 msgid "Modify the frame color by changing the Body Background in"
 msgstr ""
 
+# @ default
 #: includes/admin/register-admin-options.php:348
 msgid "Logo and Main Menu"
 msgstr ""
@@ -16941,14 +16949,17 @@ msgstr ""
 msgid "Center Content"
 msgstr ""
 
+# @ avia_framework
 #: includes/admin/register-admin-options.php:373
 msgid "Position at the Left"
 msgstr ""
 
+# @ avia_framework
 #: includes/admin/register-admin-options.php:374
 msgid "Position at the Right"
 msgstr ""
 
+# @ avia_framework
 #: includes/admin/register-admin-options.php:381
 msgid "Sticky Sidebar menu"
 msgstr ""
@@ -16973,7 +16984,7 @@ msgstr ""
 msgid "Never Sticky"
 msgstr ""
 
-# @ avia_framework
+# @ default
 #: includes/admin/register-admin-options.php:400
 msgid "Main Menu Sidebar"
 msgstr ""
@@ -17115,9 +17126,10 @@ msgid "Upload/Select Fontello Font Zip"
 msgstr ""
 
 # @ avia_framework
+# @ default
 #: includes/admin/register-admin-options.php:584
 msgid "Insert Zip File"
-msgstr ""
+msgstr "Zip-Datei Einfügen"
 
 # @ avia_framework
 #: includes/admin/register-admin-options.php:601
@@ -17134,7 +17146,7 @@ msgstr ""
 # @ avia_framework
 #: includes/admin/register-admin-options.php:609
 msgid "And where do you want to display the Blog?"
-msgstr ""
+msgstr "Wo möchtest Du den Blog anzeigen?"
 
 # @ avia_framework
 #: includes/admin/register-admin-options.php:610
@@ -17143,10 +17155,10 @@ msgid ""
 "be displayed"
 msgstr ""
 
-# @ avia_framework
+# @ LayerSlider
 #: includes/admin/register-admin-options.php:619
 msgid "Logo"
-msgstr ""
+msgstr "Logo"
 
 #: includes/admin/register-admin-options.php:620
 msgid ""
@@ -17284,7 +17296,7 @@ msgstr ""
 #: includes/admin/register-admin-options.php:727
 #: includes/admin/register-admin-options.php:740
 msgid "Activated"
-msgstr ""
+msgstr "Aktiviert"
 
 # @ avia_framework
 #: includes/admin/register-admin-options.php:733
@@ -17364,22 +17376,22 @@ msgstr ""
 #: includes/admin/register-backend-advanced-styles.php:181
 #: includes/admin/register-backend-advanced-styles.php:199
 msgid "Headings"
-msgstr ""
+msgstr "Überschriften"
 
-# @ avia_framework
+# @ LayerSlider
 #: includes/admin/register-admin-options.php:930
 msgid "background color"
-msgstr ""
+msgstr "Hintergrundfarbe"
 
-# @ avia_framework
+# @ LayerSlider
 #: includes/admin/register-admin-options.php:935
 msgid "Default Background color"
-msgstr ""
+msgstr "Standard-Hintergrundfarbe"
 
-# @ avia_framework
+# @ LayerSlider
 #: includes/admin/register-admin-options.php:941
 msgid "Alternate Background color"
-msgstr ""
+msgstr "Hintergrundfarbe wechseln"
 
 # @ avia_framework
 #: includes/admin/register-admin-options.php:942
@@ -17399,7 +17411,7 @@ msgstr ""
 # @ avia_framework
 #: includes/admin/register-admin-options.php:964
 msgid "Highlight color"
-msgstr ""
+msgstr "Highlight-Farbe"
 
 # @ avia_framework
 #: includes/admin/register-admin-options.php:965
@@ -17409,7 +17421,7 @@ msgstr ""
 # @ avia_framework
 #: includes/admin/register-admin-options.php:976
 msgid "font color"
-msgstr ""
+msgstr "Schriftfarbe"
 
 #: includes/admin/register-admin-options.php:986
 msgid "secondary font color"
@@ -17422,7 +17434,7 @@ msgstr ""
 # @ avia_framework
 #: includes/admin/register-admin-options.php:1007
 msgid "Border colors"
-msgstr ""
+msgstr "Rahmen Farben"
 
 # @ LayerSlider
 #: includes/admin/register-admin-options.php:1026
@@ -17443,13 +17455,13 @@ msgstr ""
 #: includes/admin/register-admin-options.php:1055
 #: includes/admin/register-admin-options.php:1176
 msgid "Position of the image"
-msgstr ""
+msgstr "Bildposition"
 
 # @ avia_framework
 #: includes/admin/register-admin-options.php:1071
 #: includes/admin/register-admin-options.php:1192
 msgid "Center Left "
-msgstr ""
+msgstr "Mittig Links"
 
 # @ avia_framework
 #: includes/admin/register-admin-options.php:1087
@@ -17457,11 +17469,11 @@ msgstr ""
 msgid "no repeat"
 msgstr ""
 
-# @ avia_framework
+# @ wordpress-importer
 #: includes/admin/register-admin-options.php:1095
 #: includes/admin/register-admin-options.php:1216
 msgid "Attachment"
-msgstr ""
+msgstr "Anhang"
 
 # @ LayerSlider
 #: includes/admin/register-admin-options.php:1118
@@ -17485,16 +17497,17 @@ msgstr ""
 msgid "at General Layout"
 msgstr ""
 
-# @ avia_framework
+# @ LayerSlider
 #: includes/admin/register-admin-options.php:1128
 msgid "Body Background color"
-msgstr ""
+msgstr "Body Hintergrundfarbe"
 
 # @ avia_framework
 #: includes/admin/register-admin-options.php:1129
 msgid "Background color for your site"
 msgstr ""
 
+# @ avia_framework
 #: includes/admin/register-admin-options.php:1131
 msgid "This is the color that is displayed behind your boxed content area"
 msgstr ""
@@ -17521,7 +17534,7 @@ msgstr ""
 # @ avia_framework
 #: includes/admin/register-admin-options.php:1242
 msgid "Heading Font"
-msgstr ""
+msgstr "Überschrift Schriftart"
 
 # @ avia_framework
 #: includes/admin/register-admin-options.php:1244
@@ -17549,7 +17562,7 @@ msgstr ""
 # @ avia_framework
 #: includes/admin/register-admin-options.php:1270
 msgid "Google fonts"
-msgstr ""
+msgstr "Google fonts"
 
 #: includes/admin/register-admin-options.php:1286
 msgid "Default content font size"
@@ -17566,7 +17579,7 @@ msgstr ""
 # @ avia_framework
 #: includes/admin/register-admin-options.php:1320
 msgid "Quick CSS"
-msgstr ""
+msgstr "Quick CSS"
 
 #: includes/admin/register-admin-options.php:1321
 msgid ""
@@ -17597,7 +17610,7 @@ msgstr ""
 #: includes/admin/register-admin-options.php:1378
 #: includes/admin/register-admin-options.php:1397
 msgid "left sidebar"
-msgstr ""
+msgstr "Sidebar links"
 
 # @ avia_framework
 #: includes/admin/register-admin-options.php:1347
@@ -17605,7 +17618,7 @@ msgstr ""
 #: includes/admin/register-admin-options.php:1379
 #: includes/admin/register-admin-options.php:1398
 msgid "right sidebar"
-msgstr ""
+msgstr "Sidebar rechts"
 
 # @ avia_framework
 #: includes/admin/register-admin-options.php:1348
@@ -17613,7 +17626,7 @@ msgstr ""
 #: includes/admin/register-admin-options.php:1380
 #: includes/admin/register-admin-options.php:1399
 msgid "no sidebar"
-msgstr ""
+msgstr "keine Sidebar"
 
 # @ avia_framework
 #: includes/admin/register-admin-options.php:1356
@@ -17673,7 +17686,7 @@ msgstr ""
 msgid "Show sidebar on smartphones"
 msgstr ""
 
-# @ avia_framework
+# @ LayerSlider
 #: includes/admin/register-admin-options.php:1418
 msgid "Page Sidebar navigation"
 msgstr ""
@@ -17748,12 +17761,12 @@ msgstr ""
 # @ avia_framework
 #: includes/admin/register-admin-options.php:1592
 msgid "Header layout"
-msgstr ""
+msgstr "Header Einstellungen"
 
 # @ avia_framework
 #: includes/admin/register-admin-options.php:1597
 msgid "Menu and Logo Position"
-msgstr ""
+msgstr "Menu und Logo Position"
 
 # @ avia_framework
 #: includes/admin/register-admin-options.php:1598
@@ -17763,12 +17776,12 @@ msgstr ""
 # @ avia_framework
 #: includes/admin/register-admin-options.php:1605
 msgid "Logo left, Menu right"
-msgstr ""
+msgstr "Logo links, Menü rechts"
 
 # @ avia_framework
 #: includes/admin/register-admin-options.php:1606
 msgid "Logo right, Menu Left"
-msgstr ""
+msgstr "Logo rechts, Menü links"
 
 # @ avia_framework
 #: includes/admin/register-admin-options.php:1607
@@ -17792,7 +17805,7 @@ msgstr ""
 # @ avia_framework
 #: includes/admin/register-admin-options.php:1615
 msgid "Header Size"
-msgstr ""
+msgstr "Header Größe"
 
 # @ avia_framework
 #: includes/admin/register-admin-options.php:1616
@@ -17809,7 +17822,7 @@ msgstr ""
 # @ avia_framework
 #: includes/admin/register-admin-options.php:1624
 msgid "large"
-msgstr ""
+msgstr "groß"
 
 # @ avia_framework
 #: includes/admin/register-admin-options.php:1625
@@ -17819,7 +17832,7 @@ msgstr ""
 # @ avia_framework
 #: includes/admin/register-admin-options.php:1634
 msgid "Header Custom Height"
-msgstr ""
+msgstr "Benutzerdefinierte Header Höhe"
 
 # @ avia_framework
 #: includes/admin/register-admin-options.php:1635
@@ -17883,12 +17896,12 @@ msgstr ""
 # @ avia_framework
 #: includes/admin/register-admin-options.php:1694
 msgid "Header behavior"
-msgstr ""
+msgstr "Header Verhalten"
 
 # @ avia_framework
 #: includes/admin/register-admin-options.php:1698
 msgid "Sticky Header"
-msgstr ""
+msgstr "Fixierter Header"
 
 # @ avia_framework
 #: includes/admin/register-admin-options.php:1699
@@ -17951,9 +17964,8 @@ msgstr ""
 # @ avia_framework
 #: includes/admin/register-admin-options.php:1754
 msgid "Header Social Icons"
-msgstr ""
+msgstr "Header Social Icons"
 
-# @ avia_framework
 #: includes/admin/register-admin-options.php:1755
 msgid "Chose if and where to display social icons. You can define the icons at"
 msgstr ""
@@ -17961,7 +17973,7 @@ msgstr ""
 # @ avia_framework
 #: includes/admin/register-admin-options.php:1766
 msgid "No social Icons"
-msgstr ""
+msgstr "Keine Social Icons"
 
 # @ avia_framework
 #: includes/admin/register-admin-options.php:1767
@@ -18008,7 +18020,7 @@ msgstr ""
 # @ avia_framework
 #: includes/admin/register-admin-options.php:1789
 msgid "Header Phone Number/Extra Info"
-msgstr ""
+msgstr "Header Telefonnummer/Extra Info"
 
 # @ avia_framework
 #: includes/admin/register-admin-options.php:1790
@@ -18030,9 +18042,9 @@ msgstr ""
 # @ avia_framework
 #: includes/admin/register-admin-options.php:1804
 msgid "Add the text that should be displayed in your header here"
-msgstr ""
+msgstr "Füge hier den Text, der im Header angezeigt werden soll, ein"
 
-# @ avia_framework
+# @ LayerSlider
 #: includes/admin/register-admin-options.php:1818
 msgid "Transparency Options"
 msgstr ""
@@ -18054,12 +18066,12 @@ msgstr ""
 # @ avia_framework
 #: includes/admin/register-admin-options.php:1821
 msgid "(Show example Screenshot)"
-msgstr ""
+msgstr "(Beispiel Screenshot anzeigen)"
 
 # @ avia_framework
 #: includes/admin/register-admin-options.php:1831
 msgid "Transparency Logo"
-msgstr ""
+msgstr "Logo-Transparenz"
 
 #: includes/admin/register-admin-options.php:1832
 msgid ""
@@ -18078,7 +18090,7 @@ msgid ""
 "Menu color for transparent header (Leave empty to use the default color)"
 msgstr ""
 
-# @ avia_framework
+# @ default
 #: includes/admin/register-admin-options.php:1849
 msgid "Mobile Menu"
 msgstr ""
@@ -18107,6 +18119,7 @@ msgstr ""
 msgid "Activate for Smartphones and Tablets (browser width below 990px)"
 msgstr ""
 
+# @ avia_framework
 #: includes/admin/register-admin-options.php:1888
 msgid "Your social profiles"
 msgstr ""
@@ -18121,15 +18134,15 @@ msgstr ""
 msgid "e.g:"
 msgstr ""
 
-# @ avia_framework
+# @ woothemes
 #: includes/admin/register-admin-options.php:1902
 msgid "Add another social icon"
-msgstr ""
+msgstr "Füge ein weiteres Social Icon hinzu"
 
 # @ avia_framework
 #: includes/admin/register-admin-options.php:1913
 msgid "Social Icon"
-msgstr ""
+msgstr "Social Icon"
 
 # @ avia_framework
 #: includes/admin/register-admin-options.php:1939
@@ -18151,44 +18164,44 @@ msgstr ""
 # @ avia_framework
 #: includes/admin/register-admin-options.php:1962
 msgid "Default Footer Widgets & Socket Settings"
-msgstr ""
+msgstr "Standard-Einstellungen Footer-Widgets & Sockel"
 
 # @ avia_framework
 #: includes/admin/register-admin-options.php:1963
 msgid "Do you want to display the footer widgets & footer socket?"
-msgstr ""
+msgstr "Footer-Widgets & Sockel anzeigen?"
 
 # @ avia_framework
 #: includes/admin/register-admin-options.php:1981
 msgid "Footer Columns"
-msgstr ""
+msgstr "Footer Spalten"
 
 # @ avia_framework
 #: includes/admin/register-admin-options.php:1982
 msgid "How many columns should be displayed in your footer"
 msgstr ""
 
-# @ avia_framework
+# @ LayerSlider
 #: includes/admin/register-admin-options.php:1987
 msgid "1"
 msgstr ""
 
-# @ avia_framework
+# @ LayerSlider
 #: includes/admin/register-admin-options.php:1988
 msgid "2"
 msgstr ""
 
-# @ avia_framework
+# @ LayerSlider
 #: includes/admin/register-admin-options.php:1989
 msgid "3"
 msgstr ""
 
-# @ avia_framework
+# @ LayerSlider
 #: includes/admin/register-admin-options.php:1990
 msgid "4"
 msgstr ""
 
-# @ avia_framework
+# @ LayerSlider
 #: includes/admin/register-admin-options.php:1991
 msgid "5"
 msgstr ""
@@ -18203,7 +18216,6 @@ msgstr ""
 msgid "Social Icons"
 msgstr ""
 
-# @ avia_framework
 #: includes/admin/register-admin-options.php:2006
 msgid "Check to display the social icons defined in"
 msgstr ""
@@ -18298,14 +18310,14 @@ msgstr ""
 # @ avia_framework
 #: includes/admin/register-admin-options.php:2089
 msgid "Disable related entries"
-msgstr ""
+msgstr "Ähnliche Einträge deaktivieren"
 
 # @ avia_framework
 #: includes/admin/register-admin-options.php:2094
 msgid "Blog meta elements"
 msgstr ""
 
-# @ avia_framework
+# @ LayerSlider
 #: includes/admin/register-admin-options.php:2095
 msgid "You can chose to hide some of the default Blog elements here:"
 msgstr ""
@@ -18313,17 +18325,17 @@ msgstr ""
 # @ avia_framework
 #: includes/admin/register-admin-options.php:2104
 msgid "Blog Post Author"
-msgstr ""
+msgstr "Blog Beitrags Autor"
 
 # @ avia_framework
 #: includes/admin/register-admin-options.php:2114
 msgid "Blog Post Comment Count"
-msgstr ""
+msgstr "Blog Beitrag Anzahl Kommentare"
 
-# @ avia_framework
+# @ woothemes
 #: includes/admin/register-admin-options.php:2123
 msgid "Blog Post Category"
-msgstr ""
+msgstr "Blog Beitrags Kategorie"
 
 # @ avia_framework
 #: includes/admin/register-admin-options.php:2134
@@ -18357,10 +18369,10 @@ msgstr ""
 msgid "Pinterest link "
 msgstr ""
 
-# @ avia_framework
+# @ LayerSlider
 #: includes/admin/register-admin-options.php:2228
 msgid "Linkedin link "
-msgstr ""
+msgstr "Linkedin Link "
 
 # @ LayerSlider
 #: includes/admin/register-admin-options.php:2276
@@ -18636,7 +18648,7 @@ msgstr ""
 msgid "Change the styling for all &lt;strong&gt; tags"
 msgstr ""
 
-# @ avia_framework
+# @ LayerSlider
 #: includes/admin/register-backend-advanced-styles.php:21
 #: includes/admin/register-backend-advanced-styles.php:37
 #: includes/admin/register-backend-advanced-styles.php:54
@@ -18653,14 +18665,14 @@ msgstr ""
 #: includes/admin/register-backend-advanced-styles.php:355
 #: includes/admin/register-backend-advanced-styles.php:373
 msgid "Font Family"
-msgstr ""
+msgstr "Schriftart"
 
 # @ avia_framework
 #: includes/admin/register-backend-advanced-styles.php:29
 msgid "Change the styling for all &lt;blockquote&gt; tags"
 msgstr ""
 
-# @ avia_framework
+# @ LayerSlider
 #: includes/admin/register-backend-advanced-styles.php:36
 #: includes/admin/register-backend-advanced-styles.php:53
 #: includes/admin/register-backend-advanced-styles.php:73
@@ -18674,7 +18686,7 @@ msgstr ""
 #: includes/admin/register-backend-advanced-styles.php:357
 #: includes/admin/register-backend-advanced-styles.php:375
 msgid "Line Height"
-msgstr ""
+msgstr "Zeilenabstand"
 
 #: includes/admin/register-backend-advanced-styles.php:45
 msgid "Change the styling for all &lt;u&gt; (underline) tags"
@@ -18753,7 +18765,7 @@ msgstr ""
 # @ avia_framework
 #: includes/admin/register-backend-advanced-styles.php:218
 msgid "Main Menu Links"
-msgstr ""
+msgstr "Hauptmenü Links"
 
 # @ avia_framework
 #: includes/admin/register-backend-advanced-styles.php:220
@@ -18807,10 +18819,10 @@ msgstr ""
 msgid "Disable Overlay"
 msgstr ""
 
-# @ avia_framework
+# @ LayerSlider
 #: includes/admin/register-backend-advanced-styles.php:296
 msgid "Icon background"
-msgstr ""
+msgstr "Icon Hintergrund"
 
 #: includes/admin/register-backend-advanced-styles.php:306
 msgid "Change the styling of your buttons"
@@ -18936,7 +18948,7 @@ msgstr "Interessante Links"
 #: includes/admin/register-widget-area.php:92
 msgid "Here are some interesting links for you! Enjoy your stay :)"
 msgstr ""
-"Hier finden Sie ein paar interessante Links! Viel Spaß auf unserer Website :)"
+"Hier findest Du ein paar interessante Links! Viel Spaß auf unserer Website :)"
 
 # @ avia_framework
 #: includes/admin/register-widget-area.php:99
@@ -18966,35 +18978,34 @@ msgid ""
 "Sorry, the post you are looking for is not available. Maybe you want to "
 "perform a search?"
 msgstr ""
-"Entschuldigung, aber der gesuchte Eintrag ist nicht verfügbar. Wollen Sie "
+"Entschuldigung, aber der gesuchte Eintrag ist nicht verfügbar. Willst Du "
 "eine neue Suche starten?"
 
 # @ avia_framework
 #: includes/error404.php:24
 msgid "For best search results, mind the following suggestions:"
 msgstr ""
-"Um die besten Suchergebnisse zu bekommen beachten Sie bitte folgende "
-"Hinweise:"
+"Um die besten Suchergebnisse zu erhalten, beachte bitte folgende Hinweise:"
 
 # @ avia_framework
 #: includes/error404.php:26
 msgid "Always double check your spelling."
-msgstr "Überprüfen Sie die Rechtschreibung immer sorgfältig."
+msgstr "Überprüfe die Rechtschreibung immer sorgfältig."
 
 # @ avia_framework
 #: includes/error404.php:27
 msgid "Try similar keywords, for example: tablet instead of laptop."
-msgstr "Probieren Sie auch ähnliche Suchbegriffe, z.B. Notebook anstatt Laptop"
+msgstr "Probiere auch ähnliche Suchbegriffe, z.B. Notebook anstatt Laptop"
 
 # @ avia_framework
 #: includes/error404.php:28 includes/loop-search.php:134
 msgid "Try using more than one keyword."
-msgstr "Versuchen Sie mehr als einen Suchbegriff zu verwenden."
+msgstr "Versuche mehr als einen Suchbegriff zu verwenden."
 
 # @ avia_framework
 #: includes/error404.php:33 includes/loop-search.php:138
 msgid "Feel like browsing some posts instead?"
-msgstr "Wollen Sie sich lieber andere Artikel oder Seiten ansehen?"
+msgstr "Willst Du Dir lieber andere Artikel oder Seiten ansehen?"
 
 # @ avia_framework
 #: includes/helper-conditional-megamenu.php:46
@@ -19074,17 +19085,17 @@ msgstr "Seite auswählen"
 # @ avia_framework
 #: includes/helper-social-media.php:149
 msgid "Share on Google+"
-msgstr "Teile auf Google+"
+msgstr ""
 
 # @ avia_framework
 #: includes/helper-social-media.php:155
 msgid "Share by Mail"
-msgstr "Teile per Mail"
+msgstr "Per E-Mail teilen"
 
 # @ avia_framework
 #: includes/helper-social-media.php:231
 msgid "Share on"
-msgstr "Teile auf"
+msgstr ""
 
 # @ avia_framework
 #: includes/loop-about-author.php:13
@@ -19107,7 +19118,7 @@ msgstr "Der Autor %s hat %s Einträge verfasst."
 # @ avia_framework
 #: includes/loop-about-author.php:24
 msgid "Edit the profile description here."
-msgstr "Hier können Sie die Autorenbeschreibung bearbeiten."
+msgstr "Hier kannst Du die Autorenbeschreibung bearbeiten."
 
 # @ avia_framework
 #: includes/loop-author.php:128 includes/loop-index.php:226
@@ -19139,7 +19150,7 @@ msgstr "%1$s um %2$s"
 # @ avia_framework
 #: includes/loop-comments.php:51
 msgid "Your comment is awaiting moderation."
-msgstr "Ihr Kommentar muss noch vom Moderator freigeschaltet werden."
+msgstr "Dein Kommentar muss noch vom Moderator freigeschaltet werden."
 
 # @ avia_framework
 #: includes/loop-index.php:257 includes/loop-portfolio-single.php:33
@@ -19156,36 +19167,35 @@ msgstr "Schlagworte:"
 #: includes/loop-search.php:124
 msgid "Sorry, no posts matched your criteria. Please try another search"
 msgstr ""
-"Entschuldigung, aber kein Eintrag erfüllt ihre Suchkriterien. Bitte starten "
-"Sie eine neue Suche"
+"Entschuldigung, aber kein Eintrag erfüllt Deine Suchkriterien. Bitte starte "
+"eine neue Suche."
 
 # @ avia_framework
 #: includes/loop-search.php:130
 msgid ""
 "You might want to consider some of our suggestions to get better results:"
 msgstr ""
-"Um bessere Suchergebnisse zu erzielen, beachten Sie bitte folgende Hinweise:"
+"Um bessere Suchergebnisse zu erzielen, beachte bitte folgende Hinweise:"
 
 # @ avia_framework
 #: includes/loop-search.php:132
 msgid "Check your spelling."
-msgstr "Überprüfen Sie die Rechtschreibung."
+msgstr "Überprüfe die Rechtschreibung."
 
 # @ avia_framework
 #: includes/loop-search.php:133
 msgid "Try a similar keyword, for example: tablet instead of laptop."
-msgstr ""
-"Suchen Sie nach ähnlichen Suchbegriffen, z.B. Notebook statt Laptop, etc."
+msgstr "Suche nach ähnlichen Suchbegriffen, z.B. Notebook statt Laptop, etc."
 
 # @ avia_framework
 #: includes/related-posts.php:97
 msgid "You might also like"
-msgstr "Möglicherweise interessiert Sie:"
+msgstr "Das könnte Dich auch interessieren:"
 
 # @ avia_framework
 #: index.php:12 single.php:11
 msgid "Blog - Latest News"
-msgstr "Blog - Die aktuellsten Neuigkeiten"
+msgstr "Blog - Beiträge"
 
 # @ avia_framework
 #: search.php:31
@@ -19196,15 +19206,15 @@ msgstr "Neue Suche"
 #: search.php:32
 msgid "If you are not happy with the results below please do another search"
 msgstr ""
-"Sollten Sie mit den Suchergebnissen nicht zufrieden sein, starten Sie bitte "
-"eine neue Suchabfrage."
+"Suchergebnis nicht zufriedenstellend? Versuche es mal mit einem Wortteil "
+"oder einer anderen Schreibweise."
 
 # @ avia_framework
 #: template-archives.php:53
 msgid "The 20 latest Blog Posts"
 msgstr "Die 20 neuesten Blog Beiträge"
 
-# @ avia_framework
+# @ woothemes
 #: template-archives.php:63
 msgid "No Blog Posts found"
 msgstr "Keine Blog Beiträge gefunden"
@@ -19251,6 +19261,10 @@ msgstr "Archive nach Monat:"
 #~ msgstr "Neue Ebene hinzufügen"
 
 # @ LayerSlider
+#~ msgid "Sliders"
+#~ msgstr "Slider"
+
+# @ LayerSlider
 #~ msgid "Import Sliders"
 #~ msgstr "Sliders importieren"
 
@@ -19265,6 +19279,18 @@ msgstr "Archive nach Monat:"
 # @ LayerSlider
 #~ msgid "Capability"
 #~ msgstr "Fähigkeit"
+
+# @ LayerSlider
+#~ msgid "Purchase code"
+#~ msgstr "Kauf-Code"
+
+# @ avia_framework
+#~ msgid "Check for update"
+#~ msgstr "Auf Aktualisierung prüfen"
+
+# @ LayerSlider
+#~ msgid "Load Google Fonts"
+#~ msgstr "Google Fonts laden"
 
 # @ LayerSlider
 #~ msgid "Review changes & Install"
@@ -19284,8 +19310,7 @@ msgstr "Archive nach Monat:"
 
 # @ avia_framework
 #~ msgid "You can choose if you want to display title and/or caption"
-#~ msgstr ""
-#~ "Wählen Sie, ob Titel und/oder Bildunterschrift angezeigt werden sollen."
+#~ msgstr "Wähle, ob Titel und/oder Bildunterschrift angezeigt werden sollen."
 
 # @ avia_framework
 #~ msgid "Display Title and Caption"
@@ -19304,7 +19329,7 @@ msgstr "Archive nach Monat:"
 #~ "You can choose whether to always display Title and Caption or only on "
 #~ "hover"
 #~ msgstr ""
-#~ "Wählen Sie, ob Titel und/oder Bildunterschrift immer, oder nur bei Hover "
+#~ "Wähle, ob Titel und/oder Bildunterschrift immer, oder nur bei Hover "
 #~ "angezeigt werden sollen."
 
 # @ avia_framework
@@ -19324,3 +19349,444 @@ msgstr "Archive nach Monat:"
 # @ avia_framework
 #~ msgid "Cart"
 #~ msgstr "Warenkorb"
+
+# @ LayerSlider
+#~ msgid "Slide options"
+#~ msgstr "Slide-Optionen"
+
+# @ LayerSlider
+#~ msgid ""
+#~ "The slide image/background. Click into the field to open the WordPress "
+#~ "Media Library to choose or upload an image."
+#~ msgstr ""
+#~ "Folien-Bild/-Hintergrund. Klicke auf das Feld, um die WordPress Mediathek "
+#~ "zu öffnen und ein Bild auszuwählen oder hochzuladen."
+
+# @ LayerSlider
+#~ msgid ""
+#~ "The thumbnail image of this slide. Click into the field to open the "
+#~ "WordPress Media Library to choose or upload an image. If you leave this "
+#~ "field empty, the slide image will be used."
+#~ msgstr ""
+#~ "Vorschaubild dieser Folie. Klicke in das Feld, um die WordPress Mediathek "
+#~ "zu öffnen und ein Bild auszuwählen oder hochzuladen. Wenn Du dieses Feld "
+#~ "leer lässt, wird das Folien-Bild verwendet."
+
+# @ LayerSlider
+#~ msgid "Slide transition"
+#~ msgstr "Slide Übergang"
+
+# @ LayerSlider
+#~ msgid ""
+#~ "You can choose between the old and the new 3D/2D slide transitions "
+#~ "introduced in version 4.0.0."
+#~ msgstr ""
+#~ "Du kannst zwischen den alten und den neuen 3D/2D Slide-Übergängen wählen, "
+#~ "die in Version 4.0.0 eingeführt wurden."
+
+# @ LayerSlider
+#~ msgid "Transitions"
+#~ msgstr "Übergänge"
+
+# @ LayerSlider
+#~ msgid "top"
+#~ msgstr "Oben"
+
+# @ LayerSlider
+#~ msgid "right"
+#~ msgstr "Rechts"
+
+# @ LayerSlider
+#~ msgid "bottom"
+#~ msgstr "Unten"
+
+# @ LayerSlider
+# @ avia_framework
+#~ msgid "left"
+#~ msgstr "Links"
+
+# @ LayerSlider
+#~ msgid "Time shift"
+#~ msgstr "Zeitversetzt"
+
+# @ LayerSlider
+#~ msgid ""
+#~ "You can control here the timing of the layer animations  when the slider "
+#~ "changes to this slider with a 3D/2D transition. Zero means that the "
+#~ "layers of this slide will animate in when the slide transition ends. You "
+#~ "can time-shift the starting time of the layer animations with positive or "
+#~ "negative values."
+#~ msgstr ""
+#~ "Du kannst hier die Zeit für die Ebenen-Animationen steuern, wenn der "
+#~ "Schieber mit einem 3D/2D Übergang zu diesem Schieber wechselt. 0 "
+#~ "bedeutet, dass die Ebenen dieser Folie animiert werden, sobald der "
+#~ "Folienübergang beendet ist. Du kannst die Startzeit der Ebenenanimation "
+#~ "durch positive oder negative Werte zeitlich verändern."
+
+# @ LayerSlider
+#~ msgid "Delay in"
+#~ msgstr "Verzögerung bei hineingleiten"
+
+# @ LayerSlider
+#~ msgid ""
+#~ "Delay before the animation start when the slide slides in. This value is "
+#~ "in millisecs, so the value 1000 means 1 second."
+#~ msgstr ""
+#~ "Verzögerung zu Beginn der Animation beim hineingleiten des Slides. Dieser "
+#~ "Wert wird in Millisekunden angegeben (1000 = 1 Sekunde)."
+
+# @ LayerSlider
+#~ msgid "Slide out"
+#~ msgstr "Hinausgleiten"
+
+# @ LayerSlider
+#~ msgid ""
+#~ "The duration of the slide out animation. This value is in millisecs, so "
+#~ "the value 1000 means 1 second."
+#~ msgstr ""
+#~ "Die Dauer der Animation. Dieser Wert wird in Millisekunden angegeben "
+#~ "(1000 = 1 Sekunde)."
+
+# @ LayerSlider
+#~ msgid "Delay out"
+#~ msgstr "Verzögerung bei hinausgeleiten"
+
+# @ LayerSlider
+#~ msgid ""
+#~ "Delay before the animation start when the slide slides out. This value is "
+#~ "in millisecs, so the value 1000 means 1 second."
+#~ msgstr ""
+#~ "Verzögerung zu Beginn der Animation beim hinausgeleiten des Slides. "
+#~ "Dieser Wert wird in Millisekunden angegeben (1000 = 1 Sekunde)."
+
+# @ LayerSlider
+#~ msgid "Link this slide"
+#~ msgstr "Slide verlinken"
+
+# @ LayerSlider
+#~ msgid "Link URL"
+#~ msgstr "Link-URL"
+
+# @ LayerSlider
+#~ msgid ""
+#~ "You can control here the link behaviour: _self means the linked page will "
+#~ "open in the current tab/window, _blank will create a new tab/window."
+#~ msgstr ""
+#~ "Hier kannst Du das Link-Verhalten steuern: Mit _self wird die verknüpfte "
+#~ "Seite im aktuellen Tab/Fenster, mit _blank in einem neuem Tab/ Fenster "
+#~ "geöffnet."
+
+# @ LayerSlider
+#~ msgid "Basic"
+#~ msgstr "Basis"
+
+# @ LayerSlider
+#~ msgid "Options"
+#~ msgstr "Optionen"
+
+# @ LayerSlider
+#~ msgid "Div / Video"
+#~ msgstr "DIV/Video"
+
+# @ LayerSlider
+#~ msgid "Span"
+#~ msgstr "Span "
+
+# @ LayerSlider
+#~ msgid ""
+#~ "Click into this text field to open WordPress Media Library where you can "
+#~ "upload new images or select previously used ones."
+#~ msgstr ""
+#~ "Klicke in dieses Textfeld, um die WordPress Medien-Bibliothek zu öffnen "
+#~ "und neue Bilder hochzuladen oder bereits vorhandene zu nutzen."
+
+# @ LayerSlider
+#~ msgid "Custom HTML content"
+#~ msgstr "Benutzerdefinierter HTML-Inhalt"
+
+# @ LayerSlider
+#~ msgid "The type of the transition."
+#~ msgstr "Übergangstyp"
+
+# @ LayerSlider
+#~ msgid "Auto (Slide from auto direction)"
+#~ msgstr "Auto (Folie aus Auto-Richtung)"
+
+# @ LayerSlider
+#~ msgid "Top (Slide from top)"
+#~ msgstr "Oben (von oben reingleiten)"
+
+# @ LayerSlider
+#~ msgid "Right (Slide from right)"
+#~ msgstr "Rechts (von rechts reingleiten)"
+
+# @ LayerSlider
+#~ msgid "Bottom (Slide from bottom)"
+#~ msgstr "Unten (von unten reingleiten)"
+
+# @ LayerSlider
+#~ msgid "Left (Slide from left)"
+#~ msgstr "Links (von links reingleiten)"
+
+# @ LayerSlider
+#~ msgid "Auto (Slide to auto direction)"
+#~ msgstr "Auto (zur Auto-Richtung gleiten)"
+
+# @ LayerSlider
+#~ msgid "Top (Slide to top)"
+#~ msgstr "Oben (Nach oben gleiten)"
+
+# @ LayerSlider
+#~ msgid "Right (Slide to right)"
+#~ msgstr "Rechts (Nach rechts gleiten)"
+
+# @ LayerSlider
+#~ msgid "Bottom (Slide to bottom)"
+#~ msgstr "Unten (Nach unten gleiten)"
+
+# @ LayerSlider
+#~ msgid "Left (Slide to left)"
+#~ msgstr "Links (Nach links gleiten)"
+
+# @ LayerSlider
+#~ msgid ""
+#~ "You can control here the link behaviour: _self means the linked page will "
+#~ "open in the current tab/window, _blank will open it in a new tab/window."
+#~ msgstr ""
+#~ "Hier kannst Du das Link-Verhalten steuern: Mit _self wird die verknüpfte "
+#~ "Seite im aktuellen Tab/Fenster, mit _blank in einem neuem Tab/ Fenster "
+#~ "geöffnet."
+
+# @ LayerSlider
+#~ msgid "Custom style settings"
+#~ msgstr "Benutzerdefinierte Stil-Einstellungen"
+
+# @ LayerSlider
+#~ msgid "Add new LayerSlider"
+#~ msgstr "Neuen LayerSlider hinzufügen"
+
+# @ LayerSlider
+#~ msgid "Global Settings"
+#~ msgstr "Globale Einstellungen"
+
+# @ LayerSlider
+#~ msgid "Enable this option to turn LayerSlider into a responsive slider."
+#~ msgstr "Aktiviere diese Option, um den LayerSlider responsiv zu machen."
+
+# @ LayerSlider
+#~ msgid "Full-width slider"
+#~ msgstr "Vollbild-Slider"
+
+# @ LayerSlider
+#~ msgid "Layers Container"
+#~ msgstr "Ebenen-Container"
+
+# @ LayerSlider
+#~ msgid "Automatically start slideshow"
+#~ msgstr "Starte Slideshow automatisch"
+
+# @ LayerSlider
+#~ msgid "First slide"
+#~ msgstr "Erster Slide"
+
+# @ LayerSlider
+#~ msgid "Animate first slide"
+#~ msgstr "Animiere 1. Slide"
+
+# @ LayerSlider
+#~ msgid "Random slideshow"
+#~ msgstr "Zufällige Slideshow"
+
+# @ LayerSlider
+#~ msgid "Automatically pause slideshow"
+#~ msgstr "Automatisches pausieren der Slideshow"
+
+# @ LayerSlider
+#~ msgid "auto"
+#~ msgstr "Auto"
+
+# @ LayerSlider
+#~ msgid "enabled"
+#~ msgstr "Aktiviert"
+
+# @ LayerSlider
+#~ msgid "Slider style"
+#~ msgstr "Slider-Stil"
+
+# @ LayerSlider
+#~ msgid "Prev and Next buttons"
+#~ msgstr "Zurück- und Weiter-Schalter"
+
+# @ LayerSlider
+#~ msgid "Start and Stop buttons"
+#~ msgstr "Start- und Stop-Schalter"
+
+# @ LayerSlider
+#~ msgid "Navigation buttons"
+#~ msgstr "Navigations-Schalter"
+
+# @ LayerSlider
+#~ msgid "Prev and next buttons on hover"
+#~ msgstr "Vor- und Zurück-Buttons bei Hover"
+
+# @ LayerSlider
+#~ msgid "Bottom navigation on hover"
+#~ msgstr "Untere Navigation bei Hover"
+
+# @ LayerSlider
+#~ msgid "hover"
+#~ msgstr "Hover"
+
+# @ LayerSlider
+#~ msgid "always"
+#~ msgstr "immer"
+
+# @ LayerSlider
+#~ msgid "Thumbnail active opacity"
+#~ msgstr "Miniaturbild aktive Deckkraft"
+
+# @ LayerSlider
+#~ msgid "The selected thumbnail opacity (0-100)."
+#~ msgstr "Deckkraft des aktiven Miniaturbildes (0-100)."
+
+# @ LayerSlider
+#~ msgid "Thumbnail inactive opacity"
+#~ msgstr "Miniaturbild inaktive Deckkraft"
+
+# @ LayerSlider
+#~ msgid "Preloads all images and background-images of the next slide."
+#~ msgstr "Vorausladen alle Bilder sowie Hintergründe des nächsten Slides."
+
+# @ LayerSlider
+#~ msgid "If enabled, LayerSlider WP will use relative URLs for images."
+#~ msgstr ""
+#~ "Wenn aktiviert, werden im LayerSlider WP relative URL's für Bilder "
+#~ "verwendet."
+
+# @ LayerSlider
+#~ msgid "Troubleshooting"
+#~ msgstr "Fehlerbehebung"
+
+# @ LayerSlider
+#~ msgid ""
+#~ "You can style your logo. You can use any CSS properties, for example you "
+#~ "can add left and top properties to place the image inside the LayerSlider "
+#~ "container anywhere you want."
+#~ msgstr ""
+#~ "Du kannst Dein Logo mithilfe von CSS-Stilen anpassen, indem Du z.B. "
+#~ "Eigenschaften wie left und top verwenden, um das Bild im LayerSlider zu "
+#~ "positionierst."
+
+# @ LayerSlider
+#~ msgid ""
+#~ "You can add a link to your logo. Set false is you want to display only an "
+#~ "image without a link."
+#~ msgstr ""
+#~ "Du kannst das Logo mit einem Link versehen. Wird der Wert auf \"false\" "
+#~ "gesetzt, wird lediglich nur ein Bild ohne Link angezeigt."
+
+# @ LayerSlider
+#~ msgid "YourLogo link target"
+#~ msgstr "Verknüpfungsziel Ihres Logos"
+
+# @ LayerSlider
+#~ msgid "If '_blank', the clicked url will open in a new window."
+#~ msgstr ""
+#~ "Bei der Einstellung \"_blank\", wird die angeklickte URL in einem neuen "
+#~ "Fenster geöffnet."
+
+# @ LayerSlider
+#~ msgid "Publish"
+#~ msgstr "Publizieren"
+
+# @ LayerSlider
+#~ msgid "Link this slide "
+#~ msgstr "Slide verlinken"
+
+# @ LayerSlider
+#~ msgid "Custom Styles Editor"
+#~ msgstr "Benutzerdefinierter Stil-Editor"
+
+# @ LayerSlider
+#~ msgid "Duplicate"
+#~ msgstr "Duplizieren"
+
+# @ LayerSlider
+#~ msgid "You didn't create a slider yet."
+#~ msgstr "Du hast noch keinen Solider erstellt!"
+
+# @ LayerSlider
+#~ msgid "Auto-updates"
+#~ msgstr "Auto-Aktualisierungen"
+
+# @ avia_framework
+#~ msgid "Should the icon be positioned at the left or at the top?"
+#~ msgstr "Soll das Icon linksbündig oder oberhalb positioniert werden?"
+
+# @ avia_framework
+#~ msgid "Comments<br/>Off"
+#~ msgstr "Kommentare<br/>sind deaktiviert"
+
+# @ avia_framework
+#~ msgid "Categories:"
+#~ msgstr "Kategorien:"
+
+# @ LayerSlider
+#~ msgid "Purchase code:"
+#~ msgstr "Kauf-Code:"
+
+# @ LayerSlider
+#~ msgid "Release channel:"
+#~ msgstr "Release-Channel:"
+
+# @ LayerSlider
+#~ msgid "Import & Export Sliders"
+#~ msgstr "Import und Export von Sliders"
+
+# @ LayerSlider
+#~ msgid ""
+#~ "Downloads an export file that contains your selected sliders to import on "
+#~ "your new site."
+#~ msgstr ""
+#~ "Download einer Export-Datei, die Deine ausgewählten Sliders beinhaltet "
+#~ "und so den Import in eine neue Website ermöglicht."
+
+# @ plugindomain
+#~ msgid "title"
+#~ msgstr "Titel"
+
+# @ plugindomain
+#~ msgid "content"
+#~ msgstr "Inhalt"
+
+# @ avia_framework
+#~ msgid "W"
+#~ msgstr "W"
+
+# @ default
+#~ msgid "Move up"
+#~ msgstr "Nach oben bewegen"
+
+# @ default
+#~ msgid "Move down"
+#~ msgstr "Nach unten bewegen"
+
+# @ woothemes-sensei
+#~ msgid "You must first complete %1$s before viewing this Lesson"
+#~ msgstr "Du musst zuerst %1$s beenden."
+
+# @ woothemes-sensei
+#~ msgid "You must first complete: %1$s"
+#~ msgstr "Du musst zuerst folgendes beenden: %1$s"
+
+# @ LayerSlider
+#~ msgid "Open link in new page"
+#~ msgstr "Öffne Link auf einer neuen Seite"
+
+# @ LayerSlider
+#~ msgid "Choose thumbnail"
+#~ msgstr "Vorschaubild wählen"
+
+# @ LayerSlider
+#~ msgid "Add font:"
+#~ msgstr "Schriftart hinzufügen:"

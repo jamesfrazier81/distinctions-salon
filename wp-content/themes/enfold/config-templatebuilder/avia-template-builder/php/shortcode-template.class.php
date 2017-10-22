@@ -26,7 +26,8 @@ if ( !class_exists( 'aviaShortcodeTemplate' ) ) {
 			$this->create_asset_array();
 			$this->actions_and_filters();
 			$this->extra_assets();
-			$this->register_shortcodes();
+			$this->register_shortcodes(); 
+			
 		}
 
 
@@ -140,6 +141,11 @@ if ( !class_exists( 'aviaShortcodeTemplate' ) ) {
 				$this->elements = $this->avia_custom_class_for_element($this->elements);
 			}
 			
+			if( !empty($this->config['preview']) )
+			{
+				$this->elements = $this->avia_custom_preview_bg($this->elements);
+			}
+			
 			$elements = apply_filters('avf_template_builder_shortcode_elements', $this->elements);
 
 			//if the ajax request told us that we are fetching the subfunction iterate over the array elements and
@@ -158,7 +164,8 @@ if ( !class_exists( 'aviaShortcodeTemplate' ) ) {
 
 			$elements = $this->set_default_values($elements);
 			echo AviaHtmlHelper::render_multiple_elements($elements, $this);
-
+			
+			
 			die();
 		}
 
@@ -293,7 +300,10 @@ if ( !class_exists( 'aviaShortcodeTemplate' ) ) {
 		*/
 		protected function register_shortcodes()
 		{
-			if(!is_admin())
+			if(isset($_REQUEST['params']['_ajax_nonce'])) $_REQUEST['_ajax_nonce'] = $_REQUEST['params']['_ajax_nonce'];
+			
+			//the check is only necessary when $_REQUEST['text'] is set which means we want to show a preview that could be manipulated from outside
+			if(!is_admin() || empty($_REQUEST['text']) || ( !empty($_POST['avia_request']) && check_ajax_referer('avia_nonce_loader', '_ajax_nonce' ) ) )
 			{
 				add_shortcode( $this->config['shortcode'], array(&$this, 'shortcode_handler_prepare'));
 				
@@ -425,11 +435,13 @@ if ( !class_exists( 'aviaShortcodeTemplate' ) ) {
 
 			$params['content']   = $content;
 			$params['args']      = $args;
-			$params['data']      = isset($this->config['modal_data']) ? $this->config['modal_data'] : "";
-
-
+			$params['data']      = isset($this->config['modal_data']) ? $this->config['modal_data'] : array();
+			
+		
 			//fetch the parameter array from the child classes editor_element function which should descripe the html code
 			$params =  $this->editor_element($params);
+
+
 
 			// pass the parameters to the create_sortable_editor_element unless a different function for execution was set.
 			// if the function is set to "false" we asume that the output is final
@@ -464,6 +476,23 @@ if ( !class_exists( 'aviaShortcodeTemplate' ) ) {
 		
 			return $elements;
 		}
+		
+		/**
+		* add a custom field for the background of the preview
+		*/
+		public function avia_custom_preview_bg($elements)
+		{
+			$elements[] = array(	
+				"id" 	=> "admin_preview_bg",
+				"type" 	=> "hidden",
+				"std" 	=> "");
+		
+			return $elements;
+		}
+
+
+			
+
 
 
 		/**
@@ -476,13 +505,16 @@ if ( !class_exists( 'aviaShortcodeTemplate' ) ) {
 			$defaults = array('class'=>'avia_default_container', 'innerHtml'=>'');
 			$params = array_merge($defaults, $params);
 			extract($params);
-
+			
+			if(empty($data)) $data = array();
+			
 			$data['shortcodehandler'] 	= $this->config['shortcode'];
 			$data['modal_title'] 		= $this->config['name'];
 			$data['modal_ajax_hook'] 	= $this->config['shortcode'];
 			$data['dragdrop-level']		= $this->config['drag-level'];
 			$data['allowed-shortcodes'] = $this->config['shortcode'];
-
+			$data['preview'] 			= !empty($this->config['preview']) ? $this->config['preview'] : 0;
+			
 			if(isset($this->config['shortcode_nested']))
 			{
 				$data['allowed-shortcodes']	= $this->config['shortcode_nested'];
@@ -495,6 +527,7 @@ if ( !class_exists( 'aviaShortcodeTemplate' ) ) {
 				$data['modal_on_load'] 	= $this->config['modal_on_load'];
 			}
 
+			$data		 = apply_filters('avb_backend_editor_element_data_filter', $data);
 			$dataString  = AviaHelper::create_data_string($data);
 
 			$output  = "<div class='avia_sortable_element avia_pop_class ".$class." ".$this->config['shortcode']." av_drag' ".$dataString.">";
@@ -512,6 +545,9 @@ if ( !class_exists( 'aviaShortcodeTemplate' ) ) {
 
 			$output .= "<div class='avia_inner_shortcode $extraClass'>";
 			$output .= $innerHtml;
+			
+			
+			
 			$output .= "<textarea data-name='text-shortcode' cols='20' rows='4'>".ShortcodeHelper::create_shortcode_by_array($this->config['shortcode'], $content, $args)."</textarea>";
 			$output .= "</div></div>";
 
@@ -529,7 +565,6 @@ if ( !class_exists( 'aviaShortcodeTemplate' ) ) {
 		public function set_default_values($elements)
 		{
 			$shortcode = !empty($_POST['params']['shortcode']) ? $_POST['params']['shortcode'] : "";
-			
 			
 
 			if($shortcode)
@@ -614,7 +649,7 @@ if ( !class_exists( 'aviaShortcodeTemplate' ) ) {
 		/**
 		 * helper function that gets the default value of the content element
 		 *
-		 * @param array $elements
+		 * @param array $content
 		 * @return array $args
 		 */
 		public function get_default_content($content = "")

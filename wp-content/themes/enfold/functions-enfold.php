@@ -73,7 +73,7 @@ if(!function_exists('avia_maps_key_for_plugins'))
 		{
 			if ( strpos( $url, "key=" ) === false ) 
 			{	
-				$url = "http://maps.google.com/maps/api/js?v=3.24";
+				$url = "http://maps.google.com/maps/api/js?v=3.27";
 				$url = esc_url( add_query_arg( 'key',$key,$url) );
 			}
 		}
@@ -82,7 +82,6 @@ if(!function_exists('avia_maps_key_for_plugins'))
 		return $url;
 	}
 }
-
 
 
 
@@ -130,21 +129,20 @@ if(!function_exists('avia_append_search_nav'))
 	}
 }
 
-/* AJAX SEARCH */
+/* Append the burger menu */
 if(!function_exists('avia_append_burger_menu'))
 {
 	//first append search item to main menu
 	add_filter( 'wp_nav_menu_items', 'avia_append_burger_menu', 9998, 2 );
 	add_filter( 'avf_fallback_menu_items', 'avia_append_burger_menu', 9998, 2 );
 
-	function avia_append_burger_menu ( $items, $args )
+	function avia_append_burger_menu ( $items , $args )
 	{	
-		if(!avia_is_burger_menu()) return $items;
-	
 	    if ((is_object($args) && $args->theme_location == 'avia') || (is_string($args) && $args = "fallback_menu"))
 	    {
+	        $class = avia_get_option('burger_size');
 	        
-	        $items .= '<li id="menu-item-burger" class="av-burger-menu-main menu-item-avia-special">
+	        $items .= '<li class="av-burger-menu-main menu-item-avia-special '.$class.'">
 	        			<a href="#">
 							<span class="av-hamburger av-hamburger--spin av-js-hamburger">
 					        <span class="av-hamburger-box">
@@ -167,7 +165,9 @@ if(!function_exists('avia_is_burger_menu'))
 		
 		if(avia_get_option('menu_display') !== "burger_menu") return $burger_menu;
 		if(avia_get_option('header_position') !== "header_top") return $burger_menu;
-		if(strpos(avia_get_option('header_layout'), 'main_nav_header') === false) return $burger_menu;
+		
+		//if(avia_get_option('header_position') !== "header_top") return $burger_menu;
+		//if(strpos(avia_get_option('header_layout'), 'main_nav_header') === false) return $burger_menu;
 	
 	    return true;
 	}
@@ -373,7 +373,8 @@ if(!function_exists('avia_title'))
 			'title' 		=> get_the_title($id),
 			'subtitle' 		=> "", //avia_post_meta($id, 'subtitle'),
 			'link'			=> get_permalink($id),
-			'html'			=> "<div class='{class} title_container'><div class='container'><{heading} class='main-title entry-title'>{title}</{heading}>{additions}</div></div>",
+			'html'			=> "<div class='{class} title_container'><div class='container'>{heading_html}{additions}</div></div>",
+			'heading_html'	=> "<{heading} class='main-title entry-title'>{title}</{heading}>",
 			'class'			=> 'stretch_full container_wrap alternate_color '.avia_is_dark_bg('alternate_color', true),
 			'breadcrumb'	=> true,
 			'additions'		=> "",
@@ -414,6 +415,10 @@ if(!function_exists('avia_title'))
 		if($breadcrumb) $additions .= avia_breadcrumbs(array('separator' => '/', 'richsnippet' => true));
 
 
+		if(!$title) $heading_html = "";
+		$html = str_replace('{heading_html}', $heading_html, $html);
+		
+		
 		$html = str_replace('{class}', $class, $html);
 		$html = str_replace('{title}', $title, $html);
 		$html = str_replace('{additions}', $additions, $html);
@@ -737,34 +742,35 @@ if(!function_exists('avia_header_setting'))
 		if(isset($avia_config['header_settings']) && $single_val && isset($avia_config['header_settings'][$single_val])) return $avia_config['header_settings'][$single_val];
 		if(isset($avia_config['header_settings']) && !$single_val) return $avia_config['header_settings']; //return cached header setting if available
 		
-		$defaults = array(  'header_position' => 'header_top',
-							'header_layout'=>'logo_left menu_right', 
-							'header_size'=>'slim', 
-							'header_custom_size'=>'', 
-							'header_sticky'=>'header_sticky', 
-							'header_shrinking'=>'header_shrinking', 
-							'header_title_bar'=>'',
-							'header_social'=>'',
-							'header_unstick_top' =>'',
-							'header_secondary_menu'=>'', 
-							'header_stretch'=>'',
-							'header_custom_size'=>'',
-							'header_phone_active'=>'',
-							'header_replacement_logo'=>'',
-							'header_replacement_menu'=>'',
-							'header_mobile_behavior' => '',
-							'header_searchicon' => true,
-							'header_mobile_activation' => 'mobile_menu_phone',
-							'phone'=>'',
-							'sidebarmenu_sticky' => 'conditional_sticky',
-							'layout_align_content' => 'content_align_center',
-							'sidebarmenu_widgets' => '',
-							'sidebarmenu_social' => 'disabled',
-							'header_menu_border' => '',
-							'header_style'	=> '',
-							'blog_global_style' => '',
-							'menu_display' => ''
-
+		$defaults = array(  'header_position' 			=> 'header_top',
+							'header_layout'				=>'logo_left menu_right', 
+							'header_size'				=>'slim', 
+							'header_custom_size'		=>'', 
+							'header_sticky'				=>'header_sticky', 
+							'header_shrinking'			=>'header_shrinking', 
+							'header_title_bar'			=>'',
+							'header_social'				=>'',
+							'header_unstick_top'		=>'',
+							'header_secondary_menu'		=>'', 
+							'header_stretch'			=>'',
+							'header_custom_size'		=>'',
+							'header_phone_active'		=>'',
+							'header_replacement_logo'	=>'',
+							'header_replacement_menu'	=>'',
+							'submenu_visibility' 		=> '',
+							'overlay_style'				=> 'av-overlay-side',
+							'header_searchicon' 		=> true,
+							'header_mobile_activation' 	=> 'mobile_menu_phone',
+							'phone'						=>'',
+							'sidebarmenu_sticky' 		=> 'conditional_sticky',
+							'layout_align_content' 		=> 'content_align_center',
+							'sidebarmenu_widgets' 		=> '',
+							'sidebarmenu_social' 		=> 'disabled',
+							'header_menu_border' 		=> '',
+							'header_style'				=> '',
+							'blog_global_style'			=> '',
+							'menu_display' 				=> '',
+							'submenu_clone' 			=> 'av-submenu-noclone',
 						  );
 							
 		$settings = avia_get_option();
@@ -808,6 +814,7 @@ if(!function_exists('avia_header_setting'))
 		$header['header_transparency'] = "";
 		if(!empty($transparency)) $header['header_transparency'] = 'header_transparency';
 		if(!empty($transparency) && strpos($transparency, 'glass')) $header['header_transparency'] .= ' header_glassy';
+		if(!empty($transparency) && strpos($transparency, 'with_border')) $header['header_transparency'] .= ' header_with_border';
 		if(!empty($transparency) && strpos($transparency, 'hidden')) $header['disabled'] = true;
 		if(!empty($transparency) && strpos($transparency, 'scrolldown')) 
 		{
@@ -828,9 +835,12 @@ if(!function_exists('avia_header_setting'))
 		//deactivate icon menu if we dont have the correct header
 		if(strpos(avia_get_option('header_layout'), 'main_nav_header') === false) $header['menu_display'] = "";
 		
-		if($header['menu_display'] == 'burger_menu') $header['header_menu_border'] = "";
+		if($header['menu_display'] == 'burger_menu') { $header['header_menu_border'] = "";}
 		
-		
+		if(avia_is_burger_menu())
+		{
+			$header['header_mobile_activation'] = "mobile_menu_tablet";
+		}
 		
 		//create a header class so we can style properly
 		$header_class_var = array(	'header_position', 
@@ -922,14 +932,14 @@ if(!function_exists('avia_header_setting_sidebar'))
 								'header_phone_active'=>'disabled',
 								'header_replacement_logo'=>'',
 								'header_replacement_menu'=>'',
-								'header_mobile_behavior' => '',
 								'header_mobile_activation' => 'mobile_menu_phone',
 								'phone'=>'',
 								'header_menu_border' => '',
-								'header_topbar'=> false,
-								'bottom_menu'=> false,
-								'header_style' => '',
-								'menu_display' => ''
+								'header_topbar'	=> false,
+								'bottom_menu'	=> false,
+								'header_style' 	=> '',
+								'menu_display' 	=> '',
+								'submenu_clone' => 'av-submenu-noclone',
 							  );
 		
 		$header = array_merge($header, $overwrite);
@@ -992,14 +1002,17 @@ if(!function_exists('avia_header_class_string'))
 													'header_topbar', 
 													'header_transparency',
 													'header_mobile_activation',
-													'header_mobile_behavior',
 													'header_searchicon',
 													'layout_align_content',
 													'header_unstick_top',
 													'header_stretch',
 													'header_style',
 													'blog_global_style',
-													'menu_display'
+													'menu_display',
+													'submenu_visibility',
+													'overlay_style',
+													'submenu_clone',
+
 												);
 
 		$settings  	= avia_header_setting();
@@ -1093,7 +1106,7 @@ if(!function_exists('avia_header_html_custom_height'))
 			
 			$html =  "";
 			$html .= "\n<style type='text/css' media='screen'>\n";
-			$html .= " #top #header_main > .container, #top #header_main > .container .main_menu ul:first-child > li > a,";
+			$html .= " #top #header_main > .container, #top #header_main > .container .main_menu  .av-main-nav > li > a,";
 			$html .= " #top #header_main #menu-item-shop .cart_dropdown_link{ height:{$size}px; line-height: {$size}px; }\n";
 			$html .= " .html_top_nav_header .av-logo-container{ height:{$size}px;  }\n";
 			$html .= " .html_header_top.html_header_sticky #top #wrap_all #main{ padding-top:".((int)$size + $bottom_bar + $top_bar - $modifier)."px; } \n";
@@ -1483,6 +1496,7 @@ if(!function_exists('avia_framed_layout'))
 			html .avia-post-prev{left: {$frame_width}px; }
 			html .avia-post-next{right:{$frame_width}px; }
 			
+			html.html_av-framed-box.html_av-overlay-side .av-burger-overlay-scroll{ right:{$frame_width}px; }
 			"
 			);
 		}
@@ -1584,6 +1598,12 @@ if(!function_exists('avia_generate_stylesheet'))
 	        $dir_flag = update_option( 'avia_stylesheet_dir_writable'.$safe_name, 'true' );
 	        $stylesheet_flag = update_option( 'avia_stylesheet_exists'.$safe_name, 'true' );
 			$dynamic_id = update_option( 'avia_stylesheet_dynamic_version'.$safe_name, uniqid() );
+	    }
+	    else
+	    {
+		    $dir_flag = update_option( 'avia_stylesheet_dir_writable'.$safe_name, 'false' );
+	        $stylesheet_flag = update_option( 'avia_stylesheet_exists'.$safe_name, 'false' );
+			$dynamic_id = delete_option( 'avia_stylesheet_dynamic_version'.$safe_name);
 	    }
 	}
 }
@@ -1790,6 +1810,99 @@ if (!class_exists('avia_mailchimp_widget'))
 		
 	register_widget( 'avia_mailchimp_widget' );
 }
+
+/**
+ * WP core hack see https://core.trac.wordpress.org/ticket/15551
+ * 
+ * Paging does not work on single custom post type pages - always a redirect to page 1 by WP
+ * 
+ * 
+ * @since 4.0.6
+ */
+if( ! function_exists( 'avia_wp_cpt_request_redirect_fix' ) )
+{
+	function avia_wp_cpt_request_redirect_fix( $request ) 
+	{
+		$args = array(
+					'public'	=>	true,
+					'_builtin'	=>	false
+				);
+
+		$cpts = get_post_types( $args, 'names', 'and' ); 
+
+		if (	isset( $request->query_vars['post_type'] ) &&
+				in_array( $request->query_vars['post_type'], $cpts ) &&
+				true === $request->is_singular &&
+				- 1 == $request->current_post &&
+				true === $request->is_paged 
+			) 
+		{
+			add_filter( 'redirect_canonical', '__return_false' );
+		}
+
+		return $request;
+	}
+
+	add_action( 'parse_query', 'avia_wp_cpt_request_redirect_fix' );
+}
+
+
+
+/**
+ * mobile sizes that overwrite elements default sizes
+ */
+if( ! function_exists( 'av_print_custom_font_size' ) )
+{
+	function av_print_custom_font_size( $request ) 
+	{
+		echo AviaHelper::av_print_mobile_sizes();
+	}
+
+	add_action( 'wp_footer', 'av_print_custom_font_size' );
+}
+
+
+/**
+ * disable element live preview
+ */
+if( ! function_exists( 'av_disable_live_preview' ) )
+{
+	function av_disable_live_preview( $data ) 
+	{
+		if(avia_get_option('preview_disable') == "preview_disable")
+		{
+			$data['preview'] = 0;
+		}
+		
+		return $data;
+	}
+
+	add_filter( 'avb_backend_editor_element_data_filter', 'av_disable_live_preview' );
+}
+
+/**
+ * enable developer options
+ */
+if( ! function_exists( 'av_enable_dev_options' ) )
+{
+	function av_enable_dev_options() 
+	{
+		if(avia_get_option('developer_options') == "developer_options")
+		{
+			add_theme_support('avia_template_builder_custom_css');
+		}
+	}
+
+	add_action( 'init', 'av_enable_dev_options' );
+}
+
+
+
+
+
+
+
+
 
 
 

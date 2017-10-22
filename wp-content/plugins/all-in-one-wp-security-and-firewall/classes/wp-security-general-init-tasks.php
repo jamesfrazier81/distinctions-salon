@@ -119,6 +119,13 @@ class AIOWPSecurity_General_Init_Tasks
                 add_action('login_form', array(&$this, 'insert_honeypot_hidden_field'));
             }
         }
+ 
+        //For registration honeypot feature
+        if($aio_wp_security->configs->get_value('aiowps_enable_registration_honeypot') == '1'){
+            if (!is_user_logged_in()) {
+                add_action('register_form', array(&$this, 'insert_honeypot_hidden_field'));
+            }
+        }
         
         //For lost password captcha feature
         if($aio_wp_security->configs->get_value('aiowps_enable_lost_password_captcha') == '1'){
@@ -405,7 +412,7 @@ class AIOWPSecurity_General_Init_Tasks
 
     function insert_honeypot_hidden_field(){
         $honey_input = '<p style="display: none;"><label>'.__('Enter something special:','all-in-one-wp-security-and-firewall').'</label>';
-        $honey_input .= '<input name="aio_special_field" type="text" id="aio_special_field" class="aio_special_field" /></p>';
+        $honey_input .= '<input name="aio_special_field" type="text" id="aio_special_field" class="aio_special_field" value="" /></p>';
         echo $honey_input;
     }
     
@@ -514,7 +521,7 @@ class AIOWPSecurity_General_Init_Tasks
     function reapply_htaccess_rules_notice()
     {
         if (get_option('aiowps_temp_configs') !== FALSE){
-            echo '<div class="updated"><p>Would you like All In One WP Security & Firewall to re-insert the security rules in your .htaccess file which were cleared when you deactivated the plugin?&nbsp;&nbsp;<a href="admin.php?page='.AIOWPSEC_MENU_SLUG_PREFIX.'&aiowps_reapply_htaccess=1" class="button-primary">Yes</a>&nbsp;&nbsp;<a href="admin.php?page='.AIOWPSEC_MENU_SLUG_PREFIX.'&aiowps_reapply_htaccess=2" class="button-primary">No</a></p></div>';
+            echo '<div class="updated"><p>'.__('Would you like All In One WP Security & Firewall to re-insert the security rules in your .htaccess file which were cleared when you deactivated the plugin?', 'all-in-one-wp-security-and-firewall').'&nbsp;&nbsp;<a href="admin.php?page='.AIOWPSEC_MENU_SLUG_PREFIX.'&aiowps_reapply_htaccess=1" class="button-primary">Yes</a>&nbsp;&nbsp;<a href="admin.php?page='.AIOWPSEC_MENU_SLUG_PREFIX.'&aiowps_reapply_htaccess=2" class="button-primary">No</a></p></div>';
         }
     }
     

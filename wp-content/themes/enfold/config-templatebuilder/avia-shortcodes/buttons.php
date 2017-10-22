@@ -21,6 +21,7 @@ if ( !class_exists( 'avia_sc_button' ) )
 				$this->config['shortcode'] 	= 'av_button';
 				$this->config['tooltip'] 	= __('Creates a colored button', 'avia_framework' );
 				$this->config['tinyMCE']    = array('tiny_always'=>true);
+				$this->config['preview'] 	= true;
 			}
 		
 			/**
@@ -148,6 +149,7 @@ if ( !class_exists( 'avia_sc_button' ) )
 														
 												__('Colored Buttons', 'avia_framework' ) => array(
 												__('Theme Color', 'avia_framework' )=>'theme-color',
+												__('Theme Color Highlight', 'avia_framework' )=>'theme-color-highlight',
 												__('Theme Color Subtle', 'avia_framework' )=>'theme-color-subtle',
 												__('Blue', 'avia_framework' )=>'blue',
 												__('Red',  'avia_framework' )=>'red',
@@ -187,6 +189,59 @@ if ( !class_exists( 'avia_sc_button' ) )
 							"type" 	=> "close_div",
 							'nodescription' => true
 						),
+						
+						
+					array(
+									"type" 	=> "tab",
+									"name"	=> __("Screen Options",'avia_framework' ),
+									'nodescription' => true
+								),
+								
+								
+								array(
+								"name" 	=> __("Element Visibility",'avia_framework' ),
+								"desc" 	=> __("Set the visibility for this element, based on the device screensize.", 'avia_framework' ),
+								"type" 	=> "heading",
+								"description_class" => "av-builder-note av-neutral",
+								),
+							
+								array(	
+										"desc" 	=> __("Hide on large screens (wider than 990px - eg: Desktop)", 'avia_framework'),
+										"id" 	=> "av-desktop-hide",
+										"std" 	=> "",
+										"container_class" => 'av-multi-checkbox',
+										"type" 	=> "checkbox"),
+								
+								array(	
+									
+										"desc" 	=> __("Hide on medium sized screens (between 768px and 989px - eg: Tablet Landscape)", 'avia_framework'),
+										"id" 	=> "av-medium-hide",
+										"std" 	=> "",
+										"container_class" => 'av-multi-checkbox',
+										"type" 	=> "checkbox"),
+										
+								array(	
+									
+										"desc" 	=> __("Hide on small screens (between 480px and 767px - eg: Tablet Portrait)", 'avia_framework'),
+										"id" 	=> "av-small-hide",
+										"std" 	=> "",
+										"container_class" => 'av-multi-checkbox',
+										"type" 	=> "checkbox"),
+										
+								array(	
+									
+										"desc" 	=> __("Hide on very small screens (smaller than 479px - eg: Smartphone Portrait)", 'avia_framework'),
+										"id" 	=> "av-mini-hide",
+										"std" 	=> "",
+										"container_class" => 'av-multi-checkbox',
+										"type" 	=> "checkbox"),
+						
+								
+							array(
+									"type" 	=> "close_div",
+									'nodescription' => true
+								),	
+						
 						
 					array(
 							"type" 	=> "close_div",
@@ -243,7 +298,7 @@ if ( !class_exists( 'avia_sc_button' ) )
 			 */
 			function shortcode_handler($atts, $content = "", $shortcodename = "", $meta = "")
 			{
-			
+				extract(AviaHelper::av_mobile_sizes($atts)); //return $av_font_classes, $av_title_font_classes and $av_display_classes 
 			   $atts =  shortcode_atts(array('label' => 'Click me', 
 			                                 'link' => '', 
 			                                 'link_target' => '',
@@ -257,7 +312,7 @@ if ( !class_exists( 'avia_sc_button' ) )
 			                                 'font' =>'',
 			                                 'icon_hover' => '',
 			                                 ), $atts, $this->config['shortcode']);
-			
+											 
 				$display_char 	= av_icon($atts['icon'], $atts['font']);
 				$extraClass 	= $atts['icon_hover'] ? "av-icon-on-hover" : "";
 				
@@ -282,7 +337,7 @@ if ( !class_exists( 'avia_sc_button' ) )
 			    if('yes-right-icon' == $atts['icon_select']) $content_html .= "<span class='avia_button_icon avia_button_icon_right' {$display_char}></span>";
 			    
 			    $output  = "";
-				$output .= "<a href='{$link}' class='avia-button {$extraClass} ".$this->class_by_arguments('icon_select, color, size, position' , $atts, true)."' {$blank} {$style} >";
+				$output .= "<a href='{$link}' class='avia-button {$extraClass} {$av_display_classes} ".$this->class_by_arguments('icon_select, color, size, position' , $atts, true)."' {$blank} {$style} >";
 				$output .= $content_html;
 				$output .= "</a>";
 				

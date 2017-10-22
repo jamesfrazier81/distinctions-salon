@@ -203,9 +203,22 @@ if ( !class_exists( 'AviaHtmlHelper' ) ) {
 							case 'doesnt_contain': 	if(strpos($value1,$value2) === false) $return = true; break;
 							case 'is_empty_or': 	if(empty($value1) || $value1 == $value2) $return = true; break;
 							case 'not_empty_and': 	if(!empty($value1) && $value1 != $value2) $return = true; break;
-							
-							
-							
+							case 'parent_in_array':			//	$value1 = "value,id"
+										$sep = strpos( $value1, ',' );
+										$val = ( false !== $sep ) ? substr( $value1, 0, $sep ) : '';
+										if( ! empty( $val ) )
+										{
+											$return = in_array( $val, explode( ' ', $value2 ) );
+										}
+										break;
+							case 'parent_not_in_array';		//	$value1 = "value,id"
+										$sep = strpos( $value1, ',' );
+										$val = ( false !== $sep ) ? substr( $value1, 0, $sep ) : '';
+										if( ! empty( $val ) )
+										{
+											$return = ! in_array( $val, explode( ' ', $value2 ) );
+										}
+										break;
 						}
 					}
 				}
@@ -723,7 +736,7 @@ if ( !class_exists( 'AviaHtmlHelper' ) ) {
          */
 		static function linkpicker($element)
 		{	
-			//fallback for previous default input link elements: convert a http://www.link.at value to a manually entry
+			//fallback for previous default input link elements: convert a http://www.kriesi.at value to a manually entry
 			if(strpos($element['std'], 'http://') === 0) $element['std'] = 'manually,'.$element['std'];
 			
 		
@@ -780,7 +793,7 @@ if ( !class_exists( 'AviaHtmlHelper' ) ) {
 			
 			if(isset($new_std[1])) $element['std'] = $new_std[1];
 
-			$original['subtype'] = ""; 
+			$original['subtype'] = array(); 
 			foreach($element['subtype'] as $value => $key) //register templates
 			{
 				switch($key)
@@ -863,12 +876,13 @@ if ( !class_exists( 'AviaHtmlHelper' ) ) {
 			
 			if(isset($element['delete'])) $output .= '<a href="#" class="button avia-delete-gallery-button" title="'.esc_attr($element['delete']).'">'.$element['delete'].'</a>';
 				
+			
 			$attachmentids 	= !empty($element['shortcode_data']['attachment']) ? explode(',', $element['shortcode_data']['attachment']) : array();
 			$attachmentid 	= !empty($attachmentids[self::$imageCount]) ? $attachmentids[self::$imageCount] : '';
 			$attachmentsize = !empty($element['shortcode_data']['attachment_size']) ? $element['shortcode_data']['attachment_size'] : "";		
 				
-			//get image based on id if possible
-			if(!empty($attachmentid) && !empty($attachmentsize))
+			//get image based on id if possible - use the force_id_fetch param in conjunction with the secondary_img when you need a secondary image based on id and not on url like pattern overlay. size of a secondary image can not be stored. tab section element is a working example
+			if(!empty($attachmentid) && !empty($attachmentsize) && empty($element['force_id_fetch']))
 			{
 				$fake_img 	= wp_get_attachment_image( $attachmentid, $attachmentsize);
 				$url		= wp_get_attachment_image_src( $attachmentid, $attachmentsize);
@@ -907,12 +921,16 @@ if ( !class_exists( 'AviaHtmlHelper' ) ) {
 				
 				if($fetch == 'url' && empty($element['secondary_img']))
 				{
+				
 					$output .= '<input type="hidden" class="hidden-attachment-id '.$element['class'].'" value="'.$attachmentid.'" id="'.$img_id_field.'" name="'.$img_id_field.'"/>';
 					$output .= '<input type="hidden" class="hidden-attachment-size '.$element['class'].'" value="'.$attachmentsize.'" id="'.$img_size_field.'" name="'.$img_size_field.'"/>';
 				}
 			}
 
-			self::$imageCount++;
+			if(empty($element['force_id_fetch']))
+			{
+				self::$imageCount++;
+			}
 			return $output;
 		}
 		
@@ -1046,16 +1064,16 @@ if ( !class_exists( 'AviaHtmlHelper' ) ) {
 				$table_name = $wpdb->prefix . "posts";
 	 			$limit 		= apply_filters( 'avf_dropdown_post_number', 4000 );
 	    		
-	    		if( isset( AviaHtmlHelper::$cache['entry_'+$limit] ) && isset( AviaHtmlHelper::$cache['entry_'+$limit][$element['subtype']] ) )
+	    		if( isset( AviaHtmlHelper::$cache['entry_' . $limit] ) && isset( AviaHtmlHelper::$cache['entry_' . $limit][$element['subtype']] ) )
 	    		{
-	    			$entries = AviaHtmlHelper::$cache['entry_'+$limit][$element['subtype']];
+	    			$entries = AviaHtmlHelper::$cache['entry_' . $limit][$element['subtype']];
 	    		}
 	    		else
 	    		{	
 					$prepare_sql = "SELECT distinct ID, post_title FROM {$table_name} WHERE post_status = 'publish' AND post_type = '".$element['subtype']."' ORDER BY post_title ASC LIMIT {$limit}";
 					$prepare_sql = apply_filters('avf_dropdown_post_query', $prepare_sql, $table_name, $limit, $element);
 					$entries 	= $wpdb->get_results($prepare_sql);
-					AviaHtmlHelper::$cache['entry_'+$limit][$element['subtype']] = $entries;
+					AviaHtmlHelper::$cache['entry_' . $limit][$element['subtype']] = $entries;
 	    		}	
 	    		//$entries 	= $wpdb->get_results( "SELECT ID, post_title FROM {$table_name} WHERE post_status = 'publish' AND post_type = '".$element['subtype']."' ORDER BY post_title ASC LIMIT {$limit}" );
 				//$entries = get_posts(array('numberposts' => apply_filters( 'avf_dropdown_post_number', 200 ), 'post_type' => $element['subtype'], 'post_status'=> 'publish', 'orderby'=> 'post_date', 'order'=> 'ASC'));
@@ -1491,13 +1509,13 @@ if ( !class_exists( 'AviaHtmlHelper' ) ) {
 				
 				$output .= "	<div class='avia-table-cell ".$extraclass."'>";
 				$output .= "		<div class='avia-table-content'>";
-				$output .= 	$params['content'] ? stripslashes($params['content']) : "";
+				$output .= 	stripslashes($params['content']);
 				$output .= "		</div>";
 				
 				if(empty($params['no-edit']) && empty($values))
 				{
 					$output .= "		<textarea class='avia-table-data-container' name='content'>";
-					$output .= 	$params['content'] ? stripslashes($params['content']) : "";
+					$output .= 	stripslashes($params['content']);;
 					$output .= 			"</textarea>";
 				}
 				$output .= "	</div>";
@@ -1556,10 +1574,10 @@ if ( !class_exists( 'AviaHtmlHelper' ) ) {
 		
 		
 		
-		static function number_array($from = 0, $to = 100, $steps = 1, $array = array(), $label = "")
+		static function number_array($from = 0, $to = 100, $steps = 1, $array = array(), $label = "", $value_prefix = "")
 		{
 			for ($i = $from; $i <= $to; $i += $steps) {
-			    $array[$i.$label] = $i;
+			    $array[$i.$label] = $value_prefix.$i;
 			}
 		
 			return $array;

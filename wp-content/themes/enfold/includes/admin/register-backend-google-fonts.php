@@ -32,6 +32,7 @@ $google_fonts = apply_filters('avf_google_heading_font', array(	__('Default', 'a
 						
 						
 						'Finger Paint'=>'Finger Paint',
+						'Fira Sans'=>'Fira Sans:100,400,700',
 						'Fjord One'=>'Fjord One',
 						'Flamenco'=>'Flamenco:400,300',
 	
@@ -39,6 +40,8 @@ $google_fonts = apply_filters('avf_google_heading_font', array(	__('Default', 'a
 						'Great Vibes'=>'Great Vibes',
 						
 						'Heebo' => 'Heebo:100,400,700',
+						'Herr Von Muellerhoff' => 'Herr Von Muellerhoff',
+						
 						
 						'Inconsolata'=>'Inconsolata',
 	
@@ -75,7 +78,10 @@ $google_fonts = apply_filters('avf_google_heading_font', array(	__('Default', 'a
 						'Oswald'=>'Oswald',
 	
 						'Pacifico'=>'Pacifico',
+						'Parisienne'=>'Parisienne',
 						'Petit Formal Script'=>'Petit Formal Script',
+						'Pinyon Script'=>'Pinyon Script',
+						'Playfair Display'=>'Playfair Display:400,700',
 						'Podkova'=>'Podkova',
 						'Poiret One'=>'Poiret One',
 						'Poly'=>'Poly',

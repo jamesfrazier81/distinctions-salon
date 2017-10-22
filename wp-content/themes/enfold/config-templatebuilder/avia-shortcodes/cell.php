@@ -33,7 +33,7 @@ if ( !class_exists( 'avia_sc_cell' ) )
 				$this->config['tooltip'] 	= __('Creates a single full width column', 'avia_framework' );
 				$this->config['drag-level'] = 2;
 				$this->config['drop-level'] = 1;
-				}
+			}
 
 
 			/**
@@ -50,6 +50,9 @@ if ( !class_exists( 'avia_sc_cell' ) )
 			{
 				
 				extract($params);
+				
+				if(empty($data)) $data = array();
+				
 				$name 		= $this->config['shortcode'];
 				$drag 		= $this->config['drag-level'];
 				$drop 		= $this->config['drop-level'];
@@ -80,12 +83,14 @@ if ( !class_exists( 'avia_sc_cell' ) )
 	
 				$dataString  = AviaHelper::create_data_string($data);
 				
-			
+				$el_bg = !empty($args['background_color']) ? " style='background:".$args['background_color'].";'" : "";
+				
+				
 
 				$output  = "<div class='avia_layout_column avia_layout_cell avia_pop_class avia-no-visual-updates ".$name." av_drag' {$dataString} data-width='{$name}'>";
 				$output .= "<div class='avia_sorthandle'>";
 
-				$output .= "<span class='avia-col-size'>".$size[$name]."</span>";
+				$output .= "<span class='avia-col-size'><span class='avia-element-bg-color' ".$el_bg."></span>".$size[$name]."</span>";
 				$output .= "<a class='avia-delete'  href='#delete' title='".__('Delete Cell','avia_framework' )."'>x</a>";
 				$output .= "<a class='avia-clone'  href='#clone' title='".__('Clone Cell','avia_framework' )."' >".__('Clone Cell','avia_framework' )."</a>";
 				
@@ -101,10 +106,54 @@ if ( !class_exists( 'avia_sc_cell' ) )
 					$content = $this->builder->do_shortcode_backend($content);
 				}
 				$output .= $content;
-				$output .= "</div></div>";
+				$output .= "</div>";
+				$output .= "<div class='avia-layout-element-bg' ".$this->get_bg_string($args)."></div>";
+				$output .= "</div>";
+
 
 				return $output;
 			}
+			
+			function get_bg_string($args)
+			{
+				$style = "";
+			
+				if(!empty($args['attachment']))
+				{
+					$image = false;
+					$src = wp_get_attachment_image_src($args['attachment'], $args['attachment_size']);
+					if(!empty($src[0])) $image = $src[0];
+					
+					
+					if($image)
+					{
+						$bg 	= !empty($args['background_color']) ? 		$args['background_color'] : "transparent"; $bg = "transparent";
+						$pos 	= !empty($args['background_position'])  ? 	$args['background_position'] : "center center";
+						$repeat = !empty($args['background_repeat']) ?		$args['background_repeat'] : "no-repeat";
+						$extra	= "";
+						
+						if($repeat == "stretch")
+						{
+							$repeat = "no-repeat";
+							$extra = "background-size: cover;";
+						}
+						
+						if($repeat == "contain")
+						{
+							$repeat = "no-repeat";
+							$extra = "background-size: contain;";
+						}
+						
+						
+						
+						$style = "style='background: $bg url($image) $repeat $pos; $extra'";
+					}
+					
+				}
+				
+				return $style;
+			}
+			
 			
 			
 			/**
@@ -231,11 +280,21 @@ if ( !class_exists( 'avia_sc_cell' ) )
 				  
 				  array(
 						"type" 	=> "tab",
-						"name"  => __("Mobile" , 'avia_framework'),
+						"name"  => __("Screen Options" , 'avia_framework'),
 						'nodescription' => true
 					),
 				
-				
+				array(
+								"name" 	=> __("Element Visibility",'avia_framework' ),
+								"desc" 	=> 
+								__("Set the visibility for this element, based on the device screensize.", 'avia_framework' )."<br><small>".
+								__("In order to prevent breaking the layout it is only possible to change the visibility settings for cells once they take up the full screen width, which means only on mobile devices", 'avia_framework' )."</small>",
+								
+								"type" 	=> "heading",
+								"description_class" => "av-builder-note av-neutral",
+					),
+					
+					
 				array(	
 						"name" 	=> __("Mobile display", 'avia_framework' ),
 						"desc" 	=> __("Display settings for this element when viewed on smaller screens", 'avia_framework' ),
@@ -298,11 +357,12 @@ if ( !class_exists( 'avia_sc_cell' ) )
 				$outer_style = "";
 				$inner_style = "";
 				
-				if(!empty(avia_sc_cell::$attr['min_height']))
+				if(!empty(avia_sc_cell::$attr['min_height']) && empty(avia_sc_cell::$attr['min_height_percent']))
 				{
 					$min = (int) avia_sc_cell::$attr['min_height'];
 					$outer_style = "height:{$min}px; min-height:{$min}px;";
 				}
+				
 				
 				if(!empty($atts['attachment']))
 				{

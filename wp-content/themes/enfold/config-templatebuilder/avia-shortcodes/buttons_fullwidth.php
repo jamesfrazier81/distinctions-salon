@@ -23,6 +23,7 @@ if ( !class_exists( 'avia_sc_button_full' ) )
 				$this->config['shortcode'] 	= 'av_button_big';
 				$this->config['tooltip'] 	= __('Creates a colored button that stretches across the full width', 'avia_framework' );
 				$this->config['tinyMCE']    = array('tiny_always'=>true);
+				$this->config['preview'] 	= true;
 			}
 		
 			/**
@@ -150,6 +151,7 @@ if ( !class_exists( 'avia_sc_button_full' ) )
 							"std" 	=> "theme-color",
 							"subtype" => array(	
 												__('Theme Color', 'avia_framework' )=>'theme-color',
+												__('Theme Color Highlight', 'avia_framework' )=>'theme-color-highlight',
 												__('Theme Color Subtle', 'avia_framework' )=>'theme-color-subtle',
 												__('Blue', 'avia_framework' )=>'blue',
 												__('Red',  'avia_framework' )=>'red',
@@ -180,9 +182,10 @@ if ( !class_exists( 'avia_sc_button_full' ) )
 							"desc" 	=> __("Choose a background hover color for your button here", 'avia_framework' ),
 							"id" 	=> "color_hover",
 							"type" 	=> "select",
-							"std" 	=> "theme-color-subtle",
+							"std" 	=> "theme-color-alternate",
 							"subtype" => array(	
 												__('Theme Color', 'avia_framework' )=>'theme-color',
+												__('Theme Color Highlight', 'avia_framework' )=>'theme-color-highlight',
 												__('Theme Color Subtle', 'avia_framework' )=>'theme-color-subtle',
 												__('Blue', 'avia_framework' )=>'blue',
 												__('Red',  'avia_framework' )=>'red',
@@ -214,6 +217,60 @@ if ( !class_exists( 'avia_sc_button_full' ) )
 							"type" 	=> "close_div",
 							'nodescription' => true
 						),
+						
+					
+					array(
+									"type" 	=> "tab",
+									"name"	=> __("Screen Options",'avia_framework' ),
+									'nodescription' => true
+								),
+								
+								
+								array(
+								"name" 	=> __("Element Visibility",'avia_framework' ),
+								"desc" 	=> __("Set the visibility for this element, based on the device screensize.", 'avia_framework' ),
+								"type" 	=> "heading",
+								"description_class" => "av-builder-note av-neutral",
+								),
+							
+								array(	
+										"desc" 	=> __("Hide on large screens (wider than 990px - eg: Desktop)", 'avia_framework'),
+										"id" 	=> "av-desktop-hide",
+										"std" 	=> "",
+										"container_class" => 'av-multi-checkbox',
+										"type" 	=> "checkbox"),
+								
+								array(	
+									
+										"desc" 	=> __("Hide on medium sized screens (between 768px and 989px - eg: Tablet Landscape)", 'avia_framework'),
+										"id" 	=> "av-medium-hide",
+										"std" 	=> "",
+										"container_class" => 'av-multi-checkbox',
+										"type" 	=> "checkbox"),
+										
+								array(	
+									
+										"desc" 	=> __("Hide on small screens (between 480px and 767px - eg: Tablet Portrait)", 'avia_framework'),
+										"id" 	=> "av-small-hide",
+										"std" 	=> "",
+										"container_class" => 'av-multi-checkbox',
+										"type" 	=> "checkbox"),
+										
+								array(	
+									
+										"desc" 	=> __("Hide on very small screens (smaller than 479px - eg: Smartphone Portrait)", 'avia_framework'),
+										"id" 	=> "av-mini-hide",
+										"std" 	=> "",
+										"container_class" => 'av-multi-checkbox',
+										"type" 	=> "checkbox"),
+									
+							
+							array(
+									"type" 	=> "close_div",
+									'nodescription' => true
+								),	
+					
+					
 						
 					array(
 							"type" 	=> "close_div",
@@ -270,12 +327,14 @@ if ( !class_exists( 'avia_sc_button_full' ) )
 			function shortcode_handler($atts, $content = "", $shortcodename = "", $meta = "")
 			{
 			   avia_sc_button_full::$count++;
-			
+			   
+			   extract(AviaHelper::av_mobile_sizes($atts)); //return $av_font_classes, $av_title_font_classes and $av_display_classes 
+			   
 			   $atts =  shortcode_atts(array('label' => 'Click me', 
 			                                 'link' => '', 
 			                                 'link_target' => '',
 			                                 'color' => 'theme-color',
-			                                 'color_hover' => 'theme-color-subtle',
+			                                 'color_hover' => 'theme-color-highlight',
 			                                 'custom_bg' => '#444444',
 			                                 'custom_bg_hover' => '#444444',
 			                                 'custom_font' => '#ffffff',
@@ -328,7 +387,7 @@ if ( !class_exists( 'avia_sc_button_full' ) )
 			    }
 			    
 			    $output  = "";
-				$output .= "<a href='{$link}' class='avia-button avia-button-fullwidth {$extraClass} ".$this->class_by_arguments('icon_select, color' , $atts, true)."' {$blank} {$style} >";
+				$output .= "<a href='{$link}' class='avia-button avia-button-fullwidth {$av_display_classes} {$extraClass} ".$this->class_by_arguments('icon_select, color' , $atts, true)."' {$blank} {$style} >";
 				$output .= $content_html;
 				$output .= "<span class='avia_button_background avia-button avia-button-fullwidth avia-color-".$atts['color_hover']."' {$style_hover}></span>";
 				$output .= "</a>";

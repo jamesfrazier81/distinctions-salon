@@ -26,6 +26,7 @@ if ( !class_exists( 'avia_sc_submenu' ) )
 				$this->config['tooltip'] 	    = __('Display a sub menu', 'avia_framework' );
 				$this->config['tinyMCE'] 		= array('disable' => "true");
 				$this->config['drag-level'] 	= 1;
+				$this->config['preview'] 		= false;
 			}
 
 			/**
@@ -71,8 +72,8 @@ if ( !class_exists( 'avia_sc_submenu' ) )
 							),
 							
 					array(
-							"name" => __("Add/Edit rotating text", 'avia_framework' ),
-							"desc" => __("Here you can add, remove and edit the rotating text", 'avia_framework' ),
+							"name" => __("Add/Edit submenu item text", 'avia_framework' ),
+							"desc" => __("Here you can add, remove and edit the submenu item text", 'avia_framework' ),
 							"type" 			=> "modal_group",
 							"id" 			=> "content",
 							"required" 		=> array('which_menu', 'equals', 'custom'),
@@ -160,7 +161,7 @@ if ( !class_exists( 'avia_sc_submenu' ) )
 				    
 				    array(	
 						"name" 	=> __("Sticky Submenu", 'avia_framework' ),
-						"desc" 	=> __("If checked the menu will stick at the top of the page once it touches it", 'avia_framework' ) ,
+						"desc" 	=> __("If checked the menu will stick at the top of the page once it touches it.", 'avia_framework' ),
 						"id" 	=> "sticky",
 						"std" 	=> "true",
 						"type" 	=> "checkbox"),

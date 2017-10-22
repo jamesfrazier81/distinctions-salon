@@ -8,7 +8,10 @@ class AIOWPSecurity_Utility_IP
     
     static function get_user_ip_address()
     {
-        foreach (array('HTTP_CF_CONNECTING_IP', 'HTTP_CLIENT_IP', 'HTTP_X_FORWARDED_FOR', 'HTTP_X_FORWARDED', 'HTTP_X_CLUSTER_CLIENT_IP', 'HTTP_FORWARDED_FOR', 'HTTP_FORWARDED', 'REMOTE_ADDR') as $key){
+        //I have modified this function slightly so that the $_SERVER['REMOTE_ADDR'] value is the first method checked and returned.
+        //This change was necessary because $_SERVER['REMOTE_ADDR'] is the most reliable and accurate way to get IP address because the other methods are easily spoofed.
+        //TODO - in a future release we can probably add a config item to allow admins to choose the other methods of finding IP address. 
+        foreach (array('REMOTE_ADDR', 'HTTP_CF_CONNECTING_IP', 'HTTP_CLIENT_IP', 'HTTP_X_FORWARDED_FOR', 'HTTP_X_FORWARDED', 'HTTP_X_CLUSTER_CLIENT_IP', 'HTTP_FORWARDED_FOR', 'HTTP_FORWARDED') as $key){
             if (array_key_exists($key, $_SERVER) === true){
                 foreach (explode(',', $_SERVER[$key]) as $ip){
                     $userIP = trim($ip);
@@ -174,5 +177,43 @@ class AIOWPSecurity_Utility_IP
 
         $return_payload = array(1, array());
         return $return_payload;
-    }    
+    }
+    
+    
+    /**
+     * Checks if IP address matches against the specified whitelist of IP addresses or IP ranges
+     * @global type $aio_wp_security
+     * @param type $ip_address
+     * @param type $whitelisted_ips (newline separated string of IPs)
+     * @return boolean
+     */
+    static function is_ip_whitelisted($ip_address, $whitelisted_ips){
+        global $aio_wp_security;
+        if(empty($ip_address) || empty($whitelisted_ips)) return false;
+        
+        $ip_list_array = AIOWPSecurity_Utility_IP::create_ip_list_array_from_string_with_newline($whitelisted_ips);
+        
+        $visitor_ipParts = explode('.', $ip_address);
+        foreach ($ip_list_array as $white_ip){
+            $ipParts = explode('.', $white_ip);
+            $found = array_search('*', $ipParts);
+            if($found !== false){
+                //Means we have a whitelisted IP range so do some checks
+                if($found == 1){
+                    //means last 3 octets are wildcards - check if visitor IP falls inside this range
+                    if($visitor_ipParts[0] == $ipParts[0]){return true;}
+                }elseif($found == 2){
+                    //means last 2 octets are wildcards - check if visitor IP falls inside this range
+                    if($visitor_ipParts[0] == $ipParts[0] && $visitor_ipParts[1] == $ipParts[1]){return true;}
+                }elseif($found == 3){
+                    //means last octet is wildcard - check if visitor IP falls inside this range
+                    if($visitor_ipParts[0] == $ipParts[0] && $visitor_ipParts[1] == $ipParts[1] && $visitor_ipParts[2] == $ipParts[2]){return true;}
+                }
+            }elseif($white_ip == $ip_address){
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

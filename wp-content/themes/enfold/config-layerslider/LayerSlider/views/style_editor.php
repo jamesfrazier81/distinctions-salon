@@ -26,6 +26,7 @@
 <div id="ls-screen-options" class="metabox-prefs hidden">
 	<div id="screen-options-wrap" class="hidden">
 		<form id="ls-screen-options-form" method="post">
+			<?php wp_nonce_field('ls-save-screen-options'); ?>
 			<h5><?php _e('Show on screen', 'LayerSlider') ?></h5>
 			<label>
 				<input type="checkbox" name="showTooltips"<?php echo $lsScreenOptions['showTooltips'] == 'true' ? ' checked="checked"' : ''?>> <?php _e('Tooltips', 'LayerSlider') ?>
@@ -64,22 +65,15 @@
 			<textarea rows="10" cols="50" name="contents" class="ls-codemirror"><?php if(!empty($contents)) {
 					echo htmlentities($contents);
 				} else {
-					_e('/* You can type here any CSS code that will be loaded both on your admin and front-end pages.', 'LayerSlider');
-					echo NL;
-					_e('Let us help you by giving a few exmaple CSS classes: */', 'LayerSlider');
-					echo NL . NL;
-					echo '/* Front-end sliders & preview */' . NL . NL;
-					echo '.ls-container { /* The slider itself */' . NL . NL . '}' .NL.NL;
-					echo '.ls-slide { ' . NL  . NL . '}' . NL.NL;
-					echo '.ls-slide a:hover {' . NL.TAB . 'color: blue;' . NL.TAB . 'text-decoration: underline;' . NL . '}' . NL.NL;
-					echo '.ls-slide #yourID {' . NL  . NL . '}' . NL.NL;
-					echo '.ls-slide .yourClass {' . NL  . NL . '}' . NL.NL;
-					echo '/* Side color of 3D objects */' . NL;
-					echo '.ls-3d-box div { background: #777; }' .NL;
+					echo '/*' . NL . __('You can type here custom CSS code, which will be loaded both on your admin and front-end pages. Please make sure to not override layout properties (positions and sizes), as they can interfere with the sliders built-in responsive functionality. Here are few example targets to help you get started:', 'LayerSlider');
+					echo NL . '*/' . NL . NL;
+					echo '.ls-container { /* Slider container */' . NL . NL . '}' .NL.NL;
+					echo '.ls-layers { /* Layers wrapper */ ' . NL  . NL . '}' . NL.NL;
+					echo '.ls-3d-box div { /* Sides of 3D transition objects */ ' . NL  . NL . '}';
 				}?></textarea>
 			<p class="footer">
 				<?php if(!is_writable($upload_dir['basedir'])) { ?>
-				<?php _e('You need to make your uploads folder writable in order to save your changes. See the <a href="http://codex.wordpress.org/Changing_File_Permissions" target="_blank">Codex</a> for more information.', 'LayerSlider') ?>
+				<?php sprintf(__('You need to make your uploads folder writable in order to save your changes. See the %sCodex%s for more information.', 'LayerSlider'), '<a href="http://codex.wordpress.org/Changing_File_Permissions" target="_blank">', '</a>') ?>
 				<?php } else { ?>
 				<button class="button-primary"><?php _e('Save changes', 'LayerSlider') ?></button>
 				<?php _e('Using invalid CSS code could break the appearance of your site or your sliders. Changes cannot be reverted after saving.','LayerSlider') ?>

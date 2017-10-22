@@ -872,8 +872,17 @@ if(!function_exists('avia_pagination'))
 
 	function avia_post_pagination_link($link)
 	{
-		$url =  preg_replace('!">$!','',_wp_link_page($link));
-		$url =  preg_replace('!^<a href="!','',$url);
+		global $post;
+		
+		//the _wp_link_page uses get_permalink() which might be changed by a query. we need to get the original post id temporarily
+		$temp_post = $post;
+		// $post = get_post(avia_get_the_id()); 
+		
+		$url =  preg_replace( '!">$!','',_wp_link_page($link) );
+		$url =  preg_replace( '!^<a href="!','',$url );
+		
+		$post = $temp_post;
+		
 		return $url;
 	}
 }
@@ -1362,17 +1371,18 @@ if(!function_exists('avia_clean_string'))
 }
 
 
-
 if(!function_exists('kriesi_backlink'))
 {
-	function kriesi_backlink($frontpage_only = false)
+	function kriesi_backlink($frontpage_only = false, $theme_name_passed = false)
 	{	
 		$no = "";
 		$theme_string	= "";
+		$theme_name 	= $theme_name_passed ? $theme_name_passed : THEMENAME;
+		
 		$random_number 	= get_option(THEMENAMECLEAN."_fixed_random");
-		if($random_number % 3 == 0) $theme_string = THEMENAME." Theme by Kriesi";
-		if($random_number % 3 == 1) $theme_string = THEMENAME." WordPress Theme by Kriesi";
-		if($random_number % 3 == 2) $theme_string = "powered by ".THEMENAME." WordPress Theme";
+		if($random_number % 3 == 0) $theme_string = $theme_name." Theme by Kriesi";
+		if($random_number % 3 == 1) $theme_string = $theme_name." WordPress Theme by Kriesi";
+		if($random_number % 3 == 2) $theme_string = "powered by ".$theme_name." WordPress Theme";
 		if(!empty($frontpage_only) && !is_front_page()) $no = "rel='nofollow'";
 		
 		$link = " - <a {$no} href='http://www.kriesi.at'>{$theme_string}</a>";
@@ -1392,4 +1402,21 @@ if(!function_exists('avia_header_class_filter'))
 		return $default;
 	}
 }
+
+
+if(!function_exists('avia_theme_version_higher_than'))
+{
+	function avia_theme_version_higher_than( $check_for_version = "")
+	{	
+		$theme = wp_get_theme( 'enfold' );
+		$theme_version = $theme->get( 'Version' );
+		
+		if (version_compare($theme_version, $check_for_version , '>=')) {
+			return true;
+		}
+		
+		return false;
+	}
+}
+
 

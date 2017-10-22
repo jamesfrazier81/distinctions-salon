@@ -27,7 +27,6 @@ $default_font_size  => empty or a px size
 */
 
 
-
 global 	$avia_config;
 $output = "";
 $body_color = "";
@@ -41,7 +40,6 @@ unset($background_image);
 # CREATE THE CSS DYNAMIC CSS RULES
 ######################################################################
 /*default*/
-
 
 $output .= "
 
@@ -100,11 +98,11 @@ background-color:$bg;
 color: $color;
 }
 
-$key .heading-color, $key a.iconbox_icon:hover, $key h1, $key h2, $key h3, $key h4, $key h5, $key h6, $key .sidebar .current_page_item>a, $key .sidebar .current-menu-item>a, $key .pagination .current, $key .pagination a:hover, $key strong.avia-testimonial-name, $key .heading, $key .toggle_content strong, $key .toggle_content strong a, $key .tab_content strong, $key .tab_content strong a , $key .asc_count, $key .avia-testimonial-content strong, $key div .news-headline, #top $key .av-related-style-full .av-related-title, $key .av-default-style .av-countdown-cell-inner .av-countdown-time, $key .wp-playlist-item-meta.wp-playlist-item-title, #top $key .av-no-image-slider h2 a{
+$key .heading-color, $key a.iconbox_icon:hover, $key h1, $key h2, $key h3, $key h4, $key h5, $key h6, $key .sidebar .current_page_item>a, $key .sidebar .current-menu-item>a, $key .pagination .current, $key .pagination a:hover, $key strong.avia-testimonial-name, $key .heading, $key .toggle_content strong, $key .toggle_content strong a, $key .tab_content strong, $key .tab_content strong a , $key .asc_count, $key .avia-testimonial-content strong, $key div .news-headline, #top $key .av-related-style-full .av-related-title, $key .av-default-style .av-countdown-cell-inner .av-countdown-time, $key .wp-playlist-item-meta.wp-playlist-item-title, #top $key .av-no-image-slider h2 a, $key .av-small-bar .avia-progress-bar .progressbar-title-wrap{
     color:$heading;
 }
 
-$key .meta-color, $key .sidebar, $key .sidebar a, $key .minor-meta, $key .minor-meta a, $key .text-sep, $key blockquote, $key .post_nav a, $key .comment-text, $key .side-container-inner, $key .news-time, $key .pagination a, $key .pagination span,  $key .tweet-text.avatar_no .tweet-time, #top $key .extra-mini-title, $key .team-member-job-title, $key .team-social a, $key #js_sort_items a, .grid-entry-excerpt, $key .avia-testimonial-subtitle, $key .commentmetadata a,$key .social_bookmarks a, $key .meta-heading>*, $key .slide-meta, $key .slide-meta a, $key .taglist, $key .taglist a, $key .phone-info, $key .phone-info a, $key .av-sort-by-term a, $key .av-magazine-time, $key .av-magazine .av-magazine-entry-icon, $key .av-catalogue-content, $key .wp-playlist-item-length{
+$key .meta-color, $key .sidebar, $key .sidebar a, $key .minor-meta, $key .minor-meta a, $key .text-sep, $key blockquote, $key .post_nav a, $key .comment-text, $key .side-container-inner, $key .news-time, $key .pagination a, $key .pagination span,  $key .tweet-text.avatar_no .tweet-time, #top $key .extra-mini-title, $key .team-member-job-title, $key .team-social a, $key #js_sort_items a, .grid-entry-excerpt, $key .avia-testimonial-subtitle, $key .commentmetadata a,$key .social_bookmarks a, $key .meta-heading>*, $key .slide-meta, $key .slide-meta a, $key .taglist, $key .taglist a, $key .phone-info, $key .phone-info a, $key .av-sort-by-term a, $key .av-magazine-time, $key .av-magazine .av-magazine-entry-icon, $key .av-catalogue-content, $key .wp-playlist-item-length, .html_modern-blog #top div $key .blog-categories a, .html_modern-blog #top div $key .blog-categories a:hover{
 color: $meta;
 }
 
@@ -145,12 +143,16 @@ color:$bg;
 border-color:$button_border2;
 }
 
+$key .ajax_controlls a:hover{
+border-color:$secondary;
+}
+
 $key .timeline-bullet{
 background-color:$border;
 border-color: $bg;
 }
 
-$key table, $key .widget_nav_menu ul:first-child>.current-menu-item, $key .widget_nav_menu ul:first-child>.current_page_item, $key .widget_nav_menu ul:first-child>.current-menu-ancestor, $key .pagination .current, $key .pagination a, $key.iconbox_top .iconbox_content, $key .av_promobox, $key .toggle_content, $key .toggler:hover, $key .related_posts_default_image, $key .search-result-counter, $key .container_wrap_meta, $key .avia-content-slider .slide-image, $key .avia-slider-testimonials .avia-testimonial-content, $key .avia-testimonial-arrow-wrap .avia-arrow, $key .news-thumb, $key .portfolio-preview-content, $key .portfolio-preview-content .avia-arrow, $key .av-magazine .av-magazine-entry-icon, $key .related_posts.av-related-style-full a, $key .aviaccordion-slide, $key.avia-fullwidth-portfolio .pagination, $key .isotope-item.special_av_fullwidth .av_table_col.portfolio-grid-image, $key .av-catalogue-list li:hover, $key .wp-playlist, $key .avia-slideshow-fixed-height > li, $key .avia-form-success{
+$key table, $key .widget_nav_menu ul:first-child>.current-menu-item, $key .widget_nav_menu ul:first-child>.current_page_item, $key .widget_nav_menu ul:first-child>.current-menu-ancestor, $key .pagination .current, $key .pagination a, $key.iconbox_top .iconbox_content, $key .av_promobox, $key .toggle_content, $key .toggler:hover, $key .related_posts_default_image, $key .search-result-counter, $key .container_wrap_meta, $key .avia-content-slider .slide-image, $key .avia-slider-testimonials .avia-testimonial-content, $key .avia-testimonial-arrow-wrap .avia-arrow, $key .news-thumb, $key .portfolio-preview-content, $key .portfolio-preview-content .avia-arrow, $key .av-magazine .av-magazine-entry-icon, $key .related_posts.av-related-style-full a, $key .aviaccordion-slide, $key.avia-fullwidth-portfolio .pagination, $key .isotope-item.special_av_fullwidth .av_table_col.portfolio-grid-image, $key .av-catalogue-list li:hover, $key .wp-playlist, $key .avia-slideshow-fixed-height > li, $key .avia-form-success, $key .av-boxed-grid-style .avia-testimonial{
 background: $bg2;
 }
 
@@ -252,7 +254,7 @@ border-color:$border;
 
 @media only screen and (max-width: 767px) { 
 
-#top #wrap_all .av_header_transparency, .av_header_transparency #advanced_menu_toggle{
+#top #wrap_all .av_header_transparency{
 	background-color:$bg;
 	color: $color;
 	border-color: $border;
@@ -330,6 +332,12 @@ background-color:$bg;
 color: $heading;
 }
 
+#top $key .avia-color-theme-color-highlight{
+color: $button_font;
+border-color: $secondary;
+background-color: $secondary;
+}
+
 
 ";
 
@@ -384,11 +392,7 @@ $key .av-masonry{
 	background-color: $masonry;
  }
 
-$key .av-inner-masonry-content{
-
-}
-
-$key .av-masonry-pagination, $key .av-masonry-pagination:hover{
+$key .av-masonry-pagination, $key .av-masonry-pagination:hover, $key .av-masonry-outerimage-container{
 	background-color: $bg;
 }
 
@@ -643,19 +647,6 @@ background-color:$bg2;
 			#main, .avia-msie-8 .av_header_sticky_disabled#header{
 			background-color:$bg;
 			}
-
-			#advanced_menu_toggle, #advanced_menu_hide{
-			background-color:$bg;
-			color: $color;
-			border-color: $border;
-			}
-
-			.avia_desktop #advanced_menu_toggle:hover, .avia_desktop #advanced_menu_hide:hover{
-			background-color: $primary; color: $constant_font; border-color:$primary;
-			}
-
-			#mobile-advanced  a:before {color:$primary;}
-			#mobile-advanced  a:hover:before, #mobile-advanced  span:hover a:before {color:$constant_font;}
 			
 			.html_header_sidebar #header .av-main-nav > li > a .avia-menu-text{color:$heading;}
 			.html_header_sidebar #header .av-main-nav > li > a .avia-menu-subtext{color:$meta;}
@@ -677,20 +668,88 @@ background-color:$bg2;
 			}
 			
 			
+			.html_av-overlay-side #top .av-burger-overlay-scroll{background:$bg}
+			
+			.html_av-overlay-side #top #wrap_all div .av-burger-overlay-scroll #av-burger-menu-ul a:hover{background-color:$bg2;}
+			
+			
+			.html_av-overlay-side-classic #top #wrap_all .av-burger-overlay #av-burger-menu-ul li a{ border-color: $border; }
+			
+			.html_av-overlay-side #top #wrap_all .av-burger-overlay-scroll #av-burger-menu-ul a{color:$color}
+			
+			.html_av-overlay-side.av-burger-overlay-active #top #wrap_all #header .menu-item-search-dropdown a{ color:$color }
+			.html_av-overlay-side-classic #top .av-burger-overlay li li .avia-bullet,
+			.html_av-overlay-side.av-burger-overlay-active #top .av-hamburger-inner, 
+			.html_av-overlay-side.av-burger-overlay-active #top .av-hamburger-inner::before, 
+			.html_av-overlay-side.av-burger-overlay-active #top .av-hamburger-inner::after{
+				background-color:$color;
+			}
+			
+			
+			
+			
 			";
+		
+		if(!empty($avia_config['backend_colors']['burger_color']))
+		{
+			$output .= "
+			$key .av-hamburger-inner, $key .av-hamburger-inner::before, $key .av-hamburger-inner::after{
+				background-color:".$avia_config['backend_colors']['burger_color'].";
+			}
+			";
+			
+			$output .= " @media only screen and (max-width: 767px) {
+				#top $key .av-hamburger-inner, #top $key .av-hamburger-inner::before, #top $key .av-hamburger-inner::after{
+					background-color:".$avia_config['backend_colors']['burger_color'].";
+				}
+			}
+			";
+		}
 			
 		if(!empty($avia_config['backend_colors']['menu_transparent']))
 		{
 			$output .= "
+			#top #wrap_all .av_header_transparency .main_menu ul:first-child > li > a, #top #wrap_all .av_header_transparency .sub_menu > ul > li > a, #top .av_header_transparency #header_main_alternate, .av_header_transparency #header_main .social_bookmarks li a{ color:inherit; border-color: transparent; background: transparent;}
+
+			
 			#top #wrap_all {$key}.av_header_transparency, #top #wrap_all {$key}.av_header_transparency .phone-info.with_nav span,
 			#top #header{$key}.av_header_transparency .av-main-nav > li > a .avia-menu-text, #top #header{$key}.av_header_transparency .av-main-nav > li > a .avia-menu-subtext{
 				color: ".$avia_config['backend_colors']['menu_transparent']."
 			}
 			
 			#top {$key}.av_header_transparency .avia-menu-fx, 
-			.av_header_transparency .av-hamburger-inner, .av_header_transparency .av-hamburger-inner::before, .av_header_transparency .av-hamburger-inner::after{background:".$avia_config['backend_colors']['menu_transparent'].";}
+			.av_header_transparency div .av-hamburger-inner, .av_header_transparency div .av-hamburger-inner::before, .av_header_transparency div .av-hamburger-inner::after{background:".$avia_config['backend_colors']['menu_transparent'].";}
+			";
+			
+			$output .= " @media only screen and (max-width: 767px) {
+				#top #wrap_all {$key}.av_header_transparency, #top #wrap_all {$key}.av_header_transparency .phone-info.with_nav span,
+				#top #header{$key}.av_header_transparency .av-main-nav > li > a .avia-menu-text, #top #header{$key}.av_header_transparency .av-main-nav > li > a .avia-menu-subtex{ color: $meta }
+				
+				$key div .av-hamburger-inner, $key div .av-hamburger-inner::before, $key div .av-hamburger-inner::after{
+					background-color:$meta;
+				}
+				
+				#top .av_header_with_border.av_header_transparency .avia-menu.av_menu_icon_beside{
+					border-color:$border;
+				}
+			}
 			";
 		}
+		
+		if(!empty($avia_config['backend_colors']['burger_flyout_width']))
+		{
+			$output .= "
+			
+			.html_av-overlay-side .av-burger-overlay-scroll{width:".$avia_config['backend_colors']['burger_flyout_width']."; 
+			 -webkit-transform: translateX(".$avia_config['backend_colors']['burger_flyout_width']."); transform: translateX(".$avia_config['backend_colors']['burger_flyout_width']."); 
+			}
+			
+			
+			
+			";
+		}
+		
+		
 
 		break;
 
@@ -703,11 +762,6 @@ background-color:$bg2;
 			
 			#scroll-top-link:hover{ background-color: $bg2; color: $primary; border:1px solid $border; }
 
-
-			/*mobile menu*/
-			#mobile-advanced  { background-color: $bg; color: $primary; }
-			#mobile-advanced, #mobile-advanced  a, #mobile-advanced .mega_menu_title{color: $color; border-color:$border; }
-			#mobile-advanced li > a:hover, .html_header_mobile_behavior #mobile-advanced span:hover, .html_header_mobile_behavior #mobile-advanced span:hover a{ background-color: $primary; color: $constant_font; }
 			";
 
 			/*contact form picker*/
@@ -725,9 +779,19 @@ background-color:$bg2;
 			/*site loader*/
 			$output .= "
 			#top .av-siteloader{ border-color: $border; border-left-color:$primary; }
+			#top div.avia-popup .mfp-preloader { border-left-color:$primary; }
 			.av-preloader-reactive #top .av-siteloader{border-color: $border; }
 			#top .av-siteloader-wrap{background-color: $bg; }
 			.av-preloader-reactive #top .av-siteloader:before{ background-color: $border;  }
+			";
+			
+			/*tab section*/
+			
+			$output .= "
+			.av-tab-section-tab-title-container{background-color: $bg2; }
+			#top .av-section-tab-title{color:$meta;}
+			#top a.av-active-tab-title{color:$primary;}
+			#top .av-tab-arrow-container span{background-color: $bg;}
 			";
 		break;
 

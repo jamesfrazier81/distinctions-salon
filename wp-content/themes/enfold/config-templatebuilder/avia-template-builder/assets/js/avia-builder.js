@@ -174,7 +174,7 @@ function avia_nl2br (str, is_xhtml)
 			});
 			
 			//remove element from canvas
-			this.canvas.on('click', 'a.avia-delete:not(.av-no-drag-drop a)', function()
+			this.canvas.on('click', 'a.avia-delete:not(.av-no-drag-drop a, .av-special-delete)', function()
 			{
 				obj.shortcodes.deleteItem(this, obj);
 				return false;
@@ -204,6 +204,29 @@ function avia_nl2br (str, is_xhtml)
 			});
 			
 			
+			
+			
+			//toggle item visibility
+			$body.on('click', '.avia-toggle-visibility, .avia-layout-element-hidden', function(e)
+			{
+				e.preventDefault();
+				
+				var parent 		= $(this).parents('.av_drag:eq(0)'),
+					storage 	= parent.find('>.avia_inner_shortcode>'+ obj.datastorage + ':eq(0)'),
+					key 		= 'av_element_hidden_in_editor',
+					new_val		= parent.is('.av-layout-element-closed') ? "0" : "1",
+					shortcode	= storage.val();
+					
+					parent.toggleClass('av-layout-element-closed');
+					
+				var new_shortcode = obj.set_shortcode_single_value(shortcode, key, new_val, storage);
+				
+				storage.val(new_shortcode);
+				obj.updateTextarea();
+				
+			});
+			
+			
 			//edit item via modal window
 			$body.on('click', '.avia-edit-element', function()
 			{
@@ -218,8 +241,15 @@ function avia_nl2br (str, is_xhtml)
 					params.before_save	= parent.data('before_save');
 					params.on_save		= obj.send_to_datastorage;
 					params.save_param	= parent;
-					params.ajax_param	= {extract: true, shortcode: parent.find('>.avia_inner_shortcode>'+ obj.datastorage + ':eq(0)').val(), allowed: params.allowedShortcodes};
-				
+					params.ajax_param	= {extract: true, shortcode: parent.find('>.avia_inner_shortcode>'+ obj.datastorage + ':eq(0)').val(), allowed: params.allowedShortcodes, _ajax_nonce: $('#avia-loader-nonce').val() };
+					
+					if(params.preview) //check for preview window
+					{
+						var bg_colors = "<a href='#' style='background:#fff;'></a><a href='#' style='background:#f1f1f1;'></a><a href='#' style='background:#222;'></a>";
+						params.modal_class = " modal-preview-active modal-preview-"+params.preview;
+						params.on_load = params.on_load != "" ? params.on_load + ", modal_preview_script" : "modal_preview_script";
+						params.attach_content = "<div class='avia-modal-preview'><div class='avia-modal-preview-header'><h3 class='avia-modal-title'>"+window.avia_preview.title+"</h3><div class='avia_loading'></div></div><div class='avia-modal-preview-content'></div><div class='avia-modal-preview-footer'><span>"+window.avia_preview.background+"</span>"+bg_colors+"</div></div>";
+					}
 				
 				var modal = new $.AviaModal(params);
 				return false;
@@ -237,7 +267,7 @@ function avia_nl2br (str, is_xhtml)
 					params.before_save	= parent.data('before_save');
 					params.on_save		= obj.send_to_datastorage;
 					params.save_param	= parent;
-					params.ajax_param	= {subelement: true, extract: true, shortcode: parent.find(obj.datastorage + ':eq(0)').val()};
+					params.ajax_param	= {subelement: true, extract: true, shortcode: parent.find(obj.datastorage + ':eq(0)').val() , _ajax_nonce: $('#avia-loader-nonce').val()  };
 					
 				var modal = new $.AviaModal(params);
 				return false;
@@ -263,7 +293,7 @@ function avia_nl2br (str, is_xhtml)
 			
 
 			//copy item
-			this.canvas.on('click', 'a.avia-clone:not( .av-no-drag-drop a )', function()
+			this.canvas.on('click', 'a.avia-clone:not( .av-no-drag-drop a , .av-special-clone)', function()
 			{
 				obj.cloneElement(this, obj);
 				return false;
@@ -538,6 +568,8 @@ function avia_nl2br (str, is_xhtml)
 						//apply dragging and dropping in case we got a new element
 						if(typeof template != "undefined")
 						{
+							obj.body_container.trigger('av-builder-new-element-added', ui.draggable );
+							
 							obj.canvas.removeClass('ui-droppable').droppable('destroy');
 							obj.activate_element_dragging();
 							obj.activate_element_dropping();
@@ -642,6 +674,8 @@ function avia_nl2br (str, is_xhtml)
 			this.canvas.append(add);
 			this.activate_element_dragging();
 			this.activate_element_dropping();
+			
+			this.body_container.trigger('av-element-to-editor');
 		},
 		
 		
@@ -650,7 +684,7 @@ function avia_nl2br (str, is_xhtml)
 		*/
 		
 		updateInnerTextarea: function(element , container )
-		{	
+		{			
 		    //if we dont have a container passed but an element try to fetch the outer most possible container that wraps that element: A section
             if(typeof container == "undefined")
 			{
@@ -668,6 +702,7 @@ function avia_nl2br (str, is_xhtml)
 			{
                 return;
 			}
+			
             
             //if we are in a section iterate over all columns inside and set the value before setting the section value
             if(container.is('.avia_layout_section'))
@@ -683,10 +718,16 @@ function avia_nl2br (str, is_xhtml)
     			{   
     				this.updateInnerTextarea(false, $(columns[i]));
     			}
+    			
+    			columns = container.find('.avia_layout_tab');
+                for (i = 0; i < columns.length; i++) 
+    			{   
+    				this.updateInnerTextarea(false, $(columns[i]));
+    			}
             
     			
     			var main_storage	= container.find('>.avia_inner_shortcode >' + this.datastorage),
-                    content_fields	= container.find('>.avia_inner_shortcode > div ' +this.datastorage + ':not(.avia_layout_column .avia_sortable_element '+this.datastorage+', .avia_layout_cell .avia_layout_column ' +this.datastorage +')'),
+                    content_fields	= container.find('>.avia_inner_shortcode > div ' +this.datastorage + ':not(.avia_layout_column .avia_sortable_element '+this.datastorage+', .avia_layout_cell .avia_layout_column ' +this.datastorage +' , .avia_layout_tab .avia_layout_column ' +this.datastorage +' )'),
                     content			= "",
 				    currentName		= container.data('shortcodehandler'),
 				    open_tag        = main_storage.val().match(new RegExp("\\["+currentName+".*?\\]"));
@@ -720,8 +761,25 @@ function avia_nl2br (str, is_xhtml)
     			main_storage.val(content);
             }
             
+            if(container.is('.avia_layout_tab'))
+            {	
+            	var main_storage	= container.find('>.avia_inner_shortcode >' + this.datastorage),
+                    content_fields	= container.find('>.avia_inner_shortcode > div ' +this.datastorage + ':not(.avia_layout_column_no_cell .avia_sortable_element '+this.datastorage+')'),
+                    content			= "",
+				    currentTag		= "av_tab_sub_section",
+				    open_tag        = main_storage.val().match(new RegExp("\\["+currentTag+".*?\\]"));
+				 
+				for (var i = 0; i < content_fields.length; i++) 
+    			{
+    				content	+= $(content_fields[i]).val();
+    			}
+    			
+    			content = open_tag[0]+"\n\n" + content + "[/"+ currentTag +"]";
+    			main_storage.val(content);
+            }
             
-            if(container.is('.avia_layout_column:not(.avia_layout_cell)'))
+            
+            if(container.is('.avia_layout_column:not(.avia_layout_cell, .avia_layout_tab)'))
             {	
                 var main_storage	= container.find('>.avia_inner_shortcode >' + this.datastorage),
                     content_fields	= container.find('.avia_sortable_element ' + this.datastorage),
@@ -762,7 +820,24 @@ function avia_nl2br (str, is_xhtml)
 		        {
 		        	var col_in_section 	= $(this).find('>.avia_inner_shortcode > div > .avia_inner_shortcode'),
 		        		coll_in_cell	= $(this).find(' .avia_layout_cell .avia_layout_column_no_cell > .avia_inner_shortcode');
+						
+						// bugfix: section tabs do not recognise single tabs and add columns across tabs -> breaks layout
+					var single_section_tabs = $(this).find('.avia_layout_tab');
+					single_section_tabs.each( function(){
+									var tab_area = $(this);
+									var cells = tab_area.find('.avia_layout_column_no_cell > .avia_inner_shortcode');
+									obj.updateTextarea( cells );
+							});
+						
+//		        	var	coll_in_tab		= $(this).find(' .avia_layout_tab .avia_layout_column_no_cell > .avia_inner_shortcode');
 		        	
+//		        	if(coll_in_tab.length)
+//		        	{
+//                    	obj.updateTextarea(coll_in_tab);
+//		        	}
+		        	
+						// -----> END bugfix: section tabs do not recognise 
+
 		        	if(coll_in_cell.length)
 		        	{
                     	obj.updateTextarea(coll_in_cell);
@@ -884,6 +959,7 @@ function avia_nl2br (str, is_xhtml)
 			if(typeof text == "undefined")
 			{
 				text = this.secureContent.val(); //entity-test: val() to html()
+				
 				if(text.indexOf('[') === -1)
 				{
                 	text = this.classic_textarea.val(); //entity-test: val() to html()
@@ -903,7 +979,8 @@ function avia_nl2br (str, is_xhtml)
 			{
 				action: 'avia_ajax_text_to_interface',
 				text: text,
-				avia_request: true
+				avia_request: true,
+				_ajax_nonce: $('#avia-loader-nonce').val()
 			},
 			success: function(response)
 			{
@@ -1081,6 +1158,8 @@ function avia_nl2br (str, is_xhtml)
 			    obj.updateInnerTextarea(parent);
 			}	
 			
+			obj.body_container.trigger('av-builder-new-element-added',cloned);
+			
 			obj.activate_element_dragging();
 			obj.activate_element_dropping();
 			obj.updateTextarea();
@@ -1119,7 +1198,7 @@ function avia_nl2br (str, is_xhtml)
 		* also checks for elements with the data attribute: "data-update_class_with". if such an attribute happens to have the same name as a shortcode
 		* arg or content key the elements classname is updated
 		*/
-		send_to_datastorage: function(values, element_container)
+		send_to_datastorage: function(values, element_container, return_it)
 		{	
 			var selector_string = element_container.is('.avia-modal-group-element') ? this.datastorage + ':eq(0)' : '>.avia_inner_shortcode>'+ this.datastorage + ':eq(0)',
 				saveTo = element_container.find(selector_string),
@@ -1142,6 +1221,15 @@ function avia_nl2br (str, is_xhtml)
 				output = return_val.output;
 				tags = return_val.tags;
 			}
+			
+			
+			//for modal preview we only need to return the value
+			if(return_it == "return")
+			{
+				return output;
+			}
+			
+			
 				
 			//if we are working inside a section only update the shortcode open tag
 			if(element_container.is('.avia_layout_section') || element_container.is('.avia_layout_column'))
@@ -1168,13 +1256,40 @@ function avia_nl2br (str, is_xhtml)
 			this.do_history_snapshot();
 			element_container.trigger('update');
 			
+			//triggers the change event for submodal items with live preview
+			saveTo.trigger('av-update-preview-instant');
 				
+		},
+		
+		
+		set_shortcode_single_value: function(shortcode, key, value)
+		{
+			var find = "\\[.*?("+key+"=(\'|\").*?[\'|\"]).*?\\]";
+			var regex = new RegExp(find);
+			var match = shortcode.match(regex); //match: 0 = shortcode opener, 1 = key value pair, 2: value wrapped in ' or "
+
+			if(match && typeof match[1] !== "undefined" ) // we got the value, replace it
+			{
+				var replace_regex = new RegExp(match[1]);
+				shortcode = shortcode.replace(replace_regex, key + "=" + match[2] + value + match[2]);
+			}
+			else // we got no value, add it
+			{
+				var insert			= " " + key + "='" + value + "' ",
+					closing_pos 	= shortcode.indexOf(']'),
+					self_closing 	= shortcode.indexOf('/]');
+					
+					if(self_closing + 1 == closing_pos) closing_pos = self_closing;
+					
+				    shortcode = shortcode.substr(0, closing_pos) + insert + shortcode.substr( closing_pos );
+			}
+			
+			return shortcode;
+			
 		},
 		
 		update_builder_html: function(element_container, values, force_content_close)
 		{	
-			
-			
 			var output = "",
 				key, 
 				subkey,
@@ -1293,6 +1408,59 @@ function avia_nl2br (str, is_xhtml)
 								}
 							});
 						}
+						else //special rule visuals for layout elements
+						{
+							
+							if(typeof values.id != 'undefined' && values.id != null) // set the section or grid cell id
+							{
+								var insert_id_title = values.id == "" ? "" : ": "+values.id;
+								element_container.find(".avia-element-title-id:eq(0)").text(insert_id_title);
+							}
+							
+							if(element_container.find(".avia-element-bg-color:eq(0)").length) // set the bg color indicator
+							{
+								var insert_bg_indicator = values.custom_bg || values.background_color || "";
+								element_container.find(".avia-element-bg-color:eq(0)").css("background",insert_bg_indicator);
+							}
+							
+							if(typeof values.tab_title != 'undefined' && values.tab_title != null) // set the tab title of a tab element
+							{
+								var insert_tab_title 	= values.tab_title == "" ? "" : ": "+values.tab_title,
+									tab_index			= element_container.data('av-tab-section-content'),
+									parent				= element_container.parents('.avia_tab_section:eq(0)');
+									
+									parent.find('.avia_tab_section_titles [data-av-tab-section-title="'+tab_index+'"] .av-tab-custom-title').html(insert_tab_title);
+							}
+							
+							
+							if(typeof values.src != 'undefined' && values.src != null) // set the bg image
+							{
+								var layout_image = values.src,
+									layout_bg = values.custom_bg || values.background_color || "",
+									layout_pos = values.position || values.background_position || "",
+									layout_repeat = values.repeat || values.background_repeat || "",
+									layout_extra = "",
+									layout_style = {};
+									
+									if(layout_repeat == "stretch")
+									{
+										layout_repeat = "no-repeat";
+										layout_extra = "cover";
+									}
+									
+									if(layout_repeat == "contain")
+									{
+										layout_repeat = "no-repeat";
+										layout_extra = "contain";
+									}
+									
+									layout_style = {"background": "transparent url("+layout_image+") "+layout_repeat+" "+layout_pos};
+									if(layout_extra) layout_style['backgroundSize'] = layout_extra;
+									
+									element_container.find(".avia-layout-element-bg:last").css(layout_style);
+							}
+						}
+												
 						
 						//remove fake argumens that were only used for nicer look of backend
 						for (key in values)
@@ -1420,10 +1588,12 @@ function avia_nl2br (str, is_xhtml)
 		}
 	}
 	
-	$.AviaBuilder.shortcodes.deleteItem = function(clicked, obj)
+	$.AviaBuilder.shortcodes.deleteItem = function(clicked, obj, hide_timer)
 	{
 		var $_clicked = $(clicked),
 			item      = $_clicked.parents('.avia_sortable_element:eq(0)'), parent = false, removeCell = false, item_hide = 200, force_drop_init = false;
+		
+		if(typeof hide_timer != 'undefined') item_hide = hide_timer;
 		
 		//check if it is a column	
 		if(!item.length) 
@@ -1518,6 +1688,10 @@ function avia_nl2br (str, is_xhtml)
 		item.slideUp(200, function()
 		{
 			item.remove();
+			
+			//trigger update for preview
+			container.find('textarea[data-name="text-shortcode"]:eq(0)').trigger('av-update-preview-instant');
+			
 		});
 	}
 	
@@ -1543,6 +1717,9 @@ function avia_nl2br (str, is_xhtml)
 			newTemplate.slideDown(200);
 			
 			parent.trigger('av-item-add', [newTemplate]);
+			
+			//trigger update for preview
+			newTemplate.find('textarea[data-name="text-shortcode"]').trigger('av-update-preview-instant');
 	}
 	
 	
