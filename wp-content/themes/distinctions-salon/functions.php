@@ -49,24 +49,26 @@ function my_login_logo() { ?>
             margin: 0;
         }
 
-        #login p.message {
+        #login #login_error, #login .message {
         	background-color: transparent;
         	color: white;
         	border: none;
         	text-align: center;
         }
 
-        #loginform, #registerform {
+        #loginform, #registerform, #lostpasswordform {
         	background-color: rgba(0, 0, 0, 0.25);
         }
 
     	#loginform p label,
-        #registerform p label {
+        #registerform p label,
+        #lostpasswordform p label {
     		color: #FFFFFF;
     	}
 
     	#loginform p label input,
-        #registerform p label input {
+        #registerform p label input,
+        #lostpasswordform p label input {
     		color: #FFFFFF;
     		background: transparent;
     		border-color: #FFFFFF;
@@ -74,12 +76,14 @@ function my_login_logo() { ?>
 
         /* AIOWPS Start */
         #loginform .aiowps-captcha-equation strong,
-        #registerform .aiowps-captcha-equation strong {
+        #registerform .aiowps-captcha-equation strong,
+        #lostpasswordform .aiowps-captcha-equation strong {
             color: #f3d482;
         }
 
         #loginform .aiowps-captcha-equation strong #aiowps-captcha-answer,
-        #registerform .aiowps-captcha-equation strong #aiowps-captcha-answer {
+        #registerform .aiowps-captcha-equation strong #aiowps-captcha-answer,
+        #lostpasswordform .aiowps-captcha-equation strong #aiowps-captcha-answer {
             color: #FFFFFF;
             background: transparent;
             border-color: #FFFFFF;
@@ -112,9 +116,13 @@ function my_login_logo_url() {
 add_filter( 'login_headerurl', 'my_login_logo_url' );
 
 function my_login_logo_url_title() {
-    return 'Scottsdazzle';
+    return 'Distinctions Salon';
 }
 add_filter( 'login_headertitle', 'my_login_logo_url_title' );
-// Admin login end
+
+function avia_year_func( $atts ){
+    return date("Y");
+}
+add_shortcode( 'cur_year', 'avia_year_func' );
 
 ?>

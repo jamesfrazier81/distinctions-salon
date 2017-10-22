@@ -34,8 +34,12 @@
   #top #wrap_all #main .avia-button-wrap a {
     background-color: #ffb540;
     border: none;
-    transition: box-shadow 0.35s; }
+    -webkit-transition: -webkit-box-shadow 0.35s;
+    transition: -webkit-box-shadow 0.35s;
+    transition: box-shadow 0.35s;
+    transition: box-shadow 0.35s, -webkit-box-shadow 0.35s; }
     #top #wrap_all #main .avia-button-wrap a:hover {
+      -webkit-box-shadow: 0 0 30px rgba(255, 239, 188, 0.5);
       box-shadow: 0 0 30px rgba(255, 239, 188, 0.5); }
   #top #wrap_all #main .avia_responsive_table .avia-table {
     background-color: transparent; }
