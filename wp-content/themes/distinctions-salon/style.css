@@ -31,6 +31,8 @@
     font-size: 16px;
     font-weight: 300;
     line-height: 28px; }
+    #top #wrap_all #main .av_textblock_section .avia_textblock p a {
+      color: #ffb540; }
   #top #wrap_all #main .avia-button-wrap a {
     background-color: #ffb540;
     border: none;
