@@ -33,7 +33,7 @@ if (have_posts()) :
 	$blog_content = !empty($avia_config['blog_content']) ? $avia_config['blog_content'] : "content";
 	
 	/*If post uses builder change content to exerpt on overview pages*/
-    if(AviaHelper::builder_status($current_post['the_id']) && !is_singular($current_post['the_id']) && $current_post['post_type'] == 'post')
+    if( Avia_Builder()->get_alb_builder_status( $current_post['the_id'] ) && !is_singular($current_post['the_id']) && $current_post['post_type'] == 'post')
     {
 	   $current_post['post_format'] = 'standard';
 	   $blog_content = "excerpt_read_more";

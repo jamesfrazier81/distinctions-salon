@@ -2886,7 +2886,7 @@ margin:0;
 		
 		
 		
-		.responsive #top #menu-item-shop .cart_dropdown_link{line-height: 80px;}
+		.responsive #top #header_main #menu-item-shop .cart_dropdown_link{line-height: 80px;}
 		.responsive.html_cart_at_menu.html_header_sidebar #top #menu-item-shop .dropdown_widget.dropdown_widget_cart { width: 300px; }
 		.responsive.html_cart_at_menu.html_header_sidebar #menu-item-shop .dropdown_widget .avia-arrow {right:40px;}
 		.responsive.html_cart_at_menu.html_bottom_nav_header.html_logo_right #menu-item-shop{left:auto;}

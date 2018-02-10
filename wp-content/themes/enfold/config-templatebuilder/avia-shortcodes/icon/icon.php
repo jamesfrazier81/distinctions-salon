@@ -1,7 +1,8 @@
 <?php
 /**
  * Font Icon
- * Shortcode which creates a font icon
+ * 
+ * Shortcode which displays an icon with optional hover effect
  */
 // Don't load directly
 if ( !defined('ABSPATH') ) { die('-1'); }
@@ -15,6 +16,8 @@ if ( !class_exists( 'av_font_icon' ) )
          */
         function shortcode_insert_button()
         {
+			$this->config['self_closing']	=	'no';
+			
             $this->config['name']       = __('Icon', 'avia_framework' );
 			$this->config['tab']		= __('Content Elements', 'avia_framework' );
 			$this->config['icon']		= AviaBuilder::$path['imagesURL']."sc-icon.png";
@@ -26,6 +29,11 @@ if ( !class_exists( 'av_font_icon' ) )
             $this->config['tinyMCE']    = array('tiny_always'=>true);
 			$this->config['preview'] 	= 1;
         }
+        
+        function extra_assets()
+		{
+			// $this->builder->asset_manager()->register_asset( 'css' , array( 'file' => 'icon/icon.css', 'path' => "auto", 'name' => 'avia-icon') );
+		}
 
         /**
          * Popup Elements
@@ -61,7 +69,7 @@ if ( !class_exists( 'av_font_icon' ) )
                     "desc"  => __("Here you can set the  style of the icon. Either display it inline as part of some text or let it stand alone with border and optional caption", 'avia_framework' ),
                     "id"    => "style",
                     "type" 	=> "select",
-					"std" 	=> "left",
+					"std" 	=> "",
 					
 					"subtype" => array(
 						__('Default inline style',   'avia_framework' ) =>'',

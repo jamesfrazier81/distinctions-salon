@@ -31,6 +31,18 @@ if(!current_theme_supports('avia_disable_import_export')){
 }
 
 
+/**
+ * Allow to include a user defined file to add or alter backend styles
+ * 
+ * @since 4.2.1
+ * @return string		full path to the include file ( not a relative path !!! )
+ */
+$custom_path = apply_filters( 'avf_register_custom_backend_styles', '' );
+if( ! empty( $custom_path ) && file_exists( $custom_path ) )
+{
+	include_once $custom_path;
+}
+
 
 
 
@@ -96,6 +108,7 @@ $avia_elements[] = array(
 $avia_elements[] = array(	"slug"	=> "builder", "type" => "visual_group_end", "id" => "avia_lock_alb_close", "nodescription" => true);		
 
 
+$avia_elements[] = array(	"slug"	=> "builder", "type" => "visual_group_start", "id" => "avia_markup", "nodescription" => true);
 
 $avia_elements[] =	array(
 					"slug"	=> "builder",
@@ -110,12 +123,7 @@ $avia_elements[] =	array(
 										));
 	
 
-
-
-
-
-
-
+$avia_elements[] = array(	"slug"	=> "builder", "type" => "visual_group_end", "id" => "avia_markup_close", "nodescription" => true);
 
 
 
@@ -1677,7 +1685,7 @@ $avia_elements[] =	array(	"name" 	=> __("Defines the Font for your body text", '
 				            "class" => "av_2columns av_col_2",
 				            "onchange" => "avia_add_google_font",
 				            "std" 	=> "Helvetica-Neue,Helvetica-websave",
-				            "subtype" => apply_filters('avf_google_content_font', array( __('Web save fonts', 'avia_framework') => array(
+				            "subtype" => apply_filters('avf_google_content_font', array( __('Web safe fonts', 'avia_framework') => array(
 				            					'Arial'=>'Arial-websave',
 				            					'Georgia'=>'Georgia-websave',
 				            					'Verdana'=>'Verdana-websave',

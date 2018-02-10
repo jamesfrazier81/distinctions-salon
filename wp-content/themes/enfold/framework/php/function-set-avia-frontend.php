@@ -397,10 +397,17 @@ if(!function_exists('avia_set_title_tag'))
 {
     /**
      * generates the html page title
+	 * 
+	 * @deprecated since '3.6'
      * @return string the html page title
      */
     function avia_set_title_tag()
     {
+		if( version_compare( get_bloginfo( 'version' ), '4.1', '>=' ) )
+		{
+			_deprecated_function( 'avia_set_title_tag', '3.6', 'WP recommended function _wp_render_title_tag() - since WP 4.1 - ' );
+		}
+		
         $title = get_bloginfo('name').' | ';
         $title .= (is_front_page()) ? get_bloginfo('description') : wp_title('', false);
 
@@ -409,7 +416,6 @@ if(!function_exists('avia_set_title_tag'))
         return $title;
     }
 }
-
 
 
 if(!function_exists('avia_set_profile_tag'))

@@ -370,6 +370,7 @@ function avia_nl2br (str, is_xhtml)
 					handle: '>.menu-item-handle:not( .av-no-drag-drop .menu-item-handle )',
 					helper: "clone",
 					scroll: true,
+					cancel: '#aviaLayoutBuilder .avia_sorthandle a, input, textarea, button, select, option',
 					zIndex: 20000, /*must be bigger than fullscreen overlay in fixed pos*/
 					cursorAt: { left: 20 },
 					start: function( event, ui )
@@ -975,6 +976,14 @@ function avia_nl2br (str, is_xhtml)
 				{
                 	text = this.classic_textarea.val(); //entity-test: val() to html()
                 	if(this.tiny_active) text = window.switchEditors._wp_Nop(text);
+					
+					/**
+					 * With WP 4.9 we get an empty 
+					 * <span style="display: inline-block; width: 0px; overflow: hidden; line-height: 0;" data-mce-type="bookmark" class="mce_SELRES_start"></span>
+					 * which breaks our backend
+					 */
+					text = text.replace( /<\s*?span\b[^>]*mce_SELRES_start[^>]*>(.*?)<\/span\b[^>]*>/gi, '' );
+
                 	this.secureContent.val(text);
 				}
 			}
@@ -1349,11 +1358,21 @@ function avia_nl2br (str, is_xhtml)
 					var shortcode		= element_container.data('shortcodehandler'),
 						visual_updates	= element_container.find("[data-update_with]"),
 						class_updates	= element_container.find("[data-update_class_with]"),
+						closing_tag		= element_container.data("closing_tag"),
 						visual_key 		= "",
 						visual_el		= "",
 						visual_template	= "",
 						update_html		= "",
 						replace_val		= "";
+				
+						//	check if element must have a closing tag (independent if a content exists)
+						if( ( 'undefined' == typeof force_content_close ) || ( true !== force_content_close ) )
+						{
+							if( ( 'string' == typeof closing_tag ) && ( 'yes' == closing_tag ) )
+							{
+								force_content_close = true;
+							}
+						}
 						
 						if(!element_container.is('.avia-no-visual-updates'))
 						{	

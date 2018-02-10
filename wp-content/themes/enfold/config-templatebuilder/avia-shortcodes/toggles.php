@@ -1,8 +1,11 @@
 <?php
 /**
- * Sidebar
- * Displays one of the registered Widget Areas of the theme
+ * Accordion and toggles
+ * 
+ * Creates toggles or accordions
  */
+if ( ! defined( 'ABSPATH' ) ) {  exit;  }    // Exit if accessed directly
+
 
 if ( !class_exists( 'avia_sc_toggle' ) )
 {
@@ -19,6 +22,8 @@ if ( !class_exists( 'avia_sc_toggle' ) )
          */
         function shortcode_insert_button()
         {
+			$this->config['self_closing']	=	'no';
+			
             $this->config['name']		= __('Accordion', 'avia_framework' );
             $this->config['tab']		= __('Content Elements', 'avia_framework' );
             $this->config['icon']		= AviaBuilder::$path['imagesURL']."sc-accordion.png";

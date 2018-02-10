@@ -599,6 +599,10 @@ html.av-burger-overlay-active #top .social_bookmarks{
 	 -webkit-transform: translate3d(0,0,0); /*fixes disapearing in ios*/
 }
 
+.avia_desktop.avia-safari #top #wrap_all #av-burger-menu-ul > li { 
+	-webkit-transform: none; 
+}
+
 #top #wrap_all #header #av-burger-menu-ul > li.av-active-burger-items{
 	opacity:1;
 	top:0;
@@ -3019,6 +3023,7 @@ padding-bottom:30px;
 .av-instagram-item{display: table-cell; padding: 3px;}
 .av-instagram-item a{display:block; position: relative;}
 .av-instagram-item img{display:block;}
+.av-instagram-item .image-overlay.overlay-type-image {left: 0; width: 100%;}
 
 .av-instagram-item:first-child { padding-left: 0px; }
 .av-instagram-item:last-child  { padding-right: 0px; }

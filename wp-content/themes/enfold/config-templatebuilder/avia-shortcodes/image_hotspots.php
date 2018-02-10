@@ -1,8 +1,11 @@
 <?php
 /**
- * Textblock
- * Shortcode which creates a text element wrapped in a div
+ * Image with Hotspots
+ * 
+ * Shortcode which inserts an image with one or many hotspots that show tooltips
  */
+if ( ! defined( 'ABSPATH' ) ) {  exit;  }    // Exit if accessed directly
+
 
 if ( !class_exists( 'avia_sc_image_hotspots' ) )
 {
@@ -13,6 +16,8 @@ if ( !class_exists( 'avia_sc_image_hotspots' ) )
 			 */
 			function shortcode_insert_button()
 			{
+				$this->config['self_closing']	=	'no';
+				
 				$this->config['name']			= __('Image with Hotspots', 'avia_framework' );
 				$this->config['tab']			= __('Media Elements', 'avia_framework' );
 				$this->config['icon']			= AviaBuilder::$path['imagesURL']."sc-image-hotspot.png";
@@ -137,7 +142,7 @@ if ( !class_exists( 'avia_sc_image_hotspots' ) )
 									
 									array(	
 									"name" 	=> __("Tooltip Style", 'avia_framework' ),
-									"desc" 	=> __("Chose the style of your tooltip", 'avia_framework' ) ,
+									"desc" 	=> __("Choose the style of your tooltip", 'avia_framework' ) ,
 									"id" 	=> "tooltip_style",
 									"type" 	=> "select",
 									"std" 	=> "main_color",

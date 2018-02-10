@@ -1,4 +1,9 @@
 <?php
+/**
+ * Tab Section
+ * 
+ * Add a fullwidth section with tabs that can contain columns and other elements
+ */
 
  // Don't load directly
 if ( !defined('ABSPATH') ) { die('-1'); }
@@ -16,15 +21,18 @@ if ( !class_exists( 'avia_sc_tab_section' ) )
 			static $tab_icons = array();
 			static $tab_images = array();
 			static $tab_atts = array();
-			
-			
-			
+
 			
 			/**
-			 * Create the config array for the shortcode button
+			 * Create the config array for the tab section
 			 */
 			function shortcode_insert_button()
 			{
+				$this->config['type']				=	'layout';
+				$this->config['self_closing']		=	'no';
+				$this->config['contains_text']		=	'no';
+				$this->config['layout_children']	=	array( 'av_tab_sub_section' );
+				
 				$this->config['name']		= __('Tab Section', 'avia_framework' );
 				$this->config['icon']		= AviaBuilder::$path['imagesURL']."sc-tabsection.png";
 				$this->config['tab']		= __('Layout Elements', 'avia_framework' );

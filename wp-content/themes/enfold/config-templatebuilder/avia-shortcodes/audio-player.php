@@ -2,7 +2,7 @@
 /**
  * Audio File Playlist Element
  * 
- * Shortcode that allows to add a playlist
+ * Shortcode that allows to add an audio playlist
  * 
  * @since 4.1.3
  */
@@ -19,8 +19,20 @@ if ( ! class_exists( 'avia_sc_audio_player' ) )
 		 * @var int 
 		 */
 		static protected $instance = 0;
-		var $extra_style = "";
-		var $non_ajax_style = "";
+		
+		/**
+		 *
+		 * @since 4.1.3
+		 * @var string 
+		 */
+		protected $extra_style;
+		
+		/**
+		 *
+		 * @since 4.1.3
+		 * @var string 
+		 */
+		protected $non_ajax_style;
 		
 		
 		/**
@@ -29,8 +41,6 @@ if ( ! class_exists( 'avia_sc_audio_player' ) )
 		 * @var array 
 		 */
 		protected $atts;
-
-
 
 		/**
 		 * 
@@ -41,6 +51,8 @@ if ( ! class_exists( 'avia_sc_audio_player' ) )
 		{
 			parent::__construct( $builder );
 			
+			$this->extra_style = '';
+			$this->non_ajax_style = '';
 			$this->atts = array();
 		}
 		
@@ -62,6 +74,8 @@ if ( ! class_exists( 'avia_sc_audio_player' ) )
 		 */
 		public function shortcode_insert_button()
 		{
+			$this->config['self_closing']	=	'no';
+			
 			$this->config['name']			= __( 'Audio Player', 'avia_framework' );
 			$this->config['tab']			= __( 'Media Elements', 'avia_framework' );
 			$this->config['icon']			= AviaBuilder::$path['imagesURL'] . "sc-audio-player.png";
@@ -85,7 +99,7 @@ if ( ! class_exists( 'avia_sc_audio_player' ) )
 		* @since 4.1.3
 		* @return void
 		*/
-		function popup_elements()
+		public function popup_elements()
 		{
 			$this->elements = array(
 
@@ -477,7 +491,7 @@ if ( ! class_exists( 'avia_sc_audio_player' ) )
 		 * @param array $params			this array holds the default values for $content and $args. 
 		 * @return $params				the return array usually holds an innerHtml key that holds item specific markup.
 		 */
-		function editor_element($params)
+		public function editor_element( $params )
 		{	
 			
 			$element = $this->get_popup_element_by_id( 'autoplay' );
@@ -511,7 +525,7 @@ if ( ! class_exists( 'avia_sc_audio_player' ) )
 		 * @param array $params		this array holds the default values for $content and $args. 
 		 * @return array			the return array usually holds an innerHtml key that holds item specific markup.
 		 */
-		function editor_sub_element( $params )
+		public function editor_sub_element( $params )
 		{	
 
 			$img_template 		= $this->update_template( "img_fakeArg", "{{img_fakeArg}}" );
@@ -596,7 +610,7 @@ if ( ! class_exists( 'avia_sc_audio_player' ) )
 		 * @param string $shortcodename the shortcode found, when == callback name
 		 * @return string $output returns the modified html string 
 		 */
-		function shortcode_handler( $atts, $content = "", $shortcodename = "", $meta = "" )
+		public function shortcode_handler( $atts, $content = "", $shortcodename = "", $meta = "" )
 		{
 			extract( AviaHelper::av_mobile_sizes( $atts ) ); //return $av_font_classes, $av_title_font_classes and $av_display_classes 
 			
@@ -865,7 +879,7 @@ if ( ! class_exists( 'avia_sc_audio_player' ) )
 			return $image[0];
 		}
 		
-		function print_extra_style()
+		public function print_extra_style()
 		{
 			echo $this->non_ajax_style;
 		}

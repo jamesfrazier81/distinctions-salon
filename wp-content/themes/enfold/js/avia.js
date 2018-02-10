@@ -522,7 +522,10 @@
 		    // when this player starts, it will pause other players
 		    pauseOtherPlayers: false,
 		    poster: posterImg,
-		    success: function (mediaElement, domObject) { 
+		    success: function (mediaElement, domObject, instance) { 
+         	
+         	//make the medialement instance accesible by storing it. usually not necessary but safari has problems since wp version 4.9
+         	$.AviaVideoAPI.players[ fv.attr('id').replace(/_html5/,'') ] = instance;
          	
 				setTimeout(function()
 				{
@@ -992,13 +995,11 @@
 				var container	= $(this),
 					videos		= $(options.videoElements, this).not(options.exclude).addClass('mfp-iframe'), /*necessary class for the correct lightbox markup*/
 					ajaxed		= !container.is('body') && !container.is('.ajax_slide');
-					
 					for (var i = 0; i < options.groups.length; i++) 
 					{
 						container.find(options.groups[i]).each(function() 
 						{ 
 							var links = $(options.autolinkElements, this);
-						
 							if(ajaxed) links.removeClass('lightbox-added');
 							links.not(options.exclude).addClass('lightbox-added').magnificPopup(av_popup);
 						});
@@ -1679,7 +1680,11 @@
 				items.each(function()
 				{
 					current  = $(this);
-					subitems = current.find(' > .sub-menu > li'); //find sublists
+					subitems = current.find(' > .sub-menu > li'); //find sublists of a regular defined menu
+					if( subitems.length == 0 )
+					{
+						subitems = current.find(' > .children > li'); //find sublists of a fallback menu
+					}
 					megacolumns = current.find( '.avia_mega_div > .sub-menu > li.menu-item' );
 					
 					//	href = '#': we have a custom link that should not link to something - is also in use by megamenu for titles
@@ -1707,10 +1712,22 @@
 					}
 					
 					new_li = $('<li>').append( link );
-					if( current.hasClass('current-menu-item') ) 
+					
+					//	Copy user set classes for menu items - these must not start with menu-item, page-item, page_item (used by default classes) 
+					var cls = [];
+					if( 'undefined' != typeof current.attr('class') )
 					{
-						new_li.addClass('current-menu-item');
+						cls = current.attr('class').split(/\s+/);
+						$.each( cls, function( index, value ){
+										if( ( value.indexOf('menu-item') != 0 ) && ( value.indexOf('page-item') < 0 ) && ( value.indexOf('page_item') != 0 ) && ( value.indexOf('dropdown_ul') < 0 ) )
+										{
+											//	'current-menu-item' is also copied !!
+											new_li.addClass( value );
+										}
+										return true;
+									});
 					}
+					
 					if( 'undefined' != typeof current.attr('id') && '' != current.attr('id') )
 					{
 						new_li.addClass(current.attr('id'));
@@ -1718,7 +1735,6 @@
 					else
 					{
 						//	fallback menu has no id -> try to find page id in class
-						var cls = current.attr('class').split(/\s+/);
 						$.each( cls, function( index, value ){
 										if( value.indexOf('page-item-') >= 0 )
 										{

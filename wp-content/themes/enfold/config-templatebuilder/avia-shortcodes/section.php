@@ -1,7 +1,8 @@
 <?php
 /**
- * COLUMNS
- * Shortcode which creates columns for better content separation
+ * Color Section
+ * 
+ * Shortcode creates a section with unique background image and colors for better content sepearation
  */
 
  // Don't load directly
@@ -16,12 +17,17 @@ if ( !class_exists( 'avia_sc_section' ) )
 			static $section_count = 0;
 			static $add_to_closing = "";
 			static $close_overlay = "";
+			
 
 			/**
 			 * Create the config array for the shortcode button
 			 */
 			function shortcode_insert_button()
 			{
+				$this->config['type']			=	'layout';
+				$this->config['self_closing']	=	'no';
+				$this->config['contains_text']	=	'no';
+				
 				$this->config['name']		= __('Color Section', 'avia_framework' );
 				$this->config['icon']		= AviaBuilder::$path['imagesURL']."sc-section.png";
 				$this->config['tab']		= __('Layout Elements', 'avia_framework' );
@@ -213,7 +219,7 @@ if ( !class_exists( 'avia_sc_section' ) )
 				   array(
 						"name" 	=> __("Section Top Border Styling",'avia_framework' ),
 						"id" 	=> "shadow",
-						"desc"  => __("Chose a border styling for the top of your section",'avia_framework' ),
+						"desc"  => __("Choose a border styling for the top of your section",'avia_framework' ),
 						"type" 	=> "select",
 						"std" 	=> "no-shadow",
 						"subtype" => array( __('Display a simple 1px top border','avia_framework' )	=>'no-shadow',  
@@ -226,7 +232,7 @@ if ( !class_exists( 'avia_sc_section' ) )
 				    array(
 						"name" 	=> __("Section Bottom Border Styling",'avia_framework' ),
 						"id" 	=> "bottom_border",
-						"desc"  => __("Chose a border styling for the bottom of your section",'avia_framework' ),
+						"desc"  => __("Choose a border styling for the bottom of your section",'avia_framework' ),
 						"type" 	=> "select",
 						"std" 	=> "no-border-styling",
 						"subtype" => array(   
@@ -416,7 +422,7 @@ if ( !class_exists( 'avia_sc_section' ) )
 					
 					array(	
 							"name" 	=> __("Hide video on Mobile Devices?", 'avia_framework' ),
-							"desc" 	=> __("You can chose to hide the video entirely on Mobile devices and instead display the Section Background image", 'avia_framework' )."<br/><small>".__("Most mobile devices can't autoplay videos to prevent bandwidth problems for the user", 'avia_framework' ) ."</small>" ,
+							"desc" 	=> __("You can choose to hide the video entirely on Mobile devices and instead display the Section Background image", 'avia_framework' )."<br/><small>".__("Most mobile devices can't autoplay videos to prevent bandwidth problems for the user", 'avia_framework' ) ."</small>" ,
 							"id" 	=> "video_mobile_disabled",
 							"required"=> array('video','not',''),
 							"std" 	=> "",

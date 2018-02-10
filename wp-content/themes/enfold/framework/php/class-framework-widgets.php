@@ -39,7 +39,7 @@ if (!class_exists('avia_fb_likebox'))
 			extract($args, EXTR_SKIP);
 			if(empty($instance['url'])) return;
 			$url 		= $instance['url'];
-			$title 		= isset($instance['title']) ? $instance['title'] : ""; 
+			$title = empty($instance['title']) ? '' : apply_filters('widget_title', $instance['title']);
 			$height 	= 151; 
 			$faces 		= "true";
 			$extraClass = "";
@@ -1666,9 +1666,10 @@ class avia_instagram_widget extends WP_Widget {
 
 			foreach ( $images as $image ) {
 
+				// see https://github.com/stevenschobert/instafeed.js/issues/549
 				$image['thumbnail_src'] = preg_replace( "/^https:/i", "", $image['thumbnail_src'] );
-				$image['thumbnail'] = str_replace( 's640x640', 's160x160', $image['thumbnail_src'] );
-				$image['small'] = str_replace( 's640x640', 's320x320', $image['thumbnail_src'] );
+				$image['thumbnail'] = $image['thumbnail_src'];
+				$image['small'] = $image['thumbnail_src'];
 				$image['large'] = $image['thumbnail_src'];
 				$image['display_src'] = preg_replace( "/^https:/i", "", $image['display_src'] );
 

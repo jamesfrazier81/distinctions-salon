@@ -391,10 +391,12 @@ if ( !class_exists( 'AviaHelper' ) ) {
     	/**
 		 * Helper function that fetches the active value of the builder. also adds a filter
 		 *
+		 * @deprecated since version 4.2.1
 		 */
-		 
 		static function builder_status($post_ID)
 		{
+			_deprecated_function( 'builder_status', '4.2.1', 'AviaBuilder::get_alb_builder_status()');
+			
 			$status = get_post_meta($post_ID, '_aviaLayoutBuilder_active', true);
 			$status = apply_filters('avf_builder_active', $status, $post_ID);
 			

@@ -1,6 +1,7 @@
 <?php
 /**
  * HORIZONTAL RULERS
+ * 
  * Creates a horizontal ruler that provides whitespace for the layout and helps with content separation
  */
  
@@ -18,6 +19,8 @@ if ( !class_exists( 'avia_sc_hr' ) )
 			 */
 			function shortcode_insert_button()
 			{
+				$this->config['self_closing']	=	'yes';
+				
 				$this->config['name']		= __('Separator / Whitespace', 'avia_framework' );
 				$this->config['tab']		= __('Content Elements', 'avia_framework' );
 				$this->config['icon']		= AviaBuilder::$path['imagesURL']."sc-hr.png";
@@ -28,6 +31,11 @@ if ( !class_exists( 'avia_sc_hr' ) )
 				$this->config['tooltip'] 	= __('Creates a delimiter/whitespace to separate elements', 'avia_framework' );
 				$this->config['tinyMCE']    = array('tiny_always'=>true);
 				$this->config['preview'] 	= 1;
+			}
+			
+			function extra_assets()
+			{
+				// $this->builder->asset_manager()->register_asset( 'css' , array('path' => "auto", 'file' => 'hr/hr.css', 'name' => 'avia-hr') );
 			}
 			
 			

@@ -1,7 +1,8 @@
 <?php
 /**
- * COLUMNS
- * Shortcode which creates columns for better content separation
+ * Single Tab
+ * 
+ * Shortcode creates a single tab for the tab section element
  */
 
  // Don't load directly
@@ -15,12 +16,19 @@ if ( !class_exists( 'avia_sc_tab_sub_section' ) )
 
 			static $extraClass = "";
 			static $attr = array();
-
+			
+			
 			/**
 			 * Create the config array for the shortcode button
 			 */
 			function shortcode_insert_button()
 			{
+				$this->config['type']				=	'layout';
+				$this->config['self_closing']		=	'no';
+				$this->config['contains_text']		=	'no';
+				$this->config['contains_layout']	=	'yes';
+				$this->config['contains_content']	=	'yes';
+				
 				$this->config['invisible'] = true;
 				$this->config['name']		= 'Single Tab';
 				$this->config['icon']		= AviaBuilder::$path['imagesURL']."sc-full.png";

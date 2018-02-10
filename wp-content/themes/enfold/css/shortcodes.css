@@ -461,7 +461,7 @@ overflow:hidden;
 
 
 
-/*iconlist animation*/
+/*icon animation*/
 .avia_transform .av_font_icon{
 opacity: 0.1;
 -webkit-transform:scale(0.5);
@@ -3584,13 +3584,24 @@ Video
 /*html 5 video - always has 100 width and natural height. behaves like image when it comes to aspect ratio*/
 
 video{
-width:100%;
-height:auto;
+	width:100%;
+	height:auto;
 }
 
-div .avia-video .mejs-container, div .avia-video .mejs-container video{
-height:100%!important;
-position: absolute;
+.mejs-layer {
+    z-index: 1;
+    width: 100% !important;
+}
+
+.mejs-layer.mejs-overlay-play{
+	height:100% !important;
+}
+
+#top .avia-video .mejs-container, 
+#top .avia-video .mejs-container video{
+	height:100% !important;
+	width: 100% !important;
+	position: absolute;
 }
 
 
@@ -3933,7 +3944,7 @@ font-size: 15px;
 #top .av-video-slide iframe, #top .av-video-slide embed, #top .av-video-slide object, #top .av-video-slide video{max-width:none; max-height:none; width:100%; height:100%; position: absolute;}
 #top .av-video-slide .caption_fullwidth{top: 0; left: 0; right: 0; bottom: 40px; }
 #top .av-video-slide.av-hide-video-controls .caption_fullwidth{ bottom:0px;}
-#top .av-video-slide .mejs-container{ height: 100% !important; position: absolute;}
+#top .av-video-slide .mejs-container{ height: 100% !important; width: 100% !important; position: absolute;}
 #top .av-video-slide .me-plugin{width:100%; height:100%;}
 span.mejs-offscreen { display: none!important; }
 
@@ -5176,19 +5187,25 @@ AVIA PLAYER
 .wp-playlist-tracks .wp-playlist-item{padding: 4px 3px;}
 .wp-playlist-tracks .wp-playlist-item-length{top: 4px;}
 div .mejs-controls .mejs-time-rail .mejs-time-loaded, div .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-current{background:#9c9c9c;}
-div .mejs-controls .mejs-time-rail span, div .mejs-controls .mejs-time-rail a,
+div .mejs-controls .mejs-time-rail > span, div .mejs-controls .mejs-time-rail a,
 div .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-current,
 div .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-total{height:7px;}
 div .mejs-controls div.mejs-time-rail{padding-top: 7px;}
-div .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-total,
-div .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-current{top:12px;}
+div .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-total{top:12px;}
 div .mejs-container, div .mejs-embed, div .mejs-embed body, div .mejs-container div .mejs-controls{background:transparent;}
 div .mejs-container{border-radius:2px;background:#313131}
-div .mejs-time-total.mejs-time-slider { outline: 0; }
 div .wp-playlist-item-album{font-style: normal; }
-div .mejs-controls .mejs-play button{left:2px;}
+div .mejs-controls .mejs-playpause-button , div .mejs-controls .mejs-volume-button{ height:30px;}
 #top .mejs-container .mejs-controls .mejs-time, #top .mejs-time-rail .mejs-time-float{color:#fff;}
-
+#top .mejs-time-rail .mejs-time-float {border:none;}
+div .mejs-container .mejs-controls{height: 30px;width: 100%;}
+#top .mejs-container{height: 30px !important;}
+div .mejs-button>button {margin: 6px 6px;}
+div .mejs-time{padding: 12px 6px 0; height:18px;}
+div .mejs-time-rail, div .mejs-horizontal-volume-slider{height:30px;}
+div .mejs-controls .mejs-time-rail .mejs-time-handle{display:none;}
+div .mejs-time-buffering, div .mejs-time-current,  div .mejs-time-float-corner, div .mejs-time-hovered, div .mejs-time-loaded, div .mejs-time-marker, div .mejs-time-total{ height:7px; outline:none;}
+div .mejs-controls{padding:0;}
 /*audio player*/
 
 

@@ -216,3 +216,13 @@ left: 0!important;
     left: auto;
     right: 50px;
 }
+
+
+
+.rtl div.flex_column{
+	float: right;
+}
+
+.rtl div.flex_column.first{
+	clear: right;
+}

@@ -851,6 +851,8 @@ window.aviaOnGoogleMapsLoaded = function(){ $('body').trigger('av-google-maps-ap
 
 	$.AviaVideoAPI  =  function(options, video, option_container)
 	{	
+		this.videoElement = video;
+		
 		// actual video element. either iframe or video
 		this.$video	= $( video );
 		
@@ -884,6 +886,11 @@ window.aviaOnGoogleMapsLoaded = function(){ $('body').trigger('av-google-maps-ap
     {
     	youtube : {loaded: false, src: 'https://www.youtube.com/iframe_api' }
     }
+    
+    $.AviaVideoAPI.players =
+    {
+    	
+    }
 	
   	$.AviaVideoAPI.prototype =
     {
@@ -894,6 +901,8 @@ window.aviaOnGoogleMapsLoaded = function(){ $('body').trigger('av-google-maps-ap
 			
 			// info which video service we are using: html5, vimeo or youtube
 			this.type = this._getPlayerType();
+			
+			this.player = false;
 			
 			// store the player object to the this.player variable created by one of the APIs (mediaelement, youtube, vimeo)
 			this._setPlayer();			
@@ -953,8 +962,16 @@ window.aviaOnGoogleMapsLoaded = function(){ $('body').trigger('av-google-maps-ap
 			{
 				case "html5": 	
 				
-					this.player = this.$video.data('mediaelementplayer');  
-					this._playerReady(); 
+				this.player = this.$video.data('mediaelementplayer');  
+				
+				//appply fallback. sometimes needed for safari
+				if(!this.player)
+				{
+					this.$video.data('mediaelementplayer', $.AviaVideoAPI.players[ this.$video.attr('id').replace(/_html5/,'') ] );
+					this.player = this.$video.data('mediaelementplayer'); 
+				}
+				
+				this._playerReady(); 
 					
 				break; 
 					
@@ -1274,33 +1291,37 @@ window.aviaOnGoogleMapsLoaded = function(){ $('body').trigger('av-google-maps-ap
 		_html5_play: function( )
 		{
 			//disable stoping of other videos in case the user wants to run section bgs
-			this.player.options.pauseOtherPlayers = false;
-			this.player.play();
+			if(this.player) 
+			{	
+				this.player.options.pauseOtherPlayers = false;
+				this.player.play();
+			}
+			
 		},
 		
 		_html5_pause: function( )
 		{
-			this.player.pause();
+			if(this.player) this.player.pause();
 		},
 		
 		_html5_mute: function( )
 		{
-			this.player.setMuted(true);
+			if(this.player) this.player.setMuted(true);
 		},
 		
 		_html5_unmute: function( )
 		{
-			this.player.setVolume(0.7);
+			if(this.player) this.player.setVolume(0.7);
 		},
 		
 		_html5_loop: function( )
 		{
-			this.player.options.loop = true;
+			if(this.player) this.player.options.loop = true;
 		},
 		
 		_html5_reset: function( )
 		{	
-			this.player.setCurrentTime(0);	
+			if(this.player) this.player.setCurrentTime(0);	
 		},
 		
 		_html5_unload: function()
@@ -2729,6 +2750,8 @@ $.fn.avia_sc_toggle = function(options)
 					{
 						content.removeClass('active_tc').attr({style:''});
 						win.trigger('av-height-change');
+						win.trigger('av-content-el-height-changed', this );
+						
 						location.replace(thisheading.data('fake-id') + "-closed");
 					});
 					thisheading.removeClass('activeTitle');
@@ -2760,6 +2783,7 @@ $.fn.avia_sc_toggle = function(options)
 		                        }
 		                        
 		                        win.trigger('av-height-change');
+								win.trigger('av-content-el-height-changed', this );
 							}
 						
 						);
@@ -2920,6 +2944,8 @@ $.fn.avia_sc_tabs= function(options)
 					$('html:not(:animated),body:not(:animated)').scrollTop(scoll_target);
 				}
 			}
+			
+			win.trigger( 'av-content-el-height-changed', tab );
 		}
 
 		function trigger_default_open(hash)
@@ -2959,7 +2985,7 @@ $.fn.avia_sc_tab_section= function()
 	{
 		var container 		= $(this),
 			tabs			= container.find('.av-section-tab-title'),
-		    	tab_outer = container.find('.av-tab-section-outer-container'),
+		    tab_outer		= container.find('.av-tab-section-outer-container'),
 			tab_wrap		= container.find('.av-tab-section-tab-title-container'),
 			tab_nav			= container.find('.av_tab_navigation'), 
 			content_wrap	= container.find('.av-tab-section-inner-container'),
@@ -3132,7 +3158,17 @@ $.fn.avia_sc_tab_section= function()
 				tabs.on('click', change_tab);
 				tab_nav.on('click', switch_to_next_prev);
 				win.on('debouncedresize', set_tab_titlte_pos);	
-				win.on('debouncedresize av-height-change', set_slide_height);	
+				
+				/**
+				 * We had to remove av-height-change because this event is recursivly triggered in set_slide_height and lead to performance problems 
+				 * AND broken layout - content was not displayed completly
+				 * 
+				 * Content elements that can can change their height and trigger av-height-change should trigger this additional event after to
+				 * allow layout elements like tab section to react on this and then call av-height-change by themself
+				 * 
+				 * @since 4.2.3
+				 */
+				win.on('debouncedresize av-content-el-height-changed', set_slide_height);	
 				
 				set_min_width();
 				set_slide_height(); 
@@ -3434,7 +3470,7 @@ $.fn.avia_hor_gallery= function(options)
 
 				responseContainer = form.next(options.responseContainer+":eq(0)");
 
-				send.button.bind('click', checkElements);
+				send.button.on('click', checkElements);
 				
 				
 				//change type of email forms on mobile so the e-mail keyboard with @ sign is used
@@ -3497,7 +3533,22 @@ $.fn.avia_hor_gallery= function(options)
 							}
 							nomatch = false;
 						}
-
+						
+						if(classes && classes.match(/is_ext_email/))
+						{
+							//  also allowed would be: ! # $ % & ' * + - / = ? ^ _ ` { | } ~
+							if( ! value.match( /^[\w|\.|\-|ÄÖÜäöü]+@\w[\w|\.|\-|ÄÖÜäöü]*\.[a-zA-Z]{2,20}$/ ) )
+							{
+								surroundingElement.removeClass("valid error ajax_alert").addClass("error");
+								send.validationError = true;
+							}
+							else
+							{
+								surroundingElement.removeClass("valid error ajax_alert").addClass("valid");
+							}
+							nomatch = false;
+						}
+						
 						if(classes && classes.match(/is_phone/))
 						{
 							if(!value.match(/^(\d|\s|\-|\/|\(|\)|\[|\]|e|x|t|ension|\.|\+|\_|\,|\:|\;){3,}$/))
@@ -4807,19 +4858,41 @@ Avia Slideshow
 				alter.each(function()
 				{	
 					var current  = $(this).removeClass('av-video-slide').data({'avia_video_events': true, 'video-ratio':0}),
-						fallback = current.data('mobile-img');
+						fallback = current.data('mobile-img'),
+						fallback_link = current.data('fallback-link'),
+						appendTo = current.find('.avia-slide-wrap');
 						
 					current.find('.av-click-overlay, .mejs-mediaelement, .mejs-container').remove();
 					
 					if(!fallback)
 					{
-						var appendTo = current.find('.avia-slide-wrap');
 						$('<p class="av-fallback-message"><span>Please set a mobile device fallback image for this video in your wordpress backend</span></p>').appendTo(appendTo);
 					}
 					
 					if(options && options.bg_slider)
 					{
 						current.data('img-url', fallback);
+						
+						//if we got a fallback link we need to either replace the default link on mobile devices, or if there is no default link change the wrapping <div> to an <a>
+						if(fallback_link != "")
+						{
+							if(appendTo.is('a'))
+							{
+								appendTo.attr('href', fallback_link);
+							}
+							else
+							{
+								appendTo.find('a').remove();
+								appendTo.replaceWith(function(){
+									var cur_slide = $(this);
+								    return $("<a>").attr({'data-rel': cur_slide.data('rel'), 'class': cur_slide.attr('class'), 'href': fallback_link} ).append( $(this).contents() );
+								});
+									
+								appendTo = current.find('.avia-slide-wrap');
+							}
+							
+							current.parents('#main').avia_activate_lightbox();
+						}
 					}
 					else
 					{
@@ -5355,7 +5428,10 @@ Avia Slideshow
 				if(event.data.iteration === 0) 
 				{	
 					event.data.wrap.css('opacity',0);
-					if(!event.data.self.isMobile && !event.data.slide.data('disableAutoplay')) { event.data.slide.trigger('play'); } 
+					if(!event.data.self.isMobile && !event.data.slide.data('disableAutoplay'))
+					{ 
+						event.data.slide.trigger('play'); 
+					} 
 					setTimeout(function(){ event.data.wrap.avia_animate({opacity:1}, 400); }, 50);
 				}
 				else if ($html.is('.avia-msie') && !event.data.slide.is('.av-video-service-html5'))

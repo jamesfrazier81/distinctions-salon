@@ -15,6 +15,8 @@
 	$sliderItem = LS_Sliders::find($id);
 	$slider = $sliderItem['data'];
 
+	// Product activation
+	$lsActivated = get_option( 'layerslider-authorized-site', false );
 
 	// Get screen options
 	$lsScreenOptions = get_option('ls-screen-options', '0');
@@ -316,6 +318,12 @@ include LS_ROOT_PATH . '/templates/tmpl-import-layer.php';
 		}
 	}
 
+	// v6.8.8: Set slider type to responsive in case of Popup
+	// on a non-activated site.
+	if( ! $lsActivated && $slider['properties']['type'] === 'popup' ) {
+		$slider['properties']['type'] = 'responsive';
+	}
+
 	// Slider version
 	$slider['properties']['sliderVersion'] = LS_PLUGIN_VERSION;
 ?>
@@ -349,7 +357,7 @@ include LS_ROOT_PATH . '/templates/tmpl-import-layer.php';
 			<?php _e('Editing slider:', 'LayerSlider') ?>
 			<?php $sliderName = !empty($slider['properties']['title']) ? $slider['properties']['title'] : 'Unnamed'; ?>
 			<?php echo apply_filters('ls_slider_title', $sliderName, 30) ?>
-			<a href="?page=layerslider" class="add-new-h2"><?php _e('Back to the list', 'LayerSlider') ?></a>
+			<a href="?page=layerslider" class="add-new-h2"><?php _e('&larr; Sliders', 'LayerSlider') ?></a>
 		</h2>
 
 		<!-- Version number -->
@@ -655,7 +663,7 @@ include LS_ROOT_PATH . '/templates/tmpl-import-layer.php';
 					<figure><span>|</span> <?php _e('Fires when the Popup starts its opening transition and becomes visible.', 'LayerSlider') ?></figure>
 				</h3>
 				<div>
-					<textarea name="popupWillOpen" data-event-data="false" cols="20" rows="5" class="ls-codemirror">function( event ) {
+					<textarea name="popupWillOpen" data-event-data="false" cols="20" rows="5" class="ls-codemirror">function( event, slider ) {
 
 }</textarea>
 				</div>
@@ -667,7 +675,7 @@ include LS_ROOT_PATH . '/templates/tmpl-import-layer.php';
 					<figure><span>|</span> <?php _e('Fires when the Popup completed its opening transition.', 'LayerSlider') ?></figure>
 				</h3>
 				<div>
-					<textarea name="popupDidOpen" data-event-data="false" cols="20" rows="5" class="ls-codemirror">function( event ) {
+					<textarea name="popupDidOpen" data-event-data="false" cols="20" rows="5" class="ls-codemirror">function( event, slider ) {
 
 }</textarea>
 				</div>
@@ -679,7 +687,7 @@ include LS_ROOT_PATH . '/templates/tmpl-import-layer.php';
 					<figure><span>|</span> <?php _e('Fires when the Popup stars its closing transition.', 'LayerSlider') ?></figure>
 				</h3>
 				<div>
-					<textarea name="popupWillClose" data-event-data="false" cols="20" rows="5" class="ls-codemirror">function( event ) {
+					<textarea name="popupWillClose" data-event-data="false" cols="20" rows="5" class="ls-codemirror">function( event, slider ) {
 
 }</textarea>
 				</div>
@@ -691,7 +699,7 @@ include LS_ROOT_PATH . '/templates/tmpl-import-layer.php';
 					<figure><span>|</span> <?php _e('Fires when the Popup completed its closing transition and became hidden.', 'LayerSlider') ?></figure>
 				</h3>
 				<div>
-					<textarea name="popupDidClose" data-event-data="false" cols="20" rows="5" class="ls-codemirror">function( event ) {
+					<textarea name="popupDidClose" data-event-data="false" cols="20" rows="5" class="ls-codemirror">function( event, slider ) {
 
 }</textarea>
 				</div>
@@ -822,7 +830,7 @@ include LS_ROOT_PATH . '/templates/tmpl-import-layer.php';
 			<?php
 				$revisions = LS_Revisions::count( $id );
 				if( $revisions > 1 ) : ?>
-				<p class="revisions"><span><i class="dashicons dashicons-backup"></i><?php echo sprintf(__('Revisions Available:', 'LayerSlider'), $revisions) ?></span><br><a href="<?php echo admin_url('admin.php?page=ls-revisions&id='.$id) ?>"><?php echo sprintf(__('Browse %d Revisions', 'LayerSlider'), $revisions) ?></a></p>
+				<p class="revisions"><span><i class="dashicons dashicons-backup"></i><?php echo sprintf(__('Revisions Available:', 'LayerSlider'), $revisions) ?></span><br><a href="<?php echo admin_url('admin.php?page=layerslider-addons&section=revisions&id='.$id) ?>"><?php echo sprintf(__('Browse %d Revisions', 'LayerSlider'), $revisions) ?></a></p>
 			<?php endif ?>
 
 			<p><span><?php _e('Use shortcode:', 'LayerSlider') ?></span><br><span>[layerslider id="<?php echo !empty($slider['properties']['slug']) ? $slider['properties']['slug'] : $id ?>"]</span></p>

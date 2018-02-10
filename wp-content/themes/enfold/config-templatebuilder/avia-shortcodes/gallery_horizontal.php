@@ -1,4 +1,11 @@
 <?php
+/**
+ * Horizontal Gallery
+ * 
+ * Creates a horizontal scrollable gallery
+ */
+if ( ! defined( 'ABSPATH' ) ) {  exit;  }    // Exit if accessed directly
+
 
 if ( !class_exists( 'avia_sc_gallery_horizontal' ) )
 {
@@ -11,6 +18,8 @@ if ( !class_exists( 'avia_sc_gallery_horizontal' ) )
 			 */
 			function shortcode_insert_button()
 			{
+				$this->config['self_closing']	=	'no';
+				
 				$this->config['name']			= __('Horizontal Gallery', 'avia_framework' );
 				$this->config['tab']			= __('Media Elements', 'avia_framework' );
 				$this->config['icon']			= AviaBuilder::$path['imagesURL']."sc-accordion-slider.png";

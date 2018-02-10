@@ -1,5 +1,8 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) {  exit;  }    // Exit if accessed directly
+
+
 function avia_woocommerce_enabled()
 {
 	// if( !function_exists( 'wc_get_template_part' ) && class_exists( 'woocommerce' )) return "deprecated";
@@ -1614,7 +1617,7 @@ if(!function_exists('avia_woocommerce_default_page'))
 		    	if(isset($vars['post_type']) && 'product' == $vars['post_type'] )
 		    	{
 		    		$shop_page_id 	= wc_get_page_id( 'shop' );
-		    		$builder_active = AviaHelper::builder_status($shop_page_id);
+		    		$builder_active = Avia_Builder()->get_alb_builder_status($shop_page_id);
 		    		
 		    		if($builder_active == "active")
 		    		{
@@ -1750,7 +1753,7 @@ if(!function_exists('avia_woocommerce_cart_pos'))
 	    	$cart = $woocommerce->cart->get_cart();
 	    	$cart_pos = avia_get_option('cart_icon');
 	    	
-	    	if($cart_pos == "always_display" || (!empty($cart) && !avia_active_caching()))
+	    	if( $cart_pos == "always_display" || ( ! empty( $cart ) ) )
 	    	{
 				$class[] = "visible_cart";
 			}
