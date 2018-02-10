@@ -88,7 +88,6 @@
 			//you can also remove the kriesi.at backlink by adding [nolink] to your custom copyright field in the admin area
 			if($copyright && strpos($copyright, '[nolink]') !== false)
 			{
-				$kriesi_at_backlink = "";
 				$copyright = str_replace("[nolink]","",$copyright);
 			}
 
@@ -100,7 +99,7 @@
 				<footer class='container_wrap socket_color' id='socket' <?php avia_markup_helper(array('context' => 'footer')); ?>>
                     <div class='container'>
 
-                        <span class='copyright'><?php echo $copyright . $kriesi_at_backlink; ?></span>
+                        <span class='copyright'><?php echo $copyright; ?></span>
 
                         <?php
                         	if(avia_get_option('footer_social', 'disabled') != "disabled")

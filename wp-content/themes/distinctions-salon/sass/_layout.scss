@@ -1,104 +1,144 @@
-#top {
-	#wrap_all #main {
-		padding-top: 118px;
-		//Home page
-		.avia-fullscreen-slider {
-			.caption_fullwidth {
-				margin: 0;
-				
-				.slideshow_align_caption {
-					.avia-caption-title {
-						font-size: 38px;
-						font-weight: 300;
-						color: white;
-						// text-shadow: 0 0 5px black;
-					}
+#top #wrap_all #main {
+	padding-top: 118px; //Home page
+	.avia-fullscreen-slider {
+		.caption_fullwidth {
+			margin: 0;
+			.slideshow_align_caption {
+				.avia-caption-title {
+					font-size: 2.375rem;
+					font-weight: 300;
+					color: white; // text-shadow: 0 0 5px black;
 				}
-
-				.avia-caption-content  {
-					p {
-						color: white;
-						// text-shadow: 0 0 5px black;
+			}
+			.avia-caption-content {
+				p {
+					color: white; // text-shadow: 0 0 5px black;
+				}
+			}
+		}
+	} // Featured content CTAs
+	#ctas-home {
+		.container .template-page {
+			padding-top: 0;
+			.av-masonry .av-masonry-container .av-masonry-entry .av-inner-masonry {
+				.av-inner-masonry-content {
+					.av-masonry-entry-content {
+						font-family: $font-script;
+						font-size: 1.875rem;
+						display: inline-block;
+						margin: 0 auto;
+						padding: 10px;
 					}
 				}
 			}
 		}
-		
-		// Featured content CTAs
-		#ctas-home {
-			.container .template-page {
-				padding-top: 0;
-
-				.av-masonry .av-masonry-container .av-masonry-entry .av-inner-masonry {
-					.av-inner-masonry-content {
-						.av-masonry-entry-content {
-							font-family: $font-script;
-							font-size: 30px;
-							display: inline-block;
-							margin: 0 auto;
-							padding: 10px;
-						}
+	} // Internal pages
+	#page-header {
+		.av-special-heading {
+			h2 {
+				color: white;
+			}
+		}
+	}
+	#about-us {
+		.av_two_fifth {
+			background-color: #efefef;
+			border: 1px solid #e8e8e8;
+			padding: 20px;
+			.av-styling-circle {
+				img {
+					border: 5px solid rgba($color-gray-dark, 0.05);
+				}
+			}
+			.av_textblock_section {
+				.avia_textblock {
+					p {
+						font-size: 0.875rem;
+						line-height: 26px;
 					}
 				}
-			}			
+			}
 		}
-		
-		// Internal pages
-		#page-header {
-			.av-special-heading {
-				h2 {
+	} // Home page services gallery (currently 4)
+	.av-caption-style-overlay {
+		.av-masonry-item-with-image {
+			.av-inner-masonry-content {
+				background-color: transparent;
+				.av-masonry-entry-content {
 					color: white;
 				}
 			}
 		}
-
-		#about-us {
-			.av_two_fifth {
-				background-color: #efefef;
-				border: 1px solid #e8e8e8;
-				padding: 20px;
-
-				.av-styling-circle {
-					img {
-						border: 5px solid rgba($color-gray-dark, 0.05);
+	}
+	.phone-email,
+	.salon-hours {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-around;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		li {
+			width: 50%;
+			margin: 0;
+			padding: 20px 0;
+			text-align: left;
+			a {
+				color: #000001 !important;
+			}
+			&.sunday {
+				width: 100%;
+			}
+		}
+	}
+	.social-media {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-around;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		li {
+			width: 48%;
+			margin: 0;
+			padding: 0;
+			text-align: left;
+			&.facebook {
+				a {
+					background-color: #3b5998;
+					display: block;
+					margin: 20px 0;
+					padding: 5px 15px;
+					color: white;
+					&:hover {
+						text-decoration: none;
 					}
 				}
-
-				.av_textblock_section {
-					.avia_textblock {
-						p {
-							font-size: 14px;
-							line-height: 26px;
-						}
+			}
+			&.instagram {
+				a {
+					background-color: #fb3958;
+					display: block;
+					margin: 20px 0;
+					padding: 5px 15px;
+					color: white;
+					&:hover {
+						text-decoration: none;
 					}
 				}
 			}
 		}
-		
-		// Home page services gallery (currently 4)
-		.av-caption-style-overlay {
-			.av-masonry-item-with-image {
-				.av-inner-masonry-content {
-					background-color: transparent;
-
-					.av-masonry-entry-content {
-						color: white;
-					}
-				}
-			}			
-		}
 	}
-
-	// &.logged-in {
-	// 	#header_meta .container .phone-info a:first-child {
-	// 		border: none !important;
-	// 		padding: 0 !important;
-	// 	}
-	// }
-}
-
-@media screen and (max-width: $media-desktop-sm) {
-	#top #wrap_all #main {
-		padding-top: 105px;
+} // &.logged-in {
+// 	#header_meta .container .phone-info a:first-child {
+// 		border: none !important;
+// 		padding: 0 !important;
+// 	}
+// }
+@media screen and (max-width: $media-tablet) {
+	.responsive #top #wrap_all #main {
+		padding-top: 109px !important;
 	}
 }

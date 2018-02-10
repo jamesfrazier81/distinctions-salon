@@ -10,52 +10,59 @@
 */
 @import 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,800';
 @import 'https://fonts.googleapis.com/css?family=Yellowtail';
+html, body {
+  font-size: 16px;
+  font-weight: 300; }
+
 #top #wrap_all #main {
   background-color: white; }
   #top #wrap_all #main .av-special-heading {
     margin-top: 0; }
     #top #wrap_all #main .av-special-heading h1 {
       font-family: "Open Sans", sans-serif;
-      font-size: 60px;
+      font-size: 3.75rem;
       font-weight: 300; }
     #top #wrap_all #main .av-special-heading h2 {
       font-family: "Open Sans", sans-serif;
-      font-size: 38px;
+      font-size: 2.375rem;
       font-weight: 300; }
     #top #wrap_all #main .av-special-heading h3 {
       font-family: "Yellowtail", cursive;
-      font-size: 38px;
+      font-size: 2.375rem;
       font-weight: 300;
       text-transform: none; }
-  #top #wrap_all #main .av_textblock_section .avia_textblock p {
-    font-size: 16px;
-    font-weight: 300;
-    line-height: 28px; }
-    #top #wrap_all #main .av_textblock_section .avia_textblock p a {
+  #top #wrap_all #main .av_textblock_section .avia_textblock p, #top #wrap_all #main .av_textblock_section .avia_textblock a, #top #wrap_all #main .av_textblock_section .avia_textblock span, #top #wrap_all #main .av_textblock_section .avia_textblock li {
+    font-size: 1rem;
+    font-weight: 300; }
+    #top #wrap_all #main .av_textblock_section .avia_textblock p a, #top #wrap_all #main .av_textblock_section .avia_textblock a a, #top #wrap_all #main .av_textblock_section .avia_textblock span a, #top #wrap_all #main .av_textblock_section .avia_textblock li a {
       color: #ffb540; }
+      #top #wrap_all #main .av_textblock_section .avia_textblock p a:hover, #top #wrap_all #main .av_textblock_section .avia_textblock a a:hover, #top #wrap_all #main .av_textblock_section .avia_textblock span a:hover, #top #wrap_all #main .av_textblock_section .avia_textblock li a:hover {
+        text-decoration: none; }
   #top #wrap_all #main .avia-button-wrap a {
     background-color: #ffb540;
     border: none;
     -webkit-transition: -webkit-box-shadow 0.35s;
     transition: -webkit-box-shadow 0.35s;
+    -moz-transition: box-shadow 0.35s, -moz-box-shadow 0.35s;
     transition: box-shadow 0.35s;
-    transition: box-shadow 0.35s, -webkit-box-shadow 0.35s; }
+    transition: box-shadow 0.35s, -webkit-box-shadow 0.35s, -moz-box-shadow 0.35s; }
     #top #wrap_all #main .avia-button-wrap a:hover {
-      -webkit-box-shadow: 0 0 30px rgba(255, 239, 188, 0.5);
-      box-shadow: 0 0 30px rgba(255, 239, 188, 0.5); }
+      -webkit-box-shadow: 0 0 1.875rem rgba(255, 239, 188, 0.5);
+      -moz-box-shadow: 0 0 1.875rem rgba(255, 239, 188, 0.5);
+      box-shadow: 0 0 1.875rem rgba(255, 239, 188, 0.5); }
   #top #wrap_all #main .avia_responsive_table .avia-table {
     background-color: transparent; }
     #top #wrap_all #main .avia_responsive_table .avia-table tr {
       border-bottom: 1px solid #bcbcbc; }
       #top #wrap_all #main .avia_responsive_table .avia-table tr td {
-        font-size: 16px;
+        font-size: 1rem;
         font-weight: 300;
-        line-height: 22px;
+        line-height: 1.375rem;
         color: #000001;
         padding-left: 0;
         border: none; }
         #top #wrap_all #main .avia_responsive_table .avia-table tr td small, #top #wrap_all #main .avia_responsive_table .avia-table tr td .callout {
-          font-size: 13px;
+          font-size: 0.8125rem;
           font-weight: 600;
           color: #ffb540; }
         #top #wrap_all #main .avia_responsive_table .avia-table tr td:nth-child(odd) {
@@ -64,7 +71,7 @@
         #top #wrap_all #main .avia_responsive_table .avia-table tr td:nth-child(even) {
           width: 25%;
           text-align: right;
-          font-size: 20px;
+          font-size: 1.25rem;
           font-weight: 600;
           color: #ffb540; }
       #top #wrap_all #main .avia_responsive_table .avia-table tr:last-child {
@@ -76,23 +83,23 @@
   #top #wrap_all #main .main_color .container .template-page {
     padding: 25px 0; }
   #top #wrap_all #main .av-special-heading h1 {
-    font-size: 40px;
+    font-size: 2.5rem;
     font-weight: 300; }
   #top #wrap_all #main .av-special-heading h2 {
-    font-size: 30px;
+    font-size: 1.875rem;
     font-weight: 300; }
   #top #wrap_all #main .av-special-heading h3 {
     text-align: center;
-    font-size: 26px; }
+    font-size: 1.625rem; }
   #top #wrap_all #main .av_textblock_section .avia_textblock p {
-    font-size: 14px;
+    font-size: 0.875rem;
     font-weight: 300; }
   #top #wrap_all #main .avia_responsive_table .avia-table {
     border: none; }
     #top #wrap_all #main .avia_responsive_table .avia-table tr td {
-      font-size: 14px; }
+      font-size: 0.875rem; }
       #top #wrap_all #main .avia_responsive_table .avia-table tr td small, #top #wrap_all #main .avia_responsive_table .avia-table tr td .callout {
-        font-size: 12px; }
+        font-size: 0.75rem; }
       #top #wrap_all #main .avia_responsive_table .avia-table tr td:nth-child(odd) {
         width: 100%;
         text-align: center; }
@@ -101,42 +108,45 @@
         text-align: center;
         padding-top: 0; } }
 
-#top #wrap_all #header_meta {
-  background-color: #616161;
-  border: none; }
-  #top #wrap_all #header_meta .container .phone-info a {
-    color: white;
-    text-transform: uppercase;
-    font-size: 9px;
-    font-weight: 400;
-    cursor: pointer;
-    padding: 0 10px;
-    border-right: 1px solid white; }
-    #top #wrap_all #header_meta .container .phone-info a:last-child {
-      padding-right: 0;
-      border: 0; }
-
-#top #wrap_all #header_main {
-  background-color: #000001;
-  border: none; }
-  #top #wrap_all #header_main .container {
-    height: 89px;
-    line-height: 89px; }
-    #top #wrap_all #header_main .container .logo {
-      padding: 20px 0; }
-    #top #wrap_all #header_main .container .main_menu ul li a {
-      font-size: 14px;
-      font-weight: 300; }
-    #top #wrap_all #header_main .container .main_menu ul li .sub-menu {
-      border: none; }
-      #top #wrap_all #header_main .container .main_menu ul li .sub-menu li a {
-        border: none;
-        font-size: 13px; }
-        #top #wrap_all #header_main .container .main_menu ul li .sub-menu li a:hover {
-          background-color: #616161; }
-
-#top #wrap_all .header_bg {
-  display: none; }
+#top #wrap_all #header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; }
+  #top #wrap_all #header #header_meta {
+    background-color: #616161;
+    border: none; }
+    #top #wrap_all #header #header_meta .container .phone-info a {
+      color: white;
+      text-transform: uppercase;
+      font-size: 0.5625rem;
+      font-weight: 400;
+      cursor: pointer;
+      padding: 0 10px;
+      border-right: 1px solid white; }
+      #top #wrap_all #header #header_meta .container .phone-info a:last-child {
+        padding-right: 0;
+        border: 0; }
+  #top #wrap_all #header #header_main {
+    background-color: #000001;
+    border: none; }
+    #top #wrap_all #header #header_main .container {
+      height: 89px;
+      line-height: 89px; }
+      #top #wrap_all #header #header_main .container .logo {
+        padding: 20px 0; }
+      #top #wrap_all #header #header_main .container .main_menu ul li a {
+        font-size: 0.875rem;
+        font-weight: 300; }
+      #top #wrap_all #header #header_main .container .main_menu ul li .sub-menu {
+        border: none; }
+        #top #wrap_all #header #header_main .container .main_menu ul li .sub-menu li a {
+          border: none;
+          font-size: 0.8125rem; }
+          #top #wrap_all #header #header_main .container .main_menu ul li .sub-menu li a:hover {
+            background-color: #616161; }
+  #top #wrap_all #header .header_bg {
+    display: none; }
 
 @media screen and (max-width: 990px) {
   #top #wrap_all #header_main .container {
@@ -149,34 +159,38 @@
       height: 75px; } }
 
 @media screen and (max-width: 767px) {
-  #top #wrap_all #header_main .container {
-    width: 100%;
-    max-width: 100%;
-    padding: 0 20px; }
-    #top #wrap_all #header_main .container .logo {
-      padding: 0;
-      max-width: 200px; }
-    #top #wrap_all #header_main .container #advanced_menu_toggle {
-      border: none;
-      width: auto;
-      right: 20px; }
-      #top #wrap_all #header_main .container #advanced_menu_toggle:before {
-        display: none; }
-      #top #wrap_all #header_main .container #advanced_menu_toggle:after {
-        content: '\f0c9';
-        font-family: FontAwesome;
-        font-size: 25px;
-        color: #ffb540; }
-      #top #wrap_all #header_main .container #advanced_menu_toggle:hover {
-        background-color: transparent;
-        color: inherit; } }
+  .responsive #top #wrap_all #header {
+    position: fixed;
+    top: 0;
+    left: 0; }
+    .responsive #top #wrap_all #header #header_main .container {
+      width: 100%;
+      max-width: 100%;
+      padding: 0 20px; }
+      .responsive #top #wrap_all #header #header_main .container .logo {
+        padding: 0;
+        max-width: 200px; }
+      .responsive #top #wrap_all #header #header_main .container #advanced_menu_toggle {
+        border: none;
+        width: auto;
+        right: 20px; }
+        .responsive #top #wrap_all #header #header_main .container #advanced_menu_toggle:before {
+          display: none; }
+        .responsive #top #wrap_all #header #header_main .container #advanced_menu_toggle:after {
+          content: '\f0c9';
+          font-family: FontAwesome;
+          font-size: 1.5625rem;
+          color: #ffb540; }
+        .responsive #top #wrap_all #header #header_main .container #advanced_menu_toggle:hover {
+          background-color: transparent;
+          color: inherit; } }
 
 #top #wrap_all #main {
   padding-top: 118px; }
   #top #wrap_all #main .avia-fullscreen-slider .caption_fullwidth {
     margin: 0; }
     #top #wrap_all #main .avia-fullscreen-slider .caption_fullwidth .slideshow_align_caption .avia-caption-title {
-      font-size: 38px;
+      font-size: 2.375rem;
       font-weight: 300;
       color: white; }
     #top #wrap_all #main .avia-fullscreen-slider .caption_fullwidth .avia-caption-content p {
@@ -185,7 +199,7 @@
     padding-top: 0; }
     #top #wrap_all #main #ctas-home .container .template-page .av-masonry .av-masonry-container .av-masonry-entry .av-inner-masonry .av-inner-masonry-content .av-masonry-entry-content {
       font-family: "Yellowtail", cursive;
-      font-size: 30px;
+      font-size: 1.875rem;
       display: inline-block;
       margin: 0 auto;
       padding: 10px; }
@@ -198,20 +212,85 @@
     #top #wrap_all #main #about-us .av_two_fifth .av-styling-circle img {
       border: 5px solid rgba(97, 97, 97, 0.05); }
     #top #wrap_all #main #about-us .av_two_fifth .av_textblock_section .avia_textblock p {
-      font-size: 14px;
+      font-size: 0.875rem;
       line-height: 26px; }
   #top #wrap_all #main .av-caption-style-overlay .av-masonry-item-with-image .av-inner-masonry-content {
     background-color: transparent; }
     #top #wrap_all #main .av-caption-style-overlay .av-masonry-item-with-image .av-inner-masonry-content .av-masonry-entry-content {
       color: white; }
+  #top #wrap_all #main .phone-email,
+  #top #wrap_all #main .salon-hours {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    margin: 0;
+    padding: 0;
+    list-style: none; }
+    #top #wrap_all #main .phone-email li,
+    #top #wrap_all #main .salon-hours li {
+      width: 50%;
+      margin: 0;
+      padding: 20px 0;
+      text-align: left; }
+      #top #wrap_all #main .phone-email li a,
+      #top #wrap_all #main .salon-hours li a {
+        color: #000001 !important; }
+      #top #wrap_all #main .phone-email li.sunday,
+      #top #wrap_all #main .salon-hours li.sunday {
+        width: 100%; }
+  #top #wrap_all #main .social-media {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    margin: 0;
+    padding: 0;
+    list-style: none; }
+    #top #wrap_all #main .social-media li {
+      width: 48%;
+      margin: 0;
+      padding: 0;
+      text-align: left; }
+      #top #wrap_all #main .social-media li.facebook a {
+        background-color: #3b5998;
+        display: block;
+        margin: 20px 0;
+        padding: 5px 15px;
+        color: white; }
+        #top #wrap_all #main .social-media li.facebook a:hover {
+          text-decoration: none; }
+      #top #wrap_all #main .social-media li.instagram a {
+        background-color: #fb3958;
+        display: block;
+        margin: 20px 0;
+        padding: 5px 15px;
+        color: white; }
+        #top #wrap_all #main .social-media li.instagram a:hover {
+          text-decoration: none; }
 
-@media screen and (max-width: 990px) {
-  #top #wrap_all #main {
-    padding-top: 105px; } }
+@media screen and (max-width: 767px) {
+  .responsive #top #wrap_all #main {
+    padding-top: 109px !important; } }
 
 #top #wrap_all #main .avia-layerslider {
-  position: relative;
-  height: 85vh !important; }
+  position: relative; }
   #top #wrap_all #main .avia-layerslider .ls-wp-fullwidth-container {
     height: 100% !important; }
     #top #wrap_all #main .avia-layerslider .ls-wp-fullwidth-container .ls-wp-fullwidth-helper {
@@ -220,26 +299,11 @@
         height: 100% !important; }
         #top #wrap_all #main .avia-layerslider .ls-wp-fullwidth-container .ls-wp-fullwidth-helper .ls-wp-container .ls-lt-container {
           height: 100% !important; }
-  #top #wrap_all #main .avia-layerslider:after {
-    content: 'Coming in 2017';
-    color: white;
-    z-index: 9;
-    display: block;
-    text-align: center;
-    text-shadow: 0 0 5px #c6922c;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    font-size: 60px;
-    font-family: "Yellowtail", cursive;
-    line-height: 60px;
-    background-color: rgba(255, 181, 64, 0.35); }
 
-@media screen and (max-width: 767px) {
-  #top #wrap_all #main .avia-layerslider:after {
-    font-size: 35px;
-    line-height: 40px; } }
+@media screen and (max-width: 480px) {
+  #top #wrap_all #main .avia-layerslider {
+    max-height: -moz-calc(100vh - 109px);
+    max-height: calc(100vh - 109px); } }
 
 #top #footer {
   padding: 20px 0 0 0; }
@@ -247,7 +311,7 @@
     margin: 0; }
     #top #footer .flex_column .widget .widgettitle {
       font-family: "Open Sans", sans-serif;
-      font-size: 10px;
+      font-size: 0.625rem;
       font-weight: 300;
       text-transform: none;
       color: #bcbcbc;
@@ -260,7 +324,7 @@
 #top #socket {
   border-top: none; }
   #top #socket .container .social_bookmarks li a {
-    font-size: 18px;
+    font-size: 1.125rem;
     color: white; }
 
 @media screen and (max-width: 480px) {

@@ -16,19 +16,19 @@
 
 // One wp-config.php file for multiple environments setup from http://www.messaliberty.com/2010/01/how-to-create-a-single-wp-config-file-for-local-and-remote-wordpress-development/
 if (
-		preg_match('/^([a-z-_0-9]+\.)*[a-z-_0-9]+\.dev(?!\.)/', $_SERVER['SERVER_NAME']) // Request Domain follows the pattern [xxx.]xxx.dev
+		preg_match('/^([a-z-_0-9]+\.)*[a-z-_0-9]+\.test(?!\.)/', $_SERVER['SERVER_NAME']) // Request Domain follows the pattern [xxx.]xxx.test
 	) {
 	define('WP_ENV', 'local');
-	} elseif (preg_match('/staging.distinctionssalon\.com/', $_SERVER['HTTP_HOST'])) { // staging_server_domain
-		define('WP_ENV', 'staging');
-	} else {
-		define('WP_ENV', 'production');
+} elseif (preg_match('/staging.distinctionssalon\.com/', $_SERVER['HTTP_HOST'])) { // staging_server_domain
+	define('WP_ENV', 'staging');
+} else {
+	define('WP_ENV', 'production');
 }
 
 if ( WP_ENV == 'local' ) {
 	// ** MySQL settings - You can get this info from your web host ** //
 	/** The name of the database for WordPress */
-	define('DB_NAME', 'dsalon_wp_local');
+	define('DB_NAME', 'dsalon_wp_local'); // local_db_name
 
 	/** MySQL database username */
 	define('DB_USER', 'root'); // local_db_user
@@ -39,9 +39,9 @@ if ( WP_ENV == 'local' ) {
 	/** MySQL hostname */
 	define('DB_HOST', 'localhost'); // local_db_host
 
-	define('WP_SITEURL', "http://distinctionssalon.dev"); // local_site_url
+	define('WP_SITEURL', "http://distinctionssalon.test"); // local_site_url
 
-	define('WP_HOME', "http://distinctionssalon.dev"); // local_home_url
+	define('WP_HOME', "http://distinctionssalon.test"); // local_home_url
 
 } elseif ( WP_ENV == 'staging') {
 	// ** MySQL settings - You can get this info from your web host ** //

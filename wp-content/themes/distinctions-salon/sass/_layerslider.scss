@@ -1,7 +1,7 @@
 #top #wrap_all #main {
 	.avia-layerslider {
 		position: relative;
-		height: 85vh !important;
+		// height: 85vh !important;
 
 		.ls-wp-fullwidth-container {
 			height: 100% !important;
@@ -17,32 +17,14 @@
 					}
 				}
 			}		
-		}	
-
-		&:after {
-			content: 'Coming in 2017';
-			color: white;
-			z-index: 9;
-			display: block;
-			text-align: center;
-			text-shadow: 0 0 5px $color-gold-dark;
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			font-size: 60px;
-			font-family: $font-script;
-			line-height: 60px;
-			background-color: rgba($color-gold-med, 0.35);
 		}
 	}
 }
 
-@media screen and (max-width: $media-tablet) {
+@media screen and (max-width: $media-mobile) {
 	#top #wrap_all #main {
-		.avia-layerslider:after {
-			font-size: 35px;
-			line-height: 40px;
+		.avia-layerslider {
+			max-height: calc(100vh - 109px);
 		}
 	}
 }

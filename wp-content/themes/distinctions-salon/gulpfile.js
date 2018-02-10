@@ -9,6 +9,13 @@ var plumber = require('gulp-plumber');
 var autoprefixer = require('gulp-autoprefixer');
 var browserSync = require('browser-sync').create();
 
+// Event handler message - the variable has been added to all tasks to show an error in any one via the Terminal
+var plumberErrorHandler = { errorHandler: notify.onError({
+    title: 'Gulp',
+    message: 'Error: <%= error.message %>'
+  })
+};
+
 // BrowserSync replace with your local dev site
 gulp.task('serve', function() {
 
@@ -20,56 +27,56 @@ gulp.task('serve', function() {
     ];
 
     browserSync.init(files, {
-        proxy: 'distinctionssalon.dev'
+        proxy: 'distinctionssalon.test'
     });
 
     gulp.watch("./sass/*.scss", ['sass']);
     gulp.watch(files).on('change', browserSync.reload);    
 });
 
+// Compile sass into CSS & auto-inject into browsers
 gulp.task('sass', function() {
-	gulp.src('./sass/*.scss')
-		.pipe(sass())
-		.pipe(plumber())
-		.pipe(autoprefixer({
-            browsers: ['last 2 versions'],
+    return gulp.src('./sass/*.scss')
+    	.pipe(plumber(plumberErrorHandler))
+        .pipe(sass())
+        .pipe(autoprefixer({
+            browsers: ['last 2 versions', '> 5%', 'Firefox <= 20'],
             cascade: false
         }))
-		.pipe(gulp.dest('./'))
-		.pipe(browserSync.stream())
-		.pipe( notify( { message: 'TASK: "sass" 👍', onLast: true } ) );
+        .pipe(gulp.dest("./"))
+        .pipe(browserSync.stream())
+        .pipe(notify( { message: 'TASK: "sass" 👍', onLast: true } ));
 });
 
 gulp.task('js', function() {
 	gulp.src('./js/*.js')
+		.pipe(plumber(plumberErrorHandler))
 		.pipe(jshint())
-		.pipe(plumber())
-		.pipe(jshint.reporter('fail'))
-		.pipe(rename(function (path) {
-		    path.dirname += "/";
-		    path.basename += ".min";
-		 	path.extname = ".js"
-		 }))
 		.pipe(uglify())
+		.pipe(rename(function (path) {
+			path.dirname += '';
+			path.basename += '.min';
+			path.extname = '.js'
+		}))
 		.pipe(gulp.dest('./js/dist'))
-		.pipe( notify( { message: 'TASK: "js" 👍', onLast: true } ) );
+		.pipe(notify( { message: 'TASK: "js" 👍', onLast: true } ));
 });
 
 gulp.task('img', function() {
-	gulp.src('./img/*.{png, jpg, gif}')
-		.pipe(plumber())
+	gulp.src('./img/*.{png,jpg,gif}')
+		.pipe(plumber(plumberErrorHandler))
 		.pipe(imagemin({
 			optimizationLevel: 7,
 			progressive: true
 		}))
 		.pipe(gulp.dest('./img/dist'))
-		.pipe( notify( { message: 'TASK: "img" 👍', onLast: true } ) );
+		.pipe(notify( { message: 'TASK: "img" 👍', onLast: true } ));
 });
 
 gulp.task('watch', function() {
 	gulp.watch('./sass/*.scss', ['sass']);
 	gulp.watch('./js/*.js', ['js']);
-	gulp.watch('./img/*.{png, jpg, gif}', ['img']);
+	gulp.watch('./img/*.{png,jpg,gif}', ['img']);
 	gulp.watch('./*.php');
 });
 

@@ -1,3 +1,7 @@
+html, body {
+	font-size: 16px;
+	font-weight: 300;
+}
 #top #wrap_all #main {
 	background-color: white;
 	
@@ -6,19 +10,19 @@
 
 		h1 {
 			font-family: $font-main;
-			font-size: 60px;
+			font-size: 3.75rem;
 			font-weight: 300;
 		}
 
 		h2 {
 			font-family: $font-main;
-			font-size: 38px;
+			font-size: 2.375rem;
 			font-weight: 300;
 		}
 
 		h3 {
 			font-family: $font-script;
-			font-size: 38px;
+			font-size: 2.375rem;
 			font-weight: 300;
 			text-transform: none;
 		}
@@ -26,13 +30,15 @@
 
 	.av_textblock_section {
 		.avia_textblock {
-			p {
-				font-size: 16px;
+			p, a, span, li {
+				font-size: 1rem;
 				font-weight: 300;
-				line-height: 28px;
 
 				a {
 					color: $color-gold-med;
+					&:hover {
+						text-decoration: none;
+					}
 				}
 			}
 		}
@@ -46,7 +52,7 @@
 			transition: box-shadow 0.35s;
 
 			&:hover {
-				box-shadow: 0 0 30px rgba($color-gold-light, 0.5);
+				box-shadow: 0 0 1.875rem rgba($color-gold-light, 0.5);
 			}
 		}
 	}
@@ -60,15 +66,15 @@
 				border-bottom: 1px solid $color-gray-light;
 
 				td {
-					font-size: 16px;
+					font-size: 1rem;
 					font-weight: 300;
-					line-height: 22px;
+					line-height: 1.375rem;
 					color: $color-black;
 					padding-left: 0;
 					border: none;
 
 					small, .callout {
-						font-size: 13px;
+						font-size: 0.8125rem;
 						font-weight: 600;
 						color: $color-gold-med;
 					}
@@ -81,7 +87,7 @@
 					&:nth-child(even) {
 						width: 25%;
 						text-align: right;
-						font-size: 20px;
+						font-size: 1.25rem;
 						font-weight: 600;
 						color: $color-gold-med;
 					}
@@ -112,25 +118,25 @@
 
 		.av-special-heading {
 			h1 {
-				font-size: 40px;
+				font-size: 2.5rem;
 				font-weight: 300;
 			}
 
 			h2 {
-				font-size: 30px;
+				font-size: 1.875rem;
 				font-weight: 300;
 			}
 
 			h3 {
 				text-align: center;
-				font-size: 26px;
+				font-size: 1.625rem;
 			}
 		}
 
 		.av_textblock_section {
 			.avia_textblock {
 				p {
-					font-size: 14px;
+					font-size: 0.875rem;
 					font-weight: 300;
 				}
 			}
@@ -142,10 +148,10 @@
 				border: none;
 
 				tr td {
-					font-size: 14px;
+					font-size: 0.875rem;
 
 					small, .callout {
-						font-size: 12px;
+						font-size: 0.75rem;
 					}
 
 					&:nth-child(odd) {
