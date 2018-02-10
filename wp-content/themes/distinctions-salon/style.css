@@ -1,6 +1,6 @@
 /*
  Theme Name:   Distinctions Salon
- Theme URI:    http://distinctionssalon.dev
+ Theme URI:    http://distinctionssalon.com
  Description:  Enfold Child Theme
  Author:       James Frazier Design
  Author URI:   http://jamesfrazierdesign.com
@@ -291,14 +291,9 @@ html, body {
 
 #top #wrap_all #main .avia-layerslider {
   position: relative; }
-  #top #wrap_all #main .avia-layerslider .ls-wp-fullwidth-container {
-    height: 100% !important; }
-    #top #wrap_all #main .avia-layerslider .ls-wp-fullwidth-container .ls-wp-fullwidth-helper {
-      height: 100% !important; }
-      #top #wrap_all #main .avia-layerslider .ls-wp-fullwidth-container .ls-wp-fullwidth-helper .ls-wp-container {
-        height: 100% !important; }
-        #top #wrap_all #main .avia-layerslider .ls-wp-fullwidth-container .ls-wp-fullwidth-helper .ls-wp-container .ls-lt-container {
-          height: 100% !important; }
+  #top #wrap_all #main .avia-layerslider .ls-fullscreen-wrapper .ls-gui-element {
+    display: none;
+    visibility: hidden; }
 
 @media screen and (max-width: 480px) {
   #top #wrap_all #main .avia-layerslider {

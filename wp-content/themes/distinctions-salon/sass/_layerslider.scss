@@ -1,22 +1,21 @@
 #top #wrap_all #main {
 	.avia-layerslider {
 		position: relative;
-		// height: 85vh !important;
-
-		.ls-wp-fullwidth-container {
-			height: 100% !important;
-			
+		.ls-fullscreen-wrapper {
+			// height: 100% !important;
 			.ls-wp-fullwidth-helper {
-				height: 100% !important;
-			
-				.ls-wp-container  {
-					height: 100% !important;
-				
+				// height: 100% !important;
+				.ls-wp-container {
+					// height: 100% !important;
 					.ls-lt-container {
-						height: 100% !important;
+						// height: 100% !important;
 					}
 				}
-			}		
+			}
+			.ls-gui-element {
+				display: none;
+				visibility: hidden;
+			}
 		}
 	}
 }
