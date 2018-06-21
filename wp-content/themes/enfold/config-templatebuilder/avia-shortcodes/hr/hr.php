@@ -31,11 +31,12 @@ if ( !class_exists( 'avia_sc_hr' ) )
 				$this->config['tooltip'] 	= __('Creates a delimiter/whitespace to separate elements', 'avia_framework' );
 				$this->config['tinyMCE']    = array('tiny_always'=>true);
 				$this->config['preview'] 	= 1;
+				$this->config['disabling_allowed'] = true;
 			}
 			
 			function extra_assets()
 			{
-				// $this->builder->asset_manager()->register_asset( 'css' , array('path' => "auto", 'file' => 'hr/hr.css', 'name' => 'avia-hr') );
+				wp_enqueue_style( 'avia-module-hr' , AviaBuilder::$path['pluginUrlRoot'].'avia-shortcodes/hr/hr.css' , array('avia-layout'), false );
 			}
 			
 			

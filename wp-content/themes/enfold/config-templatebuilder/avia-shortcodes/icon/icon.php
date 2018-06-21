@@ -28,11 +28,12 @@ if ( !class_exists( 'av_font_icon' ) )
             //$this->config['inline']   = true;
             $this->config['tinyMCE']    = array('tiny_always'=>true);
 			$this->config['preview'] 	= 1;
+			$this->config['disabling_allowed'] = true;
         }
         
         function extra_assets()
 		{
-			// $this->builder->asset_manager()->register_asset( 'css' , array( 'file' => 'icon/icon.css', 'path' => "auto", 'name' => 'avia-icon') );
+			wp_enqueue_style( 'avia-module-icon' , AviaBuilder::$path['pluginUrlRoot'].'avia-shortcodes/icon/icon.css' , array('avia-layout'), false );
 		}
 
         /**
